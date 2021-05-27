@@ -282,7 +282,7 @@
   color: #859900;
 }
     </style>
-    <link href="stylesheets/screen-c9d8fa83.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/screen-dab601d3.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print-953e3353.css" rel="stylesheet" media="print" />
       <script src="javascripts/all-a9fde460.js"></script>
 
@@ -291,7 +291,7 @@
     </script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;,&quot;javascript&quot;]">
+  <body class="index" data-languages="[&quot;shell&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -299,12 +299,9 @@
       </span>
     </a>
     <div class="toc-wrapper">
-      <img src="images/logo-1e815a84.png" class="logo" alt="" />
+      <img src="images/logo-8872e9a0.png" class="logo" alt="" />
         <div class="lang-selector">
               <a href="#" data-language-name="shell">shell</a>
-              <a href="#" data-language-name="ruby">ruby</a>
-              <a href="#" data-language-name="python">python</a>
-              <a href="#" data-language-name="javascript">javascript</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -315,24 +312,74 @@
             <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
           </li>
           <li>
+            <a href="#api-keys" class="toc-h1 toc-link" data-title="API Keys">API Keys</a>
+          </li>
+          <li>
             <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
           </li>
           <li>
-            <a href="#kittens" class="toc-h1 toc-link" data-title="Kittens">Kittens</a>
+            <a href="#rate-limiting" class="toc-h1 toc-link" data-title="Rate limiting">Rate limiting</a>
+          </li>
+          <li>
+            <a href="#customer-enrollment-api" class="toc-h1 toc-link" data-title="Customer Enrollment API">Customer Enrollment API</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-all-kittens" class="toc-h2 toc-link" data-title="Get All Kittens">Get All Kittens</a>
+                    <a href="#http-request" class="toc-h2 toc-link" data-title="HTTP Request">HTTP Request</a>
                   </li>
                   <li>
-                    <a href="#get-a-specific-kitten" class="toc-h2 toc-link" data-title="Get a Specific Kitten">Get a Specific Kitten</a>
+                    <a href="#arguments" class="toc-h2 toc-link" data-title="Arguments">Arguments</a>
                   </li>
                   <li>
-                    <a href="#delete-a-specific-kitten" class="toc-h2 toc-link" data-title="Delete a Specific Kitten">Delete a Specific Kitten</a>
+                    <a href="#response" class="toc-h2 toc-link" data-title="Response">Response</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#customer-enrollment-user-api" class="toc-h1 toc-link" data-title="Customer Enrollment User API">Customer Enrollment User API</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#http-request-2" class="toc-h2 toc-link" data-title="HTTP Request">HTTP Request</a>
+                  </li>
+                  <li>
+                    <a href="#arguments-2" class="toc-h2 toc-link" data-title="Arguments">Arguments</a>
+                  </li>
+                  <li>
+                    <a href="#response-2" class="toc-h2 toc-link" data-title="Response">Response</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#customer-enrollment-bank-account-api" class="toc-h1 toc-link" data-title="Customer Enrollment Bank Account API">Customer Enrollment Bank Account API</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#http-request-3" class="toc-h2 toc-link" data-title="HTTP Request">HTTP Request</a>
+                  </li>
+                  <li>
+                    <a href="#arguments-3" class="toc-h2 toc-link" data-title="Arguments">Arguments</a>
+                  </li>
+                  <li>
+                    <a href="#response-3" class="toc-h2 toc-link" data-title="Response">Response</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#widget-installation" class="toc-h1 toc-link" data-title="Widget Installation">Widget Installation</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#config-parameters" class="toc-h2 toc-link" data-title="Config parameters">Config parameters</a>
                   </li>
               </ul>
           </li>
           <li>
             <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#http-status-codes" class="toc-h2 toc-link" data-title="HTTP Status Codes">HTTP Status Codes</a>
+                  </li>
+                  <li>
+                    <a href="#error-types" class="toc-h2 toc-link" data-title="Error types">Error types</a>
+                  </li>
+              </ul>
           </li>
       </ul>
         <ul class="toc-footer">
@@ -344,240 +391,502 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
-<p>Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.</p>
+<p>Welcome to Upward - a seamless integration to setting up automated payments directly from your customer&#39;s income. You can inititiate enrollment by calling Upward&#39;s API endpoints and displaying the widget.</p>
 
-<p>We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
+<p>This API reference provides information on available endpoints and how to interact with it.</p>
 
-<p>This example API documentation page was created with <a href="https://github.com/slatedocs/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&#39;s documentation.</p>
+<p>Upward&#39;s API is organized around REST. Our API has predictable, resource-oriented URLs, and uses HTTP response codes to indicate API errors. All requests should be over SSL. All request and response bodies, including errors are encoded in JSON.</p>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>https://api.upwardfi.com
+</code></pre></div><h1 id='api-keys'>API Keys</h1>
+<p>Upward authenticates your API requests using your account’s API keys. If you do not include your key when making an API request, or use one that is incorrect or outdated, Upward returns an error.</p>
+
+<p>The API key should be kept confidential and only stored on your own servers. Your account’s API key can perform any API request to Upward without restriction.</p>
+
+<p>Each account has a total of two keys: a key pair for test mode and live mode.</p>
 <h1 id='authentication'>Authentication</h1>
+<p>Authentication is done via the API key which you can find in your accounts settings endpoint. Your API keys carry many privileges, so be sure to keep them secure! Do not share your secret API keys in publicly accessible areas such as GitHub, client-side code, and so forth.</p>
+
+<p>Test mode secret keys have the prefix sk_test_ and live mode secret keys have the prefix sk_live_. Alternatively, you can use restricted API keys for granular permissions.</p>
+
+<p>Authentication to the API is performed via HTTP Basic Auth. Provide your API key as the basic auth username value. You do not need to provide a password.</p>
+
 <blockquote>
-<p>To authorize, use this code:</p>
+<p>If you need to authenticate via bearer auth (e.g., for a cross-origin request), use -H &quot;Authorization: Bearer base64(ai_test_app_id:sk_test_8fD39MqLyjWBarjtP1zdp7bc)&quot;</p>
+
+<p>Example Request:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="p">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">kittn</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="dl">'</span><span class="s1">meowmeowmeow</span><span class="dl">'</span><span class="p">);</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET https://api.upwardfi.com/enrollments <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer base64(ai_test_app_id:sk_test_8fD39MqLyjWBarjtP1zdp7bc)"</span>
 </code></pre></div>
 <blockquote>
-<p>Make sure to replace <code>meowmeowmeow</code> with your API key.</p>
+<p>All API requests must be made over HTTPS. Calls made over plain HTTP will fail. API requests without authentication will also fail.</p>
 </blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
+curl <span class="s2">"http://api.upwardfi.com/enrollments"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: your_api_key"</span>
+</code></pre></div><h1 id='rate-limiting'>Rate limiting</h1>
+<p>Upward&#39;s API are rate limited to prevent abuse that would degrade our ability to maintain consistent API performance for all users. By default, each API key or app is rate limited at 10,000 requests per hour. If your requests are being rate limited, HTTP response code 429 will be returned with an rate_limit_exceeded error.</p>
 
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
+<!-- # Employer Eligibility Check API
 
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
+This API can be used to check if the customer's employer is supported by Upward before moving onto enrollment.
 
-<p><code>Authorization: meowmeowmeow</code></p>
+### HTTP Request
 
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-<h1 id='kittens'>Kittens</h1><h2 id='get-all-kittens'>Get All Kittens</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+`GET http://api.upwardfi.com/check-employer-eligibility`
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+### Arguments
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="p">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="n">kittens</span><span class="p">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">kittn</span><span class="dl">'</span><span class="p">);</span>
+Parameter | Type | Description
+--------- | ------- | -----------
+employer_name *required* | string | Customer employer name
 
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="dl">'</span><span class="s1">meowmeowmeow</span><span class="dl">'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">kittens</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="kd">get</span><span class="p">();</span>
-</code></pre></div>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre></div>
-<p>This endpoint retrieves all kittens.</p>
+### Response
+
+Parameter | Type | Description
+--------- | ------- | -----------
+access_employment_data | boolean | Returns whether payroll data can be accessed.
+support_direct_deposit | boolean | Returns whether payments can be set up.
+
+```shell
+curl "http://api.upwardfi.com/check-employer-eligibility" \
+  -H "Authorization Bearer: base64(app_id:app_secret)" \
+  -H "Content-Type: application/json" \
+  -d $'{
+    "employer_name": "Walmart"
+  }'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "access_employment_data": true,
+  "support_direct_deposit": true
+}
+``` -->
+<h1 id='customer-enrollment-api'>Customer Enrollment API</h1>
+<p>This API initiates customer enrollment via Upward.By passing basic enrollment information Upward will return an enrollment key unique to the enrollment.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET http://example.com/api/kittens</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
+<p><code>POST http://api.upwardfi.com/enrollments</code></p>
+<h3 id='arguments'>Arguments</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
-<th>Default</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
+<td><code>payment_amount</code> <em>optional</em></td>
+<td>string</td>
+<td>Recurring amount to be paid to you by the customer</td>
 </tr>
 <tr>
-<td>available</td>
-<td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
+<td><code>payment_frequency</code> <em>optional</em></td>
+<td>string</td>
+<td>Frequency interval that customer will make payments</td>
+</tr>
+<tr>
+<td><code>first_payment_date</code> <em>optional</em></td>
+<td>string</td>
+<td>Date of first payment</td>
+</tr>
+<tr>
+<td><code>application_reference_number</code> <em>optional</em></td>
+<td>string</td>
+<td>Loan application number</td>
+</tr>
+<tr>
+<td><code>account_reference_number</code> <em>optional</em></td>
+<td>string</td>
+<td>Your account reference number</td>
+</tr>
+<tr>
+<td><code>days_until_expires</code> <em>optional</em></td>
+<td>string</td>
+<td>Number of days before this enrollment request expires</td>
+</tr>
+<tr>
+<td><code>required_employment_start_date</code> <em>optional</em></td>
+<td>string</td>
+<td>start date of employment</td>
+</tr>
+<tr>
+<td><code>required_gross_income</code> <em>optional</em></td>
+<td>number</td>
+<td>customer gross income</td>
+</tr>
+<tr>
+<td><code>required_net_income</code> <em>optional</em></td>
+<td>number</td>
+<td>customer net income</td>
+</tr>
+<tr>
+<td><code>return_w2_data</code> <em>optional</em></td>
+<td>boolean</td>
+<td>Specify true if customer w2 data must be returned</td>
+</tr>
+<tr>
+<td><code>return_paystubs</code> <em>optional</em></td>
+<td>boolean</td>
+<td>Specify true if link to customer paystubs must be returned</td>
 </tr>
 </tbody></table>
 
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-<h2 id='get-a-specific-kitten'>Get a Specific Kitten</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<!-- `partner_product_id` *required* | string | Your product id as seen in your portal -->
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="p">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="n">kittens</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">kittn</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="dl">'</span><span class="s1">meowmeowmeow</span><span class="dl">'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<!-- `bank_routing_number` *optional* | string | Your bank routing number
+`bank_account_number` *optional* | string | Your bank account number
+`bank_account_type` *optional* | string | Your bank account type -->
+<h3 id='response'>Response</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>enrollment_id</code></td>
+<td>string</td>
+<td>Returns enrollment id.</td>
+</tr>
+</tbody></table>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://api.upwardfi.com/enrollments"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization Bearer: base64(app_id:app_secret)"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">$'{
+    "payment_amount": 200.00
+  }'</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+  </span><span class="nl">"enrollment_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"YtMXJzGzJcht38SCJuMhzC"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>This endpoint retrieves a specific kitten.</p>
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+</span></code></pre></div><h1 id='customer-enrollment-user-api'>Customer Enrollment User API</h1>
+<p>This API adds a user to a customer enrollment via Upward.By passing basic customer information Upward will return an enrollment key unique to the user based on the provided enrollment.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters'>URL Parameters</h3>
+<p><code>POST http://api.upwardfi.com/enrollments/{enrollment_id}/users</code></p>
+<h3 id='arguments-2'>Arguments</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the kitten to retrieve</td>
+<td><code>username</code> <em>required</em></td>
+<td>string</td>
+<td>username for user</td>
+</tr>
+<tr>
+<td><code>email</code> <em>required</em></td>
+<td>string</td>
+<td>Email id of customer</td>
+</tr>
+<tr>
+<td><code>first_name</code> <em>required</em></td>
+<td>string</td>
+<td>First Name</td>
+</tr>
+<tr>
+<td><code>last_name</code> <em>required</em></td>
+<td>string</td>
+<td>Last Name</td>
+</tr>
+<tr>
+<td><code>ssn</code> <em>required</em></td>
+<td>string</td>
+<td>Social Security Number</td>
+</tr>
+<tr>
+<td><code>street</code> <em>required</em></td>
+<td>string</td>
+<td>Street address</td>
+</tr>
+<tr>
+<td><code>city</code> <em>required</em></td>
+<td>string</td>
+<td>City</td>
+</tr>
+<tr>
+<td><code>state</code> <em>required</em></td>
+<td>string</td>
+<td>State</td>
+</tr>
+<tr>
+<td><code>zip5</code> <em>required</em></td>
+<td>string</td>
+<td>Zip code</td>
+</tr>
+<tr>
+<td><code>country</code> <em>required</em></td>
+<td>string</td>
+<td>Country</td>
+</tr>
+<tr>
+<td><code>employer</code> <em>optional</em></td>
+<td>string</td>
+<td>Customer employer name</td>
+</tr>
+<tr>
+<td><code>phone_number</code> <em>optional</em></td>
+<td>string</td>
+<td>Phone number</td>
+</tr>
+<tr>
+<td><code>date_of_birth</code> <em>optional</em></td>
+<td>string</td>
+<td>Date of birth</td>
 </tr>
 </tbody></table>
-<h2 id='delete-a-specific-kitten'>Delete a Specific Kitten</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="p">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="n">kittens</span><span class="p">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span> <span class="se">\</span>
-  <span class="nt">-X</span> DELETE <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">kittn</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="dl">'</span><span class="s1">meowmeowmeow</span><span class="dl">'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<h3 id='response-2'>Response</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>user_id</code></td>
+<td>string</td>
+<td>Returns user id.</td>
+</tr>
+</tbody></table>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://api.upwardfi.com/enrollments/YtMXJzGzJcht38SCJuMhzC/users"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization Bearer: base64(app_id:app_secret)"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">$'{
+    "username": "john_smith"
+  }'</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"deleted"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">":("</span><span class="w">
+  </span><span class="nl">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"38SCJuMhzCYtMXJzGzJcht"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>This endpoint deletes a specific kitten.</p>
+</span></code></pre></div><h1 id='customer-enrollment-bank-account-api'>Customer Enrollment Bank Account API</h1>
+<p>This API adds a bank account to a customer enrollment via Upward.By passing basic bank account information Upward will return an bank account key unique to the user based on the user id.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
-<p><code>DELETE http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters-2'>URL Parameters</h3>
+<p><code>POST http://api.upwardfi.com/users/{user_id}/bank_accounts</code></p>
+<h3 id='arguments-3'>Arguments</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the kitten to delete</td>
+<td><code>account_number</code> <em>required</em></td>
+<td>string</td>
+<td>Account Number</td>
+</tr>
+<tr>
+<td><code>routing_number</code> <em>required</em></td>
+<td>string</td>
+<td>Routing Number</td>
+</tr>
+<tr>
+<td><code>account_type</code> <em>required</em></td>
+<td>string</td>
+<td>Type of Account (checking, savings, etc)</td>
+</tr>
+<tr>
+<td><code>bank_name</code> <em>required</em></td>
+<td>string</td>
+<td>Name of Bank</td>
 </tr>
 </tbody></table>
-<h1 id='errors'>Errors</h1>
-<aside class="notice">
-This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
-</aside>
-
-<p>The Kittn API uses the following error codes:</p>
-
+<h3 id='response-3'>Response</h3>
 <table><thead>
 <tr>
-<th>Error Code</th>
-<th>Meaning</th>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
+<tr>
+<td><code>bank_account_id</code></td>
+<td>string</td>
+<td>Returns bank account id.</td>
+</tr>
+</tbody></table>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://api.upwardfi.com/users/38SCJuMhzCYtMXJzGzJcht/bank_accounts"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization Bearer: base64(app_id:app_secret)"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">$'{
+    "account_number": "874038933"
+  }'</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"bank_account_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GzJcht38SCJuMhzCYtMXJz"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h1 id='widget-installation'>Widget Installation</h1>
+<p>Upward&#39;s widget is a front-end UI element that allows customers to grant your application access to their work accounts and to set up automated payments directly from their paychecks. It can be displayed on any part of your application.</p>
+<h3 id='config-parameters'>Config parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>plugin_key</code> <em>required</em></td>
+<td>string</td>
+<td>unique key corresponding to their application</td>
+</tr>
+<tr>
+<td><code>api_host</code> <em>required</em></td>
+<td>string</td>
+<td>Link to API environment (Sandbox/Production)</td>
+</tr>
+<tr>
+<td><code>enrollment_id</code> <em>required</em></td>
+<td>string</td>
+<td>Enrollment key that is returned from calling the Customer Enrollment API</td>
+</tr>
+</tbody></table>
+
+<!-- ### Response -->
+
+<!-- Parameter | Type | Description
+--------- | ------- | -----------
+customer_id | string | unique customer id
+status | string | response status -->
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="o">&lt;!</span><span class="nx">DOCTYPE</span> <span class="nx">html</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nx">html</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nx">head</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="nx">meta</span> <span class="nx">charset</span><span class="o">=</span><span class="dl">"</span><span class="s2">utf-8</span><span class="dl">"</span> <span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="sr">/head</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="nx">body</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="nx">upward</span><span class="o">-</span><span class="nx">link</span><span class="o">&gt;&lt;</span><span class="sr">/upward-link</span><span class="err">&gt;
+</span>  <span class="o">&lt;</span><span class="nx">script</span> <span class="nx">src</span><span class="o">=</span><span class="dl">"</span><span class="s2">https://api.upwardfi.com/upward-link.js</span><span class="dl">"</span><span class="o">&gt;&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span>  <span class="o">&lt;</span><span class="nx">script</span> <span class="nx">type</span><span class="o">=</span><span class="dl">"</span><span class="s2">text/javascript</span><span class="dl">"</span><span class="o">&gt;</span>
+  <span class="nx">upwardLink</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+    <span class="na">plugin_key</span><span class="p">:</span> <span class="dl">'</span><span class="s1">your_plugin_key</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">api_host</span><span class="p">:</span> <span class="dl">'</span><span class="s1">https://api-sandbox.upwardfi.com</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">enrollment_id</span><span class="p">:</span> <span class="dl">'</span><span class="s1">key_from_enrollment_api</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">on_success</span><span class="p">:</span> <span class="p">()</span> <span class="o">=</span> <span class="o">&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">on_success!</span><span class="dl">'</span><span class="p">);</span>
+    <span class="p">},</span>
+    <span class="na">on_error</span><span class="p">:</span> <span class="p">()</span> <span class="o">=</span> <span class="o">&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">on_error!</span><span class="dl">'</span><span class="p">);</span>
+    <span class="p">},</span>
+    <span class="na">on_close</span><span class="p">:</span> <span class="p">()</span> <span class="o">=</span> <span class="o">&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">on_close!</span><span class="dl">'</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="p">});</span>
+  <span class="nx">upwardLink</span><span class="p">.</span><span class="nx">open</span><span class="p">();</span>
+  <span class="o">&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="sr">/body</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="sr">/html</span><span class="err">&gt;
+</span></code></pre></div>
+<!-- > The above command returns JSON structured like this:
+
+```json
+{
+    "customer_ID": "erj4021",
+    "status": "success" 
+}
+``` -->
+<h1 id='errors'>Errors</h1>
+<p>Our API returns standard HTTP success or error status codes. For errors, we will also include extra information about what went wrong encoded in the response as JSON. The various HTTP status codes we might return are listed below.</p>
+
+<p>In general: Codes in the 2xx range indicate success. Codes in the 4xx range indicate an error that failed given the information provided (e.g., a required parameter was omitted). Codes in the 5xx range indicate an error with OneDB&#39;s servers (these are rare).</p>
+<h2 id='http-status-codes'>HTTP Status Codes</h2>
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Title</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>Everything worked as expected.</td>
+</tr>
 <tr>
 <td>400</td>
-<td>Bad Request -- Your request is invalid.</td>
+<td>Bad Request</td>
+<td>The request was unacceptable, often due to missing a required parameter.</td>
 </tr>
 <tr>
 <td>401</td>
-<td>Unauthorized -- Your API key is wrong.</td>
+<td>Unauthorized</td>
+<td>No valid API key provided</td>
 </tr>
 <tr>
-<td>403</td>
-<td>Forbidden -- The kitten requested is hidden for administrators only.</td>
+<td>402</td>
+<td>Request Failed</td>
+<td>The parameters were valid but the request failed.</td>
 </tr>
 <tr>
 <td>404</td>
-<td>Not Found -- The specified kitten could not be found.</td>
+<td>Not Found</td>
+<td>The requested resource doesn&#39;t exist</td>
 </tr>
 <tr>
-<td>405</td>
-<td>Method Not Allowed -- You tried to access a kitten with an invalid method.</td>
-</tr>
-<tr>
-<td>406</td>
-<td>Not Acceptable -- You requested a format that isn&#39;t json.</td>
-</tr>
-<tr>
-<td>410</td>
-<td>Gone -- The kitten requested has been removed from our servers.</td>
-</tr>
-<tr>
-<td>418</td>
-<td>I&#39;m a teapot.</td>
+<td>409</td>
+<td>Conflict</td>
+<td>The request conflicts with another request (perhaps due to using the same idempotent key).</td>
 </tr>
 <tr>
 <td>429</td>
-<td>Too Many Requests -- You&#39;re requesting too many kittens! Slow down!</td>
+<td>Too Many Requests</td>
+<td>Too many requests hit the API too quickly. We recommend an exponential backoff of your requests.</td>
 </tr>
 <tr>
-<td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
+<td>500,502,503,504</td>
+<td>Server Errors</td>
+<td>Something went wrong on Upward&#39;s end.</td>
+</tr>
+</tbody></table>
+<h2 id='error-types'>Error types</h2>
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>api_connection</td>
+<td>Failure to connect to Upward&#39;s API.</td>
 </tr>
 <tr>
-<td>503</td>
-<td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
+<td>api_error</td>
+<td>API errors cover any other type of problem (e.g., a temporary problem with our servers), and are extremely uncommon.</td>
+</tr>
+<tr>
+<td>authentication_error</td>
+<td>Failure to properly authenticate yourself in the request.</td>
+</tr>
+<tr>
+<td>invalid_request</td>
+<td>Invalid request errors arise when your request has invalid parameters.</td>
+</tr>
+<tr>
+<td>rate_limit_exceeded</td>
+<td>Too many requests hit the API too quickly.</td>
+</tr>
+<tr>
+<td>validation_error</td>
+<td>Unable to validate POST/PUT</td>
+</tr>
+<tr>
+<td>not_found</td>
+<td>Resource was not found.</td>
 </tr>
 </tbody></table>
 
@@ -585,9 +894,6 @@ This error section is stored in a separate file in <code>includes/_errors.md</co
       <div class="dark-box">
           <div class="lang-selector">
                 <a href="#" data-language-name="shell">shell</a>
-                <a href="#" data-language-name="ruby">ruby</a>
-                <a href="#" data-language-name="python">python</a>
-                <a href="#" data-language-name="javascript">javascript</a>
           </div>
       </div>
     </div>
