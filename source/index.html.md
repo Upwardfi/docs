@@ -18,7 +18,7 @@ code_clipboard: true
 
 # Introduction
 
-Welcome to Upward - a seamless integration to setting up automated payments directly from your customer's income. You can inititiate enrollment by calling Upward's API endpoints and displaying the widget.
+Welcome to Upward - a seamless integration to setting up automated payments directly from your platform user's income. You can inititiate enrollment by calling Upward's API endpoints and displaying the widget.
 
 This API reference provides information on available endpoints and how to interact with it.
 
@@ -66,7 +66,7 @@ Upward's API are rate limited to prevent abuse that would degrade our ability to
 
 <!-- # Employer Eligibility Check API
 
-This API can be used to check if the customer's employer is supported by Upward before moving onto enrollment.
+This API can be used to check if the user's employer is supported by Upward before moving onto enrollment.
 
 ### HTTP Request
 
@@ -76,7 +76,7 @@ This API can be used to check if the customer's employer is supported by Upward 
 
 Parameter | Type | Description
 --------- | ------- | -----------
-employer_name *required* | string | Customer employer name
+employer_name *required* | string | user employer name
 
 ### Response
 
@@ -103,9 +103,10 @@ curl "http://api.upwardfi.com/check-employer-eligibility" \
 }
 ``` -->
 
-# Customer Enrollment API
+# Enrollments
 
-This API initiates customer enrollment via Upward.By passing basic enrollment information Upward will return an enrollment key unique to the enrollment.
+## Initiate user enrollment
+This API initiates user enrollment via Upward.By passing basic enrollment information Upward will return a key unique to the enrollment.
 
 ### HTTP Request
 
@@ -115,22 +116,17 @@ This API initiates customer enrollment via Upward.By passing basic enrollment in
 
 Parameter | Type | Description
 --------- | ------- | -----------
-`payment_amount` *optional* | string | Recurring amount to be paid to you by the customer
-`payment_frequency` *optional* | string | Frequency interval that customer will make payments
+`payment_amount` *optional* | number | Recurring amount to be paid to you by the user
+`payment_frequency` *optional* | string | Frequency interval that user will make payments
 `first_payment_date` *optional* | string | Date of first payment
 `application_reference_number` *optional* | string | Loan application number
 `account_reference_number` *optional* | string | Your account reference number
 `days_until_expires` *optional* | string | Number of days before this enrollment request expires
 `required_employment_start_date` *optional* | string | start date of employment
-`required_gross_income` *optional* | number | customer gross income
-`required_net_income` *optional* | number | customer net income
-`return_w2_data` *optional* | boolean | Specify true if customer w2 data must be returned
-`return_paystubs` *optional* | boolean | Specify true if link to customer paystubs must be returned
-
-<!-- `partner_product_id` *required* | string | Your product id as seen in your portal -->
-<!-- `bank_routing_number` *optional* | string | Your bank routing number
-`bank_account_number` *optional* | string | Your bank account number
-`bank_account_type` *optional* | string | Your bank account type -->
+`required_gross_income` *optional* | number | user gross income
+`required_net_income` *optional* | number | user net income
+`return_w2_data` *optional* | boolean | Specify true if user w2 data must be returned
+`return_paystubs` *optional* | boolean | Specify true if link to user paystubs must be returned
 
 ### Response
 
@@ -156,9 +152,9 @@ curl "http://api.upwardfi.com/enrollments" \
 }
 ```
 
-# Customer Enrollment User API
+## Add users to enrollments
 
-This API adds a user to a customer enrollment via Upward.By passing basic customer information Upward will return an enrollment key unique to the user based on the provided enrollment.
+This API endpoint adds a user to the enrollment via Upward.By passing basic user information Upward will return a key unique to the user based on the provided enrollment.
 
 ### HTTP Request
 
@@ -168,8 +164,8 @@ This API adds a user to a customer enrollment via Upward.By passing basic custom
 
 Parameter | Type | Description
 --------- | ------- | -----------
-`username` *required* | string | username for user
-`email` *required* | string | Email id of customer
+`username` *required* | string | User name 
+`email` *required* | string | Email id of user
 `first_name` *required* |string | First Name
 `last_name` *required* | string | Last Name
 `ssn` *required* | string | Social Security Number
@@ -178,7 +174,7 @@ Parameter | Type | Description
 `state` *required* | string | State
 `zip5` *required* | string | Zip code
 `country` *required* | string | Country
-`employer` *optional* | string | Customer employer name
+`employer` *optional* | string | user employer name
 `phone_number` *optional* | string | Phone number
 `date_of_birth` *optional* | string | Date of birth
 
@@ -206,9 +202,9 @@ curl "http://api.upwardfi.com/enrollments/YtMXJzGzJcht38SCJuMhzC/users" \
 }
 ```
 
-# Customer Enrollment Bank Account API
+## Add user's bank account
 
-This API adds a bank account to a customer enrollment via Upward.By passing basic bank account information Upward will return an bank account key unique to the user based on the user id.
+This API adds a bank account to an enrollment via Upward.By passing basic bank account information Upward will return a key unique to the user based on the user id.
 
 ### HTTP Request
 
@@ -246,10 +242,11 @@ curl "http://api.upwardfi.com/users/38SCJuMhzCYtMXJzGzJcht/bank_accounts" \
   "bank_account_id": "GzJcht38SCJuMhzCYtMXJz"
 }
 ```
+# Client SDK
 
-# Widget Installation
+## Widget Installation
 
-Upward's widget is a front-end UI element that allows customers to grant your application access to their work accounts and to set up automated payments directly from their paychecks. It can be displayed on any part of your application.
+Upward's widget is a front-end UI element that allows users to grant your application access to their work accounts and to set up automated payments directly from their paychecks. It can be displayed on any part of your application.
 
 ### Config parameters
 
@@ -257,13 +254,13 @@ Parameter | Type | Description
 --------- | ------- | -----------
 `plugin_key` *required* | string | unique key corresponding to their application
 `api_host` *required* | string | Link to API environment (Sandbox/Production)
-`enrollment_id` *required* | string | Enrollment key that is returned from calling the Customer Enrollment API
+`enrollment_id` *required* | string | Enrollment key that is returned from calling the Enrollments API
 
 <!-- ### Response -->
 
 <!-- Parameter | Type | Description
 --------- | ------- | -----------
-customer_id | string | unique customer id
+user_id | string | unique user id
 status | string | response status -->
 
 ```javascript
@@ -299,7 +296,7 @@ status | string | response status -->
 
 ```json
 {
-    "customer_ID": "erj4021",
+    "user_ID": "erj4021",
     "status": "success" 
 }
 ``` -->
