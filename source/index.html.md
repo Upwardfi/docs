@@ -434,13 +434,13 @@ status | string | response status -->
     enrollment_id: 'key_from_enrollment_api',
     employer_name: 'Kroger',
     features: 'all',
-    on_success: () = > {
+    on_success: (public_token) => {
     console.log('on_success!' + public_token);
     },
-    on_error: () = > {
+    on_error: () => {
     console.log('on_error!');
     },
-    on_close: () = > {
+    on_close: () => {
     console.log('on_close!');
     }
     });
