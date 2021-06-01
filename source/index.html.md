@@ -105,6 +105,39 @@ curl "http://api.upwardfi.com/check-employer-eligibility" \
 
 # Enrollments
 
+## Check if employer is supported
+This API checks if user's employer is supported through Upward and will return success or failure based on eligibility.
+
+`GET http://api.upwardfi.com/supported_employers`
+
+### Arguments
+
+Parameter | Type | Description
+--------- | ------- | -----------
+`employer_name` *required* | string | Employer name
+
+### Response
+
+Parameter | Type | Description
+--------- | ------- | -----------
+`is_supported` | boolean | Returns True if supported and False if not. 
+
+```shell
+curl "http://api.upwardfi.com/supported_employers" \
+  -H "Authorization Bearer: base64(app_id:app_secret)" \
+  -H "Content-Type: application/json" \
+  -d $'{
+    "employer_name": "Kroger"
+  }'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "is_supported": "True"
+}
+```
 ## Initiate user enrollment
 This API initiates user enrollment via Upward.By passing basic enrollment information Upward will return a key unique to the enrollment.
 
@@ -174,7 +207,7 @@ Parameter | Type | Description
 `state` *required* | string | State
 `zip5` *required* | string | Zip code
 `country` *required* | string | Country
-`employer` *optional* | string | user employer name
+`employer` *optional* | string | User employer name
 `phone_number` *optional* | string | Phone number
 `date_of_birth` *optional* | string | Date of birth
 
@@ -201,8 +234,92 @@ curl "http://api.upwardfi.com/enrollments/YtMXJzGzJcht38SCJuMhzC/users" \
   "user_id": "38SCJuMhzCYtMXJzGzJcht"
 }
 ```
+# Profiles
 
-## Add user's bank account
+## Get User's profile 
+
+This API endpoint returns the user's profile based on the provided user id.
+
+### HTTP Request
+
+`GET http://api.upwardfi.com/users/{user_id}`
+
+### Response
+
+Parameter | Type | Description
+--------- | ------- | -----------
+`username` | string | User name 
+`email` | string | Email id of user
+`first_name` |string | First Name
+`last_name` | string | Last Name
+`ssn` | string | Social Security Number
+`street` | string | Street address
+`city` | string | City
+`state`  | string | State
+`zip5`| string | Zip code
+`country` | string | Country
+`phone_number` | string | Phone number
+`date_of_birth`  | string | Date of birth
+
+
+```shell
+curl "http://api.upwardfi.com/users/YtMXJzGzJcht38SCJuMhzC" \
+  -H "Authorization Bearer: base64(app_id:app_secret)" \
+  -H "Content-Type: application/json" 
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "email": "john.smith@gmail.com",
+  "first_name": "john",
+  "last_name": "smith"
+}
+```
+# Employments
+
+## Get employments 
+
+This API endpoint returns the user's employment details based on the provided user id.
+
+### HTTP Request
+
+`GET http://api.upwardfi.com/users/{user_id}/employments`
+
+### Response
+
+Parameter | Type | Description
+--------- | ------- | -----------
+`employer_name` | string | Employer name
+`job_title` | string | Job title 
+`start_employment_date` | string | Employment start date
+`end_employment_date` |string | Employment end date
+`last_paid_date` | string | Last paid date
+`base_paid_amount` | number | Income base pay 
+`pay_cycle` | string | Frequency of pay outs e.g. hourly/weekly/bi-weekly etc. 
+`employment_type` | string | Employment type e.g. Full-time/Part-time etc.
+`employment_status`  | string | Employment status e.g. active/inactive etc.
+
+
+```shell
+curl "http://api.upwardfi.com/users/YtMXJzGzJcht38SCJuMhzC/employments" \
+  -H "Authorization Bearer: base64(app_id:app_secret)" \
+  -H "Content-Type: application/json" 
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[{
+  "employer_name": "Kroger",
+  "job_title": "Floor Manager",
+  "start_employment_date": "12/01/2019"
+}]
+```
+# Bank Accounts
+
+## Add bank account
 
 This API adds a bank account to an enrollment via Upward.By passing basic bank account information Upward will return a key unique to the user based on the user id.
 
@@ -242,6 +359,42 @@ curl "http://api.upwardfi.com/users/38SCJuMhzCYtMXJzGzJcht/bank_accounts" \
   "bank_account_id": "GzJcht38SCJuMhzCYtMXJz"
 }
 ```
+
+## Get bank accounts
+
+This API returns user's bank accounts based on the specified user id.
+
+### HTTP Request
+
+`GET http://api.upwardfi.com/users/{user_id}/bank_accounts`
+
+### Response
+
+Parameter | Type | Description
+--------- | ------- | -----------
+`account_number` |string | Account Number
+`routing_number` | string | Routing Number
+`account_type` | string | Type of Account (checking, savings, etc)
+`bank_name` | string | Name of Bank
+
+
+```shell
+curl "http://api.upwardfi.com/users/38SCJuMhzCYtMXJzGzJcht/bank_accounts" \
+  -H "Authorization Bearer: base64(app_id:app_secret)" \
+  -H "Content-Type: application/json" 
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[{
+  "account_number": "909000614",
+  "routing_number": "111000614",
+  "account_type": "checking",
+  "bank_name": "J.P. Morgan Chase"
+}]
+```
+
 # Client SDK
 
 ## Widget Installation
