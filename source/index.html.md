@@ -408,6 +408,8 @@ Parameter | Type | Description
 `plugin_key` *required* | string | unique key corresponding to their application
 `api_host` *required* | string | Link to API environment (Sandbox/Production)
 `enrollment_id` *required* | string | Enrollment key that is returned from calling the Enrollments API
+`employer_name` *optional* | string | Employer name
+`features` *required* | string | Configures enrollment flow. Can be either employment_data/accept_payment/all  
 
 <!-- ### Response -->
 
@@ -430,8 +432,10 @@ status | string | response status -->
     plugin_key: 'your_plugin_key',
     api_host: 'https://api-sandbox.upwardfi.com',
     enrollment_id: 'key_from_enrollment_api',
+    employer_name: 'Kroger',
+    features: 'all',
     on_success: () = > {
-    console.log('on_success!');
+    console.log('on_success!' + public_token);
     },
     on_error: () = > {
     console.log('on_error!');
