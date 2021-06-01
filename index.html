@@ -1028,13 +1028,13 @@ status | string | response status -->
     <span class="na">enrollment_id</span><span class="p">:</span> <span class="dl">'</span><span class="s1">key_from_enrollment_api</span><span class="dl">'</span><span class="p">,</span>
     <span class="na">employer_name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Kroger</span><span class="dl">'</span><span class="p">,</span>
     <span class="na">features</span><span class="p">:</span> <span class="dl">'</span><span class="s1">all</span><span class="dl">'</span><span class="p">,</span>
-    <span class="na">on_success</span><span class="p">:</span> <span class="p">()</span> <span class="o">=</span> <span class="o">&gt;</span> <span class="p">{</span>
+    <span class="na">on_success</span><span class="p">:</span> <span class="p">(</span><span class="nx">public_token</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">on_success!</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">public_token</span><span class="p">);</span>
     <span class="p">},</span>
-    <span class="na">on_error</span><span class="p">:</span> <span class="p">()</span> <span class="o">=</span> <span class="o">&gt;</span> <span class="p">{</span>
+    <span class="na">on_error</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">on_error!</span><span class="dl">'</span><span class="p">);</span>
     <span class="p">},</span>
-    <span class="na">on_close</span><span class="p">:</span> <span class="p">()</span> <span class="o">=</span> <span class="o">&gt;</span> <span class="p">{</span>
+    <span class="na">on_close</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">on_close!</span><span class="dl">'</span><span class="p">);</span>
     <span class="p">}</span>
     <span class="p">});</span>
