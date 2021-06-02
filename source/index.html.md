@@ -120,7 +120,7 @@ Parameter | Type | Description
 
 Parameter | Type | Description
 --------- | ------- | -----------
-`is_supported` | boolean | Returns True if supported and False if not. 
+`is_supported` | boolean | Returns true if supported and false if not. 
 
 ```shell
 curl "http://api.upwardfi.com/supported_employers" \
@@ -135,7 +135,7 @@ curl "http://api.upwardfi.com/supported_employers" \
 
 ```json
 {
-  "is_supported": "True"
+  "is_supported": "true"
 }
 ```
 ## Initiate user enrollment
@@ -234,6 +234,51 @@ curl "http://api.upwardfi.com/enrollments/YtMXJzGzJcht38SCJuMhzC/users" \
   "user_id": "38SCJuMhzCYtMXJzGzJcht"
 }
 ```
+
+## Get enrolled users
+
+This API endpoint rerturns users that are enrolled based on the provided enrollment id.
+
+### HTTP Request
+
+`GET http://api.upwardfi.com/enrollments/{enrollment_id}/users`
+
+### Response
+
+Parameter | Type | Description
+--------- | ------- | -----------
+`id` | string | User id
+`username` | string | User name 
+`email` | string | Email id of user
+`first_name` |string | First Name
+`last_name` | string | Last Name
+`ssn` | string | Social Security Number
+`street` | string | Street address
+`city` | string | City
+`state`  | string | State
+`zip5`| string | Zip code
+`country` | string | Country
+`phone_number` | string | Phone number
+`date_of_birth`  | string | Date of birth
+
+
+```shell
+curl "http://api.upwardfi.com/enrollments/YtMXJzGzJcht38SCJuMhzC/users" \
+  -H "Authorization Bearer: base64(app_id:app_secret)" \
+  -H "Content-Type: application/json" 
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[{
+  "id": "BGMXJzGzJcht38SCJuMhzF",
+  "email": "john.smith@gmail.com",
+  "first_name": "john",
+  "last_name": "smith"
+}]
+```
+
 # Profiles
 
 ## Get User's profile 
@@ -263,7 +308,7 @@ Parameter | Type | Description
 
 
 ```shell
-curl "http://api.upwardfi.com/users/YtMXJzGzJcht38SCJuMhzC" \
+curl "http://api.upwardfi.com/users/BGMXJzGzJcht38SCJuMhzF" \
   -H "Authorization Bearer: base64(app_id:app_secret)" \
   -H "Content-Type: application/json" 
 ```
@@ -277,6 +322,7 @@ curl "http://api.upwardfi.com/users/YtMXJzGzJcht38SCJuMhzC" \
   "last_name": "smith"
 }
 ```
+
 # Employments
 
 ## Get employments 
@@ -291,6 +337,7 @@ This API endpoint returns the user's employment details based on the provided us
 
 Parameter | Type | Description
 --------- | ------- | -----------
+`id` | string | Employment id
 `employer_name` | string | Employer name
 `job_title` | string | Job title 
 `start_employment_date` | string | Employment start date
@@ -312,6 +359,7 @@ curl "http://api.upwardfi.com/users/YtMXJzGzJcht38SCJuMhzC/employments" \
 
 ```json
 [{
+  "id": "GtMXJzGzJcht38SCJuMhvG",
   "employer_name": "Kroger",
   "job_title": "Floor Manager",
   "start_employment_date": "12/01/2019"
@@ -331,16 +379,16 @@ This API adds a bank account to an enrollment via Upward.By passing basic bank a
 
 Parameter | Type | Description
 --------- | ------- | -----------
-`account_number` *required* |string | Account Number
-`routing_number` *required* | string | Routing Number
-`account_type` *required* | string | Type of Account (checking, savings, etc)
-`bank_name` *required* | string | Name of Bank
+`account_number` *required* |string | Account number
+`routing_number` *required* | string | Routing number
+`account_type` *required* | string | Type of account (checking, savings, etc)
+`bank_name` *required* | string | Name of bank
 
 ### Response
 
 Parameter | Type | Description
 --------- | ------- | -----------
-`bank_account_id` | string | Returns bank account id.
+`id` | string | Returns bank account id.
 
 
 ```shell
@@ -356,7 +404,7 @@ curl "http://api.upwardfi.com/users/38SCJuMhzCYtMXJzGzJcht/bank_accounts" \
 
 ```json
 {
-  "bank_account_id": "GzJcht38SCJuMhzCYtMXJz"
+  "id": "GzJcht38SCJuMhzCYtMXJz"
 }
 ```
 
@@ -372,10 +420,11 @@ This API returns user's bank accounts based on the specified user id.
 
 Parameter | Type | Description
 --------- | ------- | -----------
-`account_number` |string | Account Number
-`routing_number` | string | Routing Number
-`account_type` | string | Type of Account (checking, savings, etc)
-`bank_name` | string | Name of Bank
+`id` | string | Account id
+`account_number` |string | Account number
+`routing_number` | string | Routing number
+`account_type` | string | Type of account (checking, savings, etc)
+`bank_name` | string | Name of bank
 
 
 ```shell
@@ -388,6 +437,7 @@ curl "http://api.upwardfi.com/users/38SCJuMhzCYtMXJzGzJcht/bank_accounts" \
 
 ```json
 [{
+  "id": "GtMXJzGzJcht38SCJuMhvG",
   "account_number": "909000614",
   "routing_number": "111000614",
   "account_type": "checking",
