@@ -165,7 +165,7 @@ Parameter | Type | Description
 
 Parameter | Type | Description
 --------- | ------- | -----------
-`enrollment_id` | string | Returns enrollment id.
+`id` | string | Returns enrollment id.
 
 
 ```shell
@@ -181,7 +181,7 @@ curl "http://api.upwardfi.com/enrollments" \
 
 ```json
 {
-  "enrollment_id": "YtMXJzGzJcht38SCJuMhzC"
+  "id": "YtMXJzGzJcht38SCJuMhzC"
 }
 ```
 
@@ -191,7 +191,7 @@ This API endpoint adds a user to the enrollment via Upward.By passing basic user
 
 ### HTTP Request
 
-`POST http://api.upwardfi.com/enrollments/{enrollment_id}/users`
+`POST http://api.upwardfi.com/enrollments/{id}/users`
 
 ### Arguments
 
@@ -215,7 +215,7 @@ Parameter | Type | Description
 
 Parameter | Type | Description
 --------- | ------- | -----------
-`user_id` | string | Returns user id.
+`id` | string | Returns user id.
 
 
 ```shell
@@ -231,7 +231,7 @@ curl "http://api.upwardfi.com/enrollments/YtMXJzGzJcht38SCJuMhzC/users" \
 
 ```json
 {
-  "user_id": "38SCJuMhzCYtMXJzGzJcht"
+  "id": "38SCJuMhzCYtMXJzGzJcht"
 }
 ```
 
@@ -241,7 +241,7 @@ This API endpoint rerturns users that are enrolled based on the provided enrollm
 
 ### HTTP Request
 
-`GET http://api.upwardfi.com/enrollments/{enrollment_id}/users`
+`GET http://api.upwardfi.com/enrollments/{id}/users`
 
 ### Response
 
@@ -287,7 +287,7 @@ This API endpoint returns the user's profile based on the provided user id.
 
 ### HTTP Request
 
-`GET http://api.upwardfi.com/users/{user_id}`
+`GET http://api.upwardfi.com/users/{id}`
 
 ### Response
 
@@ -331,7 +331,7 @@ This API endpoint returns the user's employment details based on the provided us
 
 ### HTTP Request
 
-`GET http://api.upwardfi.com/users/{user_id}/employments`
+`GET http://api.upwardfi.com/users/{id}/employments`
 
 ### Response
 
@@ -340,13 +340,13 @@ Parameter | Type | Description
 `id` | string | Employment id
 `employer_name` | string | Employer name
 `job_title` | string | Job title 
-`start_employment_date` | string | Employment start date
-`end_employment_date` |string | Employment end date
+`start_date` | string | Employment start date
+`end_date` |string | Employment end date
 `last_paid_date` | string | Last paid date
 `base_paid_amount` | number | Income base pay 
 `pay_cycle` | string | Frequency of pay outs e.g. hourly/weekly/bi-weekly etc. 
-`employment_type` | string | Employment type e.g. Full-time/Part-time etc.
-`employment_status`  | string | Employment status e.g. active/inactive etc.
+`type` | string | Employment type e.g. Full-time/Part-time etc.
+`status`  | string | Employment status e.g. active/inactive etc.
 
 
 ```shell
@@ -362,7 +362,7 @@ curl "http://api.upwardfi.com/users/YtMXJzGzJcht38SCJuMhzC/employments" \
   "id": "GtMXJzGzJcht38SCJuMhvG",
   "employer_name": "Kroger",
   "job_title": "Floor Manager",
-  "start_employment_date": "12/01/2019"
+  "start_date": "12/01/2019"
 }]
 ```
 # Bank Accounts
@@ -373,15 +373,15 @@ This API adds a bank account to an enrollment via Upward.By passing basic bank a
 
 ### HTTP Request
 
-`POST http://api.upwardfi.com/users/{user_id}/bank_accounts`
+`POST http://api.upwardfi.com/users/{id}/bank_accounts`
 
 ### Arguments
 
 Parameter | Type | Description
 --------- | ------- | -----------
-`account_number` *required* |string | Account number
+`number` *required* |string | Account number
 `routing_number` *required* | string | Routing number
-`account_type` *required* | string | Type of account (checking, savings, etc)
+`type` *required* | string | Type of account (checking, savings, etc)
 `bank_name` *required* | string | Name of bank
 
 ### Response
@@ -396,7 +396,10 @@ curl "http://api.upwardfi.com/users/38SCJuMhzCYtMXJzGzJcht/bank_accounts" \
   -H "Authorization Bearer: base64(app_id:app_secret)" \
   -H "Content-Type: application/json" \
   -d $'{
-    "account_number": "874038933"
+    "number": "874038933",
+    "routing_number": "111000614",
+    "type": "checking",
+    "bank_name": "J.P. Morgan Chase"
   }'
 ```
 
@@ -414,16 +417,16 @@ This API returns user's bank accounts based on the specified user id.
 
 ### HTTP Request
 
-`GET http://api.upwardfi.com/users/{user_id}/bank_accounts`
+`GET http://api.upwardfi.com/users/{id}/bank_accounts`
 
 ### Response
 
 Parameter | Type | Description
 --------- | ------- | -----------
 `id` | string | Account id
-`account_number` |string | Account number
+`number` |string | Account number
 `routing_number` | string | Routing number
-`account_type` | string | Type of account (checking, savings, etc)
+`type` | string | Type of account (checking, savings, etc)
 `bank_name` | string | Name of bank
 
 
@@ -438,9 +441,9 @@ curl "http://api.upwardfi.com/users/38SCJuMhzCYtMXJzGzJcht/bank_accounts" \
 ```json
 [{
   "id": "GtMXJzGzJcht38SCJuMhvG",
-  "account_number": "909000614",
+  "number": "909000614",
   "routing_number": "111000614",
-  "account_type": "checking",
+  "type": "checking",
   "bank_name": "J.P. Morgan Chase"
 }]
 ```
