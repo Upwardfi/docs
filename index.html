@@ -589,7 +589,7 @@ curl "http://api.upwardfi.com/check-employer-eligibility" \
 </tr>
 </thead><tbody>
 <tr>
-<td><code>enrollment_id</code></td>
+<td><code>id</code></td>
 <td>string</td>
 <td>Returns enrollment id.</td>
 </tr>
@@ -605,12 +605,12 @@ curl "http://api.upwardfi.com/check-employer-eligibility" \
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"enrollment_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"YtMXJzGzJcht38SCJuMhzC"</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"YtMXJzGzJcht38SCJuMhzC"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h2 id='add-users-to-enrollments'>Add users to enrollments</h2>
 <p>This API endpoint adds a user to the enrollment via Upward.By passing basic user information Upward will return a key unique to the user based on the provided enrollment.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>POST http://api.upwardfi.com/enrollments/{enrollment_id}/users</code></p>
+<p><code>POST http://api.upwardfi.com/enrollments/{id}/users</code></p>
 <h3 id='arguments-3'>Arguments</h3>
 <table><thead>
 <tr>
@@ -694,7 +694,7 @@ curl "http://api.upwardfi.com/check-employer-eligibility" \
 </tr>
 </thead><tbody>
 <tr>
-<td><code>user_id</code></td>
+<td><code>id</code></td>
 <td>string</td>
 <td>Returns user id.</td>
 </tr>
@@ -710,12 +710,12 @@ curl "http://api.upwardfi.com/check-employer-eligibility" \
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"38SCJuMhzCYtMXJzGzJcht"</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"38SCJuMhzCYtMXJzGzJcht"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h2 id='get-enrolled-users'>Get enrolled users</h2>
 <p>This API endpoint rerturns users that are enrolled based on the provided enrollment id.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
-<p><code>GET http://api.upwardfi.com/enrollments/{enrollment_id}/users</code></p>
+<p><code>GET http://api.upwardfi.com/enrollments/{id}/users</code></p>
 <h3 id='response-4'>Response</h3>
 <table><thead>
 <tr>
@@ -806,7 +806,7 @@ curl "http://api.upwardfi.com/check-employer-eligibility" \
 </span></code></pre></div><h1 id='profiles'>Profiles</h1><h2 id='get-user-39-s-profile'>Get User&#39;s profile</h2>
 <p>This API endpoint returns the user&#39;s profile based on the provided user id.</p>
 <h3 id='http-request-4'>HTTP Request</h3>
-<p><code>GET http://api.upwardfi.com/users/{user_id}</code></p>
+<p><code>GET http://api.upwardfi.com/users/{id}</code></p>
 <h3 id='response-5'>Response</h3>
 <table><thead>
 <tr>
@@ -891,7 +891,7 @@ curl "http://api.upwardfi.com/check-employer-eligibility" \
 </span></code></pre></div><h1 id='employments'>Employments</h1><h2 id='get-employments'>Get employments</h2>
 <p>This API endpoint returns the user&#39;s employment details based on the provided user id.</p>
 <h3 id='http-request-5'>HTTP Request</h3>
-<p><code>GET http://api.upwardfi.com/users/{user_id}/employments</code></p>
+<p><code>GET http://api.upwardfi.com/users/{id}/employments</code></p>
 <h3 id='response-6'>Response</h3>
 <table><thead>
 <tr>
@@ -916,12 +916,12 @@ curl "http://api.upwardfi.com/check-employer-eligibility" \
 <td>Job title</td>
 </tr>
 <tr>
-<td><code>start_employment_date</code></td>
+<td><code>start_date</code></td>
 <td>string</td>
 <td>Employment start date</td>
 </tr>
 <tr>
-<td><code>end_employment_date</code></td>
+<td><code>end_date</code></td>
 <td>string</td>
 <td>Employment end date</td>
 </tr>
@@ -941,12 +941,12 @@ curl "http://api.upwardfi.com/check-employer-eligibility" \
 <td>Frequency of pay outs e.g. hourly/weekly/bi-weekly etc.</td>
 </tr>
 <tr>
-<td><code>employment_type</code></td>
+<td><code>type</code></td>
 <td>string</td>
 <td>Employment type e.g. Full-time/Part-time etc.</td>
 </tr>
 <tr>
-<td><code>employment_status</code></td>
+<td><code>status</code></td>
 <td>string</td>
 <td>Employment status e.g. active/inactive etc.</td>
 </tr>
@@ -962,12 +962,12 @@ curl "http://api.upwardfi.com/check-employer-eligibility" \
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GtMXJzGzJcht38SCJuMhvG"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"employer_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kroger"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"job_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Floor Manager"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"start_employment_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12/01/2019"</span><span class="w">
+  </span><span class="nl">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12/01/2019"</span><span class="w">
 </span><span class="p">}]</span><span class="w">
 </span></code></pre></div><h1 id='bank-accounts'>Bank Accounts</h1><h2 id='add-bank-account'>Add bank account</h2>
 <p>This API adds a bank account to an enrollment via Upward.By passing basic bank account information Upward will return a key unique to the user based on the user id.</p>
 <h3 id='http-request-6'>HTTP Request</h3>
-<p><code>POST http://api.upwardfi.com/users/{user_id}/bank_accounts</code></p>
+<p><code>POST http://api.upwardfi.com/users/{id}/bank_accounts</code></p>
 <h3 id='arguments-4'>Arguments</h3>
 <table><thead>
 <tr>
@@ -977,7 +977,7 @@ curl "http://api.upwardfi.com/check-employer-eligibility" \
 </tr>
 </thead><tbody>
 <tr>
-<td><code>account_number</code> <em>required</em></td>
+<td><code>number</code> <em>required</em></td>
 <td>string</td>
 <td>Account number</td>
 </tr>
@@ -987,7 +987,7 @@ curl "http://api.upwardfi.com/check-employer-eligibility" \
 <td>Routing number</td>
 </tr>
 <tr>
-<td><code>account_type</code> <em>required</em></td>
+<td><code>type</code> <em>required</em></td>
 <td>string</td>
 <td>Type of account (checking, savings, etc)</td>
 </tr>
@@ -1015,7 +1015,10 @@ curl "http://api.upwardfi.com/check-employer-eligibility" \
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: base64(app_id:app_secret)"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">$'{
-    "account_number": "874038933"
+    "number": "874038933",
+    "routing_number": "111000614",
+    "type": "checking",
+    "bank_name": "J.P. Morgan Chase"
   }'</span>
 </code></pre></div>
 <blockquote>
@@ -1027,7 +1030,7 @@ curl "http://api.upwardfi.com/check-employer-eligibility" \
 </span></code></pre></div><h2 id='get-bank-accounts'>Get bank accounts</h2>
 <p>This API returns user&#39;s bank accounts based on the specified user id.</p>
 <h3 id='http-request-7'>HTTP Request</h3>
-<p><code>GET http://api.upwardfi.com/users/{user_id}/bank_accounts</code></p>
+<p><code>GET http://api.upwardfi.com/users/{id}/bank_accounts</code></p>
 <h3 id='response-8'>Response</h3>
 <table><thead>
 <tr>
@@ -1042,7 +1045,7 @@ curl "http://api.upwardfi.com/check-employer-eligibility" \
 <td>Account id</td>
 </tr>
 <tr>
-<td><code>account_number</code></td>
+<td><code>number</code></td>
 <td>string</td>
 <td>Account number</td>
 </tr>
@@ -1052,7 +1055,7 @@ curl "http://api.upwardfi.com/check-employer-eligibility" \
 <td>Routing number</td>
 </tr>
 <tr>
-<td><code>account_type</code></td>
+<td><code>type</code></td>
 <td>string</td>
 <td>Type of account (checking, savings, etc)</td>
 </tr>
@@ -1071,9 +1074,9 @@ curl "http://api.upwardfi.com/check-employer-eligibility" \
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GtMXJzGzJcht38SCJuMhvG"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"909000614"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"909000614"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"routing_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"111000614"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"account_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"checking"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"checking"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"bank_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"J.P. Morgan Chase"</span><span class="w">
 </span><span class="p">}]</span><span class="w">
 </span></code></pre></div><h1 id='client-sdk'>Client SDK</h1><h2 id='widget-installation'>Widget Installation</h2>
