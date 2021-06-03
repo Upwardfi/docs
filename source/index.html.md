@@ -149,15 +149,15 @@ This API initiates user enrollment via Upward.By passing basic enrollment inform
 
 Parameter | Type | Description
 --------- | ------- | -----------
-`payment_amount` *optional* | number | Recurring amount to be paid to you by the user
+`payment_amount` *optional* | float | Recurring amount to be paid to you by the user
 `payment_frequency` *optional* | string | Frequency interval that user will make payments
-`first_payment_date` *optional* | string | Date of first payment
+`first_payment_date` *optional* | int | Date of first payment as Unix timestamp
 `application_reference_number` *optional* | string | Loan application number
 `account_reference_number` *optional* | string | Your account reference number
-`days_until_expires` *optional* | string | Number of days before this enrollment request expires
-`required_employment_start_date` *optional* | string | start date of employment
-`required_gross_income` *optional* | number | user gross income
-`required_net_income` *optional* | number | user net income
+`days_until_expires` *optional* | int | Number of days before this enrollment request expires
+`required_employment_start_date` *optional* | int | start date of employment as Unix timestamp
+`required_gross_income` *optional* | float | user gross income
+`required_net_income` *optional* | float | user net income
 `return_w2_data` *optional* | boolean | Specify true if user w2 data must be returned
 `return_paystubs` *optional* | boolean | Specify true if link to user paystubs must be returned
 
@@ -202,14 +202,15 @@ Parameter | Type | Description
 `first_name` *required* |string | First Name
 `last_name` *required* | string | Last Name
 `ssn` *required* | string | Social Security Number
-`street` *required* | string | Street address
+`line1` *required* | string | Line 1 Street address
+`line2` *required* | string | Line 2 Street address
 `city` *required* | string | City
 `state` *required* | string | State
-`zip5` *required* | string | Zip code
+`zip5` *required* | int | Zip code
 `country` *required* | string | Country
 `employer` *optional* | string | User employer name
 `phone_number` *optional* | string | Phone number
-`date_of_birth` *optional* | string | Date of birth
+`date_of_birth` *optional* | int | Date of birth as Unix timestamp
 
 ### Response
 
@@ -253,13 +254,14 @@ Parameter | Type | Description
 `first_name` |string | First Name
 `last_name` | string | Last Name
 `ssn` | string | Social Security Number
-`street` | string | Street address
+`line1` | string | Line 1 Street address
+`line2` | string | Line 2 Street address
 `city` | string | City
 `state`  | string | State
-`zip5`| string | Zip code
+`zip5`| int | Zip code
 `country` | string | Country
 `phone_number` | string | Phone number
-`date_of_birth`  | string | Date of birth
+`date_of_birth`  | int | Date of birth as Unix timestamp
 
 
 ```shell
@@ -298,13 +300,14 @@ Parameter | Type | Description
 `first_name` |string | First Name
 `last_name` | string | Last Name
 `ssn` | string | Social Security Number
-`street` | string | Street address
+`line1` | string | Line 1 Street address
+`line2` | string | Line 2 Street address
 `city` | string | City
 `state`  | string | State
-`zip5`| string | Zip code
+`zip5`| int | Zip code
 `country` | string | Country
 `phone_number` | string | Phone number
-`date_of_birth`  | string | Date of birth
+`date_of_birth`  | int | Date of birth as Unix timestamp
 
 
 ```shell
@@ -340,13 +343,13 @@ Parameter | Type | Description
 `id` | string | Employment id
 `employer_name` | string | Employer name
 `job_title` | string | Job title 
-`start_date` | string | Employment start date
-`end_date` |string | Employment end date
-`last_paid_date` | string | Last paid date
-`base_paid_amount` | number | Income base pay 
+`start_date` | int | Employment start date as Unix timestamp
+`end_date` |int | Employment end date as Unix timestamp
+`last_paid_date` | int | Last paid date as Unix timestamp
+`base_pay_amount` | float | Income base pay 
 `pay_cycle` | string | Frequency of pay outs e.g. hourly/weekly/bi-weekly etc. 
-`type` | string | Employment type e.g. Full-time/Part-time etc.
-`status`  | string | Employment status e.g. active/inactive etc.
+`employment_type` | string | Employment type e.g. Full-time/Part-time etc.
+`employment_status`  | string | Employment status e.g. active/inactive etc.
 
 
 ```shell
@@ -362,7 +365,7 @@ curl "http://api.upwardfi.com/users/YtMXJzGzJcht38SCJuMhzC/employments" \
   "id": "GtMXJzGzJcht38SCJuMhvG",
   "employer_name": "Kroger",
   "job_title": "Floor Manager",
-  "start_date": "12/01/2019"
+  "start_date": "171003600"
 }]
 ```
 # Bank Accounts
@@ -379,9 +382,9 @@ This API adds a bank account to an enrollment via Upward.By passing basic bank a
 
 Parameter | Type | Description
 --------- | ------- | -----------
-`number` *required* |string | Account number
+`account_number` *required* |string | Account number
 `routing_number` *required* | string | Routing number
-`type` *required* | string | Type of account (checking, savings, etc)
+`account_type` *required* | string | Type of account (checking, savings, etc)
 `bank_name` *required* | string | Name of bank
 
 ### Response
@@ -396,9 +399,9 @@ curl "http://api.upwardfi.com/users/38SCJuMhzCYtMXJzGzJcht/bank_accounts" \
   -H "Authorization Bearer: base64(app_id:app_secret)" \
   -H "Content-Type: application/json" \
   -d $'{
-    "number": "874038933",
+    "account_number": "874038933",
     "routing_number": "111000614",
-    "type": "checking",
+    "account_type": "checking",
     "bank_name": "J.P. Morgan Chase"
   }'
 ```
@@ -424,9 +427,9 @@ This API returns user's bank accounts based on the specified user id.
 Parameter | Type | Description
 --------- | ------- | -----------
 `id` | string | Account id
-`number` |string | Account number
+`account_number` |string | Account number
 `routing_number` | string | Routing number
-`type` | string | Type of account (checking, savings, etc)
+`account_ype` | string | Type of account (checking, savings, etc)
 `bank_name` | string | Name of bank
 
 
@@ -441,9 +444,9 @@ curl "http://api.upwardfi.com/users/38SCJuMhzCYtMXJzGzJcht/bank_accounts" \
 ```json
 [{
   "id": "GtMXJzGzJcht38SCJuMhvG",
-  "number": "909000614",
+  "account_number": "909000614",
   "routing_number": "111000614",
-  "type": "checking",
+  "account_type": "checking",
   "bank_name": "J.P. Morgan Chase"
 }]
 ```
