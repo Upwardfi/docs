@@ -526,7 +526,7 @@ curl "http://api.upwardfi.com/check-employer-eligibility" \
 </thead><tbody>
 <tr>
 <td><code>payment_amount</code> <em>optional</em></td>
-<td>number</td>
+<td>float</td>
 <td>Recurring amount to be paid to you by the user</td>
 </tr>
 <tr>
@@ -536,8 +536,8 @@ curl "http://api.upwardfi.com/check-employer-eligibility" \
 </tr>
 <tr>
 <td><code>first_payment_date</code> <em>optional</em></td>
-<td>string</td>
-<td>Date of first payment</td>
+<td>int</td>
+<td>Date of first payment as Unix timestamp</td>
 </tr>
 <tr>
 <td><code>application_reference_number</code> <em>optional</em></td>
@@ -551,22 +551,22 @@ curl "http://api.upwardfi.com/check-employer-eligibility" \
 </tr>
 <tr>
 <td><code>days_until_expires</code> <em>optional</em></td>
-<td>string</td>
+<td>int</td>
 <td>Number of days before this enrollment request expires</td>
 </tr>
 <tr>
 <td><code>required_employment_start_date</code> <em>optional</em></td>
-<td>string</td>
-<td>start date of employment</td>
+<td>int</td>
+<td>start date of employment as Unix timestamp</td>
 </tr>
 <tr>
 <td><code>required_gross_income</code> <em>optional</em></td>
-<td>number</td>
+<td>float</td>
 <td>user gross income</td>
 </tr>
 <tr>
 <td><code>required_net_income</code> <em>optional</em></td>
-<td>number</td>
+<td>float</td>
 <td>user net income</td>
 </tr>
 <tr>
@@ -645,9 +645,14 @@ curl "http://api.upwardfi.com/check-employer-eligibility" \
 <td>Social Security Number</td>
 </tr>
 <tr>
-<td><code>street</code> <em>required</em></td>
+<td><code>line1</code> <em>required</em></td>
 <td>string</td>
-<td>Street address</td>
+<td>Line 1 Street address</td>
+</tr>
+<tr>
+<td><code>line2</code> <em>required</em></td>
+<td>string</td>
+<td>Line 2 Street address</td>
 </tr>
 <tr>
 <td><code>city</code> <em>required</em></td>
@@ -661,7 +666,7 @@ curl "http://api.upwardfi.com/check-employer-eligibility" \
 </tr>
 <tr>
 <td><code>zip5</code> <em>required</em></td>
-<td>string</td>
+<td>int</td>
 <td>Zip code</td>
 </tr>
 <tr>
@@ -681,8 +686,8 @@ curl "http://api.upwardfi.com/check-employer-eligibility" \
 </tr>
 <tr>
 <td><code>date_of_birth</code> <em>optional</em></td>
-<td>string</td>
-<td>Date of birth</td>
+<td>int</td>
+<td>Date of birth as Unix timestamp</td>
 </tr>
 </tbody></table>
 <h3 id='response-3'>Response</h3>
@@ -755,9 +760,14 @@ curl "http://api.upwardfi.com/check-employer-eligibility" \
 <td>Social Security Number</td>
 </tr>
 <tr>
-<td><code>street</code></td>
+<td><code>line1</code></td>
 <td>string</td>
-<td>Street address</td>
+<td>Line 1 Street address</td>
+</tr>
+<tr>
+<td><code>line2</code></td>
+<td>string</td>
+<td>Line 2 Street address</td>
 </tr>
 <tr>
 <td><code>city</code></td>
@@ -771,7 +781,7 @@ curl "http://api.upwardfi.com/check-employer-eligibility" \
 </tr>
 <tr>
 <td><code>zip5</code></td>
-<td>string</td>
+<td>int</td>
 <td>Zip code</td>
 </tr>
 <tr>
@@ -786,8 +796,8 @@ curl "http://api.upwardfi.com/check-employer-eligibility" \
 </tr>
 <tr>
 <td><code>date_of_birth</code></td>
-<td>string</td>
-<td>Date of birth</td>
+<td>int</td>
+<td>Date of birth as Unix timestamp</td>
 </tr>
 </tbody></table>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://api.upwardfi.com/enrollments/YtMXJzGzJcht38SCJuMhzC/users"</span> <span class="se">\</span>
@@ -841,9 +851,14 @@ curl "http://api.upwardfi.com/check-employer-eligibility" \
 <td>Social Security Number</td>
 </tr>
 <tr>
-<td><code>street</code></td>
+<td><code>line1</code></td>
 <td>string</td>
-<td>Street address</td>
+<td>Line 1 Street address</td>
+</tr>
+<tr>
+<td><code>line2</code></td>
+<td>string</td>
+<td>Line 2 Street address</td>
 </tr>
 <tr>
 <td><code>city</code></td>
@@ -857,7 +872,7 @@ curl "http://api.upwardfi.com/check-employer-eligibility" \
 </tr>
 <tr>
 <td><code>zip5</code></td>
-<td>string</td>
+<td>int</td>
 <td>Zip code</td>
 </tr>
 <tr>
@@ -872,8 +887,8 @@ curl "http://api.upwardfi.com/check-employer-eligibility" \
 </tr>
 <tr>
 <td><code>date_of_birth</code></td>
-<td>string</td>
-<td>Date of birth</td>
+<td>int</td>
+<td>Date of birth as Unix timestamp</td>
 </tr>
 </tbody></table>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://api.upwardfi.com/users/BGMXJzGzJcht38SCJuMhzF"</span> <span class="se">\</span>
@@ -917,22 +932,22 @@ curl "http://api.upwardfi.com/check-employer-eligibility" \
 </tr>
 <tr>
 <td><code>start_date</code></td>
-<td>string</td>
-<td>Employment start date</td>
+<td>int</td>
+<td>Employment start date as Unix timestamp</td>
 </tr>
 <tr>
 <td><code>end_date</code></td>
-<td>string</td>
-<td>Employment end date</td>
+<td>int</td>
+<td>Employment end date as Unix timestamp</td>
 </tr>
 <tr>
 <td><code>last_paid_date</code></td>
-<td>string</td>
-<td>Last paid date</td>
+<td>int</td>
+<td>Last paid date as Unix timestamp</td>
 </tr>
 <tr>
-<td><code>base_paid_amount</code></td>
-<td>number</td>
+<td><code>base_pay_amount</code></td>
+<td>float</td>
 <td>Income base pay</td>
 </tr>
 <tr>
@@ -941,12 +956,12 @@ curl "http://api.upwardfi.com/check-employer-eligibility" \
 <td>Frequency of pay outs e.g. hourly/weekly/bi-weekly etc.</td>
 </tr>
 <tr>
-<td><code>type</code></td>
+<td><code>employment_type</code></td>
 <td>string</td>
 <td>Employment type e.g. Full-time/Part-time etc.</td>
 </tr>
 <tr>
-<td><code>status</code></td>
+<td><code>employment_status</code></td>
 <td>string</td>
 <td>Employment status e.g. active/inactive etc.</td>
 </tr>
@@ -962,7 +977,7 @@ curl "http://api.upwardfi.com/check-employer-eligibility" \
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GtMXJzGzJcht38SCJuMhvG"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"employer_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kroger"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"job_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Floor Manager"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12/01/2019"</span><span class="w">
+  </span><span class="nl">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"171003600"</span><span class="w">
 </span><span class="p">}]</span><span class="w">
 </span></code></pre></div><h1 id='bank-accounts'>Bank Accounts</h1><h2 id='add-bank-account'>Add bank account</h2>
 <p>This API adds a bank account to an enrollment via Upward.By passing basic bank account information Upward will return a key unique to the user based on the user id.</p>
@@ -977,7 +992,7 @@ curl "http://api.upwardfi.com/check-employer-eligibility" \
 </tr>
 </thead><tbody>
 <tr>
-<td><code>number</code> <em>required</em></td>
+<td><code>account_number</code> <em>required</em></td>
 <td>string</td>
 <td>Account number</td>
 </tr>
@@ -987,7 +1002,7 @@ curl "http://api.upwardfi.com/check-employer-eligibility" \
 <td>Routing number</td>
 </tr>
 <tr>
-<td><code>type</code> <em>required</em></td>
+<td><code>account_type</code> <em>required</em></td>
 <td>string</td>
 <td>Type of account (checking, savings, etc)</td>
 </tr>
@@ -1015,9 +1030,9 @@ curl "http://api.upwardfi.com/check-employer-eligibility" \
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: base64(app_id:app_secret)"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">$'{
-    "number": "874038933",
+    "account_number": "874038933",
     "routing_number": "111000614",
-    "type": "checking",
+    "account_type": "checking",
     "bank_name": "J.P. Morgan Chase"
   }'</span>
 </code></pre></div>
@@ -1045,7 +1060,7 @@ curl "http://api.upwardfi.com/check-employer-eligibility" \
 <td>Account id</td>
 </tr>
 <tr>
-<td><code>number</code></td>
+<td><code>account_number</code></td>
 <td>string</td>
 <td>Account number</td>
 </tr>
@@ -1055,7 +1070,7 @@ curl "http://api.upwardfi.com/check-employer-eligibility" \
 <td>Routing number</td>
 </tr>
 <tr>
-<td><code>type</code></td>
+<td><code>account_ype</code></td>
 <td>string</td>
 <td>Type of account (checking, savings, etc)</td>
 </tr>
@@ -1074,9 +1089,9 @@ curl "http://api.upwardfi.com/check-employer-eligibility" \
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GtMXJzGzJcht38SCJuMhvG"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"909000614"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"909000614"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"routing_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"111000614"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"checking"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"account_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"checking"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"bank_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"J.P. Morgan Chase"</span><span class="w">
 </span><span class="p">}]</span><span class="w">
 </span></code></pre></div><h1 id='client-sdk'>Client SDK</h1><h2 id='widget-installation'>Widget Installation</h2>
