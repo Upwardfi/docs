@@ -56,52 +56,13 @@ curl -X GET https://api.upwardfi.com/enrollments \
 
 ```shell
 # With shell, you can just pass the correct header with each request
-curl "http://api.upwardfi.com/enrollments" \
+curl -X GET http://api.upwardfi.com/enrollments \
   -H "Authorization: your_api_key"
 ```
 
 # Rate limiting
 
 Upward's API are rate limited to prevent abuse that would degrade our ability to maintain consistent API performance for all users. By default, each API key or app is rate limited at 10,000 requests per hour. If your requests are being rate limited, HTTP response code 429 will be returned with an rate_limit_exceeded error.
-
-<!-- # Employer Eligibility Check API
-
-This API can be used to check if the user's employer is supported by Upward before moving onto enrollment.
-
-### HTTP Request
-
-`GET http://api.upwardfi.com/check-employer-eligibility`
-
-### Arguments
-
-Parameter | Type | Description
---------- | ------- | -----------
-employer_name *required* | string | user employer name
-
-### Response
-
-Parameter | Type | Description
---------- | ------- | -----------
-access_employment_data | boolean | Returns whether payroll data can be accessed.
-support_direct_deposit | boolean | Returns whether payments can be set up.
-
-```shell
-curl "http://api.upwardfi.com/check-employer-eligibility" \
-  -H "Authorization Bearer: base64(app_id:app_secret)" \
-  -H "Content-Type: application/json" \
-  -d $'{
-    "employer_name": "Walmart"
-  }'
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "access_employment_data": true,
-  "support_direct_deposit": true
-}
-``` -->
 
 # Enrollments
 
@@ -123,12 +84,9 @@ Parameter | Type | Description
 `is_supported` | boolean | Returns true if supported and false if not. 
 
 ```shell
-curl "http://api.upwardfi.com/supported_employers" \
+curl -X GET http://api.upwardfi.com/supported_employers?employer_name=Kroger \
   -H "Authorization Bearer: base64(app_id:app_secret)" \
-  -H "Content-Type: application/json" \
-  -d $'{
-    "employer_name": "Kroger"
-  }'
+  -H "Content-Type: application/json" 
 ```
 
 > The above command returns JSON structured like this:
@@ -145,7 +103,7 @@ This API initiates user enrollment via Upward.By passing basic enrollment inform
 
 `POST http://api.upwardfi.com/enrollments`
 
-### Arguments
+### Request Body
 
 Parameter | Type | Description
 --------- | ------- | -----------
@@ -161,7 +119,7 @@ Parameter | Type | Description
 `return_w2_data` *optional* | boolean | Specify true if user w2 data must be returned
 `return_paystubs` *optional* | boolean | Specify true if link to user paystubs must be returned
 
-### Response
+### Response Body
 
 Parameter | Type | Description
 --------- | ------- | -----------
@@ -169,7 +127,7 @@ Parameter | Type | Description
 
 
 ```shell
-curl "http://api.upwardfi.com/enrollments" \
+curl -X POST http://api.upwardfi.com/enrollments \
   -H "Authorization Bearer: base64(app_id:app_secret)" \
   -H "Content-Type: application/json" \
   -d $'{
@@ -193,7 +151,13 @@ This API endpoint adds a user to the enrollment via Upward.By passing basic user
 
 `POST http://api.upwardfi.com/enrollments/{id}/users`
 
-### Arguments
+### Path parameter
+
+Parameter | Type | Description
+--------- | ------- | -----------
+`id` *required* | string | Enrollment id
+
+### Request Body
 
 Parameter | Type | Description
 --------- | ------- | -----------
@@ -212,7 +176,7 @@ Parameter | Type | Description
 `phone_number` *optional* | string | Phone number
 `date_of_birth` *optional* | int | Date of birth as Unix timestamp
 
-### Response
+### Response Body
 
 Parameter | Type | Description
 --------- | ------- | -----------
@@ -220,7 +184,7 @@ Parameter | Type | Description
 
 
 ```shell
-curl "http://api.upwardfi.com/enrollments/YtMXJzGzJcht38SCJuMhzC/users" \
+curl -X POST http://api.upwardfi.com/enrollments/YtMXJzGzJcht38SCJuMhzC/users \
   -H "Authorization Bearer: base64(app_id:app_secret)" \
   -H "Content-Type: application/json" \
   -d $'{
@@ -244,7 +208,7 @@ This API endpoint rerturns users that are enrolled based on the provided enrollm
 
 `GET http://api.upwardfi.com/enrollments/{id}/users`
 
-### Response
+### Response Body
 
 Parameter | Type | Description
 --------- | ------- | -----------
@@ -265,7 +229,7 @@ Parameter | Type | Description
 
 
 ```shell
-curl "http://api.upwardfi.com/enrollments/YtMXJzGzJcht38SCJuMhzC/users" \
+curl -X GET http://api.upwardfi.com/enrollments/YtMXJzGzJcht38SCJuMhzC/users \
   -H "Authorization Bearer: base64(app_id:app_secret)" \
   -H "Content-Type: application/json" 
 ```
@@ -291,6 +255,12 @@ This API endpoint returns the user's profile based on the provided user id.
 
 `GET http://api.upwardfi.com/users/{id}`
 
+### Path parameter
+
+Parameter | Type | Description
+--------- | ------- | -----------
+`id` *required* | string | User id
+
 ### Response
 
 Parameter | Type | Description
@@ -311,7 +281,7 @@ Parameter | Type | Description
 
 
 ```shell
-curl "http://api.upwardfi.com/users/BGMXJzGzJcht38SCJuMhzF" \
+curl -X GET http://api.upwardfi.com/users/BGMXJzGzJcht38SCJuMhzF \
   -H "Authorization Bearer: base64(app_id:app_secret)" \
   -H "Content-Type: application/json" 
 ```
@@ -336,7 +306,13 @@ This API endpoint returns the user's employment details based on the provided us
 
 `GET http://api.upwardfi.com/users/{id}/employments`
 
-### Response
+### Path parameter
+
+Parameter | Type | Description
+--------- | ------- | -----------
+`id` *required* | string | User id
+
+### Response Body
 
 Parameter | Type | Description
 --------- | ------- | -----------
@@ -353,7 +329,7 @@ Parameter | Type | Description
 
 
 ```shell
-curl "http://api.upwardfi.com/users/YtMXJzGzJcht38SCJuMhzC/employments" \
+curl -X GET http://api.upwardfi.com/users/YtMXJzGzJcht38SCJuMhzC/employments \
   -H "Authorization Bearer: base64(app_id:app_secret)" \
   -H "Content-Type: application/json" 
 ```
@@ -378,7 +354,13 @@ This API adds a bank account to an enrollment via Upward.By passing basic bank a
 
 `POST http://api.upwardfi.com/users/{id}/bank_accounts`
 
-### Arguments
+### Path parameter
+
+Parameter | Type | Description
+--------- | ------- | -----------
+`id` *required* | string | User id
+
+### Request Body
 
 Parameter | Type | Description
 --------- | ------- | -----------
@@ -387,7 +369,7 @@ Parameter | Type | Description
 `account_type` *required* | string | Type of account (checking, savings, etc)
 `bank_name` *required* | string | Name of bank
 
-### Response
+### Response Body
 
 Parameter | Type | Description
 --------- | ------- | -----------
@@ -395,7 +377,7 @@ Parameter | Type | Description
 
 
 ```shell
-curl "http://api.upwardfi.com/users/38SCJuMhzCYtMXJzGzJcht/bank_accounts" \
+curl -X POST http://api.upwardfi.com/users/38SCJuMhzCYtMXJzGzJcht/bank_accounts \
   -H "Authorization Bearer: base64(app_id:app_secret)" \
   -H "Content-Type: application/json" \
   -d $'{
@@ -422,7 +404,13 @@ This API returns user's bank accounts based on the specified user id.
 
 `GET http://api.upwardfi.com/users/{id}/bank_accounts`
 
-### Response
+### Path parameter
+
+Parameter | Type | Description
+--------- | ------- | -----------
+`id` *required* | string | User id
+
+### Response Body
 
 Parameter | Type | Description
 --------- | ------- | -----------
@@ -434,7 +422,7 @@ Parameter | Type | Description
 
 
 ```shell
-curl "http://api.upwardfi.com/users/38SCJuMhzCYtMXJzGzJcht/bank_accounts" \
+curl -X GET http://api.upwardfi.com/users/38SCJuMhzCYtMXJzGzJcht/bank_accounts \
   -H "Authorization Bearer: base64(app_id:app_secret)" \
   -H "Content-Type: application/json" 
 ```
