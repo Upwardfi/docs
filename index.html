@@ -424,49 +424,10 @@
 <p>All API requests must be made over HTTPS. Calls made over plain HTTP will fail. API requests without authentication will also fail.</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"http://api.upwardfi.com/enrollments"</span> <span class="se">\</span>
+curl <span class="nt">-X</span> GET http://api.upwardfi.com/enrollments <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: your_api_key"</span>
 </code></pre></div><h1 id='rate-limiting'>Rate limiting</h1>
 <p>Upward&#39;s API are rate limited to prevent abuse that would degrade our ability to maintain consistent API performance for all users. By default, each API key or app is rate limited at 10,000 requests per hour. If your requests are being rate limited, HTTP response code 429 will be returned with an rate_limit_exceeded error.</p>
-
-<!-- # Employer Eligibility Check API
-
-This API can be used to check if the user's employer is supported by Upward before moving onto enrollment.
-
-### HTTP Request
-
-`GET http://api.upwardfi.com/check-employer-eligibility`
-
-### Arguments
-
-Parameter | Type | Description
---------- | ------- | -----------
-employer_name *required* | string | user employer name
-
-### Response
-
-Parameter | Type | Description
---------- | ------- | -----------
-access_employment_data | boolean | Returns whether payroll data can be accessed.
-support_direct_deposit | boolean | Returns whether payments can be set up.
-
-```shell
-curl "http://api.upwardfi.com/check-employer-eligibility" \
-  -H "Authorization Bearer: base64(app_id:app_secret)" \
-  -H "Content-Type: application/json" \
-  -d $'{
-    "employer_name": "Walmart"
-  }'
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "access_employment_data": true,
-  "support_direct_deposit": true
-}
-``` -->
 <h1 id='enrollments'>Enrollments</h1><h2 id='check-if-employer-is-supported'>Check if employer is supported</h2>
 <p>This API checks if user&#39;s employer is supported through Upward and will return success or failure based on eligibility.</p>
 
@@ -499,12 +460,9 @@ curl "http://api.upwardfi.com/check-employer-eligibility" \
 <td>Returns true if supported and false if not.</td>
 </tr>
 </tbody></table>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://api.upwardfi.com/supported_employers"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET http://api.upwardfi.com/supported_employers?employer_name<span class="o">=</span>Kroger <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: base64(app_id:app_secret)"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  <span class="nt">-d</span> <span class="s1">$'{
-    "employer_name": "Kroger"
-  }'</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> 
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -516,7 +474,7 @@ curl "http://api.upwardfi.com/check-employer-eligibility" \
 <p>This API initiates user enrollment via Upward.By passing basic enrollment information Upward will return a key unique to the enrollment.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>POST http://api.upwardfi.com/enrollments</code></p>
-<h3 id='arguments-2'>Arguments</h3>
+<h3 id='request-body'>Request Body</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -580,7 +538,7 @@ curl "http://api.upwardfi.com/check-employer-eligibility" \
 <td>Specify true if link to user paystubs must be returned</td>
 </tr>
 </tbody></table>
-<h3 id='response-2'>Response</h3>
+<h3 id='response-body'>Response Body</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -594,7 +552,7 @@ curl "http://api.upwardfi.com/check-employer-eligibility" \
 <td>Returns enrollment id.</td>
 </tr>
 </tbody></table>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://api.upwardfi.com/enrollments"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST http://api.upwardfi.com/enrollments <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: base64(app_id:app_secret)"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">$'{
@@ -611,7 +569,21 @@ curl "http://api.upwardfi.com/check-employer-eligibility" \
 <p>This API endpoint adds a user to the enrollment via Upward.By passing basic user information Upward will return a key unique to the user based on the provided enrollment.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
 <p><code>POST http://api.upwardfi.com/enrollments/{id}/users</code></p>
-<h3 id='arguments-3'>Arguments</h3>
+<h3 id='path-parameter'>Path parameter</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <em>required</em></td>
+<td>string</td>
+<td>Enrollment id</td>
+</tr>
+</tbody></table>
+<h3 id='request-body-2'>Request Body</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -690,7 +662,7 @@ curl "http://api.upwardfi.com/check-employer-eligibility" \
 <td>Date of birth as Unix timestamp</td>
 </tr>
 </tbody></table>
-<h3 id='response-3'>Response</h3>
+<h3 id='response-body-2'>Response Body</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -704,7 +676,7 @@ curl "http://api.upwardfi.com/check-employer-eligibility" \
 <td>Returns user id.</td>
 </tr>
 </tbody></table>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://api.upwardfi.com/enrollments/YtMXJzGzJcht38SCJuMhzC/users"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST http://api.upwardfi.com/enrollments/YtMXJzGzJcht38SCJuMhzC/users <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: base64(app_id:app_secret)"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">$'{
@@ -721,7 +693,7 @@ curl "http://api.upwardfi.com/check-employer-eligibility" \
 <p>This API endpoint rerturns users that are enrolled based on the provided enrollment id.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
 <p><code>GET http://api.upwardfi.com/enrollments/{id}/users</code></p>
-<h3 id='response-4'>Response</h3>
+<h3 id='response-body-3'>Response Body</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -800,7 +772,7 @@ curl "http://api.upwardfi.com/check-employer-eligibility" \
 <td>Date of birth as Unix timestamp</td>
 </tr>
 </tbody></table>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://api.upwardfi.com/enrollments/YtMXJzGzJcht38SCJuMhzC/users"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET http://api.upwardfi.com/enrollments/YtMXJzGzJcht38SCJuMhzC/users <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: base64(app_id:app_secret)"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> 
 </code></pre></div>
@@ -817,7 +789,21 @@ curl "http://api.upwardfi.com/check-employer-eligibility" \
 <p>This API endpoint returns the user&#39;s profile based on the provided user id.</p>
 <h3 id='http-request-4'>HTTP Request</h3>
 <p><code>GET http://api.upwardfi.com/users/{id}</code></p>
-<h3 id='response-5'>Response</h3>
+<h3 id='path-parameter-2'>Path parameter</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <em>required</em></td>
+<td>string</td>
+<td>User id</td>
+</tr>
+</tbody></table>
+<h3 id='response-2'>Response</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -891,7 +877,7 @@ curl "http://api.upwardfi.com/check-employer-eligibility" \
 <td>Date of birth as Unix timestamp</td>
 </tr>
 </tbody></table>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://api.upwardfi.com/users/BGMXJzGzJcht38SCJuMhzF"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET http://api.upwardfi.com/users/BGMXJzGzJcht38SCJuMhzF <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: base64(app_id:app_secret)"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> 
 </code></pre></div>
@@ -907,7 +893,21 @@ curl "http://api.upwardfi.com/check-employer-eligibility" \
 <p>This API endpoint returns the user&#39;s employment details based on the provided user id.</p>
 <h3 id='http-request-5'>HTTP Request</h3>
 <p><code>GET http://api.upwardfi.com/users/{id}/employments</code></p>
-<h3 id='response-6'>Response</h3>
+<h3 id='path-parameter-3'>Path parameter</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <em>required</em></td>
+<td>string</td>
+<td>User id</td>
+</tr>
+</tbody></table>
+<h3 id='response-body-4'>Response Body</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -966,7 +966,7 @@ curl "http://api.upwardfi.com/check-employer-eligibility" \
 <td>Employment status e.g. active/inactive etc.</td>
 </tr>
 </tbody></table>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://api.upwardfi.com/users/YtMXJzGzJcht38SCJuMhzC/employments"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET http://api.upwardfi.com/users/YtMXJzGzJcht38SCJuMhzC/employments <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: base64(app_id:app_secret)"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> 
 </code></pre></div>
@@ -983,7 +983,21 @@ curl "http://api.upwardfi.com/check-employer-eligibility" \
 <p>This API adds a bank account to an enrollment via Upward.By passing basic bank account information Upward will return a key unique to the user based on the user id.</p>
 <h3 id='http-request-6'>HTTP Request</h3>
 <p><code>POST http://api.upwardfi.com/users/{id}/bank_accounts</code></p>
-<h3 id='arguments-4'>Arguments</h3>
+<h3 id='path-parameter-4'>Path parameter</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <em>required</em></td>
+<td>string</td>
+<td>User id</td>
+</tr>
+</tbody></table>
+<h3 id='request-body-3'>Request Body</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1012,7 +1026,7 @@ curl "http://api.upwardfi.com/check-employer-eligibility" \
 <td>Name of bank</td>
 </tr>
 </tbody></table>
-<h3 id='response-7'>Response</h3>
+<h3 id='response-body-5'>Response Body</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1026,7 +1040,7 @@ curl "http://api.upwardfi.com/check-employer-eligibility" \
 <td>Returns bank account id.</td>
 </tr>
 </tbody></table>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://api.upwardfi.com/users/38SCJuMhzCYtMXJzGzJcht/bank_accounts"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST http://api.upwardfi.com/users/38SCJuMhzCYtMXJzGzJcht/bank_accounts <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: base64(app_id:app_secret)"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">$'{
@@ -1046,7 +1060,21 @@ curl "http://api.upwardfi.com/check-employer-eligibility" \
 <p>This API returns user&#39;s bank accounts based on the specified user id.</p>
 <h3 id='http-request-7'>HTTP Request</h3>
 <p><code>GET http://api.upwardfi.com/users/{id}/bank_accounts</code></p>
-<h3 id='response-8'>Response</h3>
+<h3 id='path-parameter-5'>Path parameter</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <em>required</em></td>
+<td>string</td>
+<td>User id</td>
+</tr>
+</tbody></table>
+<h3 id='response-body-6'>Response Body</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1080,7 +1108,7 @@ curl "http://api.upwardfi.com/check-employer-eligibility" \
 <td>Name of bank</td>
 </tr>
 </tbody></table>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://api.upwardfi.com/users/38SCJuMhzCYtMXJzGzJcht/bank_accounts"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET http://api.upwardfi.com/users/38SCJuMhzCYtMXJzGzJcht/bank_accounts <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: base64(app_id:app_secret)"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> 
 </code></pre></div>
