@@ -282,7 +282,7 @@
   color: #859900;
 }
     </style>
-    <link href="stylesheets/screen-6ed290fa.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/screen-4cb267d4.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print-953e3353.css" rel="stylesheet" media="print" />
       <script src="javascripts/all-a9fde460.js"></script>
 
@@ -432,24 +432,26 @@ curl <span class="nt">-X</span> GET http://api.upwardfi.com/enrollments <span cl
 <p>This API checks if user&#39;s employer is supported through Upward and will return success or failure based on eligibility.</p>
 
 <p><code>GET http://api.upwardfi.com/supported_employers</code></p>
-<h3 id='arguments'>Arguments</h3>
+<h3 id='parameters'>Parameters</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
+<th>Name</th>
 <th>Type</th>
+<th>In</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td><code>employer_name</code> <em>required</em></td>
 <td>string</td>
+<td>query</td>
 <td>Employer name</td>
 </tr>
 </tbody></table>
 <h3 id='response'>Response</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
+<th>Name</th>
 <th>Type</th>
 <th>Description</th>
 </tr>
@@ -474,71 +476,83 @@ curl <span class="nt">-X</span> GET http://api.upwardfi.com/enrollments <span cl
 <p>This API initiates user enrollment via Upward.By passing basic enrollment information Upward will return a key unique to the enrollment.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>POST http://api.upwardfi.com/enrollments</code></p>
-<h3 id='request-body'>Request Body</h3>
+<h3 id='parameters-2'>Parameters</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
+<th>Name</th>
 <th>Type</th>
+<th>In</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td><code>payment_amount</code> <em>optional</em></td>
 <td>float</td>
+<td>body</td>
 <td>Recurring amount to be paid to you by the user</td>
 </tr>
 <tr>
 <td><code>payment_frequency</code> <em>optional</em></td>
 <td>string</td>
+<td>body</td>
 <td>Frequency interval that user will make payments</td>
 </tr>
 <tr>
 <td><code>first_payment_date</code> <em>optional</em></td>
 <td>int</td>
+<td>body</td>
 <td>Date of first payment as Unix timestamp</td>
 </tr>
 <tr>
 <td><code>application_reference_number</code> <em>optional</em></td>
 <td>string</td>
+<td>body</td>
 <td>Loan application number</td>
 </tr>
 <tr>
 <td><code>account_reference_number</code> <em>optional</em></td>
 <td>string</td>
+<td>body</td>
 <td>Your account reference number</td>
 </tr>
 <tr>
 <td><code>days_until_expires</code> <em>optional</em></td>
 <td>int</td>
+<td>body</td>
 <td>Number of days before this enrollment request expires</td>
 </tr>
 <tr>
 <td><code>required_employment_start_date</code> <em>optional</em></td>
 <td>int</td>
-<td>start date of employment as Unix timestamp</td>
+<td>body</td>
+<td>Start date of employment as Unix timestamp</td>
 </tr>
 <tr>
 <td><code>required_gross_income</code> <em>optional</em></td>
 <td>float</td>
-<td>user gross income</td>
+<td>body</td>
+<td>User gross income</td>
 </tr>
 <tr>
 <td><code>required_net_income</code> <em>optional</em></td>
 <td>float</td>
-<td>user net income</td>
+<td>body</td>
+<td>User net income</td>
 </tr>
 <tr>
 <td><code>return_w2_data</code> <em>optional</em></td>
 <td>boolean</td>
+<td>body</td>
 <td>Specify true if user w2 data must be returned</td>
 </tr>
 <tr>
 <td><code>return_paystubs</code> <em>optional</em></td>
 <td>boolean</td>
+<td>body</td>
 <td>Specify true if link to user paystubs must be returned</td>
 </tr>
 </tbody></table>
-<h3 id='response-body'>Response Body</h3>
+<h3 id='response-2'>Response</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -569,100 +583,107 @@ curl <span class="nt">-X</span> GET http://api.upwardfi.com/enrollments <span cl
 <p>This API endpoint adds a user to the enrollment via Upward.By passing basic user information Upward will return a key unique to the user based on the provided enrollment.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
 <p><code>POST http://api.upwardfi.com/enrollments/{id}/users</code></p>
-<h3 id='path-parameter'>Path parameter</h3>
+<h3 id='parameters-3'>Parameters</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
+<th>Name</th>
 <th>Type</th>
+<th>In</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td><code>id</code> <em>required</em></td>
 <td>string</td>
+<td>path</td>
 <td>Enrollment id</td>
 </tr>
-</tbody></table>
-<h3 id='request-body-2'>Request Body</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
 <tr>
 <td><code>username</code> <em>required</em></td>
 <td>string</td>
+<td>body</td>
 <td>User name</td>
 </tr>
 <tr>
 <td><code>email</code> <em>required</em></td>
 <td>string</td>
+<td>body</td>
 <td>Email id of user</td>
 </tr>
 <tr>
 <td><code>first_name</code> <em>required</em></td>
 <td>string</td>
+<td>body</td>
 <td>First Name</td>
 </tr>
 <tr>
 <td><code>last_name</code> <em>required</em></td>
 <td>string</td>
+<td>body</td>
 <td>Last Name</td>
 </tr>
 <tr>
 <td><code>ssn</code> <em>required</em></td>
 <td>string</td>
+<td>body</td>
 <td>Social Security Number</td>
 </tr>
 <tr>
 <td><code>line1</code> <em>required</em></td>
 <td>string</td>
+<td>body</td>
 <td>Line 1 Street address</td>
 </tr>
 <tr>
 <td><code>line2</code> <em>required</em></td>
 <td>string</td>
+<td>body</td>
 <td>Line 2 Street address</td>
 </tr>
 <tr>
 <td><code>city</code> <em>required</em></td>
 <td>string</td>
+<td>body</td>
 <td>City</td>
 </tr>
 <tr>
 <td><code>state</code> <em>required</em></td>
 <td>string</td>
+<td>body</td>
 <td>State</td>
 </tr>
 <tr>
 <td><code>zip5</code> <em>required</em></td>
 <td>int</td>
+<td>body</td>
 <td>Zip code</td>
 </tr>
 <tr>
 <td><code>country</code> <em>required</em></td>
 <td>string</td>
+<td>body</td>
 <td>Country</td>
 </tr>
 <tr>
 <td><code>employer</code> <em>optional</em></td>
 <td>string</td>
+<td>body</td>
 <td>User employer name</td>
 </tr>
 <tr>
 <td><code>phone_number</code> <em>optional</em></td>
 <td>string</td>
+<td>body</td>
 <td>Phone number</td>
 </tr>
 <tr>
 <td><code>date_of_birth</code> <em>optional</em></td>
 <td>int</td>
+<td>body</td>
 <td>Date of birth as Unix timestamp</td>
 </tr>
 </tbody></table>
-<h3 id='response-body-2'>Response Body</h3>
+<h3 id='response-3'>Response</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -693,7 +714,23 @@ curl <span class="nt">-X</span> GET http://api.upwardfi.com/enrollments <span cl
 <p>This API endpoint rerturns users that are enrolled based on the provided enrollment id.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
 <p><code>GET http://api.upwardfi.com/enrollments/{id}/users</code></p>
-<h3 id='response-body-3'>Response Body</h3>
+<h3 id='parameters-4'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>In</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <em>required</em></td>
+<td>string</td>
+<td>path</td>
+<td>Enrollment id</td>
+</tr>
+</tbody></table>
+<h3 id='response-4'>Response</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -789,21 +826,23 @@ curl <span class="nt">-X</span> GET http://api.upwardfi.com/enrollments <span cl
 <p>This API endpoint returns the user&#39;s profile based on the provided user id.</p>
 <h3 id='http-request-4'>HTTP Request</h3>
 <p><code>GET http://api.upwardfi.com/users/{id}</code></p>
-<h3 id='path-parameter-2'>Path parameter</h3>
+<h3 id='parameters-5'>Parameters</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
+<th>Name</th>
 <th>Type</th>
+<th>In</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td><code>id</code> <em>required</em></td>
 <td>string</td>
+<td>path</td>
 <td>User id</td>
 </tr>
 </tbody></table>
-<h3 id='response-2'>Response</h3>
+<h3 id='response-5'>Response</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -893,21 +932,23 @@ curl <span class="nt">-X</span> GET http://api.upwardfi.com/enrollments <span cl
 <p>This API endpoint returns the user&#39;s employment details based on the provided user id.</p>
 <h3 id='http-request-5'>HTTP Request</h3>
 <p><code>GET http://api.upwardfi.com/users/{id}/employments</code></p>
-<h3 id='path-parameter-3'>Path parameter</h3>
+<h3 id='parameters-6'>Parameters</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
+<th>Name</th>
 <th>Type</th>
+<th>In</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td><code>id</code> <em>required</em></td>
 <td>string</td>
+<td>path</td>
 <td>User id</td>
 </tr>
 </tbody></table>
-<h3 id='response-body-4'>Response Body</h3>
+<h3 id='response-6'>Response</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -983,50 +1024,47 @@ curl <span class="nt">-X</span> GET http://api.upwardfi.com/enrollments <span cl
 <p>This API adds a bank account to an enrollment via Upward.By passing basic bank account information Upward will return a key unique to the user based on the user id.</p>
 <h3 id='http-request-6'>HTTP Request</h3>
 <p><code>POST http://api.upwardfi.com/users/{id}/bank_accounts</code></p>
-<h3 id='path-parameter-4'>Path parameter</h3>
+<h3 id='parameters-7'>Parameters</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
+<th>Name</th>
 <th>Type</th>
+<th>In</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td><code>id</code> <em>required</em></td>
 <td>string</td>
+<td>path</td>
 <td>User id</td>
 </tr>
-</tbody></table>
-<h3 id='request-body-3'>Request Body</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
 <tr>
 <td><code>account_number</code> <em>required</em></td>
 <td>string</td>
+<td>body</td>
 <td>Account number</td>
 </tr>
 <tr>
 <td><code>routing_number</code> <em>required</em></td>
 <td>string</td>
+<td>body</td>
 <td>Routing number</td>
 </tr>
 <tr>
 <td><code>account_type</code> <em>required</em></td>
 <td>string</td>
+<td>body</td>
 <td>Type of account (checking, savings, etc)</td>
 </tr>
 <tr>
 <td><code>bank_name</code> <em>required</em></td>
 <td>string</td>
+<td>body</td>
 <td>Name of bank</td>
 </tr>
 </tbody></table>
-<h3 id='response-body-5'>Response Body</h3>
+<h3 id='response-7'>Response</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1060,21 +1098,23 @@ curl <span class="nt">-X</span> GET http://api.upwardfi.com/enrollments <span cl
 <p>This API returns user&#39;s bank accounts based on the specified user id.</p>
 <h3 id='http-request-7'>HTTP Request</h3>
 <p><code>GET http://api.upwardfi.com/users/{id}/bank_accounts</code></p>
-<h3 id='path-parameter-5'>Path parameter</h3>
+<h3 id='parameters-8'>Parameters</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
+<th>Name</th>
 <th>Type</th>
+<th>In</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td><code>id</code> <em>required</em></td>
 <td>string</td>
+<td>path</td>
 <td>User id</td>
 </tr>
 </tbody></table>
-<h3 id='response-body-6'>Response Body</h3>
+<h3 id='response-8'>Response</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1127,7 +1167,7 @@ curl <span class="nt">-X</span> GET http://api.upwardfi.com/enrollments <span cl
 <h3 id='config-parameters'>Config parameters</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
+<th>Name</th>
 <th>Type</th>
 <th>Description</th>
 </tr>
