@@ -71,15 +71,15 @@ This API checks if user's employer is supported through Upward and will return s
 
 `GET http://api.upwardfi.com/supported_employers`
 
-### Arguments
+### Parameters
 
-Parameter | Type | Description
---------- | ------- | -----------
-`employer_name` *required* | string | Employer name
+Name | Type | In | Description
+--------- | ------- | ------ | --------
+`employer_name` *required* | string | query | Employer name
 
 ### Response
 
-Parameter | Type | Description
+Name | Type | Description
 --------- | ------- | -----------
 `is_supported` | boolean | Returns true if supported and false if not. 
 
@@ -103,23 +103,23 @@ This API initiates user enrollment via Upward.By passing basic enrollment inform
 
 `POST http://api.upwardfi.com/enrollments`
 
-### Request Body
+### Parameters
 
-Parameter | Type | Description
---------- | ------- | -----------
-`payment_amount` *optional* | float | Recurring amount to be paid to you by the user
-`payment_frequency` *optional* | string | Frequency interval that user will make payments
-`first_payment_date` *optional* | int | Date of first payment as Unix timestamp
-`application_reference_number` *optional* | string | Loan application number
-`account_reference_number` *optional* | string | Your account reference number
-`days_until_expires` *optional* | int | Number of days before this enrollment request expires
-`required_employment_start_date` *optional* | int | start date of employment as Unix timestamp
-`required_gross_income` *optional* | float | user gross income
-`required_net_income` *optional* | float | user net income
-`return_w2_data` *optional* | boolean | Specify true if user w2 data must be returned
-`return_paystubs` *optional* | boolean | Specify true if link to user paystubs must be returned
+Name | Type | In | Description
+--------- | ------- | ------ | --------
+`payment_amount` *optional* | float | body | Recurring amount to be paid to you by the user
+`payment_frequency` *optional* | string | body | Frequency interval that user will make payments
+`first_payment_date` *optional* | int | body | Date of first payment as Unix timestamp
+`application_reference_number` *optional* | string | body | Loan application number
+`account_reference_number` *optional* | string | body | Your account reference number
+`days_until_expires` *optional* | int | body | Number of days before this enrollment request expires
+`required_employment_start_date` *optional* | int | body | Start date of employment as Unix timestamp
+`required_gross_income` *optional* | float | body | User gross income
+`required_net_income` *optional* | float | body | User net income
+`return_w2_data` *optional* | boolean | body | Specify true if user w2 data must be returned
+`return_paystubs` *optional* | boolean | body | Specify true if link to user paystubs must be returned
 
-### Response Body
+### Response 
 
 Parameter | Type | Description
 --------- | ------- | -----------
@@ -151,32 +151,27 @@ This API endpoint adds a user to the enrollment via Upward.By passing basic user
 
 `POST http://api.upwardfi.com/enrollments/{id}/users`
 
-### Path parameter
+### Parameters
 
-Parameter | Type | Description
---------- | ------- | -----------
-`id` *required* | string | Enrollment id
+Name | Type | In | Description
+--------- | ------- | ------ | --------
+`id` *required* | string | path | Enrollment id
+`username` *required* | string | body | User name 
+`email` *required* | string | body | Email id of user
+`first_name` *required* |string | body | First Name
+`last_name` *required* | string | body | Last Name
+`ssn` *required* | string | body | Social Security Number
+`line1` *required* | string | body | Line 1 Street address
+`line2` *required* | string | body | Line 2 Street address
+`city` *required* | string | body | City
+`state` *required* | string | body | State
+`zip5` *required* | int | body | Zip code
+`country` *required* | string | body | Country
+`employer` *optional* | string | body | User employer name
+`phone_number` *optional* | string | body | Phone number
+`date_of_birth` *optional* | int | body | Date of birth as Unix timestamp
 
-### Request Body
-
-Parameter | Type | Description
---------- | ------- | -----------
-`username` *required* | string | User name 
-`email` *required* | string | Email id of user
-`first_name` *required* |string | First Name
-`last_name` *required* | string | Last Name
-`ssn` *required* | string | Social Security Number
-`line1` *required* | string | Line 1 Street address
-`line2` *required* | string | Line 2 Street address
-`city` *required* | string | City
-`state` *required* | string | State
-`zip5` *required* | int | Zip code
-`country` *required* | string | Country
-`employer` *optional* | string | User employer name
-`phone_number` *optional* | string | Phone number
-`date_of_birth` *optional* | int | Date of birth as Unix timestamp
-
-### Response Body
+### Response 
 
 Parameter | Type | Description
 --------- | ------- | -----------
@@ -208,7 +203,13 @@ This API endpoint rerturns users that are enrolled based on the provided enrollm
 
 `GET http://api.upwardfi.com/enrollments/{id}/users`
 
-### Response Body
+### Parameters
+
+Name | Type | In | Description
+--------- | ------- | ------ | --------
+`id` *required* | string | path | Enrollment id
+
+### Response 
 
 Parameter | Type | Description
 --------- | ------- | -----------
@@ -255,11 +256,11 @@ This API endpoint returns the user's profile based on the provided user id.
 
 `GET http://api.upwardfi.com/users/{id}`
 
-### Path parameter
+### Parameters
 
-Parameter | Type | Description
---------- | ------- | -----------
-`id` *required* | string | User id
+Name | Type | In | Description
+--------- | ------- | ------- | ------
+`id` *required* | string | path | User id
 
 ### Response
 
@@ -306,13 +307,13 @@ This API endpoint returns the user's employment details based on the provided us
 
 `GET http://api.upwardfi.com/users/{id}/employments`
 
-### Path parameter
+### Parameters
 
-Parameter | Type | Description
---------- | ------- | -----------
-`id` *required* | string | User id
+Name | Type | In | Description
+--------- | ------- | ------- | ------
+`id` *required* | string | path | User id
 
-### Response Body
+### Response 
 
 Parameter | Type | Description
 --------- | ------- | -----------
@@ -354,22 +355,17 @@ This API adds a bank account to an enrollment via Upward.By passing basic bank a
 
 `POST http://api.upwardfi.com/users/{id}/bank_accounts`
 
-### Path parameter
+### Parameters
 
-Parameter | Type | Description
---------- | ------- | -----------
-`id` *required* | string | User id
+Name | Type | In | Description
+--------- | ------- | ------- | ------
+`id` *required* | string | path | User id
+`account_number` *required* |string | body | Account number
+`routing_number` *required* | string | body | Routing number
+`account_type` *required* | string | body | Type of account (checking, savings, etc)
+`bank_name` *required* | string | body | Name of bank
 
-### Request Body
-
-Parameter | Type | Description
---------- | ------- | -----------
-`account_number` *required* |string | Account number
-`routing_number` *required* | string | Routing number
-`account_type` *required* | string | Type of account (checking, savings, etc)
-`bank_name` *required* | string | Name of bank
-
-### Response Body
+### Response 
 
 Parameter | Type | Description
 --------- | ------- | -----------
@@ -404,13 +400,13 @@ This API returns user's bank accounts based on the specified user id.
 
 `GET http://api.upwardfi.com/users/{id}/bank_accounts`
 
-### Path parameter
+### Parameters
 
-Parameter | Type | Description
---------- | ------- | -----------
-`id` *required* | string | User id
+Name | Type | In | Description
+--------- | ------- | ------- | ------
+`id` *required* | string | path | User id
 
-### Response Body
+### Response 
 
 Parameter | Type | Description
 --------- | ------- | -----------
@@ -447,7 +443,7 @@ Upward's widget is a front-end UI element that allows users to grant your applic
 
 ### Config parameters
 
-Parameter | Type | Description
+Name | Type | Description
 --------- | ------- | -----------
 `plugin_key` *required* | string | unique key corresponding to their application
 `api_host` *required* | string | Link to API environment (Sandbox/Production)
