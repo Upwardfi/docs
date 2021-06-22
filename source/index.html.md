@@ -75,7 +75,7 @@ This API checks if user's employer is supported through Upward and will return s
 
 Name | Type | In | Description
 --------- | ------- | ------ | --------
-`employer_name` *required* | string | query | Employer name
+`q` *required* | string | query | Employer name
 
 ### Response
 
@@ -84,7 +84,7 @@ Name | Type | Description
 `is_supported` | boolean | Returns true if supported and false if not. 
 
 ```shell
-curl -X GET http://api.upwardfi.com/supported_employers?employer_name=Kroger \
+curl -X GET http://api.upwardfi.com/supported_employers?q=Kroger \
   -H "Authorization Bearer: base64(app_id:app_secret)" \
   -H "Content-Type: application/json" 
 ```
@@ -109,11 +109,11 @@ Name | Type | In | Description
 --------- | ------- | ------ | --------
 `payment_amount` *optional* | float | body | Recurring amount to be paid to you by the user
 `payment_frequency` *optional* | string | body | Frequency interval that user will make payments
-`first_payment_date` *optional* | int | body | Date of first payment as Unix timestamp
+`first_payment_date` *optional* | timestamp | body | Date of first payment as Unix timestamp
 `application_reference_number` *optional* | string | body | Loan application number
 `account_reference_number` *optional* | string | body | Your account reference number
 `days_until_expires` *optional* | int | body | Number of days before this enrollment request expires
-`required_employment_start_date` *optional* | int | body | Start date of employment as Unix timestamp
+`required_employment_start_date` *optional* | timestamp | body | Start date of employment as Unix timestamp
 `required_gross_income` *optional* | float | body | User gross income
 `required_net_income` *optional* | float | body | User net income
 `return_w2_data` *optional* | boolean | body | Specify true if user w2 data must be returned
@@ -161,15 +161,15 @@ Name | Type | In | Description
 `first_name` *required* |string | body | First Name
 `last_name` *required* | string | body | Last Name
 `ssn` *required* | string | body | Social Security Number
-`line1` *required* | string | body | Line 1 Street address
-`line2` *required* | string | body | Line 2 Street address
+`line_1` *required* | string | body | Line 1 Street address
+`line_2` *required* | string | body | Line 2 Street address
 `city` *required* | string | body | City
 `state` *required* | string | body | State
-`zip5` *required* | int | body | Zip code
+`zip_code` *required* | int | body | Zip code
 `country` *required* | string | body | Country
 `employer` *optional* | string | body | User employer name
-`phone_number` *optional* | string | body | Phone number
-`date_of_birth` *optional* | int | body | Date of birth as Unix timestamp
+`phone` *optional* | string | body | Phone number
+`date_of_birth` *optional* | timestamp | body | Date of birth as Unix timestamp
 
 ### Response 
 
@@ -219,15 +219,16 @@ Parameter | Type | Description
 `first_name` |string | First Name
 `last_name` | string | Last Name
 `ssn` | string | Social Security Number
-`line1` | string | Line 1 Street address
-`line2` | string | Line 2 Street address
+`line_1` | string | Line 1 Street address
+`line_2` | string | Line 2 Street address
 `city` | string | City
 `state`  | string | State
-`zip5`| int | Zip code
+`zip_code`| int | Zip code
 `country` | string | Country
-`phone_number` | string | Phone number
-`date_of_birth`  | int | Date of birth as Unix timestamp
-
+`phone` | string | Phone number
+`date_of_birth`  | timestamp | Date of birth as Unix timestamp
+`created_at` | timestamp | Timestamp user was created 
+`updated_at` | timestamp | Timestamp user object was updated
 
 ```shell
 curl -X GET http://api.upwardfi.com/enrollments/YtMXJzGzJcht38SCJuMhzC/users \
@@ -271,14 +272,15 @@ Parameter | Type | Description
 `first_name` |string | First Name
 `last_name` | string | Last Name
 `ssn` | string | Social Security Number
-`line1` | string | Line 1 Street address
-`line2` | string | Line 2 Street address
+`line_2` | string | Line 2 Street address
 `city` | string | City
 `state`  | string | State
-`zip5`| int | Zip code
+`zip_code`| int | Zip code
 `country` | string | Country
-`phone_number` | string | Phone number
-`date_of_birth`  | int | Date of birth as Unix timestamp
+`phone` | string | Phone number
+`date_of_birth`  | timestamp | Date of birth as Unix timestamp
+`created_at` | timestamp | Timestamp user was created 
+`updated_at` | timestamp | Timestamp user object was updated
 
 
 ```shell
@@ -318,15 +320,14 @@ Name | Type | In | Description
 Parameter | Type | Description
 --------- | ------- | -----------
 `id` | string | Employment id
-`employer_name` | string | Employer name
 `job_title` | string | Job title 
-`start_date` | int | Employment start date as Unix timestamp
-`end_date` |int | Employment end date as Unix timestamp
-`last_paid_date` | int | Last paid date as Unix timestamp
-`base_pay_amount` | float | Income base pay 
+`hire_datetime` | timestamp | Employment start date as Unix timestamp
+`termination_datetime` |timestamp | Employment end date as Unix timestamp
+`last_pay_date` | timestamp | Last paid date as Unix timestamp
+`base_pay` | float | Income base pay 
 `pay_cycle` | string | Frequency of pay outs e.g. hourly/weekly/bi-weekly etc. 
-`employment_type` | string | Employment type e.g. Full-time/Part-time etc.
-`employment_status`  | string | Employment status e.g. active/inactive etc.
+`type` | string | Employment type e.g. Full-time/Part-time etc.
+`status`  | string | Employment status e.g. active/inactive etc.
 
 
 ```shell
@@ -340,9 +341,13 @@ curl -X GET http://api.upwardfi.com/users/YtMXJzGzJcht38SCJuMhzC/employments \
 ```json
 [{
   "id": "GtMXJzGzJcht38SCJuMhvG",
-  "employer_name": "Kroger",
   "job_title": "Floor Manager",
-  "start_date": "171003600"
+  "hire_datetime": 1592862445,
+  "last_pay_date": 1624398445,
+  "base_pay": 23454.65,
+  "pay_cycle": "bi-weekly",
+  "type": "full-time",
+  "status": "active"
 }]
 ```
 # Bank Accounts
@@ -415,7 +420,8 @@ Parameter | Type | Description
 `routing_number` | string | Routing number
 `account_ype` | string | Type of account (checking, savings, etc)
 `bank_name` | string | Name of bank
-
+`created_at` | timestamp | Timestamp bank account was created 
+`updated_at` | timestamp | Timestamp bank account was updated
 
 ```shell
 curl -X GET http://api.upwardfi.com/users/38SCJuMhzCYtMXJzGzJcht/bank_accounts \
