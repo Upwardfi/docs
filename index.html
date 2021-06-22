@@ -886,6 +886,11 @@ curl <span class="nt">-X</span> GET http://api.upwardfi.com/enrollments <span cl
 <td>Social Security Number</td>
 </tr>
 <tr>
+<td><code>line_1</code></td>
+<td>string</td>
+<td>Line 1 Street address</td>
+</tr>
+<tr>
 <td><code>line_2</code></td>
 <td>string</td>
 <td>Line 2 Street address</td>
@@ -1186,7 +1191,50 @@ curl <span class="nt">-X</span> GET http://api.upwardfi.com/enrollments <span cl
   </span><span class="nl">"account_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"checking"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"bank_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"J.P. Morgan Chase"</span><span class="w">
 </span><span class="p">}]</span><span class="w">
-</span></code></pre></div><h1 id='client-sdk'>Client SDK</h1><h2 id='widget-installation'>Widget Installation</h2>
+</span></code></pre></div>
+<!-- ## Get bank account
+
+This API returns bank account details based on the specified user and bank account id.
+
+### HTTP Request
+
+`GET http://api.upwardfi.com/users/{id}/bank_accounts/{bank_account_id}`
+
+### Parameters
+
+Name | Type | In | Description
+--------- | ------- | ------- | ------
+`id` *required* | string | path | User id
+`bank_account_id` *required* | string | path | Bank account id
+
+### Response 
+
+Parameter | Type | Description
+--------- | ------- | -----------
+`account_number` |string | Account number
+`routing_number` | string | Routing number
+`account_ype` | string | Type of account (checking, savings, etc)
+`bank_name` | string | Name of bank
+`created_at` | timestamp | Timestamp bank account was created 
+`updated_at` | timestamp | Timestamp bank account was updated
+
+```shell
+curl -X GET http://api.upwardfi.com/users/38SCJuMhzCYtMXJzGzJcht/bank_accounts/GtMXJzGzJcht38SCJuMhvG \
+  -H "Authorization Bearer: base64(app_id:app_secret)" \
+  -H "Content-Type: application/json" 
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "account_number": "909000614",
+  "routing_number": "111000614",
+  "account_type": "checking",
+  "bank_name": "J.P. Morgan Chase"
+}
+``` -->
+<h1 id='client-sdk'>Client SDK</h1><h2 id='widget-installation'>Widget Installation</h2>
 <p>Upward&#39;s widget is a front-end UI element that allows users to grant your application access to their work accounts and to set up automated payments directly from their paychecks. It can be displayed on any part of your application.</p>
 <h3 id='config-parameters'>Config parameters</h3>
 <table><thead>
