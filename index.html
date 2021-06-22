@@ -442,7 +442,7 @@ curl <span class="nt">-X</span> GET http://api.upwardfi.com/enrollments <span cl
 </tr>
 </thead><tbody>
 <tr>
-<td><code>employer_name</code> <em>required</em></td>
+<td><code>q</code> <em>required</em></td>
 <td>string</td>
 <td>query</td>
 <td>Employer name</td>
@@ -462,7 +462,7 @@ curl <span class="nt">-X</span> GET http://api.upwardfi.com/enrollments <span cl
 <td>Returns true if supported and false if not.</td>
 </tr>
 </tbody></table>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET http://api.upwardfi.com/supported_employers?employer_name<span class="o">=</span>Kroger <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET http://api.upwardfi.com/supported_employers?q<span class="o">=</span>Kroger <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: base64(app_id:app_secret)"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> 
 </code></pre></div>
@@ -499,7 +499,7 @@ curl <span class="nt">-X</span> GET http://api.upwardfi.com/enrollments <span cl
 </tr>
 <tr>
 <td><code>first_payment_date</code> <em>optional</em></td>
-<td>int</td>
+<td>timestamp</td>
 <td>body</td>
 <td>Date of first payment as Unix timestamp</td>
 </tr>
@@ -523,7 +523,7 @@ curl <span class="nt">-X</span> GET http://api.upwardfi.com/enrollments <span cl
 </tr>
 <tr>
 <td><code>required_employment_start_date</code> <em>optional</em></td>
-<td>int</td>
+<td>timestamp</td>
 <td>body</td>
 <td>Start date of employment as Unix timestamp</td>
 </tr>
@@ -629,13 +629,13 @@ curl <span class="nt">-X</span> GET http://api.upwardfi.com/enrollments <span cl
 <td>Social Security Number</td>
 </tr>
 <tr>
-<td><code>line1</code> <em>required</em></td>
+<td><code>line_1</code> <em>required</em></td>
 <td>string</td>
 <td>body</td>
 <td>Line 1 Street address</td>
 </tr>
 <tr>
-<td><code>line2</code> <em>required</em></td>
+<td><code>line_2</code> <em>required</em></td>
 <td>string</td>
 <td>body</td>
 <td>Line 2 Street address</td>
@@ -653,7 +653,7 @@ curl <span class="nt">-X</span> GET http://api.upwardfi.com/enrollments <span cl
 <td>State</td>
 </tr>
 <tr>
-<td><code>zip5</code> <em>required</em></td>
+<td><code>zip_code</code> <em>required</em></td>
 <td>int</td>
 <td>body</td>
 <td>Zip code</td>
@@ -671,14 +671,14 @@ curl <span class="nt">-X</span> GET http://api.upwardfi.com/enrollments <span cl
 <td>User employer name</td>
 </tr>
 <tr>
-<td><code>phone_number</code> <em>optional</em></td>
+<td><code>phone</code> <em>optional</em></td>
 <td>string</td>
 <td>body</td>
 <td>Phone number</td>
 </tr>
 <tr>
 <td><code>date_of_birth</code> <em>optional</em></td>
-<td>int</td>
+<td>timestamp</td>
 <td>body</td>
 <td>Date of birth as Unix timestamp</td>
 </tr>
@@ -769,12 +769,12 @@ curl <span class="nt">-X</span> GET http://api.upwardfi.com/enrollments <span cl
 <td>Social Security Number</td>
 </tr>
 <tr>
-<td><code>line1</code></td>
+<td><code>line_1</code></td>
 <td>string</td>
 <td>Line 1 Street address</td>
 </tr>
 <tr>
-<td><code>line2</code></td>
+<td><code>line_2</code></td>
 <td>string</td>
 <td>Line 2 Street address</td>
 </tr>
@@ -789,7 +789,7 @@ curl <span class="nt">-X</span> GET http://api.upwardfi.com/enrollments <span cl
 <td>State</td>
 </tr>
 <tr>
-<td><code>zip5</code></td>
+<td><code>zip_code</code></td>
 <td>int</td>
 <td>Zip code</td>
 </tr>
@@ -799,14 +799,24 @@ curl <span class="nt">-X</span> GET http://api.upwardfi.com/enrollments <span cl
 <td>Country</td>
 </tr>
 <tr>
-<td><code>phone_number</code></td>
+<td><code>phone</code></td>
 <td>string</td>
 <td>Phone number</td>
 </tr>
 <tr>
 <td><code>date_of_birth</code></td>
-<td>int</td>
+<td>timestamp</td>
 <td>Date of birth as Unix timestamp</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td>timestamp</td>
+<td>Timestamp user was created</td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td>timestamp</td>
+<td>Timestamp user object was updated</td>
 </tr>
 </tbody></table>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET http://api.upwardfi.com/enrollments/YtMXJzGzJcht38SCJuMhzC/users <span class="se">\</span>
@@ -876,12 +886,7 @@ curl <span class="nt">-X</span> GET http://api.upwardfi.com/enrollments <span cl
 <td>Social Security Number</td>
 </tr>
 <tr>
-<td><code>line1</code></td>
-<td>string</td>
-<td>Line 1 Street address</td>
-</tr>
-<tr>
-<td><code>line2</code></td>
+<td><code>line_2</code></td>
 <td>string</td>
 <td>Line 2 Street address</td>
 </tr>
@@ -896,7 +901,7 @@ curl <span class="nt">-X</span> GET http://api.upwardfi.com/enrollments <span cl
 <td>State</td>
 </tr>
 <tr>
-<td><code>zip5</code></td>
+<td><code>zip_code</code></td>
 <td>int</td>
 <td>Zip code</td>
 </tr>
@@ -906,14 +911,24 @@ curl <span class="nt">-X</span> GET http://api.upwardfi.com/enrollments <span cl
 <td>Country</td>
 </tr>
 <tr>
-<td><code>phone_number</code></td>
+<td><code>phone</code></td>
 <td>string</td>
 <td>Phone number</td>
 </tr>
 <tr>
 <td><code>date_of_birth</code></td>
-<td>int</td>
+<td>timestamp</td>
 <td>Date of birth as Unix timestamp</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td>timestamp</td>
+<td>Timestamp user was created</td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td>timestamp</td>
+<td>Timestamp user object was updated</td>
 </tr>
 </tbody></table>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET http://api.upwardfi.com/users/BGMXJzGzJcht38SCJuMhzF <span class="se">\</span>
@@ -962,32 +977,27 @@ curl <span class="nt">-X</span> GET http://api.upwardfi.com/enrollments <span cl
 <td>Employment id</td>
 </tr>
 <tr>
-<td><code>employer_name</code></td>
-<td>string</td>
-<td>Employer name</td>
-</tr>
-<tr>
 <td><code>job_title</code></td>
 <td>string</td>
 <td>Job title</td>
 </tr>
 <tr>
-<td><code>start_date</code></td>
-<td>int</td>
+<td><code>hire_datetime</code></td>
+<td>timestamp</td>
 <td>Employment start date as Unix timestamp</td>
 </tr>
 <tr>
-<td><code>end_date</code></td>
-<td>int</td>
+<td><code>termination_datetime</code></td>
+<td>timestamp</td>
 <td>Employment end date as Unix timestamp</td>
 </tr>
 <tr>
-<td><code>last_paid_date</code></td>
-<td>int</td>
+<td><code>last_pay_date</code></td>
+<td>timestamp</td>
 <td>Last paid date as Unix timestamp</td>
 </tr>
 <tr>
-<td><code>base_pay_amount</code></td>
+<td><code>base_pay</code></td>
 <td>float</td>
 <td>Income base pay</td>
 </tr>
@@ -997,12 +1007,12 @@ curl <span class="nt">-X</span> GET http://api.upwardfi.com/enrollments <span cl
 <td>Frequency of pay outs e.g. hourly/weekly/bi-weekly etc.</td>
 </tr>
 <tr>
-<td><code>employment_type</code></td>
+<td><code>type</code></td>
 <td>string</td>
 <td>Employment type e.g. Full-time/Part-time etc.</td>
 </tr>
 <tr>
-<td><code>employment_status</code></td>
+<td><code>status</code></td>
 <td>string</td>
 <td>Employment status e.g. active/inactive etc.</td>
 </tr>
@@ -1016,9 +1026,13 @@ curl <span class="nt">-X</span> GET http://api.upwardfi.com/enrollments <span cl
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GtMXJzGzJcht38SCJuMhvG"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"employer_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kroger"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"job_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Floor Manager"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"171003600"</span><span class="w">
+  </span><span class="nl">"hire_datetime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1592862445</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"last_pay_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1624398445</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"base_pay"</span><span class="p">:</span><span class="w"> </span><span class="mf">23454.65</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"pay_cycle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bi-weekly"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"full-time"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="w">
 </span><span class="p">}]</span><span class="w">
 </span></code></pre></div><h1 id='bank-accounts'>Bank Accounts</h1><h2 id='add-bank-account'>Add bank account</h2>
 <p>This API adds a bank account to an enrollment via Upward.By passing basic bank account information Upward will return a key unique to the user based on the user id.</p>
@@ -1146,6 +1160,16 @@ curl <span class="nt">-X</span> GET http://api.upwardfi.com/enrollments <span cl
 <td><code>bank_name</code></td>
 <td>string</td>
 <td>Name of bank</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td>timestamp</td>
+<td>Timestamp bank account was created</td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td>timestamp</td>
+<td>Timestamp bank account was updated</td>
 </tr>
 </tbody></table>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET http://api.upwardfi.com/users/38SCJuMhzCYtMXJzGzJcht/bank_accounts <span class="se">\</span>
