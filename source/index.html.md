@@ -272,6 +272,7 @@ Parameter | Type | Description
 `first_name` |string | First Name
 `last_name` | string | Last Name
 `ssn` | string | Social Security Number
+`line_1` | string | Line 1 Street address
 `line_2` | string | Line 2 Street address
 `city` | string | City
 `state`  | string | State
@@ -440,6 +441,53 @@ curl -X GET http://api.upwardfi.com/users/38SCJuMhzCYtMXJzGzJcht/bank_accounts \
   "bank_name": "J.P. Morgan Chase"
 }]
 ```
+
+<!-- ## Get bank account
+
+This API returns bank account details based on the specified user and bank account id.
+
+### HTTP Request
+
+`GET http://api.upwardfi.com/users/{id}/bank_accounts/{bank_account_id}`
+
+### Parameters
+
+Name | Type | In | Description
+--------- | ------- | ------- | ------
+`id` *required* | string | path | User id
+`bank_account_id` *required* | string | path | Bank account id
+
+### Response 
+
+Parameter | Type | Description
+--------- | ------- | -----------
+`account_number` |string | Account number
+`routing_number` | string | Routing number
+`account_ype` | string | Type of account (checking, savings, etc)
+`bank_name` | string | Name of bank
+`created_at` | timestamp | Timestamp bank account was created 
+`updated_at` | timestamp | Timestamp bank account was updated
+
+```shell
+curl -X GET http://api.upwardfi.com/users/38SCJuMhzCYtMXJzGzJcht/bank_accounts/GtMXJzGzJcht38SCJuMhvG \
+  -H "Authorization Bearer: base64(app_id:app_secret)" \
+  -H "Content-Type: application/json" 
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "account_number": "909000614",
+  "routing_number": "111000614",
+  "account_type": "checking",
+  "bank_name": "J.P. Morgan Chase"
+}
+``` -->
+
+
+
+
 
 # Client SDK
 
