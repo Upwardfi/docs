@@ -419,7 +419,7 @@ Parameter | Type | Description
 `id` | string | Account id
 `account_number` |string | Account number
 `routing_number` | string | Routing number
-`account_ype` | string | Type of account (checking, savings, etc)
+`account_type` | string | Type of account (checking, savings, etc)
 `bank_name` | string | Name of bank
 `created_at` | timestamp | Timestamp bank account was created 
 `updated_at` | timestamp | Timestamp bank account was updated
