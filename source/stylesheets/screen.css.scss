@@ -54,8 +54,8 @@ html, body {
   overflow-x: hidden;
   position: fixed;
   z-index: 30;
-  top: 1.5em;
-  left: 1.5em;
+  top: 0;
+  left: 0;
   bottom: 0;
   width: $nav-width;
   background-color: $nav-bg;
@@ -74,7 +74,7 @@ html, body {
   // This is the logo at the top of the ToC
   .logo {
     display: block;
-    max-width: 80%;
+    max-width: 100%;
     margin-bottom: $logo-margin;
   }
 
@@ -321,7 +321,7 @@ html, body {
   position: relative;
   z-index: 30;
   top: 1.5em;
-   
+
   &:after {
     content: '';
     display: block;
