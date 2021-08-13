@@ -222,7 +222,6 @@ Name | Type | In | Description
 Parameter | Type | Description
 --------- | ------- | -----------
 `id` | string | User id
-`provider_user_id` | string | User id in Argyle
 `username` | string | User name 
 `email` | string | Email id of user
 `first_name` |string | First Name
@@ -285,7 +284,6 @@ Name | Type | In | Description
 Parameter | Type | Description
 --------- | ------- | -----------
 `id` | string | User id
-`provider_user_id` | string | User id in Argyle
 `username` | string | User name 
 `first_name` |string | First Name
 `last_name` | string | Last Name
@@ -294,7 +292,6 @@ Parameter | Type | Description
 `address` | json | Address information
 `email` | string | Email id of user
 `phone` | string | Phone number
-`token` | string | 
 `created_at` | timestamp | Timestamp user was created 
 `updated_at` | timestamp | Timestamp user object was updated
 
@@ -338,7 +335,7 @@ Parameter | Type | Description
 ----------|----------|---------
 `id` | uint | Address id
 `user_id` | string | User id associated with address
-`company_id` | string | Company id
+`company_id` | string | Client company id
 `line_1` | string | Line 1 Street address
 `line_2` | string | Line 2 Street address
 `city` | string | City
