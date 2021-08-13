@@ -18,20 +18,20 @@ code_clipboard: true
 
 # Introduction
 
-Welcome to Upward - a seamless integration to setting up automated payments directly from your platform user's income. You can inititiate enrollment by calling Upward's API endpoints and displaying the widget.
+Welcome to Highline - a seamless integration to setting up automated payments directly from your platform user's income. You can initiate enrollment by calling Highline's API endpoints and displaying the widget.
 
 This API reference provides information on available endpoints and how to interact with it.
 
-Upward's API is organized around REST. Our API has predictable, resource-oriented URLs, and uses HTTP response codes to indicate API errors. All requests should be over SSL. All request and response bodies, including errors are encoded in JSON.
+Highline's API is organized around REST. Our API has predictable, resource-oriented URLs, and uses HTTP response codes to indicate API errors. All requests should be over SSL. All request and response bodies, including errors are encoded in JSON.
 
 ```shell
-https://api.upwardfi.com
+https://api.highline.co
 ```
 # API Keys
 
-Upward authenticates your API requests using your account’s API keys. If you do not include your key when making an API request, or use one that is incorrect or outdated, Upward returns an error.
+Highline authenticates your API requests using your account’s API keys. If you do not include your key when making an API request, or use one that is incorrect or outdated, Highline returns an error.
 
-The API key should be kept confidential and only stored on your own servers. Your account’s API key can perform any API request to Upward without restriction.
+The API key should be kept confidential and only stored on your own servers. Your account’s API key can perform any API request to Highline without restriction.
 
 Each account has a total of two keys: a key pair for test mode and live mode.
 
@@ -48,7 +48,7 @@ Authentication to the API is performed via HTTP Basic Auth. Provide your API key
 > Example Request:
 
 ```shell
-curl -X GET https://api.upwardfi.com/enrollments \
+curl -X GET https://api.highline.co/enrollments \
   -H "Authorization: Bearer base64(ai_test_app_id:sk_test_8fD39MqLyjWBarjtP1zdp7bc)"
   ```
 
@@ -56,20 +56,20 @@ curl -X GET https://api.upwardfi.com/enrollments \
 
 ```shell
 # With shell, you can just pass the correct header with each request
-curl -X GET http://api.upwardfi.com/enrollments \
+curl -X GET http://api.highline.co/enrollments \
   -H "Authorization: your_api_key"
 ```
 
 # Rate limiting
 
-Upward's API are rate limited to prevent abuse that would degrade our ability to maintain consistent API performance for all users. By default, each API key or app is rate limited at 10,000 requests per hour. If your requests are being rate limited, HTTP response code 429 will be returned with an rate_limit_exceeded error.
+Highline's API are rate limited to prevent abuse that would degrade our ability to maintain consistent API performance for all users. By default, each API key or app is rate limited at 10,000 requests per hour. If your requests are being rate limited, HTTP response code 429 will be returned with an rate_limit_exceeded error.
 
 # Enrollments
 
 ## Check if employer is supported
-This API checks if user's employer is supported through Upward and will return success or failure based on eligibility.
+This API checks if user's employer is supported through Highline and will return success or failure based on eligibility.
 
-`GET http://api.upwardfi.com/supported_employers`
+`GET http://api.highline.co/supported_employers`
 
 ### Parameters
 
@@ -84,7 +84,7 @@ Name | Type | Description
 `is_supported` | boolean | Returns true if supported and false if not. 
 
 ```shell
-curl -X GET http://api.upwardfi.com/supported_employers?q=Kroger \
+curl -X GET http://api.highline.co/supported_employers?q=Kroger \
   -H "Authorization Bearer: base64(app_id:app_secret)" \
   -H "Content-Type: application/json" 
 ```
@@ -97,11 +97,11 @@ curl -X GET http://api.upwardfi.com/supported_employers?q=Kroger \
 }
 ```
 ## Initiate user enrollment
-This API initiates user enrollment via Upward.By passing basic enrollment information Upward will return a key unique to the enrollment.
+This API initiates user enrollment via Highline. By passing basic enrollment information Highline will return a key unique to the enrollment.
 
 ### HTTP Request
 
-`POST http://api.upwardfi.com/enrollments`
+`POST http://api.highline.co/enrollments`
 
 ### Parameters
 
@@ -127,7 +127,7 @@ Parameter | Type | Description
 
 
 ```shell
-curl -X POST http://api.upwardfi.com/enrollments \
+curl -X POST http://api.highline.co/enrollments \
   -H "Authorization Bearer: base64(app_id:app_secret)" \
   -H "Content-Type: application/json" \
   -d $'{
@@ -145,11 +145,11 @@ curl -X POST http://api.upwardfi.com/enrollments \
 
 ## Add users to enrollments
 
-This API endpoint adds a user to the enrollment via Upward.By passing basic user information Upward will return a key unique to the user based on the provided enrollment.
+This API endpoint adds a user to the enrollment via Highline. By passing basic user information Highline will return a key unique to the user based on the provided enrollment.
 
 ### HTTP Request
 
-`POST http://api.upwardfi.com/enrollments/{id}/users`
+`POST http://api.highline.co/enrollments/{id}/users`
 
 ### Parameters
 
@@ -161,12 +161,7 @@ Name | Type | In | Description
 `first_name` *required* |string | body | First Name
 `last_name` *required* | string | body | Last Name
 `ssn` *required* | string | body | Social Security Number
-`line_1` *required* | string | body | Line 1 Street address
-`line_2` *required* | string | body | Line 2 Street address
-`city` *required* | string | body | City
-`state` *required* | string | body | State
-`zip_code` *required* | int | body | Zip code
-`country` *required* | string | body | Country
+`address` *required* | json | body | Nested JSON object containing user's address data
 `employer` *optional* | string | body | User employer name
 `phone` *optional* | string | body | Phone number
 `date_of_birth` *optional* | timestamp | body | Date of birth as Unix timestamp
@@ -179,11 +174,24 @@ Parameter | Type | Description
 
 
 ```shell
-curl -X POST http://api.upwardfi.com/enrollments/YtMXJzGzJcht38SCJuMhzC/users \
+curl -X POST http://api.highline.co/enrollments/YtMXJzGzJcht38SCJuMhzC/users \
   -H "Authorization Bearer: base64(app_id:app_secret)" \
   -H "Content-Type: application/json" \
   -d $'{
-    "username": "john_smith"
+    "username": "john_smith",
+    "first_name" : "John",
+    "last_name" : "Smith",
+    "email" : "john.smith13@gmail.com",
+    "ssn" : "111223333",
+    "address" : {
+      "id" : 83
+      "line_1" : "4194 Autry Lane",
+      "line_2" : "",
+      "city" : "Dallas",
+      "state" : "TX",
+      "zip_code" : 75001,
+      "country":"US"
+    }
   }'
 ```
 
@@ -197,11 +205,11 @@ curl -X POST http://api.upwardfi.com/enrollments/YtMXJzGzJcht38SCJuMhzC/users \
 
 ## Get enrolled users
 
-This API endpoint rerturns users that are enrolled based on the provided enrollment id.
+This API endpoint returns users that are enrolled based on the provided enrollment id.
 
 ### HTTP Request
 
-`GET http://api.upwardfi.com/enrollments/{id}/users`
+`GET http://api.highline.co/enrollments/{id}/users`
 
 ### Parameters
 
@@ -214,24 +222,20 @@ Name | Type | In | Description
 Parameter | Type | Description
 --------- | ------- | -----------
 `id` | string | User id
+`provider_user_id` | string | User id in Argyle
 `username` | string | User name 
 `email` | string | Email id of user
 `first_name` |string | First Name
 `last_name` | string | Last Name
 `ssn` | string | Social Security Number
-`line_1` | string | Line 1 Street address
-`line_2` | string | Line 2 Street address
-`city` | string | City
-`state`  | string | State
-`zip_code`| int | Zip code
-`country` | string | Country
+`address` | json | Address information
 `phone` | string | Phone number
 `date_of_birth`  | timestamp | Date of birth as Unix timestamp
 `created_at` | timestamp | Timestamp user was created 
 `updated_at` | timestamp | Timestamp user object was updated
 
 ```shell
-curl -X GET http://api.upwardfi.com/enrollments/YtMXJzGzJcht38SCJuMhzC/users \
+curl -X GET http://api.highline.co/enrollments/YtMXJzGzJcht38SCJuMhzC/users \
   -H "Authorization Bearer: base64(app_id:app_secret)" \
   -H "Content-Type: application/json" 
 ```
@@ -240,11 +244,24 @@ curl -X GET http://api.upwardfi.com/enrollments/YtMXJzGzJcht38SCJuMhzC/users \
 
 ```json
 [{
-  "id": "BGMXJzGzJcht38SCJuMhzF",
-  "email": "john.smith@gmail.com",
-  "first_name": "john",
-  "last_name": "smith"
-}]
+    "id": "38SCJuMhzCYtMXJzGzJcht",
+    "username": "john_smith",
+    "first_name" : "John",
+    "last_name" : "Smith",
+    "email" : "john.smith13@gmail.com",
+    "ssn" : "111223333",
+    "address" : {
+      "id" : 83,
+      "line_1":"4194 Autry Lane",
+      "line_2":"",
+      "city":"Dallas",
+      "state":"TX",
+      "zip_code":75001,
+      "country":"US"
+    },
+    "created_at":1626701186,
+    "updated_at":1626701216
+  }]
 ```
 
 # Profiles
@@ -255,7 +272,7 @@ This API endpoint returns the user's profile based on the provided user id.
 
 ### HTTP Request
 
-`GET http://api.upwardfi.com/users/{id}`
+`GET http://api.highline.co/users/{id}`
 
 ### Parameters
 
@@ -267,25 +284,23 @@ Name | Type | In | Description
 
 Parameter | Type | Description
 --------- | ------- | -----------
+`id` | string | User id
+`provider_user_id` | string | User id in Argyle
 `username` | string | User name 
-`email` | string | Email id of user
 `first_name` |string | First Name
 `last_name` | string | Last Name
-`ssn` | string | Social Security Number
-`line_1` | string | Line 1 Street address
-`line_2` | string | Line 2 Street address
-`city` | string | City
-`state`  | string | State
-`zip_code`| int | Zip code
-`country` | string | Country
-`phone` | string | Phone number
 `date_of_birth`  | timestamp | Date of birth as Unix timestamp
+`ssn` | string | Social Security Number
+`address` | json | Address information
+`email` | string | Email id of user
+`phone` | string | Phone number
+`token` | string | 
 `created_at` | timestamp | Timestamp user was created 
 `updated_at` | timestamp | Timestamp user object was updated
 
 
 ```shell
-curl -X GET http://api.upwardfi.com/users/BGMXJzGzJcht38SCJuMhzF \
+curl -X GET http://api.highline.co/users/BGMXJzGzJcht38SCJuMhzF \
   -H "Authorization Bearer: base64(app_id:app_secret)" \
   -H "Content-Type: application/json" 
 ```
@@ -293,12 +308,43 @@ curl -X GET http://api.upwardfi.com/users/BGMXJzGzJcht38SCJuMhzF \
 > The above command returns JSON structured like this:
 
 ```json
-{
-  "email": "john.smith@gmail.com",
-  "first_name": "john",
-  "last_name": "smith"
-}
+  {
+    "id": "BGMXJzGzJcht38SCJuMhzF",
+    "username": "robcantor1994",
+    "first_name" : "Robert",
+    "last_name" : "Cantor",
+    "email" : "robcantor94@gmail.com",
+    "ssn" : "444556666",
+    "address" : {
+      "id" : 12,
+      "line_1":"110 Lois Lane",
+      "line_2":"",
+      "city":"Kaufman",
+      "state":"TX",
+      "zip_code":75142,
+      "country":"US"
+    },
+    "phone": "5551293040",
+    "created_at":1626702186,
+    "updated_at":1626703216
+  }
 ```
+
+## Address Fields
+
+A user's address is represented by another JSON object nested inside the User's JSON object. 
+
+Parameter | Type | Description
+----------|----------|---------
+`id` | uint | Address id
+`user_id` | string | User id associated with address
+`company_id` | string | Company id
+`line_1` | string | Line 1 Street address
+`line_2` | string | Line 2 Street address
+`city` | string | City
+`state` | string | State
+`zip_code` | string | Zip code
+`country` | string | Country
 
 # Employments
 
@@ -308,7 +354,7 @@ This API endpoint returns the user's employment details based on the provided us
 
 ### HTTP Request
 
-`GET http://api.upwardfi.com/users/{id}/employments`
+`GET http://api.highline.co/users/{id}/employments`
 
 ### Parameters
 
@@ -332,7 +378,7 @@ Parameter | Type | Description
 
 
 ```shell
-curl -X GET http://api.upwardfi.com/users/YtMXJzGzJcht38SCJuMhzC/employments \
+curl -X GET http://api.highline.co/users/YtMXJzGzJcht38SCJuMhzC/employments \
   -H "Authorization Bearer: base64(app_id:app_secret)" \
   -H "Content-Type: application/json" 
 ```
@@ -355,11 +401,11 @@ curl -X GET http://api.upwardfi.com/users/YtMXJzGzJcht38SCJuMhzC/employments \
 
 ## Add bank account
 
-This API adds a bank account to an enrollment via Upward.By passing basic bank account information Upward will return a key unique to the user based on the user id.
+This API adds a bank account to an enrollment via Highline. By passing basic bank account information Highline will return a key unique to the user based on the user id.
 
 ### HTTP Request
 
-`POST http://api.upwardfi.com/users/{id}/bank_accounts`
+`POST http://api.highline.co/users/{id}/bank_accounts`
 
 ### Parameters
 
@@ -379,7 +425,7 @@ Parameter | Type | Description
 
 
 ```shell
-curl -X POST http://api.upwardfi.com/users/38SCJuMhzCYtMXJzGzJcht/bank_accounts \
+curl -X POST http://api.highline.co/users/38SCJuMhzCYtMXJzGzJcht/bank_accounts \
   -H "Authorization Bearer: base64(app_id:app_secret)" \
   -H "Content-Type: application/json" \
   -d $'{
@@ -404,7 +450,7 @@ This API returns user's bank accounts based on the specified user id.
 
 ### HTTP Request
 
-`GET http://api.upwardfi.com/users/{id}/bank_accounts`
+`GET http://api.highline.co/users/{id}/bank_accounts`
 
 ### Parameters
 
@@ -421,11 +467,12 @@ Parameter | Type | Description
 `routing_number` | string | Routing number
 `account_type` | string | Type of account (checking, savings, etc)
 `bank_name` | string | Name of bank
+`is_virtual` | boolean | Specifies whether this account is a virtual account or not
 `created_at` | timestamp | Timestamp bank account was created 
 `updated_at` | timestamp | Timestamp bank account was updated
 
 ```shell
-curl -X GET http://api.upwardfi.com/users/38SCJuMhzCYtMXJzGzJcht/bank_accounts \
+curl -X GET http://api.highline.co/users/38SCJuMhzCYtMXJzGzJcht/bank_accounts \
   -H "Authorization Bearer: base64(app_id:app_secret)" \
   -H "Content-Type: application/json" 
 ```
@@ -438,6 +485,7 @@ curl -X GET http://api.upwardfi.com/users/38SCJuMhzCYtMXJzGzJcht/bank_accounts \
   "account_number": "909000614",
   "routing_number": "111000614",
   "account_type": "checking",
+  "is_virtual": false,
   "bank_name": "J.P. Morgan Chase"
 }]
 ```
@@ -448,7 +496,7 @@ This API returns bank account details based on the specified user and bank accou
 
 ### HTTP Request
 
-`GET http://api.upwardfi.com/users/{id}/bank_accounts/{bank_account_id}`
+`GET http://api.highline.co/users/{id}/bank_accounts/{bank_account_id}`
 
 ### Parameters
 
@@ -469,7 +517,7 @@ Parameter | Type | Description
 `updated_at` | timestamp | Timestamp bank account was updated
 
 ```shell
-curl -X GET http://api.upwardfi.com/users/38SCJuMhzCYtMXJzGzJcht/bank_accounts/GtMXJzGzJcht38SCJuMhvG \
+curl -X GET http://api.highline.co/users/38SCJuMhzCYtMXJzGzJcht/bank_accounts/GtMXJzGzJcht38SCJuMhvG \
   -H "Authorization Bearer: base64(app_id:app_secret)" \
   -H "Content-Type: application/json" 
 ```
@@ -493,7 +541,7 @@ curl -X GET http://api.upwardfi.com/users/38SCJuMhzCYtMXJzGzJcht/bank_accounts/G
 
 ## Widget Installation
 
-Upward's widget is a front-end UI element that allows users to grant your application access to their work accounts and to set up automated payments directly from their paychecks. It can be displayed on any part of your application.
+Highline's widget is a front-end UI element that allows users to grant your application access to their work accounts and to set up automated payments directly from their paychecks. It can be displayed on any part of your application.
 
 ### Config parameters
 
@@ -519,12 +567,12 @@ status | string | response status -->
   <meta charset="utf-8" />
 </head>
 <body>
-  <upward-link></upward-link>
-  <script src="https://api.upwardfi.com/upward-link.js"></script>
+  <highline-link></highline-link>
+  <script src="https://api.highline.co/highline-link.js"></script>
   <script type="text/javascript">
-  upwardLink.create({
+  highlineLink.create({
     plugin_key: 'your_plugin_key',
-    api_host: 'https://api-sandbox.upwardfi.com',
+    api_host: 'https://api-sandbox.highline.co',
     enrollment_id: 'key_from_enrollment_api',
     employer_name: 'Kroger',
     features: 'all',
@@ -538,7 +586,7 @@ status | string | response status -->
     console.log('on_close!');
     }
     });
-  upwardLink.open();
+  highlineLink.open();
   </script>
 </body>
 </html>
