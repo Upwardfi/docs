@@ -538,24 +538,18 @@ curl -X GET http://api.highline.co/users/38SCJuMhzCYtMXJzGzJcht/bank_accounts/Gt
 
 ## Widget Installation
 
-Highline's widget is a front-end UI element that allows users to grant your application access to their work accounts and to set up automated payments directly from their paychecks. It can be displayed on any part of your application.
+Highline's widget is a front-end UI element that allows users to grant your application access to their work accounts and to set up automated payments directly from their paychecks. It can be displayed on any part of your application. There are two ways to connect to the Highline Link. You can connect via a one-step or a two-step process.
+
+## One-Step Connection
 
 ### Config parameters
 
 Name | Type | Description
 --------- | ------- | -----------
-`plugin_key` *required* | string | unique key corresponding to their application
+`plugin_key` *required* | string | Unique key corresponding to their application
 `api_host` *required* | string | Link to API environment (Sandbox/Production)
 `enrollment_id` *required* | string | Enrollment key that is returned from calling the Enrollments API
-`employer_name` *optional* | string | Employer name
-`features` *required* | string | Configures enrollment flow. Can be either employment_data/accept_payment/all  
-
-<!-- ### Response -->
-
-<!-- Parameter | Type | Description
---------- | ------- | -----------
-user_id | string | unique user id
-status | string | response status -->
+`product_id` *required* | string | Unique key provided via Highline's Client Portal
 
 ```javascript
 <!DOCTYPE html>
@@ -565,34 +559,90 @@ status | string | response status -->
 </head>
 <body>
   <highline-link></highline-link>
-  <script src="https://api.highline.co/highline-link.js"></script>
+  <script src="https://highline-link-staging.s3.us-east-2.amazonaws.com/highline-link.js"></script>
   <script type="text/javascript">
-  highlineLink.create({
-    plugin_key: 'your_plugin_key',
-    api_host: 'https://api-sandbox.highline.co',
-    enrollment_id: 'key_from_enrollment_api',
-    employer_name: 'Kroger',
-    features: 'all',
-    on_success: (public_token) => {
-    console.log('on_success!' + public_token);
-    },
-    on_error: () => {
-    console.log('on_error!');
-    },
-    on_close: () => {
-    console.log('on_close!');
-    }
+    highlineLink.createPayrollPaymentConnection({
+      plugin_key: 'your_plugin_key',
+      api_host: 'https://stg-api.highline.co',
+      enrollment_id: 'key_from_enrollment_api',
+      product_id: 'key_from_client_portal',
+      on_success: ({ user_id }) => {
+        console.log('on_success! ' + user_id);
+      },
+      on_error: () => {
+        console.log('on_error!');
+      },
+      on_close: () => {
+        console.log('on_close!');
+      }
     });
-  highlineLink.open();
+    highlineLink.open();
   </script>
 </body>
 </html>
 ```
-<!-- > The above command returns JSON structured like this:
 
-```json
-{
-    "user_ID": "erj4021",
-    "status": "success" 
-}
-``` -->
+## Two-Step Connection
+
+### Config Parameters
+
+Name | Type | Description
+--------- | ------- | -----------
+`plugin_key` *required* | string | Unique key corresponding to their application
+`api_host` *required* | string | Link to API environment (Sandbox/Production)
+`product_id` *required* | string | Unique key provided via Highline's Client Portal
+`payroll_connection_id` *required* | string | Id returned by Payroll Data Connection process
+`enrollment_id` *required* | string | Enrollment key that is returned from calling the Enrollments API
+
+```javascript
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+  <highline-link></highline-link>
+  <script src="https://highline-link-staging.s3.us-east-2.amazonaws.com/highline-link.js"></script>
+  <script type="text/javascript">
+    // Step 1 - Payroll Data Connection
+    connectEmploymentData = () => {
+      highlineLink.createPayrollDataConnection({
+        plugin_key: 'your_plugin_key',
+        api_host: 'https://stg-api.highline.co',
+        product_id: 'key_from_client_portal',
+        on_success: ({ payroll_connection_id, user_id }) => {       
+          console.log('Payroll Connection ', payroll_connection_id, ' User ID:', user_id);
+        },
+        on_error: () => {
+          console.log('on_error!');
+        },
+        on_close: () => {
+          console.log('on_close!');
+        }
+      });
+      highlineLink.open();
+    }
+    // Step 2 - Payment Connection
+    connectPayrollPayment = () => {
+      highlineLink.createPayrollPaymentConnection({
+        plugin_key: 'your_plugin_key',
+        api_host: 'https://stg-api.highline.co',
+        payroll_connection_id: 'id_from_highline_link_callback',
+        enrollment_id: 'key_from_enrollment_api',
+        product_id: 'key_from_client_portal',
+        on_success: ({ user_id }) => {
+          console.log('on_success! ' + user_id);
+        },
+        on_error: () => {
+          console.log('on_error!');
+        },
+        on_close: () => {
+          console.log('on_close!');
+        }
+      });
+      highlineLink.open();
+    }
+  </script>
+</body>
+</html>
+```
