@@ -299,7 +299,7 @@
       </span>
     </a>
     <div class="toc-wrapper">
-      <img src="images/logo-4978c5fe.png" class="logo" alt="" />
+      <img src="images/logo-ca8b27d7.png" class="logo" alt="" />
         <div class="lang-selector">
               <a href="#" data-language-name="shell">shell</a>
         </div>
@@ -343,6 +343,9 @@
                   <li>
                     <a href="#get-user-39-s-profile" class="toc-h2 toc-link" data-title="Get User's profile">Get User's profile</a>
                   </li>
+                  <li>
+                    <a href="#address-fields" class="toc-h2 toc-link" data-title="Address Fields">Address Fields</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -370,6 +373,12 @@
                   <li>
                     <a href="#widget-installation" class="toc-h2 toc-link" data-title="Widget Installation">Widget Installation</a>
                   </li>
+                  <li>
+                    <a href="#one-step-connection" class="toc-h2 toc-link" data-title="One-Step Connection">One-Step Connection</a>
+                  </li>
+                  <li>
+                    <a href="#two-step-connection" class="toc-h2 toc-link" data-title="Two-Step Connection">Two-Step Connection</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -393,16 +402,16 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
-<p>Welcome to Upward - a seamless integration to setting up automated payments directly from your platform user&#39;s income. You can inititiate enrollment by calling Upward&#39;s API endpoints and displaying the widget.</p>
+<p>Welcome to Highline - a seamless integration to setting up automated payments directly from your platform user&#39;s income. You can initiate enrollment by calling Highline&#39;s API endpoints and displaying the widget.</p>
 
 <p>This API reference provides information on available endpoints and how to interact with it.</p>
 
-<p>Upward&#39;s API is organized around REST. Our API has predictable, resource-oriented URLs, and uses HTTP response codes to indicate API errors. All requests should be over SSL. All request and response bodies, including errors are encoded in JSON.</p>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>https://api.upwardfi.com
+<p>Highline&#39;s API is organized around REST. Our API has predictable, resource-oriented URLs, and uses HTTP response codes to indicate API errors. All requests should be over SSL. All request and response bodies, including errors are encoded in JSON.</p>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>https://api.highline.co
 </code></pre></div><h1 id='api-keys'>API Keys</h1>
-<p>Upward authenticates your API requests using your account’s API keys. If you do not include your key when making an API request, or use one that is incorrect or outdated, Upward returns an error.</p>
+<p>Highline authenticates your API requests using your account’s API keys. If you do not include your key when making an API request, or use one that is incorrect or outdated, Highline returns an error.</p>
 
-<p>The API key should be kept confidential and only stored on your own servers. Your account’s API key can perform any API request to Upward without restriction.</p>
+<p>The API key should be kept confidential and only stored on your own servers. Your account’s API key can perform any API request to Highline without restriction.</p>
 
 <p>Each account has a total of two keys: a key pair for test mode and live mode.</p>
 <h1 id='authentication'>Authentication</h1>
@@ -417,21 +426,21 @@
 
 <p>Example Request:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET https://api.upwardfi.com/enrollments <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET https://api.highline.co/enrollments <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer base64(ai_test_app_id:sk_test_8fD39MqLyjWBarjtP1zdp7bc)"</span>
 </code></pre></div>
 <blockquote>
 <p>All API requests must be made over HTTPS. Calls made over plain HTTP will fail. API requests without authentication will also fail.</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="nt">-X</span> GET http://api.upwardfi.com/enrollments <span class="se">\</span>
+curl <span class="nt">-X</span> GET http://api.highline.co/enrollments <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: your_api_key"</span>
 </code></pre></div><h1 id='rate-limiting'>Rate limiting</h1>
-<p>Upward&#39;s API are rate limited to prevent abuse that would degrade our ability to maintain consistent API performance for all users. By default, each API key or app is rate limited at 10,000 requests per hour. If your requests are being rate limited, HTTP response code 429 will be returned with an rate_limit_exceeded error.</p>
+<p>Highline&#39;s API are rate limited to prevent abuse that would degrade our ability to maintain consistent API performance for all users. By default, each API key or app is rate limited at 10,000 requests per hour. If your requests are being rate limited, HTTP response code 429 will be returned with an rate_limit_exceeded error.</p>
 <h1 id='enrollments'>Enrollments</h1><h2 id='check-if-employer-is-supported'>Check if employer is supported</h2>
-<p>This API checks if user&#39;s employer is supported through Upward and will return success or failure based on eligibility.</p>
+<p>This API checks if user&#39;s employer is supported through Highline and will return success or failure based on eligibility.</p>
 
-<p><code>GET http://api.upwardfi.com/supported_employers</code></p>
+<p><code>GET http://api.highline.co/supported_employers</code></p>
 <h3 id='parameters'>Parameters</h3>
 <table><thead>
 <tr>
@@ -462,7 +471,7 @@ curl <span class="nt">-X</span> GET http://api.upwardfi.com/enrollments <span cl
 <td>Returns true if supported and false if not.</td>
 </tr>
 </tbody></table>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET http://api.upwardfi.com/supported_employers?q<span class="o">=</span>Kroger <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET http://api.highline.co/supported_employers?q<span class="o">=</span>Kroger <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: base64(app_id:app_secret)"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> 
 </code></pre></div>
@@ -473,9 +482,9 @@ curl <span class="nt">-X</span> GET http://api.upwardfi.com/enrollments <span cl
   </span><span class="nl">"is_supported"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h2 id='initiate-user-enrollment'>Initiate user enrollment</h2>
-<p>This API initiates user enrollment via Upward.By passing basic enrollment information Upward will return a key unique to the enrollment.</p>
+<p>This API initiates user enrollment via Highline. By passing basic enrollment information Highline will return a key unique to the enrollment.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>POST http://api.upwardfi.com/enrollments</code></p>
+<p><code>POST http://api.highline.co/enrollments</code></p>
 <h3 id='parameters-2'>Parameters</h3>
 <table><thead>
 <tr>
@@ -566,7 +575,7 @@ curl <span class="nt">-X</span> GET http://api.upwardfi.com/enrollments <span cl
 <td>Returns enrollment id.</td>
 </tr>
 </tbody></table>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST http://api.upwardfi.com/enrollments <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST http://api.highline.co/enrollments <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: base64(app_id:app_secret)"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">$'{
@@ -580,9 +589,9 @@ curl <span class="nt">-X</span> GET http://api.upwardfi.com/enrollments <span cl
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"YtMXJzGzJcht38SCJuMhzC"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h2 id='add-users-to-enrollments'>Add users to enrollments</h2>
-<p>This API endpoint adds a user to the enrollment via Upward.By passing basic user information Upward will return a key unique to the user based on the provided enrollment.</p>
+<p>This API endpoint adds a user to the enrollment via Highline. By passing basic user information Highline will return a key unique to the user based on the provided enrollment.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>POST http://api.upwardfi.com/enrollments/{id}/users</code></p>
+<p><code>POST http://api.highline.co/enrollments/{id}/users</code></p>
 <h3 id='parameters-3'>Parameters</h3>
 <table><thead>
 <tr>
@@ -629,40 +638,10 @@ curl <span class="nt">-X</span> GET http://api.upwardfi.com/enrollments <span cl
 <td>Social Security Number</td>
 </tr>
 <tr>
-<td><code>line_1</code> <em>required</em></td>
-<td>string</td>
+<td><code>address</code> <em>required</em></td>
+<td>json</td>
 <td>body</td>
-<td>Line 1 Street address</td>
-</tr>
-<tr>
-<td><code>line_2</code> <em>required</em></td>
-<td>string</td>
-<td>body</td>
-<td>Line 2 Street address</td>
-</tr>
-<tr>
-<td><code>city</code> <em>required</em></td>
-<td>string</td>
-<td>body</td>
-<td>City</td>
-</tr>
-<tr>
-<td><code>state</code> <em>required</em></td>
-<td>string</td>
-<td>body</td>
-<td>State</td>
-</tr>
-<tr>
-<td><code>zip_code</code> <em>required</em></td>
-<td>int</td>
-<td>body</td>
-<td>Zip code</td>
-</tr>
-<tr>
-<td><code>country</code> <em>required</em></td>
-<td>string</td>
-<td>body</td>
-<td>Country</td>
+<td>Nested JSON object containing user&#39;s address data</td>
 </tr>
 <tr>
 <td><code>employer</code> <em>optional</em></td>
@@ -697,11 +676,24 @@ curl <span class="nt">-X</span> GET http://api.upwardfi.com/enrollments <span cl
 <td>Returns user id.</td>
 </tr>
 </tbody></table>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST http://api.upwardfi.com/enrollments/YtMXJzGzJcht38SCJuMhzC/users <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST http://api.highline.co/enrollments/YtMXJzGzJcht38SCJuMhzC/users <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: base64(app_id:app_secret)"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">$'{
-    "username": "john_smith"
+    "username": "john_smith",
+    "first_name" : "John",
+    "last_name" : "Smith",
+    "email" : "john.smith13@gmail.com",
+    "ssn" : "111223333",
+    "address" : {
+      "id" : 83
+      "line_1" : "4194 Autry Lane",
+      "line_2" : "",
+      "city" : "Dallas",
+      "state" : "TX",
+      "zip_code" : 75001,
+      "country":"US"
+    }
   }'</span>
 </code></pre></div>
 <blockquote>
@@ -711,9 +703,9 @@ curl <span class="nt">-X</span> GET http://api.upwardfi.com/enrollments <span cl
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"38SCJuMhzCYtMXJzGzJcht"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h2 id='get-enrolled-users'>Get enrolled users</h2>
-<p>This API endpoint rerturns users that are enrolled based on the provided enrollment id.</p>
+<p>This API endpoint returns users that are enrolled based on the provided enrollment id.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
-<p><code>GET http://api.upwardfi.com/enrollments/{id}/users</code></p>
+<p><code>GET http://api.highline.co/enrollments/{id}/users</code></p>
 <h3 id='parameters-4'>Parameters</h3>
 <table><thead>
 <tr>
@@ -769,34 +761,9 @@ curl <span class="nt">-X</span> GET http://api.upwardfi.com/enrollments <span cl
 <td>Social Security Number</td>
 </tr>
 <tr>
-<td><code>line_1</code></td>
-<td>string</td>
-<td>Line 1 Street address</td>
-</tr>
-<tr>
-<td><code>line_2</code></td>
-<td>string</td>
-<td>Line 2 Street address</td>
-</tr>
-<tr>
-<td><code>city</code></td>
-<td>string</td>
-<td>City</td>
-</tr>
-<tr>
-<td><code>state</code></td>
-<td>string</td>
-<td>State</td>
-</tr>
-<tr>
-<td><code>zip_code</code></td>
-<td>int</td>
-<td>Zip code</td>
-</tr>
-<tr>
-<td><code>country</code></td>
-<td>string</td>
-<td>Country</td>
+<td><code>address</code></td>
+<td>json</td>
+<td>Address information</td>
 </tr>
 <tr>
 <td><code>phone</code></td>
@@ -819,7 +786,7 @@ curl <span class="nt">-X</span> GET http://api.upwardfi.com/enrollments <span cl
 <td>Timestamp user object was updated</td>
 </tr>
 </tbody></table>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET http://api.upwardfi.com/enrollments/YtMXJzGzJcht38SCJuMhzC/users <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET http://api.highline.co/enrollments/YtMXJzGzJcht38SCJuMhzC/users <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: base64(app_id:app_secret)"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> 
 </code></pre></div>
@@ -827,15 +794,28 @@ curl <span class="nt">-X</span> GET http://api.upwardfi.com/enrollments <span cl
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BGMXJzGzJcht38SCJuMhzF"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john.smith@gmail.com"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"smith"</span><span class="w">
-</span><span class="p">}]</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"38SCJuMhzCYtMXJzGzJcht"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john_smith"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"first_name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"last_name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"john.smith13@gmail.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ssn"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"111223333"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"address"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">83</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"line_1"</span><span class="p">:</span><span class="s2">"4194 Autry Lane"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"line_2"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"city"</span><span class="p">:</span><span class="s2">"Dallas"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"state"</span><span class="p">:</span><span class="s2">"TX"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"zip_code"</span><span class="p">:</span><span class="mi">75001</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"country"</span><span class="p">:</span><span class="s2">"US"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="mi">1626701186</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="mi">1626701216</span><span class="w">
+  </span><span class="p">}]</span><span class="w">
 </span></code></pre></div><h1 id='profiles'>Profiles</h1><h2 id='get-user-39-s-profile'>Get User&#39;s profile</h2>
 <p>This API endpoint returns the user&#39;s profile based on the provided user id.</p>
 <h3 id='http-request-4'>HTTP Request</h3>
-<p><code>GET http://api.upwardfi.com/users/{id}</code></p>
+<p><code>GET http://api.highline.co/users/{id}</code></p>
 <h3 id='parameters-5'>Parameters</h3>
 <table><thead>
 <tr>
@@ -861,14 +841,14 @@ curl <span class="nt">-X</span> GET http://api.upwardfi.com/enrollments <span cl
 </tr>
 </thead><tbody>
 <tr>
+<td><code>id</code></td>
+<td>string</td>
+<td>User id</td>
+</tr>
+<tr>
 <td><code>username</code></td>
 <td>string</td>
 <td>User name</td>
-</tr>
-<tr>
-<td><code>email</code></td>
-<td>string</td>
-<td>Email id of user</td>
 </tr>
 <tr>
 <td><code>first_name</code></td>
@@ -881,9 +861,92 @@ curl <span class="nt">-X</span> GET http://api.upwardfi.com/enrollments <span cl
 <td>Last Name</td>
 </tr>
 <tr>
+<td><code>date_of_birth</code></td>
+<td>timestamp</td>
+<td>Date of birth as Unix timestamp</td>
+</tr>
+<tr>
 <td><code>ssn</code></td>
 <td>string</td>
 <td>Social Security Number</td>
+</tr>
+<tr>
+<td><code>address</code></td>
+<td>json</td>
+<td>Address information</td>
+</tr>
+<tr>
+<td><code>email</code></td>
+<td>string</td>
+<td>Email id of user</td>
+</tr>
+<tr>
+<td><code>phone</code></td>
+<td>string</td>
+<td>Phone number</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td>timestamp</td>
+<td>Timestamp user was created</td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td>timestamp</td>
+<td>Timestamp user object was updated</td>
+</tr>
+</tbody></table>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET http://api.highline.co/users/BGMXJzGzJcht38SCJuMhzF <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization Bearer: base64(app_id:app_secret)"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> 
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BGMXJzGzJcht38SCJuMhzF"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"robcantor1994"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"first_name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Robert"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"last_name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Cantor"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"robcantor94@gmail.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ssn"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"444556666"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"address"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"line_1"</span><span class="p">:</span><span class="s2">"110 Lois Lane"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"line_2"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"city"</span><span class="p">:</span><span class="s2">"Kaufman"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"state"</span><span class="p">:</span><span class="s2">"TX"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"zip_code"</span><span class="p">:</span><span class="mi">75142</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"country"</span><span class="p">:</span><span class="s2">"US"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5551293040"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="mi">1626702186</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="mi">1626703216</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre></div><h2 id='address-fields'>Address Fields</h2>
+<p>A user&#39;s address is represented by another JSON object nested inside the User&#39;s JSON object. </p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>uint</td>
+<td>Address id</td>
+</tr>
+<tr>
+<td><code>user_id</code></td>
+<td>string</td>
+<td>User id associated with address</td>
+</tr>
+<tr>
+<td><code>company_id</code></td>
+<td>string</td>
+<td>Client company id</td>
 </tr>
 <tr>
 <td><code>line_1</code></td>
@@ -907,7 +970,7 @@ curl <span class="nt">-X</span> GET http://api.upwardfi.com/enrollments <span cl
 </tr>
 <tr>
 <td><code>zip_code</code></td>
-<td>int</td>
+<td>string</td>
 <td>Zip code</td>
 </tr>
 <tr>
@@ -915,43 +978,11 @@ curl <span class="nt">-X</span> GET http://api.upwardfi.com/enrollments <span cl
 <td>string</td>
 <td>Country</td>
 </tr>
-<tr>
-<td><code>phone</code></td>
-<td>string</td>
-<td>Phone number</td>
-</tr>
-<tr>
-<td><code>date_of_birth</code></td>
-<td>timestamp</td>
-<td>Date of birth as Unix timestamp</td>
-</tr>
-<tr>
-<td><code>created_at</code></td>
-<td>timestamp</td>
-<td>Timestamp user was created</td>
-</tr>
-<tr>
-<td><code>updated_at</code></td>
-<td>timestamp</td>
-<td>Timestamp user object was updated</td>
-</tr>
 </tbody></table>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET http://api.upwardfi.com/users/BGMXJzGzJcht38SCJuMhzF <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization Bearer: base64(app_id:app_secret)"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> 
-</code></pre></div>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john.smith@gmail.com"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"smith"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div><h1 id='employments'>Employments</h1><h2 id='get-employments'>Get employments</h2>
+<h1 id='employments'>Employments</h1><h2 id='get-employments'>Get employments</h2>
 <p>This API endpoint returns the user&#39;s employment details based on the provided user id.</p>
 <h3 id='http-request-5'>HTTP Request</h3>
-<p><code>GET http://api.upwardfi.com/users/{id}/employments</code></p>
+<p><code>GET http://api.highline.co/users/{id}/employments</code></p>
 <h3 id='parameters-6'>Parameters</h3>
 <table><thead>
 <tr>
@@ -1022,7 +1053,7 @@ curl <span class="nt">-X</span> GET http://api.upwardfi.com/enrollments <span cl
 <td>Employment status e.g. active/inactive etc.</td>
 </tr>
 </tbody></table>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET http://api.upwardfi.com/users/YtMXJzGzJcht38SCJuMhzC/employments <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET http://api.highline.co/users/YtMXJzGzJcht38SCJuMhzC/employments <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: base64(app_id:app_secret)"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> 
 </code></pre></div>
@@ -1040,9 +1071,9 @@ curl <span class="nt">-X</span> GET http://api.upwardfi.com/enrollments <span cl
   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="w">
 </span><span class="p">}]</span><span class="w">
 </span></code></pre></div><h1 id='bank-accounts'>Bank Accounts</h1><h2 id='add-bank-account'>Add bank account</h2>
-<p>This API adds a bank account to an enrollment via Upward.By passing basic bank account information Upward will return a key unique to the user based on the user id.</p>
+<p>This API adds a bank account to an enrollment via Highline. By passing basic bank account information Highline will return a key unique to the user based on the user id.</p>
 <h3 id='http-request-6'>HTTP Request</h3>
-<p><code>POST http://api.upwardfi.com/users/{id}/bank_accounts</code></p>
+<p><code>POST http://api.highline.co/users/{id}/bank_accounts</code></p>
 <h3 id='parameters-7'>Parameters</h3>
 <table><thead>
 <tr>
@@ -1097,7 +1128,7 @@ curl <span class="nt">-X</span> GET http://api.upwardfi.com/enrollments <span cl
 <td>Returns bank account id.</td>
 </tr>
 </tbody></table>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST http://api.upwardfi.com/users/38SCJuMhzCYtMXJzGzJcht/bank_accounts <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST http://api.highline.co/users/38SCJuMhzCYtMXJzGzJcht/bank_accounts <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: base64(app_id:app_secret)"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">$'{
@@ -1116,7 +1147,7 @@ curl <span class="nt">-X</span> GET http://api.upwardfi.com/enrollments <span cl
 </span></code></pre></div><h2 id='get-bank-accounts'>Get bank accounts</h2>
 <p>This API returns user&#39;s bank accounts based on the specified user id.</p>
 <h3 id='http-request-7'>HTTP Request</h3>
-<p><code>GET http://api.upwardfi.com/users/{id}/bank_accounts</code></p>
+<p><code>GET http://api.highline.co/users/{id}/bank_accounts</code></p>
 <h3 id='parameters-8'>Parameters</h3>
 <table><thead>
 <tr>
@@ -1167,6 +1198,11 @@ curl <span class="nt">-X</span> GET http://api.upwardfi.com/enrollments <span cl
 <td>Name of bank</td>
 </tr>
 <tr>
+<td><code>is_virtual</code></td>
+<td>boolean</td>
+<td>Specifies whether this account is a virtual account or not</td>
+</tr>
+<tr>
 <td><code>created_at</code></td>
 <td>timestamp</td>
 <td>Timestamp bank account was created</td>
@@ -1177,7 +1213,7 @@ curl <span class="nt">-X</span> GET http://api.upwardfi.com/enrollments <span cl
 <td>Timestamp bank account was updated</td>
 </tr>
 </tbody></table>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET http://api.upwardfi.com/users/38SCJuMhzCYtMXJzGzJcht/bank_accounts <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET http://api.highline.co/users/38SCJuMhzCYtMXJzGzJcht/bank_accounts <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: base64(app_id:app_secret)"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> 
 </code></pre></div>
@@ -1189,6 +1225,7 @@ curl <span class="nt">-X</span> GET http://api.upwardfi.com/enrollments <span cl
   </span><span class="nl">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"909000614"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"routing_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"111000614"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"account_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"checking"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"is_virtual"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
   </span><span class="nl">"bank_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"J.P. Morgan Chase"</span><span class="w">
 </span><span class="p">}]</span><span class="w">
 </span></code></pre></div>
@@ -1198,7 +1235,7 @@ This API returns bank account details based on the specified user and bank accou
 
 ### HTTP Request
 
-`GET http://api.upwardfi.com/users/{id}/bank_accounts/{bank_account_id}`
+`GET http://api.highline.co/users/{id}/bank_accounts/{bank_account_id}`
 
 ### Parameters
 
@@ -1219,7 +1256,7 @@ Parameter | Type | Description
 `updated_at` | timestamp | Timestamp bank account was updated
 
 ```shell
-curl -X GET http://api.upwardfi.com/users/38SCJuMhzCYtMXJzGzJcht/bank_accounts/GtMXJzGzJcht38SCJuMhvG \
+curl -X GET http://api.highline.co/users/38SCJuMhzCYtMXJzGzJcht/bank_accounts/GtMXJzGzJcht38SCJuMhvG \
   -H "Authorization Bearer: base64(app_id:app_secret)" \
   -H "Content-Type: application/json" 
 ```
@@ -1235,8 +1272,8 @@ curl -X GET http://api.upwardfi.com/users/38SCJuMhzCYtMXJzGzJcht/bank_accounts/G
 }
 ``` -->
 <h1 id='client-sdk'>Client SDK</h1><h2 id='widget-installation'>Widget Installation</h2>
-<p>Upward&#39;s widget is a front-end UI element that allows users to grant your application access to their work accounts and to set up automated payments directly from their paychecks. It can be displayed on any part of your application.</p>
-<h3 id='config-parameters'>Config parameters</h3>
+<p>Highline&#39;s widget is a front-end UI element that allows users to grant your application access to their work accounts and to set up automated payments directly from their paychecks. It can be displayed on any part of your application. There are two ways to connect to the Highline Link. You can connect via a one-step or a two-step process.</p>
+<h2 id='one-step-connection'>One-Step Connection</h2><h3 id='config-parameters'>Config parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -1247,7 +1284,7 @@ curl -X GET http://api.upwardfi.com/users/38SCJuMhzCYtMXJzGzJcht/bank_accounts/G
 <tr>
 <td><code>plugin_key</code> <em>required</em></td>
 <td>string</td>
-<td>unique key corresponding to their application</td>
+<td>Unique key corresponding to their application</td>
 </tr>
 <tr>
 <td><code>api_host</code> <em>required</em></td>
@@ -1260,62 +1297,124 @@ curl -X GET http://api.upwardfi.com/users/38SCJuMhzCYtMXJzGzJcht/bank_accounts/G
 <td>Enrollment key that is returned from calling the Enrollments API</td>
 </tr>
 <tr>
-<td><code>employer_name</code> <em>optional</em></td>
+<td><code>product_id</code> <em>required</em></td>
 <td>string</td>
-<td>Employer name</td>
-</tr>
-<tr>
-<td><code>features</code> <em>required</em></td>
-<td>string</td>
-<td>Configures enrollment flow. Can be either employment_data/accept_payment/all</td>
+<td>Unique key provided via Highline&#39;s Client Portal</td>
 </tr>
 </tbody></table>
-
-<!-- ### Response -->
-
-<!-- Parameter | Type | Description
---------- | ------- | -----------
-user_id | string | unique user id
-status | string | response status -->
 <div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="o">&lt;!</span><span class="nx">DOCTYPE</span> <span class="nx">html</span><span class="o">&gt;</span>
 <span class="o">&lt;</span><span class="nx">html</span><span class="o">&gt;</span>
 <span class="o">&lt;</span><span class="nx">head</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="nx">meta</span> <span class="nx">charset</span><span class="o">=</span><span class="dl">"</span><span class="s2">utf-8</span><span class="dl">"</span> <span class="o">/&gt;</span>
 <span class="o">&lt;</span><span class="sr">/head</span><span class="err">&gt;
 </span><span class="o">&lt;</span><span class="nx">body</span><span class="o">&gt;</span>
-  <span class="o">&lt;</span><span class="nx">upward</span><span class="o">-</span><span class="nx">link</span><span class="o">&gt;&lt;</span><span class="sr">/upward-link</span><span class="err">&gt;
-</span>  <span class="o">&lt;</span><span class="nx">script</span> <span class="nx">src</span><span class="o">=</span><span class="dl">"</span><span class="s2">https://api.upwardfi.com/upward-link.js</span><span class="dl">"</span><span class="o">&gt;&lt;</span><span class="sr">/script</span><span class="err">&gt;
+  <span class="o">&lt;</span><span class="nx">highline</span><span class="o">-</span><span class="nx">link</span><span class="o">&gt;&lt;</span><span class="sr">/highline-link</span><span class="err">&gt;
+</span>  <span class="o">&lt;</span><span class="nx">script</span> <span class="nx">src</span><span class="o">=</span><span class="dl">"</span><span class="s2">https://highline-link-staging.s3.us-east-2.amazonaws.com/highline-link.js</span><span class="dl">"</span><span class="o">&gt;&lt;</span><span class="sr">/script</span><span class="err">&gt;
 </span>  <span class="o">&lt;</span><span class="nx">script</span> <span class="nx">type</span><span class="o">=</span><span class="dl">"</span><span class="s2">text/javascript</span><span class="dl">"</span><span class="o">&gt;</span>
-  <span class="nx">upwardLink</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
-    <span class="na">plugin_key</span><span class="p">:</span> <span class="dl">'</span><span class="s1">your_plugin_key</span><span class="dl">'</span><span class="p">,</span>
-    <span class="na">api_host</span><span class="p">:</span> <span class="dl">'</span><span class="s1">https://api-sandbox.upwardfi.com</span><span class="dl">'</span><span class="p">,</span>
-    <span class="na">enrollment_id</span><span class="p">:</span> <span class="dl">'</span><span class="s1">key_from_enrollment_api</span><span class="dl">'</span><span class="p">,</span>
-    <span class="na">employer_name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Kroger</span><span class="dl">'</span><span class="p">,</span>
-    <span class="na">features</span><span class="p">:</span> <span class="dl">'</span><span class="s1">all</span><span class="dl">'</span><span class="p">,</span>
-    <span class="na">on_success</span><span class="p">:</span> <span class="p">(</span><span class="nx">public_token</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">on_success!</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">public_token</span><span class="p">);</span>
-    <span class="p">},</span>
-    <span class="na">on_error</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">on_error!</span><span class="dl">'</span><span class="p">);</span>
-    <span class="p">},</span>
-    <span class="na">on_close</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">on_close!</span><span class="dl">'</span><span class="p">);</span>
-    <span class="p">}</span>
+    <span class="nx">highlineLink</span><span class="p">.</span><span class="nx">createPayrollPaymentConnection</span><span class="p">({</span>
+      <span class="na">plugin_key</span><span class="p">:</span> <span class="dl">'</span><span class="s1">your_plugin_key</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">api_host</span><span class="p">:</span> <span class="dl">'</span><span class="s1">https://stg-api.highline.co</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">enrollment_id</span><span class="p">:</span> <span class="dl">'</span><span class="s1">key_from_enrollment_api</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">product_id</span><span class="p">:</span> <span class="dl">'</span><span class="s1">key_from_client_portal</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">on_success</span><span class="p">:</span> <span class="p">({</span> <span class="nx">user_id</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">on_success! </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">user_id</span><span class="p">);</span>
+      <span class="p">},</span>
+      <span class="na">on_error</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">on_error!</span><span class="dl">'</span><span class="p">);</span>
+      <span class="p">},</span>
+      <span class="na">on_close</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">on_close!</span><span class="dl">'</span><span class="p">);</span>
+      <span class="p">}</span>
     <span class="p">});</span>
-  <span class="nx">upwardLink</span><span class="p">.</span><span class="nx">open</span><span class="p">();</span>
+    <span class="nx">highlineLink</span><span class="p">.</span><span class="nx">open</span><span class="p">();</span>
   <span class="o">&lt;</span><span class="sr">/script</span><span class="err">&gt;
 </span><span class="o">&lt;</span><span class="sr">/body</span><span class="err">&gt;
 </span><span class="o">&lt;</span><span class="sr">/html</span><span class="err">&gt;
-</span></code></pre></div>
-<!-- > The above command returns JSON structured like this:
-
-```json
-{
-    "user_ID": "erj4021",
-    "status": "success" 
-}
-``` -->
-<h1 id='errors'>Errors</h1>
+</span></code></pre></div><h2 id='two-step-connection'>Two-Step Connection</h2><h3 id='config-parameters-2'>Config Parameters</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>plugin_key</code> <em>required</em></td>
+<td>string</td>
+<td>Unique key corresponding to their application</td>
+</tr>
+<tr>
+<td><code>api_host</code> <em>required</em></td>
+<td>string</td>
+<td>Link to API environment (Sandbox/Production)</td>
+</tr>
+<tr>
+<td><code>product_id</code> <em>required</em></td>
+<td>string</td>
+<td>Unique key provided via Highline&#39;s Client Portal</td>
+</tr>
+<tr>
+<td><code>payroll_connection_id</code> <em>required</em></td>
+<td>string</td>
+<td>Id returned by Payroll Data Connection process</td>
+</tr>
+<tr>
+<td><code>enrollment_id</code> <em>required</em></td>
+<td>string</td>
+<td>Enrollment key that is returned from calling the Enrollments API</td>
+</tr>
+</tbody></table>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="o">&lt;!</span><span class="nx">DOCTYPE</span> <span class="nx">html</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nx">html</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nx">head</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="nx">meta</span> <span class="nx">charset</span><span class="o">=</span><span class="dl">"</span><span class="s2">utf-8</span><span class="dl">"</span> <span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="sr">/head</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="nx">body</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="nx">highline</span><span class="o">-</span><span class="nx">link</span><span class="o">&gt;&lt;</span><span class="sr">/highline-link</span><span class="err">&gt;
+</span>  <span class="o">&lt;</span><span class="nx">script</span> <span class="nx">src</span><span class="o">=</span><span class="dl">"</span><span class="s2">https://highline-link-staging.s3.us-east-2.amazonaws.com/highline-link.js</span><span class="dl">"</span><span class="o">&gt;&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span>  <span class="o">&lt;</span><span class="nx">script</span> <span class="nx">type</span><span class="o">=</span><span class="dl">"</span><span class="s2">text/javascript</span><span class="dl">"</span><span class="o">&gt;</span>
+    <span class="c1">// Step 1 - Payroll Data Connection</span>
+    <span class="nx">connectEmploymentData</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">highlineLink</span><span class="p">.</span><span class="nx">createPayrollDataConnection</span><span class="p">({</span>
+        <span class="na">plugin_key</span><span class="p">:</span> <span class="dl">'</span><span class="s1">your_plugin_key</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">api_host</span><span class="p">:</span> <span class="dl">'</span><span class="s1">https://stg-api.highline.co</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">product_id</span><span class="p">:</span> <span class="dl">'</span><span class="s1">key_from_client_portal</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">on_success</span><span class="p">:</span> <span class="p">({</span> <span class="nx">payroll_connection_id</span><span class="p">,</span> <span class="nx">user_id</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>       
+          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Payroll Connection </span><span class="dl">'</span><span class="p">,</span> <span class="nx">payroll_connection_id</span><span class="p">,</span> <span class="dl">'</span><span class="s1"> User ID:</span><span class="dl">'</span><span class="p">,</span> <span class="nx">user_id</span><span class="p">);</span>
+        <span class="p">},</span>
+        <span class="na">on_error</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">on_error!</span><span class="dl">'</span><span class="p">);</span>
+        <span class="p">},</span>
+        <span class="na">on_close</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">on_close!</span><span class="dl">'</span><span class="p">);</span>
+        <span class="p">}</span>
+      <span class="p">});</span>
+      <span class="nx">highlineLink</span><span class="p">.</span><span class="nx">open</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="c1">// Step 2 - Payment Connection</span>
+    <span class="nx">connectPayrollPayment</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">highlineLink</span><span class="p">.</span><span class="nx">createPayrollPaymentConnection</span><span class="p">({</span>
+        <span class="na">plugin_key</span><span class="p">:</span> <span class="dl">'</span><span class="s1">your_plugin_key</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">api_host</span><span class="p">:</span> <span class="dl">'</span><span class="s1">https://stg-api.highline.co</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">payroll_connection_id</span><span class="p">:</span> <span class="dl">'</span><span class="s1">id_from_highline_link_callback</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">enrollment_id</span><span class="p">:</span> <span class="dl">'</span><span class="s1">key_from_enrollment_api</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">product_id</span><span class="p">:</span> <span class="dl">'</span><span class="s1">key_from_client_portal</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">on_success</span><span class="p">:</span> <span class="p">({</span> <span class="nx">user_id</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">on_success! </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">user_id</span><span class="p">);</span>
+        <span class="p">},</span>
+        <span class="na">on_error</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">on_error!</span><span class="dl">'</span><span class="p">);</span>
+        <span class="p">},</span>
+        <span class="na">on_close</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">on_close!</span><span class="dl">'</span><span class="p">);</span>
+        <span class="p">}</span>
+      <span class="p">});</span>
+      <span class="nx">highlineLink</span><span class="p">.</span><span class="nx">open</span><span class="p">();</span>
+    <span class="p">}</span>
+  <span class="o">&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="sr">/body</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="sr">/html</span><span class="err">&gt;
+</span></code></pre></div><h1 id='errors'>Errors</h1>
 <p>Our API returns standard HTTP success or error status codes. For errors, we will also include extra information about what went wrong encoded in the response as JSON. The various HTTP status codes we might return are listed below.</p>
 
 <p>In general: Codes in the 2xx range indicate success. Codes in the 4xx range indicate an error that failed given the information provided (e.g., a required parameter was omitted). Codes in the 5xx range indicate an error with OneDB&#39;s servers (these are rare).</p>
