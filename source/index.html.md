@@ -538,14 +538,40 @@ curl -X GET http://api.highline.co/users/38SCJuMhzCYtMXJzGzJcht/bank_accounts/Gt
 
 ## Widget Installation
 
-Highline's widget is a front-end UI element that allows users to grant your application access to their work accounts, set up automated payments, and switch deposits directly from their paychecks. You can accept payments via a one-step or a two-step process.
+Highline's widget is a front-end UI element that allows users to grant your application access to their work accounts, set up automated payments, and switch deposits directly from their paychecks.
 
-### Config parameters
+
+## Direct Deposit Switch
+### Step 1 - Build the payload
+
+```javascript
+POST link/encode
+Bearer AccessToken
+Request:
+{
+ "bank_account": {
+   "bank_name": "New Bank",
+   "account_type": "checking",
+   "routing_number": "XXXXXXXX",
+   "account_number": "XXXXXXXXXX"
+ },
+ "feature": "direct_deposit_payment",
+ "link_key": "key_from_client_portal"
+}
+ 
+Response:
+{
+ "payload": "encrypted_value",
+}
+
+```
+
+### Step 2 - Open Highline-Link
 
 Name | Type | Description
 --------- | ------- | -----------
 `link_key` *required* | string | Unique key corresponding to your product
-`payload` *required* | string | Encrypted value from the 'highline_link/encode' endpoint
+`payload` *required* | string | Encrypted value from the 'link/encode' endpoint
 
 ```javascript
 <!DOCTYPE html>
@@ -558,8 +584,8 @@ Name | Type | Description
   <script src="https://link.highline.co/v1/highline-link.js"></script>
   <script type="text/javascript">
     highlineLink.connect({
-        link_key: 'key_from_client_portal',
-        payload: 'value_from_api',
+        link_key: 'key_from_client_app',
+        payload: 'value_from_link_encode_api',
         on_success: ({ user_id }) => {
           console.log('on_success! ' + user_id);
         },
@@ -576,95 +602,3 @@ Name | Type | Description
 </html>
 ```
 
-
-## Building the payload
-### One-Step Payment Connection
-```javascript
-POST highline_link/encode
-Basic Auth
-Request:
-{
- "enrollment_id",
- "feature": "direct_deposit_payment"
-}
- 
-Response:
-{
- "payload": "encrypted_value"
-}
-
-```
-
-### Two-Step Payment Connection
-
-
-```javascript
-// Step 1
-POST highline_link/encode
-Basic Auth
-Request:
-{
- "feature": "direct_deposit_payment"
-}
- 
-Response:
-{
- "payload": "encrypted_value"
-}
-
-
-// Step 2
-POST highline_link/encode
-Basic Auth
-Request:
-{
- "enrollment_id",
- "feature": "direct_deposit_payment"
-}
- 
-Response:
-{
- "payload": "encrypted_value"
-}
-
-```
-
-
-### Employment Data Connection
-```javascript
-POST highline_link/encode
-Basic Auth
-Request:
-{
- "feature": "employment_data"
-}
- 
-Response:
-{
- "payload": "encrypted_value"
-}
-
-```
-
-### Deposit Switch Connection
-
-```javascript
-POST highline_link/encode
-Basic Auth
-Request:
-{
- "bank_account": {
-   "bank_name": "New Bank",
-   "account_type": "checking",
-   "routing_number": "XXXXXXXX",
-   "account_number": "XXXXXXXXXX"
- },
- "feature": "direct_deposit_payment"
-}
- 
-Response:
-{
- "payload": "encrypted_value",
-}
-
-```
