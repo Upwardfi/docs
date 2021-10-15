@@ -316,6 +316,14 @@
           </li>
           <li>
             <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#access-token" class="toc-h2 toc-link" data-title="Access Token">Access Token</a>
+                  </li>
+                  <li>
+                    <a href="#refresh-token" class="toc-h2 toc-link" data-title="Refresh Token">Refresh Token</a>
+                  </li>
+              </ul>
           </li>
           <li>
             <a href="#rate-limiting" class="toc-h1 toc-link" data-title="Rate limiting">Rate limiting</a>
@@ -409,33 +417,143 @@
 <p>Highline&#39;s API is organized around REST. Our API has predictable, resource-oriented URLs, and uses HTTP response codes to indicate API errors. All requests should be over SSL. All request and response bodies, including errors are encoded in JSON.</p>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>https://api.highline.co
 </code></pre></div><h1 id='api-keys'>API Keys</h1>
-<p>Highline authenticates your API requests using your account’s API keys. If you do not include your key when making an API request, or use one that is incorrect or outdated, Highline returns an error.</p>
+<p>Highline&#39;s API uses JWT Token authentication. All API calls must include a bearer token.</p>
 
-<p>The API key should be kept confidential and only stored on your own servers. Your account’s API key can perform any API request to Highline without restriction.</p>
+<aside class="warning">
+    An invalid, missing or expired token will result in HTTP `401` Unauthorized responses.
+</aside>
+
+<p>The API key should be kept confidential and only stored on your own servers.</p>
 
 <p>Each account has a total of two keys: a key pair for test mode and live mode.</p>
-<h1 id='authentication'>Authentication</h1>
-<p>Authentication is done via the API key which you can find in your accounts settings endpoint. Your API keys carry many privileges, so be sure to keep them secure! Do not share your secret API keys in publicly accessible areas such as GitHub, client-side code, and so forth.</p>
-
-<p>Test mode secret keys have the prefix sk_test_ and live mode secret keys have the prefix sk_live_. Alternatively, you can use restricted API keys for granular permissions.</p>
-
-<p>Authentication to the API is performed via HTTP Basic Auth. Provide your API key as the basic auth username value. You do not need to provide a password.</p>
-
+<h1 id='authentication'>Authentication</h1><h2 id='access-token'>Access Token</h2>
 <blockquote>
-<p>If you need to authenticate via bearer auth (e.g., for a cross-origin request), use -H &quot;Authorization: Bearer base64(ai_test_app_id:sk_test_8fD39MqLyjWBarjtP1zdp7bc)&quot;</p>
-
 <p>Example Request:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET https://api.highline.co/enrollments <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer base64(ai_test_app_id:sk_test_8fD39MqLyjWBarjtP1zdp7bc)"</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST http://api.highline.co/auth/token <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">$'{
+    "api_key": "YOUR_API_KEY",
+    "secret" : "YOUR_SECRET"
+  }'</span>
 </code></pre></div>
 <blockquote>
-<p>All API requests must be made over HTTPS. Calls made over plain HTTP will fail. API requests without authentication will also fail.</p>
+<p>The above command returns JSON structured like this:
+Note that subject refers to your user ID.</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="nt">-X</span> GET http://api.highline.co/enrollments <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: your_api_key"</span>
-</code></pre></div><h1 id='rate-limiting'>Rate limiting</h1>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"access_token"</span><span class="p">:</span><span class="s2">"eyJhbGciOiJIUzI..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"refresh_token"</span><span class="p">:</span><span class="s2">"eyJhbGciOiJIUz..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"subject"</span><span class="p">:</span><span class="s2">"123e4567-e89b-12d3-a456-426614174000"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"expires_in"</span><span class="p">:</span><span class="mi">1634244444</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>All API requests must be made over HTTPS. Calls made over plain HTTP will fail. </p>
+</blockquote>
+
+<p>The endpoints uses JWT token authentication.</p>
+
+<p>You can have you token via the <code>API key</code> which you can find in your accounts settings endpoint. Your API keys carry many privileges, so be sure to keep them secure! Do not share your secret API keys in publicly accessible areas such as GitHub, client-side code, and so forth.</p>
+
+<p><br />
+Response:</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>access_token</code></td>
+<td>string</td>
+<td>Token used to perform requests</td>
+</tr>
+<tr>
+<td><code>refresh_token</code></td>
+<td>string</td>
+<td>Token used to request new tokens</td>
+</tr>
+<tr>
+<td><code>subject</code></td>
+<td>string</td>
+<td>Your API Key</td>
+</tr>
+<tr>
+<td><code>expires_in</code></td>
+<td>int</td>
+<td>Timestamp of token expire time</td>
+</tr>
+</tbody></table>
+
+<p><br />
+<br />
+<br /></p>
+<h3 id='api-request'>API Request</h3><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET https://api.highline.co/enrollments/123e4567-e89b-12d3-a456-426614174000 <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer eyJhbGciOiJIUzI..."</span>
+</code></pre></div>
+<blockquote>
+<p>Note: You will only be allowed to perform this request if this resource (enrollment in this example), refers to you somehow. We do not allow users to fetch alien information.</p>
+</blockquote>
+
+<p>Authentication to the API is performed via Bearer token. Provide your <code>access_token</code> as the Bearer auth value. You do not need to provide the secret again.</p>
+<h2 id='refresh-token'>Refresh Token</h2>
+<blockquote>
+<p>Example Request:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST http://api.highline.co/auth/token <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">$'{
+    "refresh_token" : "eyJhbGciOiJIUz...",
+    "subject":"123e4567-e89b-12d3-a456-426614174000",
+    "grant_type": "refresh_token"
+  }'</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"access_token"</span><span class="p">:</span><span class="s2">"eyJhbGciOiJIUzI..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"refresh_token"</span><span class="p">:</span><span class="s2">"eyJhbGciOiJIUz..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"subject"</span><span class="p">:</span><span class="s2">"123e4567-e89b-12d3-a456-426614174000"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"expires_in"</span><span class="p">:</span><span class="mi">1634244444</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>All tokens have a expiration time of 15 minutes.</p>
+
+<p>Once you have your token expired, you can ask a new one using the previous <code>refresh_token</code>, that have 30 days of expiration time.</p>
+
+<p>To ask brand new tokens you can do like so:</p>
+
+<p><br />
+Request:</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>refresh_token</code> <em>required</em></td>
+<td>string</td>
+<td>Token used to request new tokens</td>
+</tr>
+<tr>
+<td><code>subject</code> <em>required</em></td>
+<td>string</td>
+<td>Your API Key</td>
+</tr>
+<tr>
+<td><code>grant_type</code> <em>required</em></td>
+<td>string</td>
+<td>Default string &quot;refresh_token&quot;</td>
+</tr>
+</tbody></table>
+<h1 id='rate-limiting'>Rate limiting</h1>
 <p>Highline&#39;s API are rate limited to prevent abuse that would degrade our ability to maintain consistent API performance for all users. By default, each API key or app is rate limited at 10,000 requests per hour. If your requests are being rate limited, HTTP response code 429 will be returned with an rate_limit_exceeded error.</p>
 <h1 id='enrollments'>Enrollments</h1><h2 id='check-if-employer-is-supported'>Check if employer is supported</h2>
 <p>This API checks if user&#39;s employer is supported through Highline and will return success or failure based on eligibility.</p>
