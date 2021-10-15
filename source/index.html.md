@@ -84,7 +84,7 @@ Attribute | Type | Description
 <br />
 <br />
 
-### Simple Request with Token
+### API Request
 
 ```shell
 curl -X GET https://api.highline.co/enrollments/123e4567-e89b-12d3-a456-426614174000 \
