@@ -71,25 +71,14 @@ curl -X POST http://api.highline.co/auth/token \
 ```
 
 <br />
-Response description:
-<table>
-    <tr>
-        <td>access_token</td>
-        <td>Token used to perform requests</td>
-    </tr>
-    <tr>
-        <td>refresh_token</td>
-        <td>Token used to request new tokens</td>
-    </tr>
-    <tr>
-        <td>subject</td>
-        <td>Your User ID</td>
-    </tr>
-    <tr>
-        <td>expires_in</td>
-        <td>Timestamp of token expire time</td>
-    </tr>
-</table>
+Response:
+
+Attribute | Type | Description
+--------- | ------- | ------ | --------
+`access_token` | string | Token used to perform requests
+`refresh_token` | string | Token used to request new tokens
+`subject` | string | Your API Key
+`expires_in` | int | Timestamp of token expire time
 
 > All API requests must be made over HTTPS. Calls made over plain HTTP will fail. 
 
@@ -100,6 +89,15 @@ All tokens have a expiration time of 15 minutes.
 Once you have your token expired, you can ask a new one using the previous `refresh_token`, that have 30 days of expiration time.
 
 To ask brand new tokens you can do like so:
+
+<br />
+Request:
+
+Attribute | Type | Description
+--------- | ------- | ------ | --------
+`refresh_token` *required* | string | Token used to request new tokens
+`subject` *required* | string | Your API Key
+`grant_type` *required* | string | Default string "refresh_token"
 
 > Example Request:
 
