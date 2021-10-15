@@ -29,19 +29,23 @@ https://api.highline.co
 ```
 # API Keys
 
-Highline authenticates your API requests using your account’s API keys.
+Highline's API uses JWT Token authentication. All API calls must include a bearer token.
 
-The API key should be kept confidential and only stored on your own servers. Your account’s API key can perform any API request to Highline when you have the proper access rights.
+<aside class="warning">
+    An invalid, missing or expired token will result in HTTP `401` Unauthorized responses.
+</aside>
+
+The API key should be kept confidential and only stored on your own servers.
 
 Each account has a total of two keys: a key pair for test mode and live mode.
 
-# Authentication Token
+# Authentication
 
 The endpoints uses JWT token authentication.
 
 You can have you token via the `API key` which you can find in your accounts settings endpoint. Your API keys carry many privileges, so be sure to keep them secure! Do not share your secret API keys in publicly accessible areas such as GitHub, client-side code, and so forth.
 
-To fetch tokens you can use this endpoint:
+To request tokens you can use this endpoint:
 
 > Example Request:
 
@@ -59,12 +63,33 @@ curl -X POST http://api.highline.co/auth/token \
 
 ```json
 {
-  "access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
-  "refresh_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lcyIsImlhdCI6MTUxNjIzOTAyMn0.Hhqw-eBE8-9bkOa8QmgbxXKXhy9jMGf5Y8_5MRSehEo",
+  "access_token":"eyJhbGciOiJIUzI...",
+  "refresh_token":"eyJhbGciOiJIUz...",
   "subject":"123e4567-e89b-12d3-a456-426614174000",
   "expires_in":1634244444
 }
 ```
+
+<br />
+Response description:
+<table>
+    <tr>
+        <td>access_token</td>
+        <td>Token used to perform requests</td>
+    </tr>
+    <tr>
+        <td>refresh_token</td>
+        <td>Token used to request new tokens</td>
+    </tr>
+    <tr>
+        <td>subject</td>
+        <td>Your User ID</td>
+    </tr>
+    <tr>
+        <td>expires_in</td>
+        <td>Timestamp of token expire time</td>
+    </tr>
+</table>
 
 > All API requests must be made over HTTPS. Calls made over plain HTTP will fail. 
 
@@ -82,7 +107,7 @@ To ask brand new tokens you can do like so:
 curl -X POST http://api.highline.co/auth/token \
   -H "Content-Type: application/json" \
   -d $'{
-    "refresh_token" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lcyIsImlhdCI6MTUxNjIzOTAyMn0.Hhqw-eBE8-9bkOa8QmgbxXKXhy9jMGf5Y8_5MRSehEo",
+    "refresh_token" : "eyJhbGciOiJIUz...",
     "subject":"123e4567-e89b-12d3-a456-426614174000",
     "grant_type": "refresh_token"
   }'
@@ -92,8 +117,8 @@ curl -X POST http://api.highline.co/auth/token \
 
 ```json
 {
-  "access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
-  "refresh_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lcyIsImlhdCI6MTUxNjIzOTAyMn0.Hhqw-eBE8-9bkOa8QmgbxXKXhy9jMGf5Y8_5MRSehEo",
+  "access_token":"eyJhbGciOiJIUzI...",
+  "refresh_token":"eyJhbGciOiJIUz...",
   "subject":"123e4567-e89b-12d3-a456-426614174000",
   "expires_in":1634244444
 }
@@ -105,7 +130,7 @@ Authentication to the API is performed via Bearer token. Provide your `access_to
 
 ```shell
 curl -X GET https://api.highline.co/enrollments/123e4567-e89b-12d3-a456-426614174000 \
-  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+  -H "Authorization: Bearer eyJhbGciOiJIUzI..."
   ```
 > Note: You will only be allowed to perform this request if this resource (enrollment in this example), refers to you somehow. We do not allow users to fetch alien information.
 
