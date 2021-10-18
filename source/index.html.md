@@ -18,15 +18,16 @@ code_clipboard: true
 
 # Introduction
 
+```shell
+https://api.highline.co
+```
+
 Welcome to Highline - a seamless integration to setting up automated payments directly from your platform user's income. You can initiate enrollment by calling Highline's API endpoints and displaying the widget.
 
 This API reference provides information on available endpoints and how to interact with it.
 
 Highline's API is organized around REST. Our API has predictable, resource-oriented URLs, and uses HTTP response codes to indicate API errors. All requests should be over SSL. All request and response bodies, including errors are encoded in JSON.
 
-```shell
-https://api.highline.co
-```
 # API Keys
 
 Highline's API uses JWT Token authentication. All API calls must include a bearer token.
@@ -54,8 +55,7 @@ curl -X POST http://api.highline.co/auth/token \
   }'
 ```
 
-> The above command returns JSON structured like this:
-> Note that subject refers to your user ID.
+> Response
 
 ```json
 {
@@ -65,14 +65,12 @@ curl -X POST http://api.highline.co/auth/token \
   "expires_in":1634244444
 }
 ```
-> All API requests must be made over HTTPS. Calls made over plain HTTP will fail. 
 
 The endpoints uses JWT token authentication.
 
 You can have you token via the `API key` which you can find in your accounts settings endpoint. Your API keys carry many privileges, so be sure to keep them secure! Do not share your secret API keys in publicly accessible areas such as GitHub, client-side code, and so forth.
 
-<br />
-Response:
+### Parameters
 
 Attribute | Type | Description
 --------- | ------- | ------ | --------
@@ -80,21 +78,22 @@ Attribute | Type | Description
 `refresh_token` | string | Token used to request new tokens
 `subject` | string | Your API Key
 `expires_in` | int | Timestamp of token expire time
-<br />
-<br />
-<br />
 
-### API Request
+Authentication to the API is performed via Bearer token. Provide your `access_token` as the Bearer auth value. You do not need to provide the secret again.
+
+### HTTP Request
 
 ```shell
 curl -X GET https://api.highline.co/enrollments/123e4567-e89b-12d3-a456-426614174000 \
   -H "Authorization: Bearer eyJhbGciOiJIUzI..."
   ```
-> Note: You will only be allowed to perform this request if this resource (enrollment in this example), refers to you somehow. We do not allow users to fetch alien information.
 
-Authentication to the API is performed via Bearer token. Provide your `access_token` as the Bearer auth value. You do not need to provide the secret again.
+`GET http://api.highline.co/enrollments/{id}`
+
+All API requests must be made over HTTPS. Calls made over plain HTTP will fail.
 
 ## Refresh Token
+
 > Example Request:
 
 ```shell
@@ -107,7 +106,7 @@ curl -X POST http://api.highline.co/auth/token \
   }'
 ```
 
-> The above command returns JSON structured like this:
+> Response
 
 ```json
 {
@@ -133,13 +132,29 @@ Attribute | Type | Description
 `subject` *required* | string | Your API Key
 `grant_type` *required* | string | Default string "refresh_token"
 
+
 # Rate limiting
 
 Highline's API are rate limited to prevent abuse that would degrade our ability to maintain consistent API performance for all users. By default, each API key or app is rate limited at 10,000 requests per hour. If your requests are being rate limited, HTTP response code 429 will be returned with an rate_limit_exceeded error.
 
-# Enrollments
+# Employers
 
 ## Check if employer is supported
+
+```shell
+curl -X GET http://api.highline.co/supported_employers?q=Kroger \
+  -H "Authorization Bearer: AccessToken" \
+  -H "Content-Type: application/json"
+```
+
+> Response
+
+```json
+{
+  "is_supported": "true"
+}
+```
+
 This API checks if user's employer is supported through Highline and will return success or failure based on eligibility.
 
 `GET http://api.highline.co/supported_employers`
@@ -154,22 +169,29 @@ Name | Type | In | Description
 
 Name | Type | Description
 --------- | ------- | -----------
-`is_supported` | boolean | Returns true if supported and false if not. 
+`is_supported` | boolean | Returns true if supported and false if not.
+
+# Enrollments
+
+## Create user enrollment
 
 ```shell
-curl -X GET http://api.highline.co/supported_employers?q=Kroger \
-  -H "Authorization Bearer: base64(app_id:app_secret)" \
-  -H "Content-Type: application/json" 
+curl -X POST http://api.highline.co/enrollments \
+  -H "Authorization Bearer: AccessToken" \
+  -H "Content-Type: application/json" \
+  -d $'{
+    "payment_amount": 200.00
+  }'
 ```
 
-> The above command returns JSON structured like this:
+> Response
 
 ```json
 {
-  "is_supported": "true"
+  "id": "YtMXJzGzJcht38SCJuMhzC"
 }
 ```
-## Initiate user enrollment
+
 This API initiates user enrollment via Highline. By passing basic enrollment information Highline will return a key unique to the enrollment.
 
 ### HTTP Request
@@ -192,63 +214,18 @@ Name | Type | In | Description
 `return_w2_data` *optional* | boolean | body | Specify true if user w2 data must be returned
 `return_paystubs` *optional* | boolean | body | Specify true if link to user paystubs must be returned
 
-### Response 
+### Response
 
 Parameter | Type | Description
 --------- | ------- | -----------
 `id` | string | Returns enrollment id.
 
 
-```shell
-curl -X POST http://api.highline.co/enrollments \
-  -H "Authorization Bearer: base64(app_id:app_secret)" \
-  -H "Content-Type: application/json" \
-  -d $'{
-    "payment_amount": 200.00
-  }'
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": "YtMXJzGzJcht38SCJuMhzC"
-}
-```
-
 ## Add users to enrollments
-
-This API endpoint adds a user to the enrollment via Highline. By passing basic user information Highline will return a key unique to the user based on the provided enrollment.
-
-### HTTP Request
-
-`POST http://api.highline.co/enrollments/{id}/users`
-
-### Parameters
-
-Name | Type | In | Description
---------- | ------- | ------ | --------
-`id` *required* | string | path | Enrollment id
-`username` *required* | string | body | User name 
-`email` *required* | string | body | Email id of user
-`first_name` *required* |string | body | First Name
-`last_name` *required* | string | body | Last Name
-`ssn` *required* | string | body | Social Security Number
-`address` *required* | json | body | Nested JSON object containing user's address data
-`employer` *optional* | string | body | User employer name
-`phone` *optional* | string | body | Phone number
-`date_of_birth` *optional* | timestamp | body | Date of birth as Unix timestamp
-
-### Response 
-
-Parameter | Type | Description
---------- | ------- | -----------
-`id` | string | Returns user id.
-
 
 ```shell
 curl -X POST http://api.highline.co/enrollments/YtMXJzGzJcht38SCJuMhzC/users \
-  -H "Authorization Bearer: base64(app_id:app_secret)" \
+  -H "Authorization Bearer: AccessToken" \
   -H "Content-Type: application/json" \
   -d $'{
     "username": "john_smith",
@@ -268,7 +245,7 @@ curl -X POST http://api.highline.co/enrollments/YtMXJzGzJcht38SCJuMhzC/users \
   }'
 ```
 
-> The above command returns JSON structured like this:
+> Response
 
 ```json
 {
@@ -276,43 +253,43 @@ curl -X POST http://api.highline.co/enrollments/YtMXJzGzJcht38SCJuMhzC/users \
 }
 ```
 
-## Get enrolled users
-
-This API endpoint returns users that are enrolled based on the provided enrollment id.
+This API endpoint adds a user to the enrollment via Highline. By passing basic user information Highline will return a key unique to the user based on the provided enrollment.
 
 ### HTTP Request
 
-`GET http://api.highline.co/enrollments/{id}/users`
+`POST http://api.highline.co/enrollments/{id}/users`
 
 ### Parameters
 
 Name | Type | In | Description
 --------- | ------- | ------ | --------
 `id` *required* | string | path | Enrollment id
+`username` *required* | string | body | User name
+`email` *required* | string | body | Email id of user
+`first_name` *required* |string | body | First Name
+`last_name` *required* | string | body | Last Name
+`ssn` *required* | string | body | Social Security Number
+`address` *required* | json | body | Nested JSON object containing user's address data
+`employer` *optional* | string | body | User employer name
+`phone` *optional* | string | body | Phone number
+`date_of_birth` *optional* | timestamp | body | Date of birth as Unix timestamp
 
-### Response 
+### Response
 
 Parameter | Type | Description
 --------- | ------- | -----------
-`id` | string | User id
-`username` | string | User name 
-`email` | string | Email id of user
-`first_name` |string | First Name
-`last_name` | string | Last Name
-`ssn` | string | Social Security Number
-`address` | json | Address information
-`phone` | string | Phone number
-`date_of_birth`  | timestamp | Date of birth as Unix timestamp
-`created_at` | timestamp | Timestamp user was created 
-`updated_at` | timestamp | Timestamp user object was updated
+`id` | string | Returns user id.
+
+
+## Get enrolled users
 
 ```shell
 curl -X GET http://api.highline.co/enrollments/YtMXJzGzJcht38SCJuMhzC/users \
-  -H "Authorization Bearer: base64(app_id:app_secret)" \
-  -H "Content-Type: application/json" 
+  -H "Authorization Bearer: AccessToken" \
+  -H "Content-Type: application/json"
 ```
 
-> The above command returns JSON structured like this:
+> Response
 
 ```json
 [{
@@ -336,46 +313,46 @@ curl -X GET http://api.highline.co/enrollments/YtMXJzGzJcht38SCJuMhzC/users \
   }]
 ```
 
-# Profiles
 
-## Get User's profile 
-
-This API endpoint returns the user's profile based on the provided user id.
+This API endpoint returns users that are enrolled based on the provided enrollment id.
 
 ### HTTP Request
 
-`GET http://api.highline.co/users/{id}`
+`GET http://api.highline.co/enrollments/{id}/users`
 
 ### Parameters
 
 Name | Type | In | Description
---------- | ------- | ------- | ------
-`id` *required* | string | path | User id
+--------- | ------- | ------ | --------
+`id` *required* | string | path | Enrollment id
 
 ### Response
 
 Parameter | Type | Description
 --------- | ------- | -----------
 `id` | string | User id
-`username` | string | User name 
+`username` | string | User name
+`email` | string | Email id of user
 `first_name` |string | First Name
 `last_name` | string | Last Name
-`date_of_birth`  | timestamp | Date of birth as Unix timestamp
 `ssn` | string | Social Security Number
 `address` | json | Address information
-`email` | string | Email id of user
 `phone` | string | Phone number
-`created_at` | timestamp | Timestamp user was created 
+`date_of_birth`  | timestamp | Date of birth as Unix timestamp
+`created_at` | timestamp | Timestamp user was created
 `updated_at` | timestamp | Timestamp user object was updated
 
+# Profiles
+
+## Get User's profile
 
 ```shell
 curl -X GET http://api.highline.co/users/BGMXJzGzJcht38SCJuMhzF \
-  -H "Authorization Bearer: base64(app_id:app_secret)" \
-  -H "Content-Type: application/json" 
+  -H "Authorization Bearer: AccessToken" \
+  -H "Content-Type: application/json"
 ```
 
-> The above command returns JSON structured like this:
+> Response
 
 ```json
   {
@@ -400,9 +377,38 @@ curl -X GET http://api.highline.co/users/BGMXJzGzJcht38SCJuMhzF \
   }
 ```
 
-## Address Fields
+This API endpoint returns the user's profile based on the provided user id.
 
-A user's address is represented by another JSON object nested inside the User's JSON object. 
+`GET http://api.highline.co/users/{id}`
+
+
+`GET http://api.highline.co/users/{id}`
+
+### Parameters
+
+Name | Type | In | Description
+--------- | ------- | ------- | ------
+`id` *required* | string | path | User id
+
+### Response
+
+Parameter | Type | Description
+--------- | ------- | -----------
+`id` | string | User id
+`username` | string | User name
+`first_name` |string | First Name
+`last_name` | string | Last Name
+`date_of_birth`  | timestamp | Date of birth as Unix timestamp
+`ssn` | string | Social Security Number
+`address` | json | Address information
+`email` | string | Email id of user
+`phone` | string | Phone number
+`created_at` | timestamp | Timestamp user was created
+`updated_at` | timestamp | Timestamp user object was updated
+
+### Address Object
+
+A user's address is represented by another JSON object nested inside the User's JSON object.
 
 Parameter | Type | Description
 ----------|----------|---------
@@ -418,42 +424,15 @@ Parameter | Type | Description
 
 # Employments
 
-## Get employments 
-
-This API endpoint returns the user's employment details based on the provided user id.
-
-### HTTP Request
-
-`GET http://api.highline.co/users/{id}/employments`
-
-### Parameters
-
-Name | Type | In | Description
---------- | ------- | ------- | ------
-`id` *required* | string | path | User id
-
-### Response 
-
-Parameter | Type | Description
---------- | ------- | -----------
-`id` | string | Employment id
-`job_title` | string | Job title 
-`hire_datetime` | timestamp | Employment start date as Unix timestamp
-`termination_datetime` |timestamp | Employment end date as Unix timestamp
-`last_pay_date` | timestamp | Last paid date as Unix timestamp
-`base_pay` | float | Income base pay 
-`pay_cycle` | string | Frequency of pay outs e.g. hourly/weekly/bi-weekly etc. 
-`type` | string | Employment type e.g. Full-time/Part-time etc.
-`status`  | string | Employment status e.g. active/inactive etc.
-
+## Get employments
 
 ```shell
 curl -X GET http://api.highline.co/users/YtMXJzGzJcht38SCJuMhzC/employments \
-  -H "Authorization Bearer: base64(app_id:app_secret)" \
-  -H "Content-Type: application/json" 
+  -H "Authorization Bearer: AccessToken" \
+  -H "Content-Type: application/json"
 ```
 
-> The above command returns JSON structured like this:
+> Response
 
 ```json
 [{
@@ -467,9 +446,56 @@ curl -X GET http://api.highline.co/users/YtMXJzGzJcht38SCJuMhzC/employments \
   "status": "active"
 }]
 ```
+
+This API endpoint returns the user's employment details based on the provided user id.
+
+### HTTP Request
+
+`GET http://api.highline.co/users/{id}/employments`
+
+### Parameters
+
+Name | Type | In | Description
+--------- | ------- | ------- | ------
+`id` *required* | string | path | User id
+
+### Response
+
+Parameter | Type | Description
+--------- | ------- | -----------
+`id` | string | Employment id
+`job_title` | string | Job title
+`hire_datetime` | timestamp | Employment start date as Unix timestamp
+`termination_datetime` |timestamp | Employment end date as Unix timestamp
+`last_pay_date` | timestamp | Last paid date as Unix timestamp
+`base_pay` | float | Income base pay
+`pay_cycle` | string | Frequency of pay outs e.g. hourly/weekly/bi-weekly etc.
+`type` | string | Employment type e.g. Full-time/Part-time etc.
+`status`  | string | Employment status e.g. active/inactive etc.
+
 # Bank Accounts
 
 ## Add bank account
+
+```shell
+curl -X POST http://api.highline.co/users/38SCJuMhzCYtMXJzGzJcht/bank_accounts \
+  -H "Authorization Bearer: AccessToken" \
+  -H "Content-Type: application/json" \
+  -d $'{
+    "account_number": "874038933",
+    "routing_number": "111000614",
+    "account_type": "checking",
+    "bank_name": "J.P. Morgan Chase"
+  }'
+```
+
+> Response
+
+```json
+{
+  "id": "GzJcht38SCJuMhzCYtMXJz"
+}
+```
 
 This API adds a bank account to an enrollment via Highline. By passing basic bank account information Highline will return a key unique to the user based on the user id.
 
@@ -487,34 +513,32 @@ Name | Type | In | Description
 `account_type` *required* | string | body | Type of account (checking, savings, etc)
 `bank_name` *required* | string | body | Name of bank
 
-### Response 
+### Response
 
 Parameter | Type | Description
 --------- | ------- | -----------
 `id` | string | Returns bank account id.
 
+## Get bank accounts
 
 ```shell
-curl -X POST http://api.highline.co/users/38SCJuMhzCYtMXJzGzJcht/bank_accounts \
-  -H "Authorization Bearer: base64(app_id:app_secret)" \
-  -H "Content-Type: application/json" \
-  -d $'{
-    "account_number": "874038933",
-    "routing_number": "111000614",
-    "account_type": "checking",
-    "bank_name": "J.P. Morgan Chase"
-  }'
+curl -X GET http://api.highline.co/users/38SCJuMhzCYtMXJzGzJcht/bank_accounts \
+  -H "Authorization Bearer: AccessToken" \
+  -H "Content-Type: application/json"
 ```
 
-> The above command returns JSON structured like this:
+> Response
 
 ```json
-{
-  "id": "GzJcht38SCJuMhzCYtMXJz"
-}
+[{
+  "id": "GtMXJzGzJcht38SCJuMhvG",
+  "account_number": "909000614",
+  "routing_number": "111000614",
+  "account_type": "checking",
+  "is_virtual": false,
+  "bank_name": "J.P. Morgan Chase"
+}]
 ```
-
-## Get bank accounts
 
 This API returns user's bank accounts based on the specified user id.
 
@@ -528,7 +552,7 @@ Name | Type | In | Description
 --------- | ------- | ------- | ------
 `id` *required* | string | path | User id
 
-### Response 
+### Response
 
 Parameter | Type | Description
 --------- | ------- | -----------
@@ -538,27 +562,8 @@ Parameter | Type | Description
 `account_type` | string | Type of account (checking, savings, etc)
 `bank_name` | string | Name of bank
 `is_virtual` | boolean | Specifies whether this account is a virtual account or not
-`created_at` | timestamp | Timestamp bank account was created 
+`created_at` | timestamp | Timestamp bank account was created
 `updated_at` | timestamp | Timestamp bank account was updated
-
-```shell
-curl -X GET http://api.highline.co/users/38SCJuMhzCYtMXJzGzJcht/bank_accounts \
-  -H "Authorization Bearer: base64(app_id:app_secret)" \
-  -H "Content-Type: application/json" 
-```
-
-> The above command returns JSON structured like this:
-
-```json
-[{
-  "id": "GtMXJzGzJcht38SCJuMhvG",
-  "account_number": "909000614",
-  "routing_number": "111000614",
-  "account_type": "checking",
-  "is_virtual": false,
-  "bank_name": "J.P. Morgan Chase"
-}]
-```
 
 <!-- ## Get bank account
 
@@ -575,7 +580,7 @@ Name | Type | In | Description
 `id` *required* | string | path | User id
 `bank_account_id` *required* | string | path | Bank account id
 
-### Response 
+### Response
 
 Parameter | Type | Description
 --------- | ------- | -----------
@@ -583,13 +588,13 @@ Parameter | Type | Description
 `routing_number` | string | Routing number
 `account_ype` | string | Type of account (checking, savings, etc)
 `bank_name` | string | Name of bank
-`created_at` | timestamp | Timestamp bank account was created 
+`created_at` | timestamp | Timestamp bank account was created
 `updated_at` | timestamp | Timestamp bank account was updated
 
 ```shell
 curl -X GET http://api.highline.co/users/38SCJuMhzCYtMXJzGzJcht/bank_accounts/GtMXJzGzJcht38SCJuMhvG \
   -H "Authorization Bearer: base64(app_id:app_secret)" \
-  -H "Content-Type: application/json" 
+  -H "Content-Type: application/json"
 ```
 
 > The above command returns JSON structured like this:
@@ -603,17 +608,13 @@ curl -X GET http://api.highline.co/users/38SCJuMhzCYtMXJzGzJcht/bank_accounts/Gt
 }
 ``` -->
 
-
-
-
-
 # Client SDK
 
 ## Widget Installation
 
 Highline's widget is a front-end UI element that allows users to grant your application access to their work accounts, set up automated payments, and switch deposits directly from their paychecks.
 
-To use Highline-Link, pass in an object with the following parameters to the highlineLink.connect() function:
+To use Highline-Link, pass in an object with the following parameters to the `highlineLink.connect()` function:
 
 Parameter | Type | Description
 --------- | ------- | -----------
@@ -626,36 +627,37 @@ Parameter | Type | Description
 
 And then open with highlineLink.open()
 
-
 ## Direct Deposit Switch Guide
-### Step 1 - Get an access token from your server
+
+> Step 1
 
 ```javascript
-POST 'http://api.highline.co/auth/token'
-Bearer AccessToken
-Request:
-{
+curl -X POST 'http://api.highline.co/auth/token'
+-H "Authorization Bearer: AccessToken" \
+-d $'{
   "api_key": "YOUR_API_KEY",
   "secret" : "YOUR_SECRET"
-}
- 
-Response:
+}'
+```
+
+> Response:
+
+```json
 {
   "access_token":"eyJhbGciOiJIUzI...",
   "refresh_token":"eyJhbGciOiJIUz...",
   "subject":"123e4567-e89b-12d3-a456-426614174000",
   "expires_in":1634244444
 }
-
 ```
 
-### Step 2 - Build the payload
+> Step 2
 
 ```javascript
-POST 'http://api.highline.co/link/encode'
+curl -X POST 'http://api.highline.co/link/encode'
 Bearer AccessToken
-Request:
-{
+-H "Authorization Bearer: AccessToken" \
+-d $'{
  "bank_account": {
    "bank_name": "New Bank",
    "account_type": "checking",
@@ -663,16 +665,17 @@ Request:
    "account_number": "XXXXXXXXXX"
  },
  "feature": "direct_deposit_switch"
-}
- 
-Response:
+}'
+```
+
+> Response:
+```json
 {
  "payload": "encrypted_value",
 }
-
 ```
 
-### Step 3 - Connect and open Highline-Link
+> Step 3
 
 ```javascript
 <!DOCTYPE html>
@@ -703,3 +706,8 @@ Response:
 </html>
 ```
 
+### Step 1 - Get an access token from your server
+
+### Step 2 - Build the payload
+
+### Step 3 - Connect and open Highline-Link
