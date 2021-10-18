@@ -611,61 +611,68 @@ curl -X GET http://api.highline.co/users/38SCJuMhzCYtMXJzGzJcht/bank_accounts/Gt
 
 ## Widget Installation
 
-Highline's widget is a front-end UI element that allows users to grant your application access to their work accounts and to set up automated payments directly from their paychecks. It can be displayed on any part of your application. There are two ways to connect to the Highline Link. You can connect via a one-step or a two-step process.
+Highline's widget is a front-end UI element that allows users to grant your application access to their work accounts, set up automated payments, and switch deposits directly from their paychecks.
 
-## One-Step Connection
+To use Highline-Link, pass in an object with the following parameters to the highlineLink.connect() function:
 
-### Config parameters
-
-Name | Type | Description
+Parameter | Type | Description
 --------- | ------- | -----------
-`plugin_key` *required* | string | Unique key corresponding to their application
-`api_host` *required* | string | Link to API environment (Sandbox/Production)
-`enrollment_id` *required* | string | Enrollment key that is returned from calling the Enrollments API
-`product_id` *required* | string | Unique key provided via Highline's Client Portal
+`access_token` *required* | string | Value from the '/auth/token' endpoint
+`payload` *required* | string | Encrypted value from the '/link/encode' endpoint
+`on_success` *optional* | function | Callback function for success events
+`on_error` *optional* | function | Callback function for error events
+`on_close` *optional* | function | Callback function for close events
+
+
+And then open with highlineLink.open()
+
+
+## Direct Deposit Switch Guide
+### Step 1 - Get an access token from your server
 
 ```javascript
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8" />
-</head>
-<body>
-  <highline-link></highline-link>
-  <script src="https://highline-link-staging.s3.us-east-2.amazonaws.com/highline-link.js"></script>
-  <script type="text/javascript">
-    highlineLink.createPayrollPaymentConnection({
-      plugin_key: 'your_plugin_key',
-      api_host: 'https://stg-api.highline.co',
-      enrollment_id: 'key_from_enrollment_api',
-      product_id: 'key_from_client_portal',
-      on_success: ({ user_id }) => {
-        console.log('on_success! ' + user_id);
-      },
-      on_error: () => {
-        console.log('on_error!');
-      },
-      on_close: () => {
-        console.log('on_close!');
-      }
-    });
-    highlineLink.open();
-  </script>
-</body>
-</html>
+POST 'http://api.highline.co/auth/token'
+Bearer AccessToken
+Request:
+{
+  "api_key": "YOUR_API_KEY",
+  "secret" : "YOUR_SECRET"
+}
+ 
+Response:
+{
+  "access_token":"eyJhbGciOiJIUzI...",
+  "refresh_token":"eyJhbGciOiJIUz...",
+  "subject":"123e4567-e89b-12d3-a456-426614174000",
+  "expires_in":1634244444
+}
+
 ```
 
-## Two-Step Connection
+### Step 2 - Build the payload
 
-### Config Parameters
+```javascript
+POST 'http://api.highline.co/link/encode'
+Bearer AccessToken
+Request:
+{
+ "bank_account": {
+   "bank_name": "New Bank",
+   "account_type": "checking",
+   "routing_number": "XXXXXXXX",
+   "account_number": "XXXXXXXXXX"
+ },
+ "feature": "direct_deposit_switch"
+}
+ 
+Response:
+{
+ "payload": "encrypted_value",
+}
 
-Name | Type | Description
---------- | ------- | -----------
-`plugin_key` *required* | string | Unique key corresponding to their application
-`api_host` *required* | string | Link to API environment (Sandbox/Production)
-`product_id` *required* | string | Unique key provided via Highline's Client Portal
-`payroll_connection_id` *required* | string | Id returned by Payroll Data Connection process
-`enrollment_id` *required* | string | Enrollment key that is returned from calling the Enrollments API
+```
+
+### Step 3 - Connect and open Highline-Link
 
 ```javascript
 <!DOCTYPE html>
@@ -675,34 +682,11 @@ Name | Type | Description
 </head>
 <body>
   <highline-link></highline-link>
-  <script src="https://highline-link-staging.s3.us-east-2.amazonaws.com/highline-link.js"></script>
+  <script src="https://link.highline.co/v1/highline-link.js"></script>
   <script type="text/javascript">
-    // Step 1 - Payroll Data Connection
-    connectEmploymentData = () => {
-      highlineLink.createPayrollDataConnection({
-        plugin_key: 'your_plugin_key',
-        api_host: 'https://stg-api.highline.co',
-        product_id: 'key_from_client_portal',
-        on_success: ({ payroll_connection_id, user_id }) => {       
-          console.log('Payroll Connection ', payroll_connection_id, ' User ID:', user_id);
-        },
-        on_error: () => {
-          console.log('on_error!');
-        },
-        on_close: () => {
-          console.log('on_close!');
-        }
-      });
-      highlineLink.open();
-    }
-    // Step 2 - Payment Connection
-    connectPayrollPayment = () => {
-      highlineLink.createPayrollPaymentConnection({
-        plugin_key: 'your_plugin_key',
-        api_host: 'https://stg-api.highline.co',
-        payroll_connection_id: 'id_from_highline_link_callback',
-        enrollment_id: 'key_from_enrollment_api',
-        product_id: 'key_from_client_portal',
+    highlineLink.connect({
+        access_token: 'value_from_auth_token_api',
+        payload: 'value_from_link_encode_api',
         on_success: ({ user_id }) => {
           console.log('on_success! ' + user_id);
         },
@@ -712,10 +696,10 @@ Name | Type | Description
         on_close: () => {
           console.log('on_close!');
         }
-      });
-      highlineLink.open();
-    }
+    });
+    highlineLink.open();
   </script>
 </body>
 </html>
 ```
+
