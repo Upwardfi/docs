@@ -629,15 +629,15 @@ And then open with highlineLink.open()
 
 ## Direct Deposit Switch Guide
 
-> Step 1
+> Step 1 - Get an access token from your server
 
-```javascript
-curl -X POST 'http://api.highline.co/auth/token'
--H "Authorization Bearer: AccessToken" \
--d $'{
-  "api_key": "YOUR_API_KEY",
-  "secret" : "YOUR_SECRET"
-}'
+```shell
+curl -X POST http://api.highline.co/auth/token \
+  -H "Content-Type: application/json" \
+  -d $'{
+    "api_key": "YOUR_API_KEY",
+    "secret" : "YOUR_SECRET"
+  }'
 ```
 
 > Response:
@@ -651,31 +651,32 @@ curl -X POST 'http://api.highline.co/auth/token'
 }
 ```
 
-> Step 2
+> Step 2 - Build the payload
 
-```javascript
-curl -X POST 'http://api.highline.co/link/encode'
-Bearer AccessToken
--H "Authorization Bearer: AccessToken" \
--d $'{
- "bank_account": {
-   "bank_name": "New Bank",
-   "account_type": "checking",
-   "routing_number": "XXXXXXXX",
-   "account_number": "XXXXXXXXXX"
- },
- "feature": "direct_deposit_switch"
-}'
+```shell
+curl -X POST http://api.highline.co/link/encode \
+  -H "Authorization Bearer: AccessToken" \
+  -H "Content-Type: application/json" \
+  -d $'{
+  "bank_account": {
+    "bank_name": "New Bank",
+    "account_type": "checking",
+    "routing_number": "XXXXXXXX",
+    "account_number": "XXXXXXXXXX"
+  },
+  "feature": "direct_deposit_switch"
+  }'
 ```
 
 > Response:
+
 ```json
 {
  "payload": "encrypted_value",
 }
 ```
 
-> Step 3
+> Step 3 - Connect and open Highline-Link
 
 ```javascript
 <!DOCTYPE html>
