@@ -19,6 +19,7 @@ includes:
   - employments
   - bill_payments
   - direct_deposits
+  - pay_histories
   - bank_accounts
   - client_sdk
   - errors
