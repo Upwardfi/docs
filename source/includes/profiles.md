@@ -12,31 +12,32 @@ curl -X GET http://api.highline.co/users/BGMXJzGzJcht38SCJuMhzF \
 
 ```json
   {
-    "id": "BGMXJzGzJcht38SCJuMhzF",
-    "username": "robcantor1994",
-    "first_name" : "Robert",
-    "last_name" : "Cantor",
-    "email" : "robcantor94@gmail.com",
-    "ssn" : "444556666",
-    "address" : {
-      "id" : 12,
-      "line_1":"110 Lois Lane",
-      "line_2":"",
-      "city":"Kaufman",
-      "state":"TX",
-      "zip_code":75142,
-      "country":"US"
+    "id": "d134c.....",
+    "provider_user_id": "Argyle",
+    "first_name": "John",
+    "last_name": "Smith",
+    "ssn": "1234...",
+    "address": {
+      "id": 27,
+      "user_id": "d134c.....",
+      "company_id": null,
+      "line_1": "4194 Autry Lane",
+      "line_2": "",
+      "city": "Dallas",
+      "state": "TX",
+      "zip_code": "75001",
+      "country": "US"
     },
-    "phone": "5551293040",
-    "created_at":1626702186,
-    "updated_at":1626703216
+    "email": "john.smith143@highline.co",
+    "role": "member",
+    "ofac_validated": false,
+    "created_at": 1634744601,
+    "updated_at": 1634744601,
+    "social_security_number_hash": "08e3...."
   }
 ```
 
 This API endpoint returns the user's profile based on the provided user id.
-
-`GET http://api.highline.co/users/{id}`
-
 
 `GET http://api.highline.co/users/{id}`
 
@@ -50,17 +51,17 @@ Name | Type | In | Description
 
 Parameter | Type | Description
 --------- | ------- | -----------
-`id` | string | User id
-`username` | string | User name
-`first_name` |string | First Name
+`id` | string | Returns user id.
+`provider_user_id` | string | ID of employer
+`first_name` | string | First Name
 `last_name` | string | Last Name
-`date_of_birth`  | timestamp | Date of birth as Unix timestamp
-`ssn` | string | Social Security Number
-`address` | json | Address information
-`email` | string | Email id of user
-`phone` | string | Phone number
-`created_at` | timestamp | Timestamp user was created
-`updated_at` | timestamp | Timestamp user object was updated
+`ssn` | string | Social security number
+`address` | json | Address structure  
+`role` | string | Member's role 
+`ofac_validated` | bool | Ofac validation
+`created_at` | timestamp | Date of creation
+`updated_at` | timestamp | Date of update
+`social_security_number_hash` | string | SSN hashed
 
 ### Address Object
 
