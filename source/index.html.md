@@ -22,6 +22,7 @@ includes:
   - pay_histories
   - bank_accounts
   - settlements
+  - reports
   - client_sdk
   - errors
 

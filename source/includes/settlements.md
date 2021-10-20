@@ -29,7 +29,7 @@ curl -X GET http://api.highline.co/products/d5165d5168-61s3.../settlements \
 ]
 ```
 
-This API checks if user's employer is supported through Highline and will return success or failure based on eligibility.
+This API return the settlements, based on the provided product id.
 
 `GET http://api.highline.co/products/{id}/settlements`
 
