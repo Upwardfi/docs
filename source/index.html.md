@@ -21,6 +21,7 @@ includes:
   - direct_deposits
   - pay_histories
   - bank_accounts
+  - settlements
   - client_sdk
   - errors
 
