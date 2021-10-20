@@ -18,6 +18,7 @@ includes:
   - profiles
   - employments
   - bill_payments
+  - direct_deposits
   - bank_accounts
   - client_sdk
   - errors
