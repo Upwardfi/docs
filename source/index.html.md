@@ -17,6 +17,7 @@ includes:
   - enrollments
   - profiles
   - employments
+  - bill_payments
   - bank_accounts
   - client_sdk
   - errors
