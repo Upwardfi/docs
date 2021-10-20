@@ -3,7 +3,7 @@
 ## Add bank account
 
 ```shell
-curl -X POST http://api.highline.co/users/38SCJuMhzCYtMXJzGzJcht/bank_accounts \
+curl -X POST http://api.highline.co/users/c8e1f36e-c4.../bank_accounts \
   -H "Authorization Bearer: AccessToken" \
   -H "Content-Type: application/json" \
   -d $'{
@@ -18,11 +18,20 @@ curl -X POST http://api.highline.co/users/38SCJuMhzCYtMXJzGzJcht/bank_accounts \
 
 ```json
 {
-  "id": "GzJcht38SCJuMhzCYtMXJz"
+  "id": "c8e1f36e-c4...",
+  "user_id": "07662260-b7...",
+  "user": {},
+  "account_number": "***2345",
+  "routing_number": "6514321",
+  "account_type": "Checking",
+  "bank_name": "CRB",
+  "kind": "external",
+  "created_at": 1629916884,
+  "updated_at": 1629916884
 }
 ```
 
-This API adds a bank account to an enrollment via Highline. By passing basic bank account information Highline will return a key unique to the user based on the user id.
+This API adds a bank account to an enrollment via Highline. By passing basic bank account information Highline will return the bank account structure to the user based on the user id.
 
 ### HTTP Request
 
@@ -42,12 +51,25 @@ Name | Type | In | Description
 
 Parameter | Type | Description
 --------- | ------- | -----------
-`id` | string | Returns bank account id.
+`id` | string | Bank account ID
+`user_id` | string | User ID
+`user` | json | User structure
+`account_number` | string | Account number (masked)
+`routing_number` | string | Routing number 
+`account_type` | string | Account Type ("checking" "savings" "other")
+`bank_name` | string | Bank name
+`kind` | string | Kind of account ("internal" "virtual" "external")
+`created_at` | timestamp | Date of creation
+`updated_at` | timestamp | Date of update
 
-## Get bank accounts
+
+
+
+
+## Get user's bank accounts
 
 ```shell
-curl -X GET http://api.highline.co/users/38SCJuMhzCYtMXJzGzJcht/bank_accounts \
+curl -X GET http://api.highline.co/users/c8e1f36e-c4.../bank_accounts \
   -H "Authorization Bearer: AccessToken" \
   -H "Content-Type: application/json"
 ```
@@ -56,12 +78,16 @@ curl -X GET http://api.highline.co/users/38SCJuMhzCYtMXJzGzJcht/bank_accounts \
 
 ```json
 [{
-  "id": "GtMXJzGzJcht38SCJuMhvG",
-  "account_number": "909000614",
-  "routing_number": "111000614",
-  "account_type": "checking",
-  "is_virtual": false,
-  "bank_name": "J.P. Morgan Chase"
+  "id": "c8e1f36e-c4...",
+  "user_id": "07662260-b7...",
+  "user": {},
+  "account_number": "***2345",
+  "routing_number": "***4321",
+  "account_type": "Checking",
+  "bank_name": "CRB",
+  "kind": "external",
+  "created_at": 1629916884,
+  "updated_at": 1629916884
 }]
 ```
 
@@ -81,54 +107,222 @@ Name | Type | In | Description
 
 Parameter | Type | Description
 --------- | ------- | -----------
-`id` | string | Account id
-`account_number` |string | Account number
-`routing_number` | string | Routing number
-`account_type` | string | Type of account (checking, savings, etc)
-`bank_name` | string | Name of bank
-`is_virtual` | boolean | Specifies whether this account is a virtual account or not
-`created_at` | timestamp | Timestamp bank account was created
-`updated_at` | timestamp | Timestamp bank account was updated
+`id` | string | Bank account ID
+`user_id` | string | User ID
+`user` | json | User structure
+`account_number` | string | Account number (masked)
+`routing_number` | string | Routing number (masked)
+`account_type` | string | Account Type ("checking" "savings" "other")
+`bank_name` | string | Bank name
+`kind` | string | Kind of account ("internal" "virtual" "external")
+`created_at` | timestamp | Date of creation
+`updated_at` | timestamp | Date of update
 
-<!-- ## Get bank account
 
-This API returns bank account details based on the specified user and bank account id.
+
+
+
+## Get user's bank account
+
+```shell
+curl -X GET http://api.highline.co/users/c8e1f36e-c4.../bank_accounts/d938f36e-c4... \
+  -H "Authorization Bearer: AccessToken" \
+  -H "Content-Type: application/json"
+```
+
+> Response
+
+```json
+{
+  "id": "d938f36e-c4...",
+  "user_id": "c8e1f36e-c4...",
+  "user": {},
+  "account_number": "***2345",
+  "routing_number": "***4321",
+  "account_type": "Checking",
+  "bank_name": "CRB",
+  "kind": "external",
+  "created_at": 1629916884,
+  "updated_at": 1629916884
+}
+```
+
+This API returns a user's specified bank account based on the user id and bank account id.
 
 ### HTTP Request
 
-`GET http://api.highline.co/users/{id}/bank_accounts/{bank_account_id}`
+`GET http://api.highline.co/users/{id}/bank_accounts/{id_account}`
+
+### Parameters
+
+Name | Type | In | Description
+--------- | ------- | ------- | ------
+`id` *required* | string | path | User ID
+`id_account` *required* | string | path | Bank Account ID
+
+### Response
+
+Parameter | Type | Description
+--------- | ------- | -----------
+`id` | string | Bank account ID
+`user_id` | string | User ID
+`user` | json | User structure
+`account_number` | string | Account number (masked)
+`routing_number` | string | Routing number (masked)
+`account_type` | string | Account Type ("checking" "savings" "other")
+`bank_name` | string | Bank name
+`kind` | string | Kind of account ("internal" "virtual" "external")
+`created_at` | timestamp | Date of creation
+`updated_at` | timestamp | Date of update
+
+
+
+
+
+## Update Bank account
+
+```shell
+curl -X PUT http://api.highline.co/users/c8e1f36e-c4.../bank_accounts/f6e1645-fc56... \
+  -H "Authorization Bearer: AccessToken" \
+  -H "Content-Type: application/json" \
+  -d $'{
+    "account_number": "874038933",
+    "routing_number": "111000614",
+    "account_type": "checking",
+    "bank_name": "J.P. Morgan Chase"
+  }'
+```
+
+> Response
+
+```json
+{
+  "sucess": true
+}
+```
+
+This API updates a user bank account. By passing the bank account information you like, Highline will return a sucess message or an error.
+
+### HTTP Request
+
+`PUT http://api.highline.co/users/{id}/bank_accounts/{id_account}`
 
 ### Parameters
 
 Name | Type | In | Description
 --------- | ------- | ------- | ------
 `id` *required* | string | path | User id
-`bank_account_id` *required* | string | path | Bank account id
+`id_account` *required* | string | path | Bank account id
+`account_number` *optional* |string | body | Account number
+`routing_number` *optional* | string | body | Routing number
+`account_type` *optional* | string | body | Type of account (checking, savings, etc)
+`bank_name` *optional* | string | body | Name of bank
+
+
+
+
+
+
+## Get Account number
+
+```shell
+curl -X GET http://api.highline.co/users/c8e1f36e-c4.../bank_accounts/f6e1645-fc56.../account_number \
+  -H "Authorization Bearer: AccessToken" \
+  -H "Content-Type: application/json" \
+```
+
+> Response
+
+```json
+{
+  "account_number": "54615646"
+}
+```
+
+This API display an account number of a user bank account. Highline will return the number, if you are the owner of that account.
+
+### HTTP Request
+
+`GET http://api.highline.co/users/{id}/bank_accounts/{id_account}/account_number`
+
+### Parameters
+
+Name | Type | In | Description
+--------- | ------- | ------- | ------
+`id` *required* | string | path | User id
+`id_account` *required* | string | path | Bank account id
+
+
+
+## Get Account balance
+
+```shell
+curl -X GET http://api.highline.co/users/c8e1f36e-c4.../bank_accounts/f6e1645-fc56.../balance \
+  -H "Authorization Bearer: AccessToken" \
+  -H "Content-Type: application/json" \
+```
+
+> Response
+
+```json
+{
+  "bank_account_id": "f1566dss56-516s...",
+  "amount": 50000,
+  "time": 1629916884,
+}
+```
+
+This API display the balance of a user bank account. Highline will return the number.
+
+### HTTP Request
+
+`GET http://api.highline.co/users/{id}/bank_accounts/{id_account}/balance`
+
+### Parameters
+
+Name | Type | In | Description
+--------- | ------- | ------- | ------
+`id` *required* | string | path | User id
+`id_account` *required* | string | path | Bank account id
 
 ### Response
 
 Parameter | Type | Description
 --------- | ------- | -----------
-`account_number` |string | Account number
-`routing_number` | string | Routing number
-`account_ype` | string | Type of account (checking, savings, etc)
-`bank_name` | string | Name of bank
-`created_at` | timestamp | Timestamp bank account was created
-`updated_at` | timestamp | Timestamp bank account was updated
+`bank_account_id` | string | Bank account ID
+`amount` | int | Account balance (in cents)
+`time` | timestamp | Data time when this query was made
+
+
+
+
+
+
+## DELETE Account number
 
 ```shell
-curl -X GET http://api.highline.co/users/38SCJuMhzCYtMXJzGzJcht/bank_accounts/GtMXJzGzJcht38SCJuMhvG \
-  -H "Authorization Bearer: base64(app_id:app_secret)" \
-  -H "Content-Type: application/json"
+curl -X DELETE http://api.highline.co/users/c8e1f36e-c4.../bank_accounts/f6e1645-fc56... \
+  -H "Authorization Bearer: AccessToken" \
+  -H "Content-Type: application/json" \
 ```
 
-> The above command returns JSON structured like this:
+> Response
 
 ```json
 {
-  "account_number": "909000614",
-  "routing_number": "111000614",
-  "account_type": "checking",
-  "bank_name": "J.P. Morgan Chase"
+  "success": true
 }
-``` -->
+```
+
+This API will delete a user bank account.
+
+### HTTP Request
+
+`DELETE http://api.highline.co/users/{id}/bank_accounts/{id_account}/account_number`
+
+### Parameters
+
+Name | Type | In | Description
+--------- | ------- | ------- | ------
+`id` *required* | string | path | User id
+`id_account` *required* | string | path | Bank account id
