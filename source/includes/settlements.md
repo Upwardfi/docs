@@ -15,10 +15,7 @@ curl -X GET http://api.highline.co/products/d5165d5168-61s3.../settlements \
   {
     "id": "25de3...",
     "client_id": "bd545...",
-    "client": {},
     "product_id": "bd545...",
-    "product":{},
-    "bill_payments": [{}],
     "payment_order_id": "5465sd1fsd516...",
     "status": "completed",
     "total_amount": 50000,
@@ -48,10 +45,7 @@ Parameter | Type | Description
 --------- | ------- | -----------
 `id` | string | Settlement ID
 `client_id` | string | Company ID
-`client` | json | Company structure
 `product_id` | string | Product ID
-`product` | json | Product structure
-`bill_payments` | array | Bill payments structure
 `payment_order_id` | string | Order ID
 `status` | string | Settlement status ("pending" "sent" "completed" "cancelled")
 `total_amount` | int | Total amount (in cents)

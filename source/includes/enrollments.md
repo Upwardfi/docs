@@ -26,13 +26,17 @@ curl -X POST http://api.highline.co/enrollments \
   "id": "DVNA4...",
   "users": [
     {
-      "id": "1324defc-a8...",
-      "provider_user_id": "",
-      "email": "",
-      "role": "",
+      "id": "d134c.....",
+      "provider_user_id": "Argyle",
+      "first_name": "John",
+      "last_name": "Smith",
+      "ssn": "1234...",
+      "email": "john.smith143@highline.co",
+      "role": "member",
       "ofac_validated": false,
-      "created_at": 1634741667,
-      "updated_at": 1634741667
+      "created_at": 1634744601,
+      "updated_at": 1634744601,
+      "social_security_number_hash": "08e3...."
     }
   ],
   "product_id": "070b8618-7c...",

@@ -47,9 +47,14 @@ curl -X GET http://api.highline.co/products/d5165d5168-61s3.../reports \
 [{
   "id": "25de3...",
   "product_id": "bd545...",
-  "product": {},
   "file_name": "updated_file",
-  "client_report_entries": [],
+  "clienet_report_entries": [{
+    "client_user_id": "bd545...",
+    "enrollment_id": "bd545...",
+    "enrollment_current_balance": 12000,
+    "next_payment_due_amount": 2000,
+    "bill_payment_recurring_amount": 2000
+  }],
   "status": "new",
   "created_at": 1633824000,
   "updated_at": 1634428800
@@ -72,7 +77,6 @@ Parameter | Type | Description
 --------- | ------- | -----------
 `id` | string | Report ID
 `product_id` | string | Product ID
-`product` | json | Product structure
 `file_name` | string | File name
 `client_report_entries` | array | Collection of report entries
 `status` | string | Report status ("new" "error" "processed")

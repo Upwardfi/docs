@@ -14,9 +14,34 @@ curl -X GET http://api.highline.co/users/6516515-651.../payout_histories \
 [{
   "id": "ca71927a-c5...",
   "user_id": "ae16efec-d1...",
-  "user": {},
   "employment_id": "d6b10b60-55...",
-  "employment": {},
+  "employment": {
+    "id": "d6b10b60-55...",
+    "user_id": "ae16efec-d1...",
+    "employer_id": "d5b6c756-f9...",
+    "employer": {
+      "id": "d5b6c756-f9...",
+      "name_hash": "bd545a0280d...",
+      "name": "Kroger",
+      "type": "retail",
+      "api_supported": true,
+      "can_edit_allocations": true,
+      "max_number_of_allocations": 5,
+      "created_at": 1633123768,
+      "updated_at": 1633219200
+    },
+    "job_title": "1635 - Helpline Agent",
+    "start_date": 1393924766,
+    "end_date": 1636225502,
+    "base_pay": 25599,
+    "base_annual_income": 25599,
+    "provider_pay_cycle": "weekly",
+    "pay_currency": "USD",
+    "type": "full-time",
+    "status": "active",
+    "created_at": 1633633503,
+    "updated_at": 1633633503
+  },
   "gross_amount": 50000,
   "net_amount": 10000,
   "currency": "usd",
@@ -47,7 +72,6 @@ Parameter | Type | Description
 --------- | ------- | -----------
 `id` | string | Payout Allocation ID
 `user_id` | string | User ID
-`user` | json | User structure
 `employment_id` | string | Employment ID
 `employment` | json | Employment structure
 `gross_amount` | int | Gross Amount (in cents)

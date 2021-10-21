@@ -85,8 +85,7 @@ curl -X GET http://api.highline.co/users/ae16efec-d1.../bill_payments \
   "ForecastedDueAmount": 0,
   "ForecastedDueDate": 0,
   "status": "paid",
-  "settlement_id": null,
-  "settlement": null,
+  "settlement_id": "e87f74be-c46...",
   "paid_at": 1631282525,
   "created_at": 1631304125,
   "updated_at": 1631304125
@@ -126,7 +125,6 @@ Parameter | Type | Description
 `ForecastedDueDate` | timestamp | Forecasted date to be paid (in cents)
 `status` | string | Status of the bill payment ("paid" "pending" "cancelled" "new" "on_track" "risk_of_error" "ready_to_pay" "initiated" "needs_attention") 
 `settlement_id` | string | Stettlement ID 
-`settlement` | json | Stettlement Structure 
 `paid_at` | timestamp | Date of payment (if paid)
 `created_at` | timestamp | Date of creation
 `updated_at` | timestamp | Date of update
@@ -208,8 +206,6 @@ curl -X GET http://api.highline.co/enrollments/ae16efec-d1.../bill_payments \
     "client_id": "bd545...",
     "client": {},
     "product_id": "bd545...",
-    "product":{},
-    "bill_payments": [{}],
     "payment_order_id": "5465sd1fsd516...",
     "status": "completed",
     "total_amount": 50000,
@@ -288,9 +284,9 @@ curl -X GET http://api.highline.co/bill_payments/ae16efec-d1.../transactions \
   "amount_expected": 50000,
   "amount_paid": 0,
   "paid": false,
-  "status": "",
+  "status": "pending",
   "type": "",
-  "payment_order_id": "",
+  "payment_order_id": "65s1f6s...",
   "created_at": 1631304126,
   "updated_at": 1631304126
 }]

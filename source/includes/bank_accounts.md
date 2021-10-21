@@ -20,7 +20,19 @@ curl -X POST http://api.highline.co/users/c8e1f36e-c4.../bank_accounts \
 {
   "id": "c8e1f36e-c4...",
   "user_id": "07662260-b7...",
-  "user": {},
+  "user": {
+    "id": "d134c.....",
+    "provider_user_id": "Argyle",
+    "first_name": "John",
+    "last_name": "Smith",
+    "ssn": "1234...",
+    "email": "john.smith143@highline.co",
+    "role": "member",
+    "ofac_validated": false,
+    "created_at": 1634744601,
+    "updated_at": 1634744601,
+    "social_security_number_hash": "08e3...."
+  },
   "account_number": "***2345",
   "routing_number": "6514321",
   "account_type": "Checking",
@@ -80,7 +92,19 @@ curl -X GET http://api.highline.co/users/c8e1f36e-c4.../bank_accounts \
 [{
   "id": "c8e1f36e-c4...",
   "user_id": "07662260-b7...",
-  "user": {},
+  "user": {
+    "id": "d134c.....",
+    "provider_user_id": "Argyle",
+    "first_name": "John",
+    "last_name": "Smith",
+    "ssn": "1234...",
+    "email": "john.smith143@highline.co",
+    "role": "member",
+    "ofac_validated": false,
+    "created_at": 1634744601,
+    "updated_at": 1634744601,
+    "social_security_number_hash": "08e3...."
+  },
   "account_number": "***2345",
   "routing_number": "***4321",
   "account_type": "Checking",
@@ -136,7 +160,19 @@ curl -X GET http://api.highline.co/users/c8e1f36e-c4.../bank_accounts/d938f36e-c
 {
   "id": "d938f36e-c4...",
   "user_id": "c8e1f36e-c4...",
-  "user": {},
+  "user": {
+    "id": "d134c.....",
+    "provider_user_id": "Argyle",
+    "first_name": "John",
+    "last_name": "Smith",
+    "ssn": "1234...",
+    "email": "john.smith143@highline.co",
+    "role": "member",
+    "ofac_validated": false,
+    "created_at": 1634744601,
+    "updated_at": 1634744601,
+    "social_security_number_hash": "08e3...."
+  },
   "account_number": "***2345",
   "routing_number": "***4321",
   "account_type": "Checking",
