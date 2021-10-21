@@ -346,6 +346,9 @@
                     <a href="#add-users-to-enrollments" class="toc-h2 toc-link" data-title="Add users to enrollments">Add users to enrollments</a>
                   </li>
                   <li>
+                    <a href="#get-enrollment" class="toc-h2 toc-link" data-title="Get enrollment">Get enrollment</a>
+                  </li>
+                  <li>
                     <a href="#get-enrolled-users" class="toc-h2 toc-link" data-title="Get enrolled users">Get enrolled users</a>
                   </li>
               </ul>
@@ -362,7 +365,40 @@
             <a href="#employments" class="toc-h1 toc-link" data-title="Employments">Employments</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-employments" class="toc-h2 toc-link" data-title="Get employments">Get employments</a>
+                    <a href="#get-user-39-s-employments" class="toc-h2 toc-link" data-title="Get user's employments">Get user's employments</a>
+                  </li>
+                  <li>
+                    <a href="#get-employment" class="toc-h2 toc-link" data-title="Get employment">Get employment</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#bill-payments" class="toc-h1 toc-link" data-title="Bill Payments">Bill Payments</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-user-39-s-bill-payments" class="toc-h2 toc-link" data-title="Get User's Bill Payments">Get User's Bill Payments</a>
+                  </li>
+                  <li>
+                    <a href="#get-enrollment-39-s-bill-payments" class="toc-h2 toc-link" data-title="Get Enrollment's Bill Payments">Get Enrollment's Bill Payments</a>
+                  </li>
+                  <li>
+                    <a href="#get-bill-payment-39-s-transactions" class="toc-h2 toc-link" data-title="Get Bill Payment's transactions">Get Bill Payment's transactions</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#direct-deposits" class="toc-h1 toc-link" data-title="Direct Deposits">Direct Deposits</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-user-39-s-direct-deposits" class="toc-h2 toc-link" data-title="Get User's direct deposits">Get User's direct deposits</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#pay-histories" class="toc-h1 toc-link" data-title="Pay histories">Pay histories</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-user-39-s-pay-histories" class="toc-h2 toc-link" data-title="Get User's Pay histories">Get User's Pay histories</a>
                   </li>
               </ul>
           </li>
@@ -373,7 +409,41 @@
                     <a href="#add-bank-account" class="toc-h2 toc-link" data-title="Add bank account">Add bank account</a>
                   </li>
                   <li>
-                    <a href="#get-bank-accounts" class="toc-h2 toc-link" data-title="Get bank accounts">Get bank accounts</a>
+                    <a href="#get-user-39-s-bank-accounts" class="toc-h2 toc-link" data-title="Get user's bank accounts">Get user's bank accounts</a>
+                  </li>
+                  <li>
+                    <a href="#get-user-39-s-bank-account" class="toc-h2 toc-link" data-title="Get user's bank account">Get user's bank account</a>
+                  </li>
+                  <li>
+                    <a href="#update-bank-account" class="toc-h2 toc-link" data-title="Update Bank account">Update Bank account</a>
+                  </li>
+                  <li>
+                    <a href="#get-account-number" class="toc-h2 toc-link" data-title="Get Account number">Get Account number</a>
+                  </li>
+                  <li>
+                    <a href="#get-account-balance" class="toc-h2 toc-link" data-title="Get Account balance">Get Account balance</a>
+                  </li>
+                  <li>
+                    <a href="#delete-account-number" class="toc-h2 toc-link" data-title="DELETE Account number">DELETE Account number</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#settlements" class="toc-h1 toc-link" data-title="Settlements">Settlements</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#check-product-39-s-settlements" class="toc-h2 toc-link" data-title="Check product's settlements">Check product's settlements</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#reports" class="toc-h1 toc-link" data-title="Reports">Reports</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#add-product-39-s-report" class="toc-h2 toc-link" data-title="Add product's report">Add product's report</a>
+                  </li>
+                  <li>
+                    <a href="#check-product-39-s-reports" class="toc-h2 toc-link" data-title="Check product's reports">Check product's reports</a>
                   </li>
               </ul>
           </li>
@@ -542,21 +612,33 @@ Request:</p>
 </tbody></table>
 <h1 id='rate-limiting'>Rate limiting</h1>
 <p>Highline&#39;s API are rate limited to prevent abuse that would degrade our ability to maintain consistent API performance for all users. By default, each API key or app is rate limited at 10,000 requests per hour. If your requests are being rate limited, HTTP response code 429 will be returned with an rate_limit_exceeded error.</p>
-<h1 id='employers'>Employers</h1><h2 id='check-if-employer-is-supported'>Check if employer is supported</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET http://api.highline.co/supported_employers?q<span class="o">=</span>Kroger <span class="se">\</span>
+<h1 id='employers'>Employers</h1><h2 id='check-if-employer-is-supported'>Check if employer is supported</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET http://api.highline.co/employers?q<span class="o">=</span>Kroger <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
 </code></pre></div>
 <blockquote>
 <p>Response</p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"is_supported"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="w">
-</span><span class="p">}</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"25de3..."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bd545..."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kroger"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"retail"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"has_two_fa"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"api_supported"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"can_edit_allocations"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"max_number_of_allocations"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"exclude_employer_enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1633824000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1634428800</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
 </span></code></pre></div>
 <p>This API checks if user&#39;s employer is supported through Highline and will return success or failure based on eligibility.</p>
 
-<p><code>GET http://api.highline.co/supported_employers</code></p>
-<h3 id='parameters-2'>Parameters</h3>
+<p><code>GET http://api.highline.co/employers</code></p>
+<h3 id='parameters'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -573,37 +655,59 @@ Request:</p>
 </tr>
 </tbody></table>
 <h3 id='response'>Response</h3>
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>is_supported</code></td>
-<td>boolean</td>
-<td>Returns true if supported and false if not.</td>
-</tr>
-</tbody></table>
+<p>Array of Employers Data that match query</p>
 <h1 id='enrollments'>Enrollments</h1><h2 id='create-user-enrollment'>Create user enrollment</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST http://api.highline.co/enrollments <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">$'{
-    "payment_amount": 200.00
+    "users": [{
+      "id": "1324defc-a8e..."
+    }],
+    "product_id": "6351fsd6fs-sdfs...",
+    "payment_amount": 20000,
+    "payment_frequency": "monthly",
+    "first_payment_date": 1634740754,
+    "application_reference_number": "16576",
+    "days_until_expires": 30
   }'</span>
 </code></pre></div>
 <blockquote>
 <p>Response</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"YtMXJzGzJcht38SCJuMhzC"</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DVNA4..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"users"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d134c....."</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"provider_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Argyle"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ssn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234..."</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john.smith143@highline.co"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"member"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ofac_validated"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1634744601</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1634744601</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"social_security_number_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"08e3...."</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"070b8618-7c..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"payment_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">20000</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"payment_frequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"monthly"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"first_payment_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1634740754</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"application_reference_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"16576"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"days_until_expires"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"fully_synced"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"new"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1634741667</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1634741667</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>This API initiates user enrollment via Highline. By passing basic enrollment information Highline will return a key unique to the enrollment.</p>
-<h3 id='http-request-2'>HTTP Request</h3>
+<p>This API initiates user enrollment via Highline. By passing basic enrollment information Highline will return an object to the enrollment.</p>
+<h3 id='http-request'>HTTP Request</h3>
 <p><code>POST http://api.highline.co/enrollments</code></p>
-<h3 id='parameters-3'>Parameters</h3>
+<h3 id='parameters'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -613,19 +717,31 @@ Request:</p>
 </tr>
 </thead><tbody>
 <tr>
-<td><code>payment_amount</code> <em>optional</em></td>
-<td>float</td>
+<td><code>users</code></td>
+<td>array</td>
 <td>body</td>
-<td>Recurring amount to be paid to you by the user</td>
+<td>Array of user objects that contain the member user ID</td>
 </tr>
 <tr>
-<td><code>payment_frequency</code> <em>optional</em></td>
+<td><code>product_id</code></td>
 <td>string</td>
 <td>body</td>
-<td>Frequency interval that user will make payments</td>
+<td>Product ID</td>
 </tr>
 <tr>
-<td><code>first_payment_date</code> <em>optional</em></td>
+<td><code>payment_amount</code></td>
+<td>int</td>
+<td>body</td>
+<td>Recurring amount to be paid to you by the user (in cents)</td>
+</tr>
+<tr>
+<td><code>payment_frequency</code></td>
+<td>string</td>
+<td>body</td>
+<td>Frequency interval that user will make payments (&quot;unknown&quot; &quot;bi-weekly even&quot; &quot;bi-weekly odd&quot; &quot;weekly&quot; &quot;monthly&quot; &quot;semi-monthly&quot;)</td>
+</tr>
+<tr>
+<td><code>first_payment_date</code></td>
 <td>timestamp</td>
 <td>body</td>
 <td>Date of first payment as Unix timestamp</td>
@@ -637,49 +753,13 @@ Request:</p>
 <td>Loan application number</td>
 </tr>
 <tr>
-<td><code>account_reference_number</code> <em>optional</em></td>
-<td>string</td>
-<td>body</td>
-<td>Your account reference number</td>
-</tr>
-<tr>
-<td><code>days_until_expires</code> <em>optional</em></td>
+<td><code>days_until_expires</code></td>
 <td>int</td>
 <td>body</td>
 <td>Number of days before this enrollment request expires</td>
 </tr>
-<tr>
-<td><code>required_employment_start_date</code> <em>optional</em></td>
-<td>timestamp</td>
-<td>body</td>
-<td>Start date of employment as Unix timestamp</td>
-</tr>
-<tr>
-<td><code>required_gross_income</code> <em>optional</em></td>
-<td>float</td>
-<td>body</td>
-<td>User gross income</td>
-</tr>
-<tr>
-<td><code>required_net_income</code> <em>optional</em></td>
-<td>float</td>
-<td>body</td>
-<td>User net income</td>
-</tr>
-<tr>
-<td><code>return_w2_data</code> <em>optional</em></td>
-<td>boolean</td>
-<td>body</td>
-<td>Specify true if user w2 data must be returned</td>
-</tr>
-<tr>
-<td><code>return_paystubs</code> <em>optional</em></td>
-<td>boolean</td>
-<td>body</td>
-<td>Specify true if link to user paystubs must be returned</td>
-</tr>
 </tbody></table>
-<h3 id='response-2'>Response</h3>
+<h3 id='response'>Response</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -692,23 +772,83 @@ Request:</p>
 <td>string</td>
 <td>Returns enrollment id.</td>
 </tr>
+<tr>
+<td><code>users</code></td>
+<td>array</td>
+<td>Returns array of users.</td>
+</tr>
+<tr>
+<td><code>product_id</code></td>
+<td>string</td>
+<td>product id.</td>
+</tr>
+<tr>
+<td><code>payment_amount</code></td>
+<td>int</td>
+<td>Recurring amount to be paid to you by the user (in cents)</td>
+</tr>
+<tr>
+<td><code>payment_frequency</code></td>
+<td>string</td>
+<td>Frequency interval that user will make payments</td>
+</tr>
+<tr>
+<td><code>first_payment_date</code></td>
+<td>timestamp</td>
+<td>Date of first payment as Unix timestamp</td>
+</tr>
+<tr>
+<td><code>application_reference_number</code></td>
+<td>string</td>
+<td>Loan application number</td>
+</tr>
+<tr>
+<td><code>days_until_expires</code></td>
+<td>int</td>
+<td>Number of days before this enrollment request expires</td>
+</tr>
+<tr>
+<td><code>fully_synced</code></td>
+<td>bool</td>
+<td></td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td>string</td>
+<td>Enrollment status</td>
+</tr>
+<tr>
+<td><code>status_description</code></td>
+<td>string</td>
+<td>Description of status</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td>timestamp</td>
+<td>Date of creation</td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td>timestamp</td>
+<td>Date of update</td>
+</tr>
 </tbody></table>
 <h2 id='add-users-to-enrollments'>Add users to enrollments</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST http://api.highline.co/enrollments/YtMXJzGzJcht38SCJuMhzC/users <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">$'{
-    "username": "john_smith",
     "first_name" : "John",
     "last_name" : "Smith",
-    "email" : "john.smith13@gmail.com",
-    "ssn" : "111223333",
+    "email" : "john.smith13@highline.co",
+    "ssn" : "12345...",
+    "role" : "member",
     "address" : {
-      "id" : 83
+      "id" : 83,
       "line_1" : "4194 Autry Lane",
       "line_2" : "",
       "city" : "Dallas",
       "state" : "TX",
-      "zip_code" : 75001,
+      "zip_code" : "75001",
       "country":"US"
     }
   }'</span>
@@ -717,13 +857,34 @@ Request:</p>
 <p>Response</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"38SCJuMhzCYtMXJzGzJcht"</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d134c....."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"provider_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Argyle"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"ssn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d134c....."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"line_1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4194 Autry Lane"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"line_2"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dallas"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TX"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"zip_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"75001"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john.smith143@highline.co"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"member"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"ofac_validated"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1634744601</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1634744601</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"social_security_number_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"08e3...."</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>This API endpoint adds a user to the enrollment via Highline. By passing basic user information Highline will return a key unique to the user based on the provided enrollment.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
+<p>This API endpoint adds a user to the enrollment via Highline. By passing basic user information Highline will return an user object based on the provided enrollment.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
 <p><code>POST http://api.highline.co/enrollments/{id}/users</code></p>
-<h3 id='parameters-4'>Parameters</h3>
+<h3 id='parameters-2'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -732,18 +893,6 @@ Request:</p>
 <th>Description</th>
 </tr>
 </thead><tbody>
-<tr>
-<td><code>id</code> <em>required</em></td>
-<td>string</td>
-<td>path</td>
-<td>Enrollment id</td>
-</tr>
-<tr>
-<td><code>username</code> <em>required</em></td>
-<td>string</td>
-<td>body</td>
-<td>User name</td>
-</tr>
 <tr>
 <td><code>email</code> <em>required</em></td>
 <td>string</td>
@@ -775,12 +924,6 @@ Request:</p>
 <td>Nested JSON object containing user&#39;s address data</td>
 </tr>
 <tr>
-<td><code>employer</code> <em>optional</em></td>
-<td>string</td>
-<td>body</td>
-<td>User employer name</td>
-</tr>
-<tr>
 <td><code>phone</code> <em>optional</em></td>
 <td>string</td>
 <td>body</td>
@@ -791,6 +934,126 @@ Request:</p>
 <td>timestamp</td>
 <td>body</td>
 <td>Date of birth as Unix timestamp</td>
+</tr>
+</tbody></table>
+<h3 id='response-2'>Response</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>string</td>
+<td>Returns user id.</td>
+</tr>
+<tr>
+<td><code>provider_user_id</code></td>
+<td>string</td>
+<td>ID of employer</td>
+</tr>
+<tr>
+<td><code>first_name</code></td>
+<td>string</td>
+<td>First Name</td>
+</tr>
+<tr>
+<td><code>last_name</code></td>
+<td>string</td>
+<td>Last Name</td>
+</tr>
+<tr>
+<td><code>ssn</code></td>
+<td>string</td>
+<td>Social security number</td>
+</tr>
+<tr>
+<td><code>address</code></td>
+<td>json</td>
+<td>Address structure</td>
+</tr>
+<tr>
+<td><code>role</code></td>
+<td>string</td>
+<td>Member&#39;s role</td>
+</tr>
+<tr>
+<td><code>ofac_validated</code></td>
+<td>bool</td>
+<td>Ofac validation</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td>timestamp</td>
+<td>Date of creation</td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td>timestamp</td>
+<td>Date of update</td>
+</tr>
+<tr>
+<td><code>social_security_number_hash</code></td>
+<td>string</td>
+<td>SSN hashed</td>
+</tr>
+</tbody></table>
+<h2 id='get-enrollment'>Get enrollment</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET http://api.highline.co/enrollments/YtMXJzGzJcht38SCJuMhzC <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
+</code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DVNA..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"users"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d134c608-5a..."</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"provider_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ssn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456516"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john.smith143@highline.co"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"member"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ofac_validated"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1634744601</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1634744601</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"social_security_number_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"08e3..."</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"070b8618-7c..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"payment_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">20000</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"payment_frequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"monthly"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"first_payment_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1634740754</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"application_reference_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"16576"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"days_until_expires"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"fully_synced"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"new"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1634741667</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1634744602</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This API endpoint returns enrollment based on the provided enrollment ID.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>GET http://api.highline.co/enrollments/{id}</code></p>
+<h3 id='parameters-3'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>In</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <em>required</em></td>
+<td>string</td>
+<td>path</td>
+<td>Enrollment id</td>
 </tr>
 </tbody></table>
 <h3 id='response-3'>Response</h3>
@@ -804,7 +1067,67 @@ Request:</p>
 <tr>
 <td><code>id</code></td>
 <td>string</td>
-<td>Returns user id.</td>
+<td>Returns enrollment id.</td>
+</tr>
+<tr>
+<td><code>users</code></td>
+<td>array</td>
+<td>Returns array of users.</td>
+</tr>
+<tr>
+<td><code>product_id</code></td>
+<td>string</td>
+<td>product id.</td>
+</tr>
+<tr>
+<td><code>payment_amount</code></td>
+<td>int</td>
+<td>Recurring amount to be paid to you by the user (in cents)</td>
+</tr>
+<tr>
+<td><code>payment_frequency</code></td>
+<td>string</td>
+<td>Frequency interval that user will make payments</td>
+</tr>
+<tr>
+<td><code>first_payment_date</code></td>
+<td>timestamp</td>
+<td>Date of first payment as Unix timestamp</td>
+</tr>
+<tr>
+<td><code>application_reference_number</code></td>
+<td>string</td>
+<td>Loan application number</td>
+</tr>
+<tr>
+<td><code>days_until_expires</code></td>
+<td>int</td>
+<td>Number of days before this enrollment request expires</td>
+</tr>
+<tr>
+<td><code>fully_synced</code></td>
+<td>bool</td>
+<td></td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td>string</td>
+<td>Enrollment status</td>
+</tr>
+<tr>
+<td><code>status_description</code></td>
+<td>string</td>
+<td>Description of status</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td>timestamp</td>
+<td>Date of creation</td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td>timestamp</td>
+<td>Date of update</td>
 </tr>
 </tbody></table>
 <h2 id='get-enrolled-users'>Get enrolled users</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET http://api.highline.co/enrollments/YtMXJzGzJcht38SCJuMhzC/users <span class="se">\</span>
@@ -815,29 +1138,34 @@ Request:</p>
 <p>Response</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"38SCJuMhzCYtMXJzGzJcht"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john_smith"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"first_name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"last_name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"email"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"john.smith13@gmail.com"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"ssn"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"111223333"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"address"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">83</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"line_1"</span><span class="p">:</span><span class="s2">"4194 Autry Lane"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"line_2"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"city"</span><span class="p">:</span><span class="s2">"Dallas"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"state"</span><span class="p">:</span><span class="s2">"TX"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"zip_code"</span><span class="p">:</span><span class="mi">75001</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"country"</span><span class="p">:</span><span class="s2">"US"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="mi">1626701186</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="mi">1626701216</span><span class="w">
-  </span><span class="p">}]</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d134c....."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"provider_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Argyle"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"ssn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d134c....."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"line_1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4194 Autry Lane"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"line_2"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dallas"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TX"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"zip_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"75001"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john.smith143@highline.co"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"member"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"ofac_validated"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1634744601</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1634744601</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"social_security_number_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"08e3...."</span><span class="w">
+</span><span class="p">}]</span><span class="w">
 </span></code></pre></div>
 <p>This API endpoint returns users that are enrolled based on the provided enrollment id.</p>
 <h3 id='http-request-4'>HTTP Request</h3>
 <p><code>GET http://api.highline.co/enrollments/{id}/users</code></p>
-<h3 id='parameters-5'>Parameters</h3>
+<h3 id='parameters-4'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -864,17 +1192,12 @@ Request:</p>
 <tr>
 <td><code>id</code></td>
 <td>string</td>
-<td>User id</td>
+<td>Returns user id.</td>
 </tr>
 <tr>
-<td><code>username</code></td>
+<td><code>provider_user_id</code></td>
 <td>string</td>
-<td>User name</td>
-</tr>
-<tr>
-<td><code>email</code></td>
-<td>string</td>
-<td>Email id of user</td>
+<td>ID of employer</td>
 </tr>
 <tr>
 <td><code>first_name</code></td>
@@ -889,32 +1212,37 @@ Request:</p>
 <tr>
 <td><code>ssn</code></td>
 <td>string</td>
-<td>Social Security Number</td>
+<td>Social security number</td>
 </tr>
 <tr>
 <td><code>address</code></td>
 <td>json</td>
-<td>Address information</td>
+<td>Address structure</td>
 </tr>
 <tr>
-<td><code>phone</code></td>
+<td><code>role</code></td>
 <td>string</td>
-<td>Phone number</td>
+<td>Member&#39;s role</td>
 </tr>
 <tr>
-<td><code>date_of_birth</code></td>
-<td>timestamp</td>
-<td>Date of birth as Unix timestamp</td>
+<td><code>ofac_validated</code></td>
+<td>bool</td>
+<td>Ofac validation</td>
 </tr>
 <tr>
 <td><code>created_at</code></td>
 <td>timestamp</td>
-<td>Timestamp user was created</td>
+<td>Date of creation</td>
 </tr>
 <tr>
 <td><code>updated_at</code></td>
 <td>timestamp</td>
-<td>Timestamp user object was updated</td>
+<td>Date of update</td>
+</tr>
+<tr>
+<td><code>social_security_number_hash</code></td>
+<td>string</td>
+<td>SSN hashed</td>
 </tr>
 </tbody></table>
 <h1 id='profiles'>Profiles</h1><h2 id='get-user-39-s-profile'>Get User&#39;s profile</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET http://api.highline.co/users/BGMXJzGzJcht38SCJuMhzF <span class="se">\</span>
@@ -925,32 +1253,34 @@ Request:</p>
 <p>Response</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BGMXJzGzJcht38SCJuMhzF"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"robcantor1994"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"first_name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Robert"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"last_name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Cantor"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"email"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"robcantor94@gmail.com"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"ssn"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"444556666"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"address"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"line_1"</span><span class="p">:</span><span class="s2">"110 Lois Lane"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"line_2"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"city"</span><span class="p">:</span><span class="s2">"Kaufman"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"state"</span><span class="p">:</span><span class="s2">"TX"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"zip_code"</span><span class="p">:</span><span class="mi">75142</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"country"</span><span class="p">:</span><span class="s2">"US"</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d134c....."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"provider_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Argyle"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ssn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234..."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d134c....."</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"line_1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4194 Autry Lane"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"line_2"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dallas"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TX"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"zip_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"75001"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5551293040"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="mi">1626702186</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="mi">1626703216</span><span class="w">
+    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john.smith143@highline.co"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"member"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ofac_validated"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1634744601</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1634744601</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"social_security_number_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"08e3...."</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This API endpoint returns the user&#39;s profile based on the provided user id.</p>
 
 <p><code>GET http://api.highline.co/users/{id}</code></p>
-
-<p><code>GET http://api.highline.co/users/{id}</code></p>
-<h3 id='parameters-6'>Parameters</h3>
+<h3 id='parameters'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -966,7 +1296,7 @@ Request:</p>
 <td>User id</td>
 </tr>
 </tbody></table>
-<h3 id='response-5'>Response</h3>
+<h3 id='response'>Response</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -977,12 +1307,12 @@ Request:</p>
 <tr>
 <td><code>id</code></td>
 <td>string</td>
-<td>User id</td>
+<td>Returns user id.</td>
 </tr>
 <tr>
-<td><code>username</code></td>
+<td><code>provider_user_id</code></td>
 <td>string</td>
-<td>User name</td>
+<td>ID of employer</td>
 </tr>
 <tr>
 <td><code>first_name</code></td>
@@ -995,39 +1325,39 @@ Request:</p>
 <td>Last Name</td>
 </tr>
 <tr>
-<td><code>date_of_birth</code></td>
-<td>timestamp</td>
-<td>Date of birth as Unix timestamp</td>
-</tr>
-<tr>
 <td><code>ssn</code></td>
 <td>string</td>
-<td>Social Security Number</td>
+<td>Social security number</td>
 </tr>
 <tr>
 <td><code>address</code></td>
 <td>json</td>
-<td>Address information</td>
+<td>Address structure</td>
 </tr>
 <tr>
-<td><code>email</code></td>
+<td><code>role</code></td>
 <td>string</td>
-<td>Email id of user</td>
+<td>Member&#39;s role</td>
 </tr>
 <tr>
-<td><code>phone</code></td>
-<td>string</td>
-<td>Phone number</td>
+<td><code>ofac_validated</code></td>
+<td>bool</td>
+<td>Ofac validation</td>
 </tr>
 <tr>
 <td><code>created_at</code></td>
 <td>timestamp</td>
-<td>Timestamp user was created</td>
+<td>Date of creation</td>
 </tr>
 <tr>
 <td><code>updated_at</code></td>
 <td>timestamp</td>
-<td>Timestamp user object was updated</td>
+<td>Date of update</td>
+</tr>
+<tr>
+<td><code>social_security_number_hash</code></td>
+<td>string</td>
+<td>SSN hashed</td>
 </tr>
 </tbody></table>
 <h3 id='address-object'>Address Object</h3>
@@ -1086,7 +1416,7 @@ Request:</p>
 <td>Country</td>
 </tr>
 </tbody></table>
-<h1 id='employments'>Employments</h1><h2 id='get-employments'>Get employments</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET http://api.highline.co/users/YtMXJzGzJcht38SCJuMhzC/employments <span class="se">\</span>
+<h1 id='employments'>Employments</h1><h2 id='get-user-39-s-employments'>Get user&#39;s employments</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET http://api.highline.co/users/ae16efec-d1.../employments <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
 </code></pre></div>
@@ -1094,20 +1424,37 @@ Request:</p>
 <p>Response</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GtMXJzGzJcht38SCJuMhvG"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"job_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Floor Manager"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"hire_datetime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1592862445</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"last_pay_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1624398445</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"base_pay"</span><span class="p">:</span><span class="w"> </span><span class="mf">23454.65</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"pay_cycle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bi-weekly"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d6b10b60-55..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ae16efec-d1..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"employer_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d5b6c756-f9..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"employer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d5b6c756-f9..."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bd545a0280d..."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kroger"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"retail"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"api_supported"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"can_edit_allocations"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"max_number_of_allocations"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1633123768</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1633219200</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"job_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1635 - Helpline Agent"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1393924766</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1636225502</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"base_pay"</span><span class="p">:</span><span class="w"> </span><span class="mi">25599</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"base_annual_income"</span><span class="p">:</span><span class="w"> </span><span class="mi">25599</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"provider_pay_cycle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"weekly"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"pay_currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"full-time"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1633633503</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1633633503</span><span class="w">
 </span><span class="p">}]</span><span class="w">
 </span></code></pre></div>
 <p>This API endpoint returns the user&#39;s employment details based on the provided user id.</p>
-<h3 id='http-request-5'>HTTP Request</h3>
+<h3 id='http-request'>HTTP Request</h3>
 <p><code>GET http://api.highline.co/users/{id}/employments</code></p>
-<h3 id='parameters-7'>Parameters</h3>
+<h3 id='parameters'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -1123,7 +1470,7 @@ Request:</p>
 <td>User id</td>
 </tr>
 </tbody></table>
-<h3 id='response-6'>Response</h3>
+<h3 id='response'>Response</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1134,50 +1481,994 @@ Request:</p>
 <tr>
 <td><code>id</code></td>
 <td>string</td>
-<td>Employment id</td>
+<td>Employment ID</td>
+</tr>
+<tr>
+<td><code>user_id</code></td>
+<td>string</td>
+<td>User ID</td>
+</tr>
+<tr>
+<td><code>employer_id</code></td>
+<td>string</td>
+<td>Employer ID</td>
+</tr>
+<tr>
+<td><code>employer</code></td>
+<td>json</td>
+<td>Employer structure</td>
 </tr>
 <tr>
 <td><code>job_title</code></td>
 <td>string</td>
-<td>Job title</td>
+<td>Job ocupation</td>
 </tr>
 <tr>
-<td><code>hire_datetime</code></td>
+<td><code>start_date</code></td>
 <td>timestamp</td>
-<td>Employment start date as Unix timestamp</td>
+<td>Day that this job employment started</td>
 </tr>
 <tr>
-<td><code>termination_datetime</code></td>
+<td><code>end_date</code></td>
 <td>timestamp</td>
-<td>Employment end date as Unix timestamp</td>
-</tr>
-<tr>
-<td><code>last_pay_date</code></td>
-<td>timestamp</td>
-<td>Last paid date as Unix timestamp</td>
+<td>Day of job ended (if ended)</td>
 </tr>
 <tr>
 <td><code>base_pay</code></td>
-<td>float</td>
-<td>Income base pay</td>
+<td>int</td>
+<td>Value used as base of payment (in cents)</td>
 </tr>
 <tr>
-<td><code>pay_cycle</code></td>
+<td><code>base_annual_income</code></td>
+<td>int</td>
+<td>Value payed annualy (in cents)</td>
+</tr>
+<tr>
+<td><code>provider_pay_cycle</code></td>
 <td>string</td>
-<td>Frequency of pay outs e.g. hourly/weekly/bi-weekly etc.</td>
+<td>Frequency interval that user recive payments</td>
+</tr>
+<tr>
+<td><code>pay_currency</code></td>
+<td>string</td>
+<td>Currency</td>
 </tr>
 <tr>
 <td><code>type</code></td>
 <td>string</td>
-<td>Employment type e.g. Full-time/Part-time etc.</td>
+<td>Type of job (&quot;full-time&quot; &quot;part-time&quot; &quot;contractor&quot; &quot;seasonal&quot; &quot;temporary&quot; &quot;other&quot;)</td>
 </tr>
 <tr>
 <td><code>status</code></td>
 <td>string</td>
-<td>Employment status e.g. active/inactive etc.</td>
+<td>Status of employment (&quot;active&quot; &quot;inactive&quot; &quot;terminated&quot;)</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td>timestamp</td>
+<td>Date of creation</td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td>timestamp</td>
+<td>Date of update</td>
 </tr>
 </tbody></table>
-<h1 id='bank-accounts'>Bank Accounts</h1><h2 id='add-bank-account'>Add bank account</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST http://api.highline.co/users/38SCJuMhzCYtMXJzGzJcht/bank_accounts <span class="se">\</span>
+<h2 id='get-employment'>Get employment</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET http://api.highline.co/employments/d6b10b60-55... <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
+</code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d6b10b60-55..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ae16efec-d1..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"employer_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d5b6c756-f9..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"employer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d5b6c756-f9..."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bd545a0280d..."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kroger"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"retail"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"api_supported"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"can_edit_allocations"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"max_number_of_allocations"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1633123768</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1633219200</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"job_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1635 - Helpline Agent"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1393924766</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1636225502</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"base_pay"</span><span class="p">:</span><span class="w"> </span><span class="mi">25599</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"base_annual_income"</span><span class="p">:</span><span class="w"> </span><span class="mi">25599</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"provider_pay_cycle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"weekly"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"pay_currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"full-time"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1633633503</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1633633503</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This API endpoint returns the employment details based on the provided employment id.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET http://api.highline.co/employments/{id}</code></p>
+<h3 id='parameters-2'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>In</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <em>required</em></td>
+<td>string</td>
+<td>path</td>
+<td>Employment id</td>
+</tr>
+</tbody></table>
+<h3 id='response-2'>Response</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>string</td>
+<td>Employment ID</td>
+</tr>
+<tr>
+<td><code>user_id</code></td>
+<td>string</td>
+<td>User ID</td>
+</tr>
+<tr>
+<td><code>employer_id</code></td>
+<td>string</td>
+<td>Employer ID</td>
+</tr>
+<tr>
+<td><code>employer</code></td>
+<td>json</td>
+<td>Employer structure</td>
+</tr>
+<tr>
+<td><code>job_title</code></td>
+<td>string</td>
+<td>Job ocupation</td>
+</tr>
+<tr>
+<td><code>start_date</code></td>
+<td>timestamp</td>
+<td>Day that this job employment started</td>
+</tr>
+<tr>
+<td><code>end_date</code></td>
+<td>timestamp</td>
+<td>Day of job ended (if ended)</td>
+</tr>
+<tr>
+<td><code>base_pay</code></td>
+<td>int</td>
+<td>Value used as base of payment (in cents)</td>
+</tr>
+<tr>
+<td><code>base_annual_income</code></td>
+<td>int</td>
+<td>Value payed annualy (in cents)</td>
+</tr>
+<tr>
+<td><code>provider_pay_cycle</code></td>
+<td>string</td>
+<td>Frequency interval that user recive payments</td>
+</tr>
+<tr>
+<td><code>pay_currency</code></td>
+<td>string</td>
+<td>Currency</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>string</td>
+<td>Type of job (&quot;full-time&quot; &quot;part-time&quot; &quot;contractor&quot; &quot;seasonal&quot; &quot;temporary&quot; &quot;other&quot;)</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td>string</td>
+<td>Status of employment (&quot;active&quot; &quot;inactive&quot; &quot;terminated&quot;)</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td>timestamp</td>
+<td>Date of creation</td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td>timestamp</td>
+<td>Date of update</td>
+</tr>
+</tbody></table>
+<h1 id='bill-payments'>Bill Payments</h1><h2 id='get-user-39-s-bill-payments'>Get User&#39;s Bill Payments</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET http://api.highline.co/users/ae16efec-d1.../bill_payments <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
+</code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e87f74be-c46..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"enrollment_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3347c40d-2f9..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"enrollment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3347c40d-2f9..."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"22621f3b-563..."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"22621f3b-563..."</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6335861a-f23..."</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"company"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6335861a-f23..."</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mrs. Maryam Swaniawski"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"legal_entity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ms. Susie Lubowitz"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"tax_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8a6465c0-f32..."</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"104-769-1538"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XabJCOW@ocpDoBb.info"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"logo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://logo.clearbit.com/highline.co"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1631304119</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1631304119</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"colors"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"primary"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"secondary"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"background"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"enrollments"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"link_keys"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"api_keys"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"loan"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Product 1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Consequatur voluptatem au..."</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"validate_direct_deposits"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"validate_payout_allocation"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"validate_employment_active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"max_payment_to_income_ratio"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1631304120</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1631304120</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"payment_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"loan_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">200000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"loan_term"</span><span class="p">:</span><span class="w"> </span><span class="mi">24</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"payment_frequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"monthly"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"first_payment_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1638310741</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"application_reference_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12234"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"account_reference_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"33333"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"days_until_expires"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"required_employment_start_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1460845141</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"required_gross_income"</span><span class="p">:</span><span class="w"> </span><span class="mi">35000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"required_net_income"</span><span class="p">:</span><span class="w"> </span><span class="mi">25000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fully_synced"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1631304121</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1631304121</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"transactions"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ef8b53a0-bfd..."</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"bill_payment_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e87f74be-c46..."</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"amount_expected"</span><span class="p">:</span><span class="w"> </span><span class="mi">50000</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"amount_paid"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"paid"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"payment_order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1631304126</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1631304126</span><span class="w">
+  </span><span class="p">}],</span><span class="w">
+  </span><span class="nl">"employer_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Christian"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"logo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn-icon....png"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"loan_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Consequatur accusantium ..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"amount_paid"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"amount_due"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"ForecastedDueAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"ForecastedDueDate"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"paid"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"settlement_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e87f74be-c46..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"paid_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1631282525</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1631304125</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1631304125</span><span class="w">
+</span><span class="p">}]</span><span class="w">
+</span></code></pre></div>
+<p>This API endpoint returns the user&#39;s bill payments details based on the provided user id.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET http://api.highline.co/users/{id}/bill_payments</code></p>
+<h3 id='parameters'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>In</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <em>required</em></td>
+<td>string</td>
+<td>path</td>
+<td>User ID</td>
+</tr>
+<tr>
+<td><code>product_id</code> <em>optional</em></td>
+<td>string</td>
+<td>query</td>
+<td>Product ID</td>
+</tr>
+<tr>
+<td><code>status</code> <em>optional</em></td>
+<td>string</td>
+<td>query</td>
+<td>Status of bill payment</td>
+</tr>
+<tr>
+<td><code>start_date</code> <em>optional</em></td>
+<td>string</td>
+<td>query</td>
+<td>Paid at since date</td>
+</tr>
+<tr>
+<td><code>end_date</code> <em>optional</em></td>
+<td>string</td>
+<td>query</td>
+<td>Paid at until date</td>
+</tr>
+</tbody></table>
+<h3 id='response'>Response</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>string</td>
+<td>Bill Payment ID</td>
+</tr>
+<tr>
+<td><code>enrollment_id</code></td>
+<td>string</td>
+<td>Enrollment ID</td>
+</tr>
+<tr>
+<td><code>enrollment</code></td>
+<td>json</td>
+<td>Enrollment structure</td>
+</tr>
+<tr>
+<td><code>transactions</code></td>
+<td>array</td>
+<td>Collection of transactions structure</td>
+</tr>
+<tr>
+<td><code>employer_name</code></td>
+<td>string</td>
+<td>Name of employer</td>
+</tr>
+<tr>
+<td><code>logo_url</code></td>
+<td>string</td>
+<td>Path of logo URL</td>
+</tr>
+<tr>
+<td><code>loan_description</code></td>
+<td>string</td>
+<td>Description of the Loan</td>
+</tr>
+<tr>
+<td><code>amount_paid</code></td>
+<td>int</td>
+<td>Value paid (in cents)</td>
+</tr>
+<tr>
+<td><code>amount_due</code></td>
+<td>int</td>
+<td>Value to be paid (in cents)</td>
+</tr>
+<tr>
+<td><code>ForecastedDueAmount</code></td>
+<td>int</td>
+<td>Forecasted Value to be paid (in cents)</td>
+</tr>
+<tr>
+<td><code>ForecastedDueDate</code></td>
+<td>timestamp</td>
+<td>Forecasted date to be paid (in cents)</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td>string</td>
+<td>Status of the bill payment (&quot;paid&quot; &quot;pending&quot; &quot;cancelled&quot; &quot;new&quot; &quot;on_track&quot; &quot;risk_of_error&quot; &quot;ready_to_pay&quot; &quot;initiated&quot; &quot;needs_attention&quot;)</td>
+</tr>
+<tr>
+<td><code>settlement_id</code></td>
+<td>string</td>
+<td>Stettlement ID</td>
+</tr>
+<tr>
+<td><code>paid_at</code></td>
+<td>timestamp</td>
+<td>Date of payment (if paid)</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td>timestamp</td>
+<td>Date of creation</td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td>timestamp</td>
+<td>Date of update</td>
+</tr>
+</tbody></table>
+<h2 id='get-enrollment-39-s-bill-payments'>Get Enrollment&#39;s Bill Payments</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET http://api.highline.co/enrollments/ae16efec-d1.../bill_payments <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
+</code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e87f74be-c46..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"enrollment_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3347c40d-2f9..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"enrollment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3347c40d-2f9..."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"22621f3b-563..."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"22621f3b-563..."</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6335861a-f23..."</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"company"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6335861a-f23..."</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mrs. Maryam Swaniawski"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"legal_entity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ms. Susie Lubowitz"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"tax_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8a6465c0-f32..."</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"104-769-1538"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XabJCOW@ocpDoBb.info"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"logo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://logo.clearbit.com/highline.co"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1631304119</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1631304119</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"enrollments"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"link_keys"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"api_keys"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"loan"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Product 1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Consequatur voluptatem au..."</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"validate_direct_deposits"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"validate_payout_allocation"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"validate_employment_active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"max_payment_to_income_ratio"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1631304120</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1631304120</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"payment_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"loan_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">200000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"loan_term"</span><span class="p">:</span><span class="w"> </span><span class="mi">24</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"payment_frequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"monthly"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"first_payment_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1638310741</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"application_reference_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12234"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"account_reference_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"33333"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"days_until_expires"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"required_employment_start_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1460845141</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"required_gross_income"</span><span class="p">:</span><span class="w"> </span><span class="mi">35000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"required_net_income"</span><span class="p">:</span><span class="w"> </span><span class="mi">25000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fully_synced"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1631304121</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1631304121</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"employer_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Christian"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"logo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn-icon....png"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"loan_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Consequatur accusantium ..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"amount_paid"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"amount_due"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"ForecastedDueAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"ForecastedDueDate"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"paid"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"settlement_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"25de3..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"settlement"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"25de3..."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"client_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bd545..."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"client"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+    </span><span class="nl">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bd545..."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"payment_order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5465sd1fsd516..."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"completed"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"total_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">50000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"completed_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1633824000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1633824000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1634428800</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"paid_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1631282525</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1631304125</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1631304125</span><span class="w">
+</span><span class="p">}]</span><span class="w">
+</span></code></pre></div>
+<p>This API endpoint returns the enrollment&#39;s bill payments details based on the provided enrollment id.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET http://api.highline.co/enrollments/{id}/bill_payments</code></p>
+<h3 id='parameters-2'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>In</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <em>required</em></td>
+<td>string</td>
+<td>path</td>
+<td>User ID</td>
+</tr>
+<tr>
+<td><code>product_id</code> <em>optional</em></td>
+<td>string</td>
+<td>query</td>
+<td>Product ID</td>
+</tr>
+<tr>
+<td><code>status</code> <em>optional</em></td>
+<td>string</td>
+<td>query</td>
+<td>Status of bill payment</td>
+</tr>
+<tr>
+<td><code>start_date</code> <em>optional</em></td>
+<td>string</td>
+<td>query</td>
+<td>Forecasted due date since date</td>
+</tr>
+<tr>
+<td><code>end_date</code> <em>optional</em></td>
+<td>string</td>
+<td>query</td>
+<td>Forecasted due date until date</td>
+</tr>
+<tr>
+<td><code>order</code> <em>optional</em></td>
+<td>string</td>
+<td>query</td>
+<td>Order expected (&quot;asc&quot; or &quot;desc&quot;) of Forecasted due date</td>
+</tr>
+</tbody></table>
+<h3 id='response-2'>Response</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>string</td>
+<td>Bill Payment ID</td>
+</tr>
+<tr>
+<td><code>enrollment_id</code></td>
+<td>string</td>
+<td>Enrollment ID</td>
+</tr>
+<tr>
+<td><code>enrollment</code></td>
+<td>json</td>
+<td>Enrollment structure</td>
+</tr>
+<tr>
+<td><code>employer_name</code></td>
+<td>string</td>
+<td>Name of employer</td>
+</tr>
+<tr>
+<td><code>logo_url</code></td>
+<td>string</td>
+<td>Path of logo URL</td>
+</tr>
+<tr>
+<td><code>loan_description</code></td>
+<td>string</td>
+<td>Description of the Loan</td>
+</tr>
+<tr>
+<td><code>amount_paid</code></td>
+<td>int</td>
+<td>Value paid (in cents)</td>
+</tr>
+<tr>
+<td><code>amount_due</code></td>
+<td>int</td>
+<td>Value to be paid (in cents)</td>
+</tr>
+<tr>
+<td><code>ForecastedDueAmount</code></td>
+<td>int</td>
+<td>Forecasted Value to be paid (in cents)</td>
+</tr>
+<tr>
+<td><code>ForecastedDueDate</code></td>
+<td>timestamp</td>
+<td>Forecasted date to be paid (in cents)</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td>string</td>
+<td>Status of the bill payment (&quot;paid&quot; &quot;pending&quot; &quot;cancelled&quot; &quot;new&quot; &quot;on_track&quot; &quot;risk_of_error&quot; &quot;ready_to_pay&quot; &quot;initiated&quot; &quot;needs_attention&quot;)</td>
+</tr>
+<tr>
+<td><code>settlement_id</code></td>
+<td>string</td>
+<td>Stettlement ID</td>
+</tr>
+<tr>
+<td><code>settlement</code></td>
+<td>json</td>
+<td>Stettlement Structure</td>
+</tr>
+<tr>
+<td><code>paid_at</code></td>
+<td>timestamp</td>
+<td>Date of payment (if paid)</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td>timestamp</td>
+<td>Date of creation</td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td>timestamp</td>
+<td>Date of update</td>
+</tr>
+</tbody></table>
+<h2 id='get-bill-payment-39-s-transactions'>Get Bill Payment&#39;s transactions</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET http://api.highline.co/bill_payments/ae16efec-d1.../transactions <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
+</code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ef8b53a0-bfd..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"bill_payment_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e87f74be-c46..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"amount_expected"</span><span class="p">:</span><span class="w"> </span><span class="mi">50000</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"amount_paid"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"paid"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"payment_order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"65s1f6s..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1631304126</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1631304126</span><span class="w">
+</span><span class="p">}]</span><span class="w">
+</span></code></pre></div>
+<p>This API endpoint returns the bill payments&#39;s transactions details based on the provided bill payment id.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>GET http://api.highline.co/bill_payments/{id}/transactions</code></p>
+<h3 id='parameters-3'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>In</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <em>required</em></td>
+<td>string</td>
+<td>path</td>
+<td>Bill Payment ID</td>
+</tr>
+</tbody></table>
+<h3 id='response-3'>Response</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>string</td>
+<td>Transaction ID</td>
+</tr>
+<tr>
+<td><code>bill_payment_id</code></td>
+<td>string</td>
+<td>Bill payment ID</td>
+</tr>
+<tr>
+<td><code>amount_expected</code></td>
+<td>int</td>
+<td>Amount expected (in cents)</td>
+</tr>
+<tr>
+<td><code>amount_paid</code></td>
+<td>int</td>
+<td>Amount expected (in cents)</td>
+</tr>
+<tr>
+<td><code>paid</code></td>
+<td>bool</td>
+<td>Indication if this transaction is paid</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td>string</td>
+<td>Transaction status (&quot;completed&quot; &quot;pending&quot; &quot;cancelled&quot;)</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>string</td>
+<td>Transaction type (&quot;ach&quot; &quot;credit_card&quot; &quot;debit_card&quot;)</td>
+</tr>
+<tr>
+<td><code>payment_order_id</code></td>
+<td>string</td>
+<td>Orde ID</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td>timestamp</td>
+<td>Date of creation</td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td>timestamp</td>
+<td>Date of update</td>
+</tr>
+</tbody></table>
+<h1 id='direct-deposits'>Direct Deposits</h1><h2 id='get-user-39-s-direct-deposits'>Get User&#39;s direct deposits</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET http://api.highline.co/users/6516515-651.../payout_allocations <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
+</code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ca71927a-c5..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ae16efec-d1..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"employment_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d6b10b60-55..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"bank_account_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4fb1c5dd-5d..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1633633510</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1633633510</span><span class="w">
+</span><span class="p">}]</span><span class="w">
+</span></code></pre></div>
+<p>This API endpoint returns the user&#39;s payout allocations, that represents direct deposits, based on the provided user id.</p>
+
+<p><code>GET http://api.highline.co/users/{id}/payout_allocations</code></p>
+<h3 id='parameters'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>In</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <em>required</em></td>
+<td>string</td>
+<td>path</td>
+<td>User ID</td>
+</tr>
+</tbody></table>
+<h3 id='response'>Response</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>string</td>
+<td>Payout Allocation ID</td>
+</tr>
+<tr>
+<td><code>user_id</code></td>
+<td>string</td>
+<td>User ID</td>
+</tr>
+<tr>
+<td><code>employment_id</code></td>
+<td>string</td>
+<td>Employment ID</td>
+</tr>
+<tr>
+<td><code>employment</code></td>
+<td>json</td>
+<td>Employment structure</td>
+</tr>
+<tr>
+<td><code>bank_account_id</code></td>
+<td>string</td>
+<td>Bank account ID</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td>string</td>
+<td>Status of payout allocation (&quot;active&quot; &quot;pending&quot;)</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td>timestamp</td>
+<td>Date of creation</td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td>timestamp</td>
+<td>Date of update</td>
+</tr>
+</tbody></table>
+<h1 id='pay-histories'>Pay histories</h1><h2 id='get-user-39-s-pay-histories'>Get User&#39;s Pay histories</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET http://api.highline.co/users/6516515-651.../payout_histories <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
+</code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ca71927a-c5..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ae16efec-d1..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"employment_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d6b10b60-55..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"employment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d6b10b60-55..."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ae16efec-d1..."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"employer_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d5b6c756-f9..."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"employer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d5b6c756-f9..."</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bd545a0280d..."</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kroger"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"retail"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"api_supported"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"can_edit_allocations"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"max_number_of_allocations"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1633123768</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1633219200</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"job_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1635 - Helpline Agent"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1393924766</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1636225502</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"base_pay"</span><span class="p">:</span><span class="w"> </span><span class="mi">25599</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"base_annual_income"</span><span class="p">:</span><span class="w"> </span><span class="mi">25599</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"provider_pay_cycle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"weekly"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"pay_currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"full-time"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1633633503</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1633633503</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"gross_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">50000</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"net_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"usd"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"paid_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1633633510</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1633633510</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1633634510</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1633633510</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1633633510</span><span class="w">
+</span><span class="p">}]</span><span class="w">
+</span></code></pre></div>
+<p>This API endpoint returns the user&#39;s Pay histories, based on the provided user id.</p>
+
+<p><code>GET http://api.highline.co/users/{id}/payout_histories</code></p>
+<h3 id='parameters'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>In</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <em>required</em></td>
+<td>string</td>
+<td>path</td>
+<td>User ID</td>
+</tr>
+<tr>
+<td><code>start_date</code> <em>optional</em></td>
+<td>string</td>
+<td>query</td>
+<td>Paid date since date</td>
+</tr>
+<tr>
+<td><code>end_date</code> <em>optional</em></td>
+<td>string</td>
+<td>query</td>
+<td>Paid date until date</td>
+</tr>
+<tr>
+<td><code>order</code> <em>optional</em></td>
+<td>string</td>
+<td>query</td>
+<td>Order expected (&quot;asc&quot; or &quot;desc&quot;) of Paid date</td>
+</tr>
+</tbody></table>
+<h3 id='response'>Response</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>string</td>
+<td>Payout Allocation ID</td>
+</tr>
+<tr>
+<td><code>user_id</code></td>
+<td>string</td>
+<td>User ID</td>
+</tr>
+<tr>
+<td><code>employment_id</code></td>
+<td>string</td>
+<td>Employment ID</td>
+</tr>
+<tr>
+<td><code>employment</code></td>
+<td>json</td>
+<td>Employment structure</td>
+</tr>
+<tr>
+<td><code>gross_amount</code></td>
+<td>int</td>
+<td>Gross Amount (in cents)</td>
+</tr>
+<tr>
+<td><code>net_amount</code></td>
+<td>int</td>
+<td>Net Amount (in cents)</td>
+</tr>
+<tr>
+<td><code>currency</code></td>
+<td>string</td>
+<td>Currency</td>
+</tr>
+<tr>
+<td><code>paid_date</code></td>
+<td>timestamp</td>
+<td>Paid date (when paid)</td>
+</tr>
+<tr>
+<td><code>start_date</code></td>
+<td>timestamp</td>
+<td>Start date</td>
+</tr>
+<tr>
+<td><code>end_date</code></td>
+<td>timestamp</td>
+<td>End date</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td>timestamp</td>
+<td>Date of creation</td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td>timestamp</td>
+<td>Date of update</td>
+</tr>
+</tbody></table>
+<h1 id='bank-accounts'>Bank Accounts</h1><h2 id='add-bank-account'>Add bank account</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST http://api.highline.co/users/c8e1f36e-c4.../bank_accounts <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">$'{
@@ -1191,13 +2482,34 @@ Request:</p>
 <p>Response</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GzJcht38SCJuMhzCYtMXJz"</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c8e1f36e-c4..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"07662260-b7..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d134c....."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"provider_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Argyle"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ssn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234..."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john.smith143@highline.co"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"member"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ofac_validated"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1634744601</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1634744601</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"social_security_number_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"08e3...."</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"***2345"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"routing_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6514321"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"account_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Checking"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"bank_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CRB"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"external"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1629916884</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1629916884</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>This API adds a bank account to an enrollment via Highline. By passing basic bank account information Highline will return a key unique to the user based on the user id.</p>
-<h3 id='http-request-6'>HTTP Request</h3>
+<p>This API adds a bank account to an enrollment via Highline. By passing basic bank account information Highline will return the bank account structure to the user based on the user id.</p>
+<h3 id='http-request'>HTTP Request</h3>
 <p><code>POST http://api.highline.co/users/{id}/bank_accounts</code></p>
-<h3 id='parameters-8'>Parameters</h3>
+<h3 id='parameters'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -1237,7 +2549,7 @@ Request:</p>
 <td>Name of bank</td>
 </tr>
 </tbody></table>
-<h3 id='response-7'>Response</h3>
+<h3 id='response'>Response</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1248,10 +2560,55 @@ Request:</p>
 <tr>
 <td><code>id</code></td>
 <td>string</td>
-<td>Returns bank account id.</td>
+<td>Bank account ID</td>
+</tr>
+<tr>
+<td><code>user_id</code></td>
+<td>string</td>
+<td>User ID</td>
+</tr>
+<tr>
+<td><code>user</code></td>
+<td>json</td>
+<td>User structure</td>
+</tr>
+<tr>
+<td><code>account_number</code></td>
+<td>string</td>
+<td>Account number (masked)</td>
+</tr>
+<tr>
+<td><code>routing_number</code></td>
+<td>string</td>
+<td>Routing number</td>
+</tr>
+<tr>
+<td><code>account_type</code></td>
+<td>string</td>
+<td>Account Type (&quot;checking&quot; &quot;savings&quot; &quot;other&quot;)</td>
+</tr>
+<tr>
+<td><code>bank_name</code></td>
+<td>string</td>
+<td>Bank name</td>
+</tr>
+<tr>
+<td><code>kind</code></td>
+<td>string</td>
+<td>Kind of account (&quot;internal&quot; &quot;virtual&quot; &quot;external&quot;)</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td>timestamp</td>
+<td>Date of creation</td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td>timestamp</td>
+<td>Date of update</td>
 </tr>
 </tbody></table>
-<h2 id='get-bank-accounts'>Get bank accounts</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET http://api.highline.co/users/38SCJuMhzCYtMXJzGzJcht/bank_accounts <span class="se">\</span>
+<h2 id='get-user-39-s-bank-accounts'>Get user&#39;s bank accounts</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET http://api.highline.co/users/c8e1f36e-c4.../bank_accounts <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
 </code></pre></div>
@@ -1259,18 +2616,34 @@ Request:</p>
 <p>Response</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GtMXJzGzJcht38SCJuMhvG"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"909000614"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"routing_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"111000614"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"account_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"checking"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"is_virtual"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"bank_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"J.P. Morgan Chase"</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c8e1f36e-c4..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"07662260-b7..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d134c....."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"provider_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Argyle"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ssn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234..."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john.smith143@highline.co"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"member"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ofac_validated"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1634744601</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1634744601</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"social_security_number_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"08e3...."</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"***2345"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"routing_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"***4321"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"account_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Checking"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"bank_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CRB"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"external"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1629916884</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1629916884</span><span class="w">
 </span><span class="p">}]</span><span class="w">
 </span></code></pre></div>
 <p>This API returns user&#39;s bank accounts based on the specified user id.</p>
-<h3 id='http-request-7'>HTTP Request</h3>
+<h3 id='http-request-2'>HTTP Request</h3>
 <p><code>GET http://api.highline.co/users/{id}/bank_accounts</code></p>
-<h3 id='parameters-9'>Parameters</h3>
+<h3 id='parameters-2'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -1286,7 +2659,7 @@ Request:</p>
 <td>User id</td>
 </tr>
 </tbody></table>
-<h3 id='response-8'>Response</h3>
+<h3 id='response-2'>Response</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1297,87 +2670,605 @@ Request:</p>
 <tr>
 <td><code>id</code></td>
 <td>string</td>
-<td>Account id</td>
+<td>Bank account ID</td>
+</tr>
+<tr>
+<td><code>user_id</code></td>
+<td>string</td>
+<td>User ID</td>
+</tr>
+<tr>
+<td><code>user</code></td>
+<td>json</td>
+<td>User structure</td>
 </tr>
 <tr>
 <td><code>account_number</code></td>
 <td>string</td>
-<td>Account number</td>
+<td>Account number (masked)</td>
 </tr>
 <tr>
 <td><code>routing_number</code></td>
 <td>string</td>
-<td>Routing number</td>
+<td>Routing number (masked)</td>
 </tr>
 <tr>
 <td><code>account_type</code></td>
 <td>string</td>
-<td>Type of account (checking, savings, etc)</td>
+<td>Account Type (&quot;checking&quot; &quot;savings&quot; &quot;other&quot;)</td>
 </tr>
 <tr>
 <td><code>bank_name</code></td>
 <td>string</td>
-<td>Name of bank</td>
+<td>Bank name</td>
 </tr>
 <tr>
-<td><code>is_virtual</code></td>
-<td>boolean</td>
-<td>Specifies whether this account is a virtual account or not</td>
+<td><code>kind</code></td>
+<td>string</td>
+<td>Kind of account (&quot;internal&quot; &quot;virtual&quot; &quot;external&quot;)</td>
 </tr>
 <tr>
 <td><code>created_at</code></td>
 <td>timestamp</td>
-<td>Timestamp bank account was created</td>
+<td>Date of creation</td>
 </tr>
 <tr>
 <td><code>updated_at</code></td>
 <td>timestamp</td>
-<td>Timestamp bank account was updated</td>
+<td>Date of update</td>
 </tr>
 </tbody></table>
+<h2 id='get-user-39-s-bank-account'>Get user&#39;s bank account</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET http://api.highline.co/users/c8e1f36e-c4.../bank_accounts/d938f36e-c4... <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
+</code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d938f36e-c4..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c8e1f36e-c4..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d134c....."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"provider_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Argyle"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ssn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234..."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john.smith143@highline.co"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"member"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ofac_validated"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1634744601</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1634744601</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"social_security_number_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"08e3...."</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"***2345"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"routing_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"***4321"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"account_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Checking"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"bank_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CRB"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"external"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1629916884</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1629916884</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This API returns a user&#39;s specified bank account based on the user id and bank account id.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>GET http://api.highline.co/users/{id}/bank_accounts/{bank_account_id}</code></p>
+<h3 id='parameters-3'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>In</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <em>required</em></td>
+<td>string</td>
+<td>path</td>
+<td>User ID</td>
+</tr>
+<tr>
+<td><code>bank_account_id</code> <em>required</em></td>
+<td>string</td>
+<td>path</td>
+<td>Bank Account ID</td>
+</tr>
+</tbody></table>
+<h3 id='response-3'>Response</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>string</td>
+<td>Bank account ID</td>
+</tr>
+<tr>
+<td><code>user_id</code></td>
+<td>string</td>
+<td>User ID</td>
+</tr>
+<tr>
+<td><code>user</code></td>
+<td>json</td>
+<td>User structure</td>
+</tr>
+<tr>
+<td><code>account_number</code></td>
+<td>string</td>
+<td>Account number (masked)</td>
+</tr>
+<tr>
+<td><code>routing_number</code></td>
+<td>string</td>
+<td>Routing number (masked)</td>
+</tr>
+<tr>
+<td><code>account_type</code></td>
+<td>string</td>
+<td>Account Type (&quot;checking&quot; &quot;savings&quot; &quot;other&quot;)</td>
+</tr>
+<tr>
+<td><code>bank_name</code></td>
+<td>string</td>
+<td>Bank name</td>
+</tr>
+<tr>
+<td><code>kind</code></td>
+<td>string</td>
+<td>Kind of account (&quot;internal&quot; &quot;virtual&quot; &quot;external&quot;)</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td>timestamp</td>
+<td>Date of creation</td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td>timestamp</td>
+<td>Date of update</td>
+</tr>
+</tbody></table>
+<h2 id='update-bank-account'>Update Bank account</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PUT http://api.highline.co/users/c8e1f36e-c4.../bank_accounts/f6e1645-fc56... <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">$'{
+    "account_number": "874038933",
+    "routing_number": "111000614",
+    "account_type": "checking",
+    "bank_name": "J.P. Morgan Chase"
+  }'</span>
+</code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"sucess"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This API updates a user bank account. By passing the bank account information you like, Highline will return a sucess message or an error.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>PUT http://api.highline.co/users/{id}/bank_accounts/{bank_account_id}</code></p>
+<h3 id='parameters-4'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>In</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <em>required</em></td>
+<td>string</td>
+<td>path</td>
+<td>User id</td>
+</tr>
+<tr>
+<td><code>bank_account_id</code> <em>required</em></td>
+<td>string</td>
+<td>path</td>
+<td>Bank account id</td>
+</tr>
+<tr>
+<td><code>account_number</code> <em>optional</em></td>
+<td>string</td>
+<td>body</td>
+<td>Account number</td>
+</tr>
+<tr>
+<td><code>routing_number</code> <em>optional</em></td>
+<td>string</td>
+<td>body</td>
+<td>Routing number</td>
+</tr>
+<tr>
+<td><code>account_type</code> <em>optional</em></td>
+<td>string</td>
+<td>body</td>
+<td>Type of account (checking, savings, etc)</td>
+</tr>
+<tr>
+<td><code>bank_name</code> <em>optional</em></td>
+<td>string</td>
+<td>body</td>
+<td>Name of bank</td>
+</tr>
+</tbody></table>
+<h2 id='get-account-number'>Get Account number</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET http://api.highline.co/users/c8e1f36e-c4.../bank_accounts/f6e1645-fc56.../account_number <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+</code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"54615646"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This API display an account number of a user bank account. Highline will return the number, if you are the owner of that account.</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>GET http://api.highline.co/users/{id}/bank_accounts/{bank_account_id}/account_number</code></p>
+<h3 id='parameters-5'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>In</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <em>required</em></td>
+<td>string</td>
+<td>path</td>
+<td>User id</td>
+</tr>
+<tr>
+<td><code>bank_account_id</code> <em>required</em></td>
+<td>string</td>
+<td>path</td>
+<td>Bank account id</td>
+</tr>
+</tbody></table>
+<h2 id='get-account-balance'>Get Account balance</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET http://api.highline.co/users/c8e1f36e-c4.../bank_accounts/f6e1645-fc56.../balance <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+</code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"bank_account_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f1566dss56-516s..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">50000</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1629916884</span><span class="p">,</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This API display the balance of a user bank account. Highline will return the number.</p>
+<h3 id='http-request-6'>HTTP Request</h3>
+<p><code>GET http://api.highline.co/users/{id}/bank_accounts/{bank_account_id}/balance</code></p>
+<h3 id='parameters-6'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>In</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <em>required</em></td>
+<td>string</td>
+<td>path</td>
+<td>User id</td>
+</tr>
+<tr>
+<td><code>bank_account_id</code> <em>required</em></td>
+<td>string</td>
+<td>path</td>
+<td>Bank account id</td>
+</tr>
+</tbody></table>
+<h3 id='response-4'>Response</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>bank_account_id</code></td>
+<td>string</td>
+<td>Bank account ID</td>
+</tr>
+<tr>
+<td><code>amount</code></td>
+<td>int</td>
+<td>Account balance (in cents)</td>
+</tr>
+<tr>
+<td><code>time</code></td>
+<td>timestamp</td>
+<td>Data time when this query was made</td>
+</tr>
+</tbody></table>
+<h2 id='delete-account-number'>DELETE Account number</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> DELETE http://api.highline.co/users/c8e1f36e-c4.../bank_accounts/f6e1645-fc56... <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+</code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This API will delete a user bank account.</p>
+<h3 id='http-request-7'>HTTP Request</h3>
+<p><code>DELETE http://api.highline.co/users/{id}/bank_accounts/{bank_account_id}/account_number</code></p>
+<h3 id='parameters-7'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>In</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <em>required</em></td>
+<td>string</td>
+<td>path</td>
+<td>User id</td>
+</tr>
+<tr>
+<td><code>bank_account_id</code> <em>required</em></td>
+<td>string</td>
+<td>path</td>
+<td>Bank account id</td>
+</tr>
+</tbody></table>
+<h1 id='settlements'>Settlements</h1><h2 id='check-product-39-s-settlements'>Check product&#39;s settlements</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET http://api.highline.co/products/d5165d5168-61s3.../settlements <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
+</code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"25de3..."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"client_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bd545..."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bd545..."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"payment_order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5465sd1fsd516..."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"completed"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"total_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">50000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"completed_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1633824000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1633824000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1634428800</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<p>This API return the settlements, based on the provided product id.</p>
 
-<!-- ## Get bank account
+<p><code>GET http://api.highline.co/products/{id}/settlements</code></p>
+<h3 id='parameters'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>In</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <em>required</em></td>
+<td>string</td>
+<td>param</td>
+<td>Product ID</td>
+</tr>
+<tr>
+<td><code>status</code> <em>optional</em></td>
+<td>string</td>
+<td>query</td>
+<td>Status of settlement</td>
+</tr>
+<tr>
+<td><code>start_date</code> <em>optional</em></td>
+<td>string</td>
+<td>query</td>
+<td>Settlement created at since date</td>
+</tr>
+<tr>
+<td><code>end_date</code> <em>optional</em></td>
+<td>string</td>
+<td>query</td>
+<td>Settlement created at until date</td>
+</tr>
+</tbody></table>
+<h3 id='response'>Response</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>string</td>
+<td>Settlement ID</td>
+</tr>
+<tr>
+<td><code>client_id</code></td>
+<td>string</td>
+<td>Company ID</td>
+</tr>
+<tr>
+<td><code>product_id</code></td>
+<td>string</td>
+<td>Product ID</td>
+</tr>
+<tr>
+<td><code>payment_order_id</code></td>
+<td>string</td>
+<td>Order ID</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td>string</td>
+<td>Settlement status (&quot;pending&quot; &quot;sent&quot; &quot;completed&quot; &quot;cancelled&quot;)</td>
+</tr>
+<tr>
+<td><code>total_amount</code></td>
+<td>int</td>
+<td>Total amount (in cents)</td>
+</tr>
+<tr>
+<td><code>completed_at</code></td>
+<td>timestamp</td>
+<td>Date of completion (if completed)</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td>timestamp</td>
+<td>Date of creation</td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td>timestamp</td>
+<td>Date of update</td>
+</tr>
+</tbody></table>
+<h1 id='reports'>Reports</h1><h2 id='add-product-39-s-report'>Add product&#39;s report</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST http://api.highline.co/products/d5165d5168-61s3.../reports <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: multipart/form-data"</span>
+  <span class="nt">-d</span> <span class="s1">$'dailyReport:file'</span>
+</code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This API add a report for the provided product id.</p>
 
-This API returns bank account details based on the specified user and bank account id.
+<p><code>POST http://api.highline.co/products/{id}/reports</code></p>
+<h3 id='parameters'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>In</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <em>required</em></td>
+<td>string</td>
+<td>param</td>
+<td>Product ID</td>
+</tr>
+<tr>
+<td><code>dailyReport</code> <em>required</em></td>
+<td>string</td>
+<td>file</td>
+<td>File containing the report</td>
+</tr>
+</tbody></table>
+<h2 id='check-product-39-s-reports'>Check product&#39;s reports</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET http://api.highline.co/products/d5165d5168-61s3.../reports <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
+</code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"25de3..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bd545..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"file_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"updated_file"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"clienet_report_entries"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+    </span><span class="nl">"client_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bd545..."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"enrollment_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bd545..."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"enrollment_current_balance"</span><span class="p">:</span><span class="w"> </span><span class="mi">12000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"next_payment_due_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">2000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"bill_payment_recurring_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">2000</span><span class="w">
+  </span><span class="p">}],</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"new"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1633824000</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1634428800</span><span class="w">
+</span><span class="p">}]</span><span class="w">
+</span></code></pre></div>
+<p>This API checks the product&#39;s reports.</p>
 
-### HTTP Request
-
-`GET http://api.highline.co/users/{id}/bank_accounts/{bank_account_id}`
-
-### Parameters
-
-Name | Type | In | Description
---------- | ------- | ------- | ------
-`id` *required* | string | path | User id
-`bank_account_id` *required* | string | path | Bank account id
-
-### Response
-
-Parameter | Type | Description
---------- | ------- | -----------
-`account_number` |string | Account number
-`routing_number` | string | Routing number
-`account_ype` | string | Type of account (checking, savings, etc)
-`bank_name` | string | Name of bank
-`created_at` | timestamp | Timestamp bank account was created
-`updated_at` | timestamp | Timestamp bank account was updated
-
-```shell
-curl -X GET http://api.highline.co/users/38SCJuMhzCYtMXJzGzJcht/bank_accounts/GtMXJzGzJcht38SCJuMhvG \
-  -H "Authorization Bearer: base64(app_id:app_secret)" \
-  -H "Content-Type: application/json"
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "account_number": "909000614",
-  "routing_number": "111000614",
-  "account_type": "checking",
-  "bank_name": "J.P. Morgan Chase"
-}
-``` -->
+<p><code>GET http://api.highline.co/products/{id}/reports</code></p>
+<h3 id='parameters-2'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>In</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <em>required</em></td>
+<td>string</td>
+<td>param</td>
+<td>Product ID</td>
+</tr>
+</tbody></table>
+<h3 id='response'>Response</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>string</td>
+<td>Report ID</td>
+</tr>
+<tr>
+<td><code>product_id</code></td>
+<td>string</td>
+<td>Product ID</td>
+</tr>
+<tr>
+<td><code>file_name</code></td>
+<td>string</td>
+<td>File name</td>
+</tr>
+<tr>
+<td><code>client_report_entries</code></td>
+<td>array</td>
+<td>Collection of report entries</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td>string</td>
+<td>Report status (&quot;new&quot; &quot;error&quot; &quot;processed&quot;)</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td>timestamp</td>
+<td>Date of creation</td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td>timestamp</td>
+<td>Date of update</td>
+</tr>
+</tbody></table>
 <h1 id='client-sdk'>Client SDK</h1><h2 id='widget-installation'>Widget Installation</h2>
 <p>Highline&#39;s widget is a front-end UI element that allows users to grant your application access to their work accounts, set up automated payments, and switch deposits directly from their paychecks.</p>
 

@@ -1,0 +1,114 @@
+<h1 id='client-sdk'>Client SDK</h1><h2 id='widget-installation'>Widget Installation</h2>
+<p>Highline&#39;s widget is a front-end UI element that allows users to grant your application access to their work accounts, set up automated payments, and switch deposits directly from their paychecks.</p>
+
+<p>To use Highline-Link, pass in an object with the following parameters to the <code>highlineLink.connect()</code> function:</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>access_token</code> <em>required</em></td>
+<td>string</td>
+<td>Value from the &#39;/auth/token&#39; endpoint</td>
+</tr>
+<tr>
+<td><code>payload</code> <em>required</em></td>
+<td>string</td>
+<td>Encrypted value from the &#39;/link/encode&#39; endpoint</td>
+</tr>
+<tr>
+<td><code>on_success</code> <em>optional</em></td>
+<td>function</td>
+<td>Callback function for success events</td>
+</tr>
+<tr>
+<td><code>on_error</code> <em>optional</em></td>
+<td>function</td>
+<td>Callback function for error events</td>
+</tr>
+<tr>
+<td><code>on_close</code> <em>optional</em></td>
+<td>function</td>
+<td>Callback function for close events</td>
+</tr>
+</tbody></table>
+
+<p>And then open with highlineLink.open()</p>
+<h2 id='direct-deposit-switch-guide'>Direct Deposit Switch Guide</h2>
+<blockquote>
+<p>Step 1</p>
+</blockquote>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">curl</span> <span class="o">-</span><span class="nx">X</span> <span class="nx">POST</span> <span class="dl">'</span><span class="s1">http://api.highline.co/auth/token</span><span class="dl">'</span>
+<span class="o">-</span><span class="nx">H</span> <span class="dl">"</span><span class="s2">Authorization Bearer: AccessToken</span><span class="dl">"</span> <span class="o">\</span>
+<span class="o">-</span><span class="nx">d</span> <span class="nx">$</span><span class="dl">'</span><span class="s1">{
+  "api_key": "YOUR_API_KEY",
+  "secret" : "YOUR_SECRET"
+}</span><span class="dl">'</span>
+</code></pre></div>
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"access_token"</span><span class="p">:</span><span class="s2">"eyJhbGciOiJIUzI..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"refresh_token"</span><span class="p">:</span><span class="s2">"eyJhbGciOiJIUz..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"subject"</span><span class="p">:</span><span class="s2">"123e4567-e89b-12d3-a456-426614174000"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"expires_in"</span><span class="p">:</span><span class="mi">1634244444</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Step 2</p>
+</blockquote>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">curl</span> <span class="o">-</span><span class="nx">X</span> <span class="nx">POST</span> <span class="dl">'</span><span class="s1">http://api.highline.co/link/encode</span><span class="dl">'</span>
+<span class="nx">Bearer</span> <span class="nx">AccessToken</span>
+<span class="o">-</span><span class="nx">H</span> <span class="dl">"</span><span class="s2">Authorization Bearer: AccessToken</span><span class="dl">"</span> <span class="o">\</span>
+<span class="o">-</span><span class="nx">d</span> <span class="nx">$</span><span class="dl">'</span><span class="s1">{
+ "bank_account": {
+   "bank_name": "New Bank",
+   "account_type": "checking",
+   "routing_number": "XXXXXXXX",
+   "account_number": "XXXXXXXXXX"
+ },
+ "feature": "direct_deposit_switch"
+}</span><span class="dl">'</span>
+</code></pre></div>
+<blockquote>
+<p>Response:
+<code>json
+{
+ &quot;payload&quot;: &quot;encrypted_value&quot;,
+}
+</code></p>
+
+<p>Step 3</p>
+</blockquote>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="o">&lt;!</span><span class="nx">DOCTYPE</span> <span class="nx">html</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nx">html</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nx">head</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="nx">meta</span> <span class="nx">charset</span><span class="o">=</span><span class="dl">"</span><span class="s2">utf-8</span><span class="dl">"</span> <span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="sr">/head</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="nx">body</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="nx">highline</span><span class="o">-</span><span class="nx">link</span><span class="o">&gt;&lt;</span><span class="sr">/highline-link</span><span class="err">&gt;
+</span>  <span class="o">&lt;</span><span class="nx">script</span> <span class="nx">src</span><span class="o">=</span><span class="dl">"</span><span class="s2">https://link.highline.co/v1/highline-link.js</span><span class="dl">"</span><span class="o">&gt;&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span>  <span class="o">&lt;</span><span class="nx">script</span> <span class="nx">type</span><span class="o">=</span><span class="dl">"</span><span class="s2">text/javascript</span><span class="dl">"</span><span class="o">&gt;</span>
+    <span class="nx">highlineLink</span><span class="p">.</span><span class="nx">connect</span><span class="p">({</span>
+        <span class="na">access_token</span><span class="p">:</span> <span class="dl">'</span><span class="s1">value_from_auth_token_api</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">payload</span><span class="p">:</span> <span class="dl">'</span><span class="s1">value_from_link_encode_api</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">on_success</span><span class="p">:</span> <span class="p">({</span> <span class="nx">user_id</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">on_success! </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">user_id</span><span class="p">);</span>
+        <span class="p">},</span>
+        <span class="na">on_error</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">on_error!</span><span class="dl">'</span><span class="p">);</span>
+        <span class="p">},</span>
+        <span class="na">on_close</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">on_close!</span><span class="dl">'</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">});</span>
+    <span class="nx">highlineLink</span><span class="p">.</span><span class="nx">open</span><span class="p">();</span>
+  <span class="o">&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="sr">/body</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="sr">/html</span><span class="err">&gt;
+</span></code></pre></div><h3 id='step-1-get-an-access-token-from-your-server'>Step 1 - Get an access token from your server</h3><h3 id='step-2-build-the-payload'>Step 2 - Build the payload</h3><h3 id='step-3-connect-and-open-highline-link'>Step 3 - Connect and open Highline-Link</h3>

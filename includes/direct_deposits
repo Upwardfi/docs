@@ -1,0 +1,85 @@
+<h1 id='direct-deposits'>Direct Deposits</h1><h2 id='get-user-39-s-direct-deposits'>Get User&#39;s direct deposits</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET http://api.highline.co/users/6516515-651.../payout_allocations <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
+</code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ca71927a-c5..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ae16efec-d1..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"employment_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d6b10b60-55..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"bank_account_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4fb1c5dd-5d..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1633633510</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1633633510</span><span class="w">
+</span><span class="p">}]</span><span class="w">
+</span></code></pre></div>
+<p>This API endpoint returns the user&#39;s payout allocations, that represents direct deposits, based on the provided user id.</p>
+
+<p><code>GET http://api.highline.co/users/{id}/payout_allocations</code></p>
+<h3 id='parameters'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>In</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <em>required</em></td>
+<td>string</td>
+<td>path</td>
+<td>User ID</td>
+</tr>
+</tbody></table>
+<h3 id='response'>Response</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>string</td>
+<td>Payout Allocation ID</td>
+</tr>
+<tr>
+<td><code>user_id</code></td>
+<td>string</td>
+<td>User ID</td>
+</tr>
+<tr>
+<td><code>employment_id</code></td>
+<td>string</td>
+<td>Employment ID</td>
+</tr>
+<tr>
+<td><code>employment</code></td>
+<td>json</td>
+<td>Employment structure</td>
+</tr>
+<tr>
+<td><code>bank_account_id</code></td>
+<td>string</td>
+<td>Bank account ID</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td>string</td>
+<td>Status of payout allocation (&quot;active&quot; &quot;pending&quot;)</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td>timestamp</td>
+<td>Date of creation</td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td>timestamp</td>
+<td>Date of update</td>
+</tr>
+</tbody></table>

@@ -1,0 +1,44 @@
+<h1 id='employers'>Employers</h1><h2 id='check-if-employer-is-supported'>Check if employer is supported</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET http://api.highline.co/employers?q<span class="o">=</span>Kroger <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
+</code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"25de3..."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bd545..."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kroger"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"retail"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"has_two_fa"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"api_supported"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"can_edit_allocations"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"max_number_of_allocations"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"exclude_employer_enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1633824000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1634428800</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<p>This API checks if user&#39;s employer is supported through Highline and will return success or failure based on eligibility.</p>
+
+<p><code>GET http://api.highline.co/employers</code></p>
+<h3 id='parameters'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>In</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>q</code> <em>required</em></td>
+<td>string</td>
+<td>query</td>
+<td>Employer name</td>
+</tr>
+</tbody></table>
+<h3 id='response'>Response</h3>
+<p>Array of Employers Data that match query</p>

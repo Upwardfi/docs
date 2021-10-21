@@ -1,0 +1,537 @@
+<h1 id='bill-payments'>Bill Payments</h1><h2 id='get-user-39-s-bill-payments'>Get User&#39;s Bill Payments</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET http://api.highline.co/users/ae16efec-d1.../bill_payments <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
+</code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e87f74be-c46..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"enrollment_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3347c40d-2f9..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"enrollment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3347c40d-2f9..."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"22621f3b-563..."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"22621f3b-563..."</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6335861a-f23..."</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"company"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6335861a-f23..."</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mrs. Maryam Swaniawski"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"legal_entity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ms. Susie Lubowitz"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"tax_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8a6465c0-f32..."</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"104-769-1538"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XabJCOW@ocpDoBb.info"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"logo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://logo.clearbit.com/highline.co"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1631304119</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1631304119</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"colors"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"primary"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"secondary"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"background"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"enrollments"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"link_keys"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"api_keys"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"loan"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Product 1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Consequatur voluptatem au..."</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"validate_direct_deposits"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"validate_payout_allocation"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"validate_employment_active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"max_payment_to_income_ratio"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1631304120</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1631304120</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"payment_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"loan_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">200000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"loan_term"</span><span class="p">:</span><span class="w"> </span><span class="mi">24</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"payment_frequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"monthly"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"first_payment_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1638310741</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"application_reference_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12234"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"account_reference_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"33333"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"days_until_expires"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"required_employment_start_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1460845141</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"required_gross_income"</span><span class="p">:</span><span class="w"> </span><span class="mi">35000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"required_net_income"</span><span class="p">:</span><span class="w"> </span><span class="mi">25000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fully_synced"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1631304121</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1631304121</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"transactions"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ef8b53a0-bfd..."</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"bill_payment_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e87f74be-c46..."</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"amount_expected"</span><span class="p">:</span><span class="w"> </span><span class="mi">50000</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"amount_paid"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"paid"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"payment_order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1631304126</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1631304126</span><span class="w">
+  </span><span class="p">}],</span><span class="w">
+  </span><span class="nl">"employer_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Christian"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"logo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn-icon....png"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"loan_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Consequatur accusantium ..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"amount_paid"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"amount_due"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"ForecastedDueAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"ForecastedDueDate"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"paid"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"settlement_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e87f74be-c46..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"paid_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1631282525</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1631304125</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1631304125</span><span class="w">
+</span><span class="p">}]</span><span class="w">
+</span></code></pre></div>
+<p>This API endpoint returns the user&#39;s bill payments details based on the provided user id.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET http://api.highline.co/users/{id}/bill_payments</code></p>
+<h3 id='parameters'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>In</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <em>required</em></td>
+<td>string</td>
+<td>path</td>
+<td>User ID</td>
+</tr>
+<tr>
+<td><code>product_id</code> <em>optional</em></td>
+<td>string</td>
+<td>query</td>
+<td>Product ID</td>
+</tr>
+<tr>
+<td><code>status</code> <em>optional</em></td>
+<td>string</td>
+<td>query</td>
+<td>Status of bill payment</td>
+</tr>
+<tr>
+<td><code>start_date</code> <em>optional</em></td>
+<td>string</td>
+<td>query</td>
+<td>Paid at since date</td>
+</tr>
+<tr>
+<td><code>end_date</code> <em>optional</em></td>
+<td>string</td>
+<td>query</td>
+<td>Paid at until date</td>
+</tr>
+</tbody></table>
+<h3 id='response'>Response</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>string</td>
+<td>Bill Payment ID</td>
+</tr>
+<tr>
+<td><code>enrollment_id</code></td>
+<td>string</td>
+<td>Enrollment ID</td>
+</tr>
+<tr>
+<td><code>enrollment</code></td>
+<td>json</td>
+<td>Enrollment structure</td>
+</tr>
+<tr>
+<td><code>transactions</code></td>
+<td>array</td>
+<td>Collection of transactions structure</td>
+</tr>
+<tr>
+<td><code>employer_name</code></td>
+<td>string</td>
+<td>Name of employer</td>
+</tr>
+<tr>
+<td><code>logo_url</code></td>
+<td>string</td>
+<td>Path of logo URL</td>
+</tr>
+<tr>
+<td><code>loan_description</code></td>
+<td>string</td>
+<td>Description of the Loan</td>
+</tr>
+<tr>
+<td><code>amount_paid</code></td>
+<td>int</td>
+<td>Value paid (in cents)</td>
+</tr>
+<tr>
+<td><code>amount_due</code></td>
+<td>int</td>
+<td>Value to be paid (in cents)</td>
+</tr>
+<tr>
+<td><code>ForecastedDueAmount</code></td>
+<td>int</td>
+<td>Forecasted Value to be paid (in cents)</td>
+</tr>
+<tr>
+<td><code>ForecastedDueDate</code></td>
+<td>timestamp</td>
+<td>Forecasted date to be paid (in cents)</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td>string</td>
+<td>Status of the bill payment (&quot;paid&quot; &quot;pending&quot; &quot;cancelled&quot; &quot;new&quot; &quot;on_track&quot; &quot;risk_of_error&quot; &quot;ready_to_pay&quot; &quot;initiated&quot; &quot;needs_attention&quot;)</td>
+</tr>
+<tr>
+<td><code>settlement_id</code></td>
+<td>string</td>
+<td>Stettlement ID</td>
+</tr>
+<tr>
+<td><code>paid_at</code></td>
+<td>timestamp</td>
+<td>Date of payment (if paid)</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td>timestamp</td>
+<td>Date of creation</td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td>timestamp</td>
+<td>Date of update</td>
+</tr>
+</tbody></table>
+<h2 id='get-enrollment-39-s-bill-payments'>Get Enrollment&#39;s Bill Payments</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET http://api.highline.co/enrollments/ae16efec-d1.../bill_payments <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
+</code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e87f74be-c46..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"enrollment_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3347c40d-2f9..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"enrollment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3347c40d-2f9..."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"22621f3b-563..."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"22621f3b-563..."</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6335861a-f23..."</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"company"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6335861a-f23..."</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mrs. Maryam Swaniawski"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"legal_entity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ms. Susie Lubowitz"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"tax_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8a6465c0-f32..."</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"104-769-1538"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XabJCOW@ocpDoBb.info"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"logo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://logo.clearbit.com/highline.co"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1631304119</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1631304119</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"enrollments"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"link_keys"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"api_keys"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"loan"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Product 1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Consequatur voluptatem au..."</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"validate_direct_deposits"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"validate_payout_allocation"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"validate_employment_active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"max_payment_to_income_ratio"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1631304120</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1631304120</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"payment_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"loan_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">200000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"loan_term"</span><span class="p">:</span><span class="w"> </span><span class="mi">24</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"payment_frequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"monthly"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"first_payment_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1638310741</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"application_reference_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12234"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"account_reference_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"33333"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"days_until_expires"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"required_employment_start_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1460845141</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"required_gross_income"</span><span class="p">:</span><span class="w"> </span><span class="mi">35000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"required_net_income"</span><span class="p">:</span><span class="w"> </span><span class="mi">25000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fully_synced"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1631304121</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1631304121</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"employer_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Christian"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"logo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn-icon....png"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"loan_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Consequatur accusantium ..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"amount_paid"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"amount_due"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"ForecastedDueAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"ForecastedDueDate"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"paid"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"settlement_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"25de3..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"settlement"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"25de3..."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"client_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bd545..."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"client"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+    </span><span class="nl">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bd545..."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"payment_order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5465sd1fsd516..."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"completed"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"total_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">50000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"completed_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1633824000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1633824000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1634428800</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"paid_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1631282525</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1631304125</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1631304125</span><span class="w">
+</span><span class="p">}]</span><span class="w">
+</span></code></pre></div>
+<p>This API endpoint returns the enrollment&#39;s bill payments details based on the provided enrollment id.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET http://api.highline.co/enrollments/{id}/bill_payments</code></p>
+<h3 id='parameters-2'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>In</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <em>required</em></td>
+<td>string</td>
+<td>path</td>
+<td>User ID</td>
+</tr>
+<tr>
+<td><code>product_id</code> <em>optional</em></td>
+<td>string</td>
+<td>query</td>
+<td>Product ID</td>
+</tr>
+<tr>
+<td><code>status</code> <em>optional</em></td>
+<td>string</td>
+<td>query</td>
+<td>Status of bill payment</td>
+</tr>
+<tr>
+<td><code>start_date</code> <em>optional</em></td>
+<td>string</td>
+<td>query</td>
+<td>Forecasted due date since date</td>
+</tr>
+<tr>
+<td><code>end_date</code> <em>optional</em></td>
+<td>string</td>
+<td>query</td>
+<td>Forecasted due date until date</td>
+</tr>
+<tr>
+<td><code>order</code> <em>optional</em></td>
+<td>string</td>
+<td>query</td>
+<td>Order expected (&quot;asc&quot; or &quot;desc&quot;) of Forecasted due date</td>
+</tr>
+</tbody></table>
+<h3 id='response-2'>Response</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>string</td>
+<td>Bill Payment ID</td>
+</tr>
+<tr>
+<td><code>enrollment_id</code></td>
+<td>string</td>
+<td>Enrollment ID</td>
+</tr>
+<tr>
+<td><code>enrollment</code></td>
+<td>json</td>
+<td>Enrollment structure</td>
+</tr>
+<tr>
+<td><code>employer_name</code></td>
+<td>string</td>
+<td>Name of employer</td>
+</tr>
+<tr>
+<td><code>logo_url</code></td>
+<td>string</td>
+<td>Path of logo URL</td>
+</tr>
+<tr>
+<td><code>loan_description</code></td>
+<td>string</td>
+<td>Description of the Loan</td>
+</tr>
+<tr>
+<td><code>amount_paid</code></td>
+<td>int</td>
+<td>Value paid (in cents)</td>
+</tr>
+<tr>
+<td><code>amount_due</code></td>
+<td>int</td>
+<td>Value to be paid (in cents)</td>
+</tr>
+<tr>
+<td><code>ForecastedDueAmount</code></td>
+<td>int</td>
+<td>Forecasted Value to be paid (in cents)</td>
+</tr>
+<tr>
+<td><code>ForecastedDueDate</code></td>
+<td>timestamp</td>
+<td>Forecasted date to be paid (in cents)</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td>string</td>
+<td>Status of the bill payment (&quot;paid&quot; &quot;pending&quot; &quot;cancelled&quot; &quot;new&quot; &quot;on_track&quot; &quot;risk_of_error&quot; &quot;ready_to_pay&quot; &quot;initiated&quot; &quot;needs_attention&quot;)</td>
+</tr>
+<tr>
+<td><code>settlement_id</code></td>
+<td>string</td>
+<td>Stettlement ID</td>
+</tr>
+<tr>
+<td><code>settlement</code></td>
+<td>json</td>
+<td>Stettlement Structure</td>
+</tr>
+<tr>
+<td><code>paid_at</code></td>
+<td>timestamp</td>
+<td>Date of payment (if paid)</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td>timestamp</td>
+<td>Date of creation</td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td>timestamp</td>
+<td>Date of update</td>
+</tr>
+</tbody></table>
+<h2 id='get-bill-payment-39-s-transactions'>Get Bill Payment&#39;s transactions</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET http://api.highline.co/bill_payments/ae16efec-d1.../transactions <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
+</code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ef8b53a0-bfd..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"bill_payment_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e87f74be-c46..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"amount_expected"</span><span class="p">:</span><span class="w"> </span><span class="mi">50000</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"amount_paid"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"paid"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"payment_order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"65s1f6s..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1631304126</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1631304126</span><span class="w">
+</span><span class="p">}]</span><span class="w">
+</span></code></pre></div>
+<p>This API endpoint returns the bill payments&#39;s transactions details based on the provided bill payment id.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>GET http://api.highline.co/bill_payments/{id}/transactions</code></p>
+<h3 id='parameters-3'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>In</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <em>required</em></td>
+<td>string</td>
+<td>path</td>
+<td>Bill Payment ID</td>
+</tr>
+</tbody></table>
+<h3 id='response-3'>Response</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>string</td>
+<td>Transaction ID</td>
+</tr>
+<tr>
+<td><code>bill_payment_id</code></td>
+<td>string</td>
+<td>Bill payment ID</td>
+</tr>
+<tr>
+<td><code>amount_expected</code></td>
+<td>int</td>
+<td>Amount expected (in cents)</td>
+</tr>
+<tr>
+<td><code>amount_paid</code></td>
+<td>int</td>
+<td>Amount expected (in cents)</td>
+</tr>
+<tr>
+<td><code>paid</code></td>
+<td>bool</td>
+<td>Indication if this transaction is paid</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td>string</td>
+<td>Transaction status (&quot;completed&quot; &quot;pending&quot; &quot;cancelled&quot;)</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>string</td>
+<td>Transaction type (&quot;ach&quot; &quot;credit_card&quot; &quot;debit_card&quot;)</td>
+</tr>
+<tr>
+<td><code>payment_order_id</code></td>
+<td>string</td>
+<td>Orde ID</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td>timestamp</td>
+<td>Date of creation</td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td>timestamp</td>
+<td>Date of update</td>
+</tr>
+</tbody></table>
