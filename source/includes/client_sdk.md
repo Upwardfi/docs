@@ -4,30 +4,33 @@
 
 Highline's widget is a front-end UI element that allows users to grant your application access to their work accounts, set up automated payments, and switch deposits directly from their paychecks.
 
-To use Highline-Link, pass in an object with the following parameters to the `highlineLink.connect()` function:
+To use Highline-Link, pass in an object with the parameters described below to the  
+`highlineLink.connect()` function:
 
 Parameter | Type | Description
 --------- | ------- | -----------
 `access_token` *required* | string | Value from the '/auth/token' endpoint
-`payload` *required* | string | Encrypted value from the '/link/encode' endpoint
+`feature` *required* | string | 'employment_data', 'direct_deposit_payment', or 'direct_deposit_switch'
+`enrollment_id` *optional* | string | Value from the '/enrollment' endpoint - *required* for 'direct_deposit_payment' feature
+`payload` *optional* | string | Encrypted value from the '/link/encrypt' endpoint - *required* for 'direct_deposit_switch' feature
 `on_success` *optional* | function | Callback function for success events
 `on_error` *optional* | function | Callback function for error events
 `on_close` *optional* | function | Callback function for close events
 
 
-And then open with highlineLink.open()
+And then open with highlineLink.open()  
 
 ## Direct Deposit Switch Guide
 
 > Step 1
 
-```javascript
-curl -X POST 'http://api.highline.co/auth/token'
--H "Authorization Bearer: AccessToken" \
--d $'{
-  "api_key": "YOUR_API_KEY",
-  "secret" : "YOUR_SECRET"
-}'
+```shell
+curl -X POST http://api.highline.co/auth/token \
+  -H "Content-Type: application/json" \
+  -d $'{
+    "api_key": "YOUR_API_KEY",
+    "secret" : "YOUR_SECRET"
+  }'
 ```
 
 > Response:
@@ -43,19 +46,18 @@ curl -X POST 'http://api.highline.co/auth/token'
 
 > Step 2
 
-```javascript
-curl -X POST 'http://api.highline.co/link/encode'
-Bearer AccessToken
--H "Authorization Bearer: AccessToken" \
--d $'{
- "bank_account": {
-   "bank_name": "New Bank",
-   "account_type": "checking",
-   "routing_number": "XXXXXXXX",
-   "account_number": "XXXXXXXXXX"
- },
- "feature": "direct_deposit_switch"
-}'
+```shell
+curl -X POST http://api.highline.co/link/encrypt \
+  -H "Authorization Bearer: AccessToken" \
+  -H "Content-Type: application/json" \
+  -d $'{
+    "bank_account": {
+      "bank_name": "New Bank",
+      "account_type": "checking",
+      "routing_number": "XXXXXXXXX",
+      "account_number": "XXXXXXXXXX"
+    }
+  }'
 ```
 
 > Response:
@@ -79,15 +81,16 @@ Bearer AccessToken
   <script type="text/javascript">
     highlineLink.connect({
         access_token: 'value_from_auth_token_api',
-        payload: 'value_from_link_encode_api',
-        on_success: ({ user_id }) => {
-          console.log('on_success! ' + user_id);
+        feature: 'direct_deposit_switch'
+        payload: 'value_from_link_encrypt_api',
+        on_close: () => {
+          console.log('on_close!');
         },
         on_error: () => {
           console.log('on_error!');
         },
-        on_close: () => {
-          console.log('on_close!');
+        on_success: ({ user_id }) => {
+          console.log('on_success! ' + user_id);
         }
     });
     highlineLink.open();

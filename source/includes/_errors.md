@@ -16,13 +16,13 @@ Code | Title | Description
 404 | Not Found | The requested resource doesn't exist
 409 | Conflict | The request conflicts with another request (perhaps due to using the same idempotent key).
 429 | Too Many Requests | Too many requests hit the API too quickly. We recommend an exponential backoff of your requests.
-500,502,503,504 | Server Errors | Something went wrong on Upward's end.
+500,502,503,504 | Server Errors | Something went wrong on Highline's end.
 
 ## Error types
 
 Type | Description
 --------- | ---------
-api_connection |	Failure to connect to Upward's API.
+api_connection |	Failure to connect to Highline's API.
 api_error	| API errors cover any other type of problem (e.g., a temporary problem with our servers), and are extremely uncommon.
 authentication_error |	Failure to properly authenticate yourself in the request.
 invalid_request	| Invalid request errors arise when your request has invalid parameters.
