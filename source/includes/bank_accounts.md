@@ -151,14 +151,14 @@ This API returns a user's specified bank account based on the user id and bank a
 
 ### HTTP Request
 
-`GET http://api.highline.co/users/{id}/bank_accounts/{id_account}`
+`GET http://api.highline.co/users/{id}/bank_accounts/{bank_account_id}`
 
 ### Parameters
 
 Name | Type | In | Description
 --------- | ------- | ------- | ------
 `id` *required* | string | path | User ID
-`id_account` *required* | string | path | Bank Account ID
+`bank_account_id` *required* | string | path | Bank Account ID
 
 ### Response
 
@@ -205,14 +205,14 @@ This API updates a user bank account. By passing the bank account information yo
 
 ### HTTP Request
 
-`PUT http://api.highline.co/users/{id}/bank_accounts/{id_account}`
+`PUT http://api.highline.co/users/{id}/bank_accounts/{bank_account_id}`
 
 ### Parameters
 
 Name | Type | In | Description
 --------- | ------- | ------- | ------
 `id` *required* | string | path | User id
-`id_account` *required* | string | path | Bank account id
+`bank_account_id` *required* | string | path | Bank account id
 `account_number` *optional* |string | body | Account number
 `routing_number` *optional* | string | body | Routing number
 `account_type` *optional* | string | body | Type of account (checking, savings, etc)
@@ -243,14 +243,14 @@ This API display an account number of a user bank account. Highline will return 
 
 ### HTTP Request
 
-`GET http://api.highline.co/users/{id}/bank_accounts/{id_account}/account_number`
+`GET http://api.highline.co/users/{id}/bank_accounts/{bank_account_id}/account_number`
 
 ### Parameters
 
 Name | Type | In | Description
 --------- | ------- | ------- | ------
 `id` *required* | string | path | User id
-`id_account` *required* | string | path | Bank account id
+`bank_account_id` *required* | string | path | Bank account id
 
 
 
@@ -276,14 +276,14 @@ This API display the balance of a user bank account. Highline will return the nu
 
 ### HTTP Request
 
-`GET http://api.highline.co/users/{id}/bank_accounts/{id_account}/balance`
+`GET http://api.highline.co/users/{id}/bank_accounts/{bank_account_id}/balance`
 
 ### Parameters
 
 Name | Type | In | Description
 --------- | ------- | ------- | ------
 `id` *required* | string | path | User id
-`id_account` *required* | string | path | Bank account id
+`bank_account_id` *required* | string | path | Bank account id
 
 ### Response
 
@@ -318,11 +318,11 @@ This API will delete a user bank account.
 
 ### HTTP Request
 
-`DELETE http://api.highline.co/users/{id}/bank_accounts/{id_account}/account_number`
+`DELETE http://api.highline.co/users/{id}/bank_accounts/{bank_account_id}/account_number`
 
 ### Parameters
 
 Name | Type | In | Description
 --------- | ------- | ------- | ------
 `id` *required* | string | path | User id
-`id_account` *required* | string | path | Bank account id
+`bank_account_id` *required* | string | path | Bank account id

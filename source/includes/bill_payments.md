@@ -165,11 +165,6 @@ curl -X GET http://api.highline.co/enrollments/ae16efec-d1.../bill_payments \
         "created_at": 1631304119,
         "updated_at": 1631304119
       },
-      "colors": {
-        "primary": "",
-        "secondary": "",
-        "background": ""
-      },
       "enrollments": null,
       "link_keys": null,
       "api_keys": null,
@@ -199,18 +194,6 @@ curl -X GET http://api.highline.co/enrollments/ae16efec-d1.../bill_payments \
     "created_at": 1631304121,
     "updated_at": 1631304121
   },
-  "transactions": [{
-      "id": "ef8b53a0-bfd...",
-      "bill_payment_id": "e87f74be-c46...",
-      "amount_expected": 50000,
-      "amount_paid": 0,
-      "paid": false,
-      "status": "",
-      "type": "",
-      "payment_order_id": "",
-      "created_at": 1631304126,
-      "updated_at": 1631304126
-  }],
   "employer_name": "Christian",
   "logo_url": "https://cdn-icon....png",
   "loan_description": "Consequatur accusantium ...",
@@ -219,8 +202,21 @@ curl -X GET http://api.highline.co/enrollments/ae16efec-d1.../bill_payments \
   "ForecastedDueAmount": 0,
   "ForecastedDueDate": 0,
   "status": "paid",
-  "settlement_id": null,
-  "settlement": null,
+  "settlement_id": "25de3...",
+  "settlement": {
+    "id": "25de3...",
+    "client_id": "bd545...",
+    "client": {},
+    "product_id": "bd545...",
+    "product":{},
+    "bill_payments": [{}],
+    "payment_order_id": "5465sd1fsd516...",
+    "status": "completed",
+    "total_amount": 50000,
+    "completed_at": 1633824000,
+    "created_at": 1633824000,
+    "updated_at": 1634428800
+  },
   "paid_at": 1631282525,
   "created_at": 1631304125,
   "updated_at": 1631304125
@@ -251,7 +247,6 @@ Parameter | Type | Description
 `id` | string | Bill Payment ID
 `enrollment_id` | string | Enrollment ID
 `enrollment` | json | Enrollment structure 
-`transactions` | array | Collection of transactions structure
 `employer_name` | string | Name of employer 
 `logo_url` | string | Path of logo URL
 `loan_description` | string | Description of the Loan
@@ -263,5 +258,67 @@ Parameter | Type | Description
 `settlement_id` | string | Stettlement ID 
 `settlement` | json | Stettlement Structure 
 `paid_at` | timestamp | Date of payment (if paid)
+`created_at` | timestamp | Date of creation
+`updated_at` | timestamp | Date of update
+
+
+
+
+
+
+
+
+
+
+
+## Get Bill Payment's transactions
+
+```shell
+curl -X GET http://api.highline.co/bill_payments/ae16efec-d1.../transactions \
+  -H "Authorization Bearer: AccessToken" \
+  -H "Content-Type: application/json"
+```
+
+> Response
+
+```json
+[{
+  "id": "ef8b53a0-bfd...",
+  "bill_payment_id": "e87f74be-c46...",
+  "amount_expected": 50000,
+  "amount_paid": 0,
+  "paid": false,
+  "status": "",
+  "type": "",
+  "payment_order_id": "",
+  "created_at": 1631304126,
+  "updated_at": 1631304126
+}]
+```
+
+This API endpoint returns the bill payments's transactions details based on the provided bill payment id.
+
+### HTTP Request
+
+`GET http://api.highline.co/bill_payments/{id}/transactions`
+
+### Parameters
+
+Name | Type | In | Description
+--------- | ------- | ------- | ------
+`id` *required* | string | path | Bill Payment ID
+
+### Response
+
+Parameter | Type | Description
+--------- | ------- | -----------
+`id` | string | Transaction ID
+`bill_payment_id` | string | Bill payment ID
+`amount_expected` | int | Amount expected (in cents)
+`amount_paid` | int | Amount expected (in cents)
+`paid` | bool | Indication if this transaction is paid
+`status` | string | Transaction status ("completed" "pending" "cancelled")
+`type` | string | Transaction type ("ach" "credit_card" "debit_card")
+`payment_order_id` | string | Orde ID
 `created_at` | timestamp | Date of creation
 `updated_at` | timestamp | Date of update
