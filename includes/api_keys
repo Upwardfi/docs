@@ -1,10 +1,11 @@
 <h1 id='api-keys'>API Keys</h1>
-<p>Highline&#39;s API uses JWT Token authentication. All API calls must include a bearer token.</p>
+<p>Highlines&#39;s API uses OAuth 2.0 Bearer Token to authenticate requests.</p>
 
-<aside class="warning">
+<aside class="notice">
     An invalid, missing or expired token will result in HTTP `401` Unauthorized responses.
 </aside>
 
-<p>The API key should be kept confidential and only stored on your own servers.</p>
-
-<p>Each account has a total of two keys: a key pair for test mode and live mode.</p>
+<ul>
+<li>All API calls must include a bearer token.</li>
+<li>The API key should be kept confidential and only stored on your own servers.</li>
+</ul>

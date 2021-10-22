@@ -1,4 +1,8 @@
-<h1 id='reports'>Reports</h1><h2 id='add-product-39-s-report'>Add product&#39;s report</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST http://api.highline.co/products/d5165d5168-61s3.../reports <span class="se">\</span>
+<h1 id='reports'>Reports</h1>
+<p>Every client of Highline is obligated to participate in a daily exchange of data between themselves and Highline. This is a report that allows Highline to monitor the status of all active bill payments, and keep our respective ledgers in sync. If there’s a change or inconsistency from one day to the next, the daily client report will help Highline see this change in real-time and act accordingly.</p>
+
+<p>We offer two ways to exchange this data. Our recommended solution is setting up an automatic exchange using the API’s below. Alternatively, we offer a manual report upload from the client portal.</p>
+<h2 id='add-product-39-s-daily-data-report'>Add product&#39;s daily data report</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST http://api.highline.co/products/d5165d5168-61s3.../reports <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: multipart/form-data"</span>
   <span class="nt">-d</span> <span class="s1">$'dailyReport:file'</span>
@@ -10,7 +14,7 @@
   </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>This API add a report for the provided product id.</p>
+<p>This API add a daily data report for the provided product id.</p>
 
 <p><code>POST http://api.highline.co/products/{id}/reports</code></p>
 <h3 id='parameters'>Parameters</h3>
@@ -58,7 +62,7 @@
   </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1634428800</span><span class="w">
 </span><span class="p">}]</span><span class="w">
 </span></code></pre></div>
-<p>This API checks the product&#39;s reports.</p>
+<p>This API checks the product&#39;s daily data reports.</p>
 
 <p><code>GET http://api.highline.co/products/{id}/reports</code></p>
 <h3 id='parameters-2'>Parameters</h3>

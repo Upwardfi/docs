@@ -33,7 +33,7 @@
   </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1633633503</span><span class="w">
 </span><span class="p">}]</span><span class="w">
 </span></code></pre></div>
-<p>This API endpoint returns the user&#39;s employment details based on the provided user id.</p>
+<p>The user employment API provides key details on your users&#39; employment information. This data is provided from our payroll provider and employer partners, and gives a full view into the individual’s employment status, tenure, and other key details.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>GET http://api.highline.co/users/{id}/employments</code></p>
 <h3 id='parameters'>Parameters</h3>

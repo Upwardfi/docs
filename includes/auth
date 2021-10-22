@@ -19,10 +19,12 @@
   </span><span class="nl">"expires_in"</span><span class="p">:</span><span class="mi">1634244444</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>The endpoints uses JWT token authentication.</p>
+<p>The endpoints uses OAuth 2.0 Bearer Token to authenticate requests.</p>
 
-<p>You can have you token via the <code>API key</code> which you can find in your accounts settings endpoint. Your API keys carry many privileges, so be sure to keep them secure! Do not share your secret API keys in publicly accessible areas such as GitHub, client-side code, and so forth.</p>
-<h3 id='parameters'>Parameters</h3>
+<p>You can request tokens with <code>/auth/token</code> endpoint. The <code>API Key</code> and <code>API secret</code> are available in the account settings page. Your API keys carry many privileges, so be sure to keep them secure! Do not share your secret API keys in publicly accessible areas such as GitHub, client-side code, and so forth.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>POST http://api.highline.co/auth/token</code></p>
+<h3 id='response'>Response</h3>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -52,11 +54,7 @@
 </tr>
 </tbody></table>
 
-<p>Authentication to the API is performed via Bearer token. Provide your <code>access_token</code> as the Bearer auth value. You do not need to provide the secret again.</p>
-<h3 id='http-request'>HTTP Request</h3><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET https://api.highline.co/enrollments/123e4567-e89b-12d3-a456-426614174000 <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer eyJhbGciOiJIUzI..."</span>
-</code></pre></div>
-<p><code>GET http://api.highline.co/enrollments/{id}</code></p>
+<p>Authentication to the APIs is performed via Bearer token. Pass the <code>access_token</code> as the Bearer auth value.</p>
 
 <p>All API requests must be made over HTTPS. Calls made over plain HTTP will fail.</p>
 <h2 id='refresh-token'>Refresh Token</h2>
@@ -81,14 +79,13 @@
   </span><span class="nl">"expires_in"</span><span class="p">:</span><span class="mi">1634244444</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>All tokens have a expiration time of 15 minutes.</p>
+<p>All tokens have a expiration time of 15 minutes. The refresh token is used to generate a new access token.</p>
 
-<p>Once you have your token expired, you can ask a new one using the previous <code>refresh_token</code>, that have 30 days of expiration time.</p>
+<p>Once the <code>access_token</code> has expired, you’ll be required to generate a new access token using the <code>refresh_token</code></p>
+<h3 id='http-request-2'>HTTP request</h3>
+<p><code>POST http://api.highline.co/auth/token</code></p>
 
-<p>To ask brand new tokens you can do like so:</p>
-
-<p><br />
-Request:</p>
+<p>To ask for a new access token, the following fields are required</p>
 
 <table><thead>
 <tr>
