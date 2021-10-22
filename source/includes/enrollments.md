@@ -6,7 +6,7 @@
 curl -X POST http://api.highline.co/enrollments \
   -H "Authorization Bearer: AccessToken" \
   -H "Content-Type: application/json" \
-  -d $'{
+  -d '{
     "users": [{
       "id": "1324defc-a8e..."
     }],

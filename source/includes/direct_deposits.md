@@ -1,5 +1,87 @@
 # Direct Deposits
 
+In order to create a deposit configuration we need to encrypt the payload that will be sent by Highline Link.
+
+## Create a Deposit Payment (Virtual Account)
+
+```shell
+curl -X POST http://api.highline.co/deposit_payments/request \
+  -H "Authorization Bearer: AccessToken" \
+  -H "Content-Type: application/json"
+  -d '{
+    "user_id": "6351fsd6fs-sdfs...",
+    "provider_name": "argyle"
+  }'
+```
+
+> Response
+```json
+{
+  "encrypted_config": "0123456789abcdef..."
+}
+```
+
+Deposit payments are target to a virtual bank account created internally for the member.
+Therefore there is no need to inform bank account details here.
+
+### HTTP Request
+
+`POST http://api.highline.co/deposit_payments/request`
+
+### Parameters
+
+Name | Type | In | Description
+--------- | ------- | ------- | ------
+`user_id` *required* | string | body | User ID
+`provider_name` *required* | string | body | Payroll data provider name
+
+### Response
+
+Parameter | Type | Description
+--------- | ------- | -----------
+`encrypted_config` | string | Encrypted config
+
+## Create a Deposit Switch (External Account)
+
+```shell
+curl -X POST http://api.highline.co/deposit_switch/request \
+  -H "Authorization Bearer: AccessToken" \
+  -H "Content-Type: application/json"
+  -d '{
+    "user_id": "6351fsd6fs-sdfs...",
+    "provider_name": "argyle",
+    "encrypted_payload": "0123456789abcdef..."
+  }'
+```
+
+> Response
+```json
+{
+  "encrypted_config": "0123456789abcdef..."
+}
+```
+
+When creating a deposit switch the bank account details must be informed.
+The `encrypted_payload` field contains this data, previously encrypted by `POST /link/encrypt`.
+
+### HTTP Request
+
+`POST http://api.highline.co/deposit_switch/request`
+
+### Parameters
+
+Name | Type | In | Description
+--------- | ------- | ------- | ------
+`user_id` *required* | string | body | User ID
+`provider_name` *required* | string | body | Payroll data provider name
+`encrypted_payload` *required* | string | body | Encrypted bank account details
+
+### Response
+
+Parameter | Type | Description
+--------- | ------- | -----------
+`encrypted_config` | string | Encrypted config
+
 ## Get User's direct deposits
 
 ```shell
