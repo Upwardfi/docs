@@ -24,11 +24,15 @@ curl -X POST http://api.highline.co/auth/token \
 }
 ```
 
-The endpoints uses JWT token authentication.
+The endpoints uses OAuth 2.0 Bearer Token to authenticate requests.
 
-You can have you token via the `API key` which you can find in your accounts settings endpoint. Your API keys carry many privileges, so be sure to keep them secure! Do not share your secret API keys in publicly accessible areas such as GitHub, client-side code, and so forth.
+You can request tokens with `/auth/token` endpoint. The `API Key` and `API secret` are available in the account settings page. Your API keys carry many privileges, so be sure to keep them secure! Do not share your secret API keys in publicly accessible areas such as GitHub, client-side code, and so forth.
 
-### Parameters
+### HTTP Request
+
+`POST http://api.highline.co/auth/token`
+
+### Response
 
 Attribute | Type | Description
 --------- | ------- | ------ | --------
@@ -37,16 +41,8 @@ Attribute | Type | Description
 `subject` | string | Your API Key
 `expires_in` | int | Timestamp of token expire time
 
-Authentication to the API is performed via Bearer token. Provide your `access_token` as the Bearer auth value. You do not need to provide the secret again.
 
-### HTTP Request
-
-```shell
-curl -X GET https://api.highline.co/enrollments/123e4567-e89b-12d3-a456-426614174000 \
-  -H "Authorization: Bearer eyJhbGciOiJIUzI..."
-  ```
-
-`GET http://api.highline.co/enrollments/{id}`
+Authentication to the APIs is performed via Bearer token. Pass the `access_token` as the Bearer auth value.
 
 All API requests must be made over HTTPS. Calls made over plain HTTP will fail.
 
@@ -75,18 +71,18 @@ curl -X POST http://api.highline.co/auth/token \
 }
 ```
 
-All tokens have a expiration time of 15 minutes.
+All tokens have a expiration time of 15 minutes. The refresh token is used to generate a new access token.
 
-Once you have your token expired, you can ask a new one using the previous `refresh_token`, that have 30 days of expiration time.
+Once the `access_token` has expired, you’ll be required to generate a new access token using the `refresh_token`
 
-To ask brand new tokens you can do like so:
+### HTTP request
 
-<br />
-Request:
+`POST http://api.highline.co/auth/token`
+
+To ask for a new access token, the following fields are required
 
 Attribute | Type | Description
 --------- | ------- | ------ | --------
 `refresh_token` *required* | string | Token used to request new tokens
 `subject` *required* | string | Your API Key
 `grant_type` *required* | string | Default string "refresh_token"
-

@@ -1,5 +1,7 @@
 # Settlements
 
+A settlement refers to the settlmeent of funds between Highline and clients (that’s you!). This happens whenever a bill payment is due, and will be reflected in this API and our daily data report.
+
 ## Check product's settlements
 
 ```shell

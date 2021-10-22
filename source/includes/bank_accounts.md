@@ -22,16 +22,13 @@ curl -X POST http://api.highline.co/users/c8e1f36e-c4.../bank_accounts \
   "user_id": "07662260-b7...",
   "user": {
     "id": "d134c.....",
-    "provider_user_id": "Argyle",
     "first_name": "John",
     "last_name": "Smith",
     "ssn": "1234...",
     "email": "john.smith143@highline.co",
     "role": "member",
-    "ofac_validated": false,
     "created_at": 1634744601,
     "updated_at": 1634744601,
-    "social_security_number_hash": "08e3...."
   },
   "account_number": "***2345",
   "routing_number": "6514321",
@@ -67,7 +64,7 @@ Parameter | Type | Description
 `user_id` | string | User ID
 `user` | json | User structure
 `account_number` | string | Account number (masked)
-`routing_number` | string | Routing number 
+`routing_number` | string | Routing number
 `account_type` | string | Account Type ("checking" "savings" "other")
 `bank_name` | string | Bank name
 `kind` | string | Kind of account ("internal" "virtual" "external")
@@ -94,16 +91,13 @@ curl -X GET http://api.highline.co/users/c8e1f36e-c4.../bank_accounts \
   "user_id": "07662260-b7...",
   "user": {
     "id": "d134c.....",
-    "provider_user_id": "Argyle",
     "first_name": "John",
     "last_name": "Smith",
     "ssn": "1234...",
     "email": "john.smith143@highline.co",
     "role": "member",
-    "ofac_validated": false,
     "created_at": 1634744601,
     "updated_at": 1634744601,
-    "social_security_number_hash": "08e3...."
   },
   "account_number": "***2345",
   "routing_number": "***4321",
@@ -115,7 +109,7 @@ curl -X GET http://api.highline.co/users/c8e1f36e-c4.../bank_accounts \
 }]
 ```
 
-This API returns user's bank accounts based on the specified user id.
+This API returns a user's bank accounts based on the specified user id.
 
 ### HTTP Request
 
@@ -162,16 +156,13 @@ curl -X GET http://api.highline.co/users/c8e1f36e-c4.../bank_accounts/d938f36e-c
   "user_id": "c8e1f36e-c4...",
   "user": {
     "id": "d134c.....",
-    "provider_user_id": "Argyle",
     "first_name": "John",
     "last_name": "Smith",
     "ssn": "1234...",
     "email": "john.smith143@highline.co",
     "role": "member",
-    "ofac_validated": false,
     "created_at": 1634744601,
     "updated_at": 1634744601,
-    "social_security_number_hash": "08e3...."
   },
   "account_number": "***2345",
   "routing_number": "***4321",
@@ -275,7 +266,7 @@ curl -X GET http://api.highline.co/users/c8e1f36e-c4.../bank_accounts/f6e1645-fc
 }
 ```
 
-This API display an account number of a user bank account. Highline will return the number, if you are the owner of that account.
+This API displays an account number of a user's bank account.
 
 ### HTTP Request
 
@@ -308,7 +299,7 @@ curl -X GET http://api.highline.co/users/c8e1f36e-c4.../bank_accounts/f6e1645-fc
 }
 ```
 
-This API display the balance of a user bank account. Highline will return the number.
+This API displays the balance of a user’s bank account. Highline will return the balance available within the associated account
 
 ### HTTP Request
 
@@ -350,7 +341,7 @@ curl -X DELETE http://api.highline.co/users/c8e1f36e-c4.../bank_accounts/f6e1645
 }
 ```
 
-This API will delete a user bank account.
+This API will delete a user's bank account.
 
 ### HTTP Request
 

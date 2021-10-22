@@ -24,10 +24,10 @@ includes:
   - settlements
   - reports
   - client_sdk
+  - guides
   - errors
 
 search: true
 
 code_clipboard: true
 ---
-

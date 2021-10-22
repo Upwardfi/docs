@@ -13,7 +13,6 @@ curl -X GET http://api.highline.co/users/BGMXJzGzJcht38SCJuMhzF \
 ```json
   {
     "id": "d134c.....",
-    "provider_user_id": "Argyle",
     "first_name": "John",
     "last_name": "Smith",
     "ssn": "1234...",
@@ -30,10 +29,8 @@ curl -X GET http://api.highline.co/users/BGMXJzGzJcht38SCJuMhzF \
     },
     "email": "john.smith143@highline.co",
     "role": "member",
-    "ofac_validated": false,
     "created_at": 1634744601,
     "updated_at": 1634744601,
-    "social_security_number_hash": "08e3...."
   }
 ```
 
@@ -57,11 +54,9 @@ Parameter | Type | Description
 `last_name` | string | Last Name
 `ssn` | string | Social security number
 `address` | json | Address structure  
-`role` | string | Member's role 
-`ofac_validated` | bool | Ofac validation
+`role` | string | Member's role
 `created_at` | timestamp | Date of creation
 `updated_at` | timestamp | Date of update
-`social_security_number_hash` | string | SSN hashed
 
 ### Address Object
 

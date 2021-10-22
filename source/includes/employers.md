@@ -27,6 +27,9 @@ curl -X GET http://api.highline.co/employers?q=Kroger \
   }
 ]
 ```
+To be eligible, customers must be gainfully employed with a trusted employer.
+
+We also require these employers, and their subsequent payroll providers, to be integrated with Highline. This allow us to properly allocate a portion of the paycheck towards bill payments.
 
 This API checks if user's employer is supported through Highline and will return success or failure based on eligibility.
 

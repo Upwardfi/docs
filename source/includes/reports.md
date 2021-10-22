@@ -1,6 +1,9 @@
 # Reports
+Every client of Highline is obligated to participate in a daily exchange of data between themselves and Highline. This is a report that allows Highline to monitor the status of all active bill payments, and keep our respective ledgers in sync. If there’s a change or inconsistency from one day to the next, the daily client report will help Highline see this change in real-time and act accordingly.
 
-## Add product's report
+We offer two ways to exchange this data. Our recommended solution is setting up an automatic exchange using the API’s below. Alternatively, we offer a manual report upload from the client portal.
+
+## Add product's daily data report
 
 ```shell
 curl -X POST http://api.highline.co/products/d5165d5168-61s3.../reports \
@@ -17,7 +20,7 @@ curl -X POST http://api.highline.co/products/d5165d5168-61s3.../reports \
 }
 ```
 
-This API add a report for the provided product id.
+This API add a daily data report for the provided product id.
 
 `POST http://api.highline.co/products/{id}/reports`
 
@@ -61,7 +64,7 @@ curl -X GET http://api.highline.co/products/d5165d5168-61s3.../reports \
 }]
 ```
 
-This API checks the product's reports.
+This API checks the product's daily data reports.
 
 `GET http://api.highline.co/products/{id}/reports`
 

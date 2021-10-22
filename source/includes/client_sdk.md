@@ -2,73 +2,6 @@
 
 ## Widget Installation
 
-Highline's widget is a front-end UI element that allows users to grant your application access to their work accounts, set up automated payments, and switch deposits directly from their paychecks.
-
-To use Highline-Link, pass in an object with the parameters described below to the  
-`highlineLink.connect()` function:
-
-Parameter | Type | Description
---------- | ------- | -----------
-`access_token` *required* | string | Value from the '/auth/token' endpoint
-`feature` *required* | string | 'employment_data', 'direct_deposit_payment', or 'direct_deposit_switch'
-`enrollment_id` *optional* | string | Value from the '/enrollment' endpoint - *required* for 'direct_deposit_payment' feature
-`payload` *optional* | string | Encrypted value from the '/link/encrypt' endpoint - *required* for 'direct_deposit_switch' feature
-`on_success` *optional* | function | Callback function for success events
-`on_error` *optional* | function | Callback function for error events
-`on_close` *optional* | function | Callback function for close events
-
-
-And then open with highlineLink.open()  
-
-## Direct Deposit Switch Guide
-
-> Step 1
-
-```shell
-curl -X POST http://api.highline.co/auth/token \
-  -H "Content-Type: application/json" \
-  -d $'{
-    "api_key": "YOUR_API_KEY",
-    "secret" : "YOUR_SECRET"
-  }'
-```
-
-> Response:
-
-```json
-{
-  "access_token":"eyJhbGciOiJIUzI...",
-  "refresh_token":"eyJhbGciOiJIUz...",
-  "subject":"123e4567-e89b-12d3-a456-426614174000",
-  "expires_in":1634244444
-}
-```
-
-> Step 2
-
-```shell
-curl -X POST http://api.highline.co/link/encrypt \
-  -H "Authorization Bearer: AccessToken" \
-  -H "Content-Type: application/json" \
-  -d $'{
-    "bank_account": {
-      "bank_name": "New Bank",
-      "account_type": "checking",
-      "routing_number": "XXXXXXXXX",
-      "account_number": "XXXXXXXXXX"
-    }
-  }'
-```
-
-> Response:
-```json
-{
- "payload": "encrypted_value",
-}
-```
-
-> Step 3
-
 ```javascript
 <!DOCTYPE html>
 <html>
@@ -99,8 +32,22 @@ curl -X POST http://api.highline.co/link/encrypt \
 </html>
 ```
 
-### Step 1 - Get an access token from your server
+In order to ensure a simple and delightful experience for customers, we offer an integrated widget.
 
-### Step 2 - Build the payload
+Highline's widget is a front-end UI element that allows users to grant your application access to their work accounts, set up automated payments, and switch deposits directly from their paychecks.
 
-### Step 3 - Connect and open Highline-Link
+To use Highline-Link, pass in an object with the parameters described below to the  
+`highlineLink.connect()` function:
+
+Parameter | Type | Description
+--------- | ------- | -----------
+`access_token` *required* | string | Value from the '/auth/token' endpoint
+`feature` *required* | string | 'employment_data', 'direct_deposit_payment', or 'direct_deposit_switch'
+`enrollment_id` *optional* | string | Value from the '/enrollment' endpoint - *required* for 'direct_deposit_payment' feature
+`payload` *optional* | string | Encrypted value from the '/link/encrypt' endpoint - *required* for 'direct_deposit_switch' feature
+`on_success` *optional* | function | Callback function for success events
+`on_error` *optional* | function | Callback function for error events
+`on_close` *optional* | function | Callback function for close events
+
+
+And then open with highlineLink.open()

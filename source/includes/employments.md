@@ -40,7 +40,7 @@ curl -X GET http://api.highline.co/users/ae16efec-d1.../employments \
 }]
 ```
 
-This API endpoint returns the user's employment details based on the provided user id.
+The user employment API provides key details on your users' employment information. This data is provided from our payroll provider and employer partners, and gives a full view into the individual’s employment status, tenure, and other key details.
 
 ### HTTP Request
 

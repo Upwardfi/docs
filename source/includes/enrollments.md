@@ -1,5 +1,9 @@
 # Enrollments
 
+An Enrollment is created to initiate the set up of a recurring bill payment on Highline's payments network.
+
+You first create an enrollment with the recurring amount, bill payment date, payment frequency, along with other optional fields.
+
 ## Create user enrollment
 
 ```shell
@@ -27,27 +31,21 @@ curl -X POST http://api.highline.co/enrollments \
   "users": [
     {
       "id": "d134c.....",
-      "provider_user_id": "Argyle",
       "first_name": "John",
       "last_name": "Smith",
       "ssn": "1234...",
       "email": "john.smith143@highline.co",
       "role": "member",
-      "ofac_validated": false,
       "created_at": 1634744601,
       "updated_at": 1634744601,
-      "social_security_number_hash": "08e3...."
     }
   ],
   "product_id": "070b8618-7c...",
   "payment_amount": 20000,
   "payment_frequency": "monthly",
   "first_payment_date": 1634740754,
-  "application_reference_number": "16576",
-  "days_until_expires": 30,
-  "fully_synced": false,
+  "application_reference_number": "16576AB",
   "status": "new",
-  "status_description": "",
   "created_at": 1634741667,
   "updated_at": 1634741667
 }
@@ -83,100 +81,10 @@ Parameter | Type | Description
 `first_payment_date` | timestamp | Date of first payment as Unix timestamp
 `application_reference_number` | string | Loan application number
 `days_until_expires` | int | Number of days before this enrollment request expires
-`fully_synced` | bool | 
+`fully_synced` | bool |
 `status` | string | Enrollment status
-`status_description` | string | Description of status
 `created_at` | timestamp | Date of creation
 `updated_at` | timestamp | Date of update
-
-
-## Add users to enrollments
-
-```shell
-curl -X POST http://api.highline.co/enrollments/YtMXJzGzJcht38SCJuMhzC/users \
-  -H "Authorization Bearer: AccessToken" \
-  -H "Content-Type: application/json" \
-  -d $'{
-    "first_name" : "John",
-    "last_name" : "Smith",
-    "email" : "john.smith13@highline.co",
-    "ssn" : "12345...",
-    "role" : "member",
-    "address" : {
-      "id" : 83,
-      "line_1" : "4194 Autry Lane",
-      "line_2" : "",
-      "city" : "Dallas",
-      "state" : "TX",
-      "zip_code" : "75001",
-      "country":"US"
-    }
-  }'
-```
-
-> Response
-
-```json
-{
-  "id": "d134c.....",
-  "provider_user_id": "Argyle",
-  "first_name": "John",
-  "last_name": "Smith",
-  "ssn": "1234...",
-  "address": {
-    "id": 27,
-    "user_id": "d134c.....",
-    "company_id": null,
-    "line_1": "4194 Autry Lane",
-    "line_2": "",
-    "city": "Dallas",
-    "state": "TX",
-    "zip_code": "75001",
-    "country": "US"
-  },
-  "email": "john.smith143@highline.co",
-  "role": "member",
-  "ofac_validated": false,
-  "created_at": 1634744601,
-  "updated_at": 1634744601,
-  "social_security_number_hash": "08e3...."
-}
-```
-
-This API endpoint adds a user to the enrollment via Highline. By passing basic user information Highline will return an user object based on the provided enrollment.
-
-### HTTP Request
-
-`POST http://api.highline.co/enrollments/{id}/users`
-
-### Parameters
-
-Name | Type | In | Description
---------- | ------- | ------ | --------
-`email` *required* | string | body | Email id of user
-`first_name` *required* |string | body | First Name
-`last_name` *required* | string | body | Last Name
-`ssn` *required* | string | body | Social Security Number
-`address` *required* | json | body | Nested JSON object containing user's address data
-`phone` *optional* | string | body | Phone number
-`date_of_birth` *optional* | timestamp | body | Date of birth as Unix timestamp
-
-### Response
-
-Parameter | Type | Description
---------- | ------- | -----------
-`id` | string | Returns user id.
-`provider_user_id` | string | ID of employer
-`first_name` | string | First Name
-`last_name` | string | Last Name
-`ssn` | string | Social security number
-`address` | json | Address structure  
-`role` | string | Member's role 
-`ofac_validated` | bool | Ofac validation
-`created_at` | timestamp | Date of creation
-`updated_at` | timestamp | Date of update
-`social_security_number_hash` | string | SSN hashed
-
 
 ## Get enrollment
 
@@ -200,10 +108,8 @@ curl -X GET http://api.highline.co/enrollments/YtMXJzGzJcht38SCJuMhzC \
       "ssn": "123456516",
       "email": "john.smith143@highline.co",
       "role": "member",
-      "ofac_validated": false,
       "created_at": 1634744601,
       "updated_at": 1634744601,
-      "social_security_number_hash": "08e3..."
     }
   ],
   "product_id": "070b8618-7c...",
@@ -220,7 +126,7 @@ curl -X GET http://api.highline.co/enrollments/YtMXJzGzJcht38SCJuMhzC \
 }
 ```
 
-This API endpoint returns enrollment based on the provided enrollment ID.
+This API endpoint returns an enrollment based on the provided enrollment ID.
 
 ### HTTP Request
 
@@ -244,7 +150,7 @@ Parameter | Type | Description
 `first_payment_date` | timestamp | Date of first payment as Unix timestamp
 `application_reference_number` | string | Loan application number
 `days_until_expires` | int | Number of days before this enrollment request expires
-`fully_synced` | bool | 
+`fully_synced` | bool |
 `status` | string | Enrollment status
 `status_description` | string | Description of status
 `created_at` | timestamp | Date of creation
@@ -263,7 +169,6 @@ curl -X GET http://api.highline.co/enrollments/YtMXJzGzJcht38SCJuMhzC/users \
 ```json
 [{
   "id": "d134c.....",
-  "provider_user_id": "Argyle",
   "first_name": "John",
   "last_name": "Smith",
   "ssn": "1234...",
@@ -280,10 +185,8 @@ curl -X GET http://api.highline.co/enrollments/YtMXJzGzJcht38SCJuMhzC/users \
   },
   "email": "john.smith143@highline.co",
   "role": "member",
-  "ofac_validated": false,
   "created_at": 1634744601,
   "updated_at": 1634744601,
-  "social_security_number_hash": "08e3...."
 }]
 ```
 
@@ -310,9 +213,6 @@ Parameter | Type | Description
 `last_name` | string | Last Name
 `ssn` | string | Social security number
 `address` | json | Address structure  
-`role` | string | Member's role 
-`ofac_validated` | bool | Ofac validation
+`role` | string | Member's role
 `created_at` | timestamp | Date of creation
 `updated_at` | timestamp | Date of update
-`social_security_number_hash` | string | SSN hashed
-
