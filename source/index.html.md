@@ -18,6 +18,7 @@ includes:
   - profiles
   - employments
   - bill_payments
+  - link
   - direct_deposits
   - pay_histories
   - bank_accounts
