@@ -45,9 +45,9 @@ Parameter | Type | Description
 `feature` *required* | string | 'employment_data', 'direct_deposit_payment', or 'direct_deposit_switch'
 `enrollment_id` *optional* | string | Value from the '/enrollments' endpoint - *required* for 'direct_deposit_payment' feature
 `payload` *optional* | string | Encrypted value from the '/link/encrypt' endpoint - *required* for 'direct_deposit_switch' feature
-`on_success` *optional* | function | Callback function for success events
-`on_error` *optional* | function | Callback function for error events
-`on_close` *optional* | function | Callback function for close events
+`on_success` *optional* | function | Callback function for success events.  Returns 'user_id' which can be used to fetch users' payroll information.
+`on_error` *optional* | function | Callback function for error events.  Returns error 'message' when applicable and can be used to handle errors.
+`on_close` *optional* | function | Callback function for close events.  Can be used to detect when a user closes the widget.
 
 
 And then open with highlineLink.open()
