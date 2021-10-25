@@ -14,8 +14,8 @@
         <span class="na">on_close</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
           <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">on_close!</span><span class="dl">'</span><span class="p">);</span>
         <span class="p">},</span>
-        <span class="na">on_error</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">on_error!</span><span class="dl">'</span><span class="p">);</span>
+        <span class="na">on_error</span><span class="p">:</span> <span class="p">({</span> <span class="nx">message</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">on_error!</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">message</span><span class="p">);</span>
         <span class="p">},</span>
         <span class="na">on_success</span><span class="p">:</span> <span class="p">({</span> <span class="nx">user_id</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
           <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">on_success! </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">user_id</span><span class="p">);</span>
@@ -53,7 +53,7 @@
 <tr>
 <td><code>enrollment_id</code> <em>optional</em></td>
 <td>string</td>
-<td>Value from the &#39;/enrollment&#39; endpoint - <em>required</em> for &#39;direct_deposit_payment&#39; feature</td>
+<td>Value from the &#39;/enrollments&#39; endpoint - <em>required</em> for &#39;direct_deposit_payment&#39; feature</td>
 </tr>
 <tr>
 <td><code>payload</code> <em>optional</em></td>
@@ -63,17 +63,17 @@
 <tr>
 <td><code>on_success</code> <em>optional</em></td>
 <td>function</td>
-<td>Callback function for success events</td>
+<td>Callback function for success events.  Returns &#39;user_id&#39; which can be used to fetch users&#39; payroll information.</td>
 </tr>
 <tr>
 <td><code>on_error</code> <em>optional</em></td>
 <td>function</td>
-<td>Callback function for error events</td>
+<td>Callback function for error events.  Returns error &#39;message&#39; when applicable and can be used to handle errors.</td>
 </tr>
 <tr>
 <td><code>on_close</code> <em>optional</em></td>
 <td>function</td>
-<td>Callback function for close events</td>
+<td>Callback function for close events.  Can be used to detect when a user closes the widget.</td>
 </tr>
 </tbody></table>
 

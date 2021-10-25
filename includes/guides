@@ -46,8 +46,97 @@
 </blockquote>
 <div class="highlight"><pre class="highlight javascript tab-javascript"><code>    <span class="nx">highlineLink</span><span class="p">.</span><span class="nx">connect</span><span class="p">({</span>
         <span class="na">access_token</span><span class="p">:</span> <span class="dl">'</span><span class="s1">value_from_auth_token_api</span><span class="dl">'</span><span class="p">,</span>
-        <span class="na">feature</span><span class="p">:</span> <span class="dl">'</span><span class="s1">direct_deposit_switch</span><span class="dl">'</span>
-        <span class="na">payload</span><span class="p">:</span> <span class="dl">'</span><span class="s1">encrypted_value</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">feature</span><span class="p">:</span> <span class="dl">'</span><span class="s1">direct_deposit_switch</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">payload</span><span class="p">:</span> <span class="dl">'</span><span class="s1">encrypted_value</span><span class="dl">'</span>
     <span class="p">});</span>
     <span class="nx">highlineLink</span><span class="p">.</span><span class="nx">open</span><span class="p">();</span>
-</code></pre></div><h3 id='step-3-connect-and-open-highline-link'>Step 3 - Connect and open Highline-Link</h3>
+</code></pre></div><h3 id='step-3-connect-and-open-highline-link'>Step 3 - Connect and open Highline-Link</h3><h2 id='direct-deposit-payment-steps'>Direct Deposit Payment Steps</h2>
+<blockquote>
+<p>Step 1</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST http://api.highline.co/auth/token <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">$'{
+    "api_key": "YOUR_API_KEY",
+    "secret" : "YOUR_SECRET"
+  }'</span>
+</code></pre></div>
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"access_token"</span><span class="p">:</span><span class="s2">"eyJhbGciOiJIUzI..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"refresh_token"</span><span class="p">:</span><span class="s2">"eyJhbGciOiJIUz..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"subject"</span><span class="p">:</span><span class="s2">"123e4567-e89b-12d3-a456-426614174000"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"expires_in"</span><span class="p">:</span><span class="mi">1634244444</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='step-1-get-an-access-token-2'>Step 1 - Get an access token</h3>
+<blockquote>
+<p>Step 2</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST http://api.highline.co/enrollments <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">$'{
+    "product_id": "6351fsd6fs-sdfs...",
+    "payment_amount": 20000,
+    "payment_frequency": "monthly",
+    "first_payment_date": 1634740754,
+    "application_reference_number": "16576",
+    "days_until_expires": 30
+  }'</span>
+</code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DVNA4..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"070b8618-7c..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"payment_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">20000</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"payment_frequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"monthly"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"first_payment_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1634740754</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"application_reference_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"16576AB"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"new"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1634741667</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1634741667</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='step-2-create-an-enrollment'>Step 2 - Create an enrollment</h3>
+<blockquote>
+<p>Step 3</p>
+</blockquote>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code>    <span class="nx">highlineLink</span><span class="p">.</span><span class="nx">connect</span><span class="p">({</span>
+        <span class="na">access_token</span><span class="p">:</span> <span class="dl">'</span><span class="s1">value_from_auth_token_api</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">feature</span><span class="p">:</span> <span class="dl">'</span><span class="s1">direct_deposit_payment</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">enrollment_id</span><span class="p">:</span> <span class="dl">'</span><span class="s1">id_from_enrollments_api</span><span class="dl">'</span>
+    <span class="p">});</span>
+    <span class="nx">highlineLink</span><span class="p">.</span><span class="nx">open</span><span class="p">();</span>
+</code></pre></div><h3 id='step-3-connect-and-open-highline-link-2'>Step 3 - Connect and open Highline-Link</h3><h2 id='employment-data-steps'>Employment Data Steps</h2>
+<blockquote>
+<p>Step 1</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST http://api.highline.co/auth/token <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">$'{
+    "api_key": "YOUR_API_KEY",
+    "secret" : "YOUR_SECRET"
+  }'</span>
+</code></pre></div>
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"access_token"</span><span class="p">:</span><span class="s2">"eyJhbGciOiJIUzI..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"refresh_token"</span><span class="p">:</span><span class="s2">"eyJhbGciOiJIUz..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"subject"</span><span class="p">:</span><span class="s2">"123e4567-e89b-12d3-a456-426614174000"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"expires_in"</span><span class="p">:</span><span class="mi">1634244444</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='step-1-get-an-access-token-3'>Step 1 - Get an access token</h3>
+<blockquote>
+<p>Step 2</p>
+</blockquote>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code>    <span class="nx">highlineLink</span><span class="p">.</span><span class="nx">connect</span><span class="p">({</span>
+        <span class="na">access_token</span><span class="p">:</span> <span class="dl">'</span><span class="s1">value_from_auth_token_api</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">feature</span><span class="p">:</span> <span class="dl">'</span><span class="s1">employment_data</span><span class="dl">'</span>
+    <span class="p">});</span>
+    <span class="nx">highlineLink</span><span class="p">.</span><span class="nx">open</span><span class="p">();</span>
+</code></pre></div><h3 id='step-2-connect-and-open-highline-link'>Step 2 - Connect and open Highline-Link</h3>
