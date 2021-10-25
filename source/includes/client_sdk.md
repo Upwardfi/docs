@@ -19,8 +19,8 @@
         on_close: () => {
           console.log('on_close!');
         },
-        on_error: () => {
-          console.log('on_error!');
+        on_error: ({ message }) => {
+          console.log('on_error!' + message);
         },
         on_success: ({ user_id }) => {
           console.log('on_success! ' + user_id);
