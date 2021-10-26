@@ -3,7 +3,7 @@
 ## Get User's direct deposits
 
 ```shell
-curl -X GET http://api.highline.co/users/6516515-651.../payout_allocations \
+curl -X GET https://api.highline.co/users/6516515-651.../payout_allocations \
   -H "Authorization Bearer: AccessToken" \
   -H "Content-Type: application/json"
 ```
@@ -24,7 +24,7 @@ curl -X GET http://api.highline.co/users/6516515-651.../payout_allocations \
 
 This API endpoint returns the user's paycheck allocations, that represents direct deposits, based on the provided user id.
 
-`GET http://api.highline.co/users/{id}/payout_allocations`
+`GET https://api.highline.co/users/{id}/payout_allocations`
 
 ### Parameters
 

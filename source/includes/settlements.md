@@ -5,7 +5,7 @@ A settlement refers to the settlmeent of funds between Highline and clients (tha
 ## Check product's settlements
 
 ```shell
-curl -X GET http://api.highline.co/products/d5165d5168-61s3.../settlements \
+curl -X GET https://api.highline.co/products/d5165d5168-61s3.../settlements \
   -H "Authorization Bearer: AccessToken" \
   -H "Content-Type: application/json"
 ```
@@ -30,7 +30,7 @@ curl -X GET http://api.highline.co/products/d5165d5168-61s3.../settlements \
 
 This API return the settlements, based on the provided product id.
 
-`GET http://api.highline.co/products/{id}/settlements`
+`GET https://api.highline.co/products/{id}/settlements`
 
 ### Parameters
 

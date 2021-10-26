@@ -3,7 +3,7 @@
 ## Get User's Bill Payments
 
 ```shell
-curl -X GET http://api.highline.co/users/ae16efec-d1.../bill_payments \
+curl -X GET https://api.highline.co/users/ae16efec-d1.../bill_payments \
   -H "Authorization Bearer: AccessToken" \
   -H "Content-Type: application/json"
 ```
@@ -65,7 +65,7 @@ curl -X GET http://api.highline.co/users/ae16efec-d1.../bill_payments \
 
 ### HTTP Request
 
-`GET http://api.highline.co/users/{id}/bill_payments`
+`GET https://api.highline.co/users/{id}/bill_payments`
 
 ### Parameters
 
@@ -104,7 +104,7 @@ Parameter | Type | Description
 ## Get Enrollment's Bill Payments
 
 ```shell
-curl -X GET http://api.highline.co/enrollments/ae16efec-d1.../bill_payments \
+curl -X GET https://api.highline.co/enrollments/ae16efec-d1.../bill_payments \
   -H "Authorization Bearer: AccessToken" \
   -H "Content-Type: application/json"
 ```
@@ -187,7 +187,7 @@ This API endpoint returns the enrollment's bill payments details based on the pr
 
 ### HTTP Request
 
-`GET http://api.highline.co/enrollments/{id}/bill_payments`
+`GET https://api.highline.co/enrollments/{id}/bill_payments`
 
 ### Parameters
 
@@ -234,7 +234,7 @@ Parameter | Type | Description
 ## Get Bill Payment's transactions
 
 ```shell
-curl -X GET http://api.highline.co/bill_payments/ae16efec-d1.../transactions \
+curl -X GET https://api.highline.co/bill_payments/ae16efec-d1.../transactions \
   -H "Authorization Bearer: AccessToken" \
   -H "Content-Type: application/json"
 ```
@@ -260,7 +260,7 @@ This API endpoint returns the bill payments's transactions details based on the 
 
 ### HTTP Request
 
-`GET http://api.highline.co/bill_payments/{id}/transactions`
+`GET https://api.highline.co/bill_payments/{id}/transactions`
 
 ### Parameters
 

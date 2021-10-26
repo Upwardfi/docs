@@ -5,7 +5,7 @@
 > Example Request:
 
 ```shell
-curl -X POST http://api.highline.co/auth/token \
+curl -X POST https://api.highline.co/auth/token \
   -H "Content-Type: application/json" \
   -d $'{
     "api_key": "YOUR_API_KEY",
@@ -30,7 +30,7 @@ You can request tokens with `/auth/token` endpoint. The `API Key` and `API secre
 
 ### HTTP Request
 
-`POST http://api.highline.co/auth/token`
+`POST https://api.highline.co/auth/token`
 
 ### Response
 
@@ -51,7 +51,7 @@ All API requests must be made over HTTPS. Calls made over plain HTTP will fail.
 > Example Request:
 
 ```shell
-curl -X POST http://api.highline.co/auth/token \
+curl -X POST https://api.highline.co/auth/token \
   -H "Content-Type: application/json" \
   -d $'{
     "refresh_token" : "eyJhbGciOiJIUz...",
@@ -77,7 +77,7 @@ Once the `access_token` has expired, you’ll be required to generate a new acce
 
 ### HTTP request
 
-`POST http://api.highline.co/auth/token`
+`POST https://api.highline.co/auth/token`
 
 To ask for a new access token, the following fields are required
 

@@ -3,7 +3,7 @@
 ## Check if employer is supported
 
 ```shell
-curl -X GET http://api.highline.co/employers?q=Kroger \
+curl -X GET https://api.highline.co/employers?q=Kroger \
   -H "Authorization Bearer: AccessToken" \
   -H "Content-Type: application/json"
 ```
@@ -33,7 +33,7 @@ We also require these employers, and their subsequent payroll providers, to be i
 
 This API checks if user's employer is supported through Highline and will return success or failure based on eligibility.
 
-`GET http://api.highline.co/employers`
+`GET https://api.highline.co/employers`
 
 ### Parameters
 

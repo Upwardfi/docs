@@ -7,7 +7,7 @@ You first create an enrollment with the recurring amount, bill payment date, pay
 ## Create user enrollment
 
 ```shell
-curl -X POST http://api.highline.co/enrollments \
+curl -X POST https://api.highline.co/enrollments \
   -H "Authorization Bearer: AccessToken" \
   -H "Content-Type: application/json" \
   -d $'{
@@ -55,7 +55,7 @@ This API initiates user enrollment via Highline. By passing basic enrollment inf
 
 ### HTTP Request
 
-`POST http://api.highline.co/enrollments`
+`POST https://api.highline.co/enrollments`
 
 ### Parameters
 
@@ -89,7 +89,7 @@ Parameter | Type | Description
 ## Get enrollment
 
 ```shell
-curl -X GET http://api.highline.co/enrollments/YtMXJzGzJcht38SCJuMhzC \
+curl -X GET https://api.highline.co/enrollments/YtMXJzGzJcht38SCJuMhzC \
   -H "Authorization Bearer: AccessToken" \
   -H "Content-Type: application/json"
 ```
@@ -130,7 +130,7 @@ This API endpoint returns an enrollment based on the provided enrollment ID.
 
 ### HTTP Request
 
-`GET http://api.highline.co/enrollments/{id}`
+`GET https://api.highline.co/enrollments/{id}`
 
 ### Parameters
 
@@ -159,7 +159,7 @@ Parameter | Type | Description
 ## Get enrolled users
 
 ```shell
-curl -X GET http://api.highline.co/enrollments/YtMXJzGzJcht38SCJuMhzC/users \
+curl -X GET https://api.highline.co/enrollments/YtMXJzGzJcht38SCJuMhzC/users \
   -H "Authorization Bearer: AccessToken" \
   -H "Content-Type: application/json"
 ```
@@ -195,7 +195,7 @@ This API endpoint returns users that are enrolled based on the provided enrollme
 
 ### HTTP Request
 
-`GET http://api.highline.co/enrollments/{id}/users`
+`GET https://api.highline.co/enrollments/{id}/users`
 
 ### Parameters
 

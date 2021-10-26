@@ -3,7 +3,7 @@
 ## Add bank account
 
 ```shell
-curl -X POST http://api.highline.co/users/c8e1f36e-c4.../bank_accounts \
+curl -X POST https://api.highline.co/users/c8e1f36e-c4.../bank_accounts \
   -H "Authorization Bearer: AccessToken" \
   -H "Content-Type: application/json" \
   -d $'{
@@ -44,7 +44,7 @@ This API adds a bank account to an enrollment via Highline. By passing basic ban
 
 ### HTTP Request
 
-`POST http://api.highline.co/users/{id}/bank_accounts`
+`POST https://api.highline.co/users/{id}/bank_accounts`
 
 ### Parameters
 
@@ -78,7 +78,7 @@ Parameter | Type | Description
 ## Get user's bank accounts
 
 ```shell
-curl -X GET http://api.highline.co/users/c8e1f36e-c4.../bank_accounts \
+curl -X GET https://api.highline.co/users/c8e1f36e-c4.../bank_accounts \
   -H "Authorization Bearer: AccessToken" \
   -H "Content-Type: application/json"
 ```
@@ -113,7 +113,7 @@ This API returns a user's bank accounts based on the specified user id.
 
 ### HTTP Request
 
-`GET http://api.highline.co/users/{id}/bank_accounts`
+`GET https://api.highline.co/users/{id}/bank_accounts`
 
 ### Parameters
 
@@ -143,7 +143,7 @@ Parameter | Type | Description
 ## Get user's bank account
 
 ```shell
-curl -X GET http://api.highline.co/users/c8e1f36e-c4.../bank_accounts/d938f36e-c4... \
+curl -X GET https://api.highline.co/users/c8e1f36e-c4.../bank_accounts/d938f36e-c4... \
   -H "Authorization Bearer: AccessToken" \
   -H "Content-Type: application/json"
 ```
@@ -178,7 +178,7 @@ This API returns a user's specified bank account based on the user id and bank a
 
 ### HTTP Request
 
-`GET http://api.highline.co/users/{id}/bank_accounts/{bank_account_id}`
+`GET https://api.highline.co/users/{id}/bank_accounts/{bank_account_id}`
 
 ### Parameters
 
@@ -209,7 +209,7 @@ Parameter | Type | Description
 ## Update Bank account
 
 ```shell
-curl -X PUT http://api.highline.co/users/c8e1f36e-c4.../bank_accounts/f6e1645-fc56... \
+curl -X PUT https://api.highline.co/users/c8e1f36e-c4.../bank_accounts/f6e1645-fc56... \
   -H "Authorization Bearer: AccessToken" \
   -H "Content-Type: application/json" \
   -d $'{
@@ -232,7 +232,7 @@ This API updates a user bank account. By passing the bank account information yo
 
 ### HTTP Request
 
-`PUT http://api.highline.co/users/{id}/bank_accounts/{bank_account_id}`
+`PUT https://api.highline.co/users/{id}/bank_accounts/{bank_account_id}`
 
 ### Parameters
 
@@ -253,7 +253,7 @@ Name | Type | In | Description
 ## Get Account number
 
 ```shell
-curl -X GET http://api.highline.co/users/c8e1f36e-c4.../bank_accounts/f6e1645-fc56.../account_number \
+curl -X GET https://api.highline.co/users/c8e1f36e-c4.../bank_accounts/f6e1645-fc56.../account_number \
   -H "Authorization Bearer: AccessToken" \
   -H "Content-Type: application/json" \
 ```
@@ -270,7 +270,7 @@ This API displays an account number of a user's bank account.
 
 ### HTTP Request
 
-`GET http://api.highline.co/users/{id}/bank_accounts/{bank_account_id}/account_number`
+`GET https://api.highline.co/users/{id}/bank_accounts/{bank_account_id}/account_number`
 
 ### Parameters
 
@@ -284,7 +284,7 @@ Name | Type | In | Description
 ## Get Account balance
 
 ```shell
-curl -X GET http://api.highline.co/users/c8e1f36e-c4.../bank_accounts/f6e1645-fc56.../balance \
+curl -X GET https://api.highline.co/users/c8e1f36e-c4.../bank_accounts/f6e1645-fc56.../balance \
   -H "Authorization Bearer: AccessToken" \
   -H "Content-Type: application/json" \
 ```
@@ -303,7 +303,7 @@ This API displays the balance of a user’s bank account. Highline will return t
 
 ### HTTP Request
 
-`GET http://api.highline.co/users/{id}/bank_accounts/{bank_account_id}/balance`
+`GET https://api.highline.co/users/{id}/bank_accounts/{bank_account_id}/balance`
 
 ### Parameters
 
@@ -328,7 +328,7 @@ Parameter | Type | Description
 ## DELETE Account number
 
 ```shell
-curl -X DELETE http://api.highline.co/users/c8e1f36e-c4.../bank_accounts/f6e1645-fc56... \
+curl -X DELETE https://api.highline.co/users/c8e1f36e-c4.../bank_accounts/f6e1645-fc56... \
   -H "Authorization Bearer: AccessToken" \
   -H "Content-Type: application/json" \
 ```
@@ -345,7 +345,7 @@ This API will delete a user's bank account.
 
 ### HTTP Request
 
-`DELETE http://api.highline.co/users/{id}/bank_accounts/{bank_account_id}/account_number`
+`DELETE https://api.highline.co/users/{id}/bank_accounts/{bank_account_id}/account_number`
 
 ### Parameters
 

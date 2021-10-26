@@ -6,7 +6,7 @@ We offer two ways to exchange this data. Our recommended solution is setting up 
 ## Add product's daily data report
 
 ```shell
-curl -X POST http://api.highline.co/products/d5165d5168-61s3.../reports \
+curl -X POST https://api.highline.co/products/d5165d5168-61s3.../reports \
   -H "Authorization Bearer: AccessToken" \
   -H "Content-Type: multipart/form-data"
   -d $'dailyReport:file'
@@ -22,7 +22,7 @@ curl -X POST http://api.highline.co/products/d5165d5168-61s3.../reports \
 
 This API add a daily data report for the provided product id.
 
-`POST http://api.highline.co/products/{id}/reports`
+`POST https://api.highline.co/products/{id}/reports`
 
 ### Parameters
 
@@ -39,7 +39,7 @@ Name | Type | In | Description
 ## Check product's reports
 
 ```shell
-curl -X GET http://api.highline.co/products/d5165d5168-61s3.../reports \
+curl -X GET https://api.highline.co/products/d5165d5168-61s3.../reports \
   -H "Authorization Bearer: AccessToken" \
   -H "Content-Type: application/json"
 ```
@@ -66,7 +66,7 @@ curl -X GET http://api.highline.co/products/d5165d5168-61s3.../reports \
 
 This API checks the product's daily data reports.
 
-`GET http://api.highline.co/products/{id}/reports`
+`GET https://api.highline.co/products/{id}/reports`
 
 ### Parameters
 

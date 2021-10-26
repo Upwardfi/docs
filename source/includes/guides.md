@@ -13,7 +13,7 @@ Direct deposit switch implementation steps to get you up and running.
 ### Step 1 - Get an access token
 
 ```shell
-curl -X POST http://api.highline.co/auth/token \
+curl -X POST https://api.highline.co/auth/token \
   -H "Content-Type: application/json" \
   -d $'{
     "api_key": "YOUR_API_KEY",
@@ -34,13 +34,13 @@ curl -X POST http://api.highline.co/auth/token \
 
 To initiate a payroll connection session, you will need your API Key and Secret from the Highline Dashboard to request an `access_token.` An AccessToken for the end user is required to initialize Highline link `Connect`. To retrieve the AccessToken, make the following HTTP request on your server.
 
-`POST http://api.highline.co/auth/token`
+`POST https://api.highline.co/auth/token`
 
 ### Step 2 - Encrypt the bank details
 
 
 ```shell
-curl -X POST http://api.highline.co/link/encrypt \
+curl -X POST https://api.highline.co/link/encrypt \
   -H "Authorization Bearer: AccessToken" \
   -H "Content-Type: application/json" \
   -d $'{
@@ -63,7 +63,7 @@ curl -X POST http://api.highline.co/link/encrypt \
 
 The encryption is necessary to ensure your bank account details are never exposed on the front-end. To encrypt your bank account details, make the following HTTP request from your server.
 
-`POST http://api.highline.co/link/encrypt`
+`POST https://api.highline.co/link/encrypt`
 
 ### Step 3 - Connect and open Highline-link
 
@@ -95,7 +95,7 @@ This section will help you understand how to implement Highline bill payments in
 ### Step 1 - Get an access token
 
 ```shell
-curl -X POST http://api.highline.co/auth/token \
+curl -X POST https://api.highline.co/auth/token \
   -H "Content-Type: application/json" \
   -d $'{
     "api_key": "YOUR_API_KEY",
@@ -116,14 +116,14 @@ curl -X POST http://api.highline.co/auth/token \
 
 To initiate a payroll payment session, you will need your API Key and Secret from the Highline Dashboard to request an `access_token.` An AccessToken for the end user is required to initialize Highline link `Connect`. To retrieve the AccessToken, make the following HTTP request on your server.
 
-`POST http://api.highline.co/auth/token`
+`POST https://api.highline.co/auth/token`
 
 ### Step 2 - Create an enrollment
 
 To enroll a user for bill payments via payroll, you need to create an enrollment. An enrollment contains the metadata for a given recurring bill processed by Highline payments.
 
 ```shell
-curl -X POST http://api.highline.co/enrollments \
+curl -X POST https://api.highline.co/enrollments \
   -H "Authorization Bearer: AccessToken" \
   -H "Content-Type: application/json" \
   -d $'{
@@ -192,7 +192,7 @@ Using this service allows users to login and confirm data sharing with a single 
 ### Step 1 - Get an access token
 
 ```shell
-curl -X POST http://api.highline.co/auth/token \
+curl -X POST https://api.highline.co/auth/token \
   -H "Content-Type: application/json" \
   -d $'{
     "api_key": "YOUR_API_KEY",
@@ -213,7 +213,7 @@ curl -X POST http://api.highline.co/auth/token \
 
 To initiate a employment data session, you will need your API Key and Secret from the Highline Dashboard to request an `access_token.` An AccessToken for the end user is required to initialize Highline link `Connect`. To retrieve the AccessToken, make the following HTTP request on your server.
 
-`POST http://api.highline.co/auth/token`
+`POST https://api.highline.co/auth/token`
 
 ### Step 2 - Connect and open Highline-Link
 

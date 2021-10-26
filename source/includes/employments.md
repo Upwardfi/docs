@@ -3,7 +3,7 @@
 ## Get user's employments
 
 ```shell
-curl -X GET http://api.highline.co/users/ae16efec-d1.../employments \
+curl -X GET https://api.highline.co/users/ae16efec-d1.../employments \
   -H "Authorization Bearer: AccessToken" \
   -H "Content-Type: application/json"
 ```
@@ -44,7 +44,7 @@ The user employment API provides key details on your users' employment informati
 
 ### HTTP Request
 
-`GET http://api.highline.co/users/{id}/employments`
+`GET https://api.highline.co/users/{id}/employments`
 
 ### Parameters
 
@@ -76,7 +76,7 @@ Parameter | Type | Description
 ## Get employment
 
 ```shell
-curl -X GET http://api.highline.co/employments/d6b10b60-55... \
+curl -X GET https://api.highline.co/employments/d6b10b60-55... \
   -H "Authorization Bearer: AccessToken" \
   -H "Content-Type: application/json"
 ```
@@ -117,7 +117,7 @@ This API endpoint returns the employment details based on the provided employmen
 
 ### HTTP Request
 
-`GET http://api.highline.co/employments/{id}`
+`GET https://api.highline.co/employments/{id}`
 
 ### Parameters
 

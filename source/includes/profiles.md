@@ -3,7 +3,7 @@
 ## Get User's profile
 
 ```shell
-curl -X GET http://api.highline.co/users/BGMXJzGzJcht38SCJuMhzF \
+curl -X GET https://api.highline.co/users/BGMXJzGzJcht38SCJuMhzF \
   -H "Authorization Bearer: AccessToken" \
   -H "Content-Type: application/json"
 ```
@@ -36,7 +36,7 @@ curl -X GET http://api.highline.co/users/BGMXJzGzJcht38SCJuMhzF \
 
 This API endpoint returns the user's profile based on the provided user id.
 
-`GET http://api.highline.co/users/{id}`
+`GET https://api.highline.co/users/{id}`
 
 ### Parameters
 

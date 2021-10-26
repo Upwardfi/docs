@@ -3,7 +3,7 @@
 ## Get User's Pay histories
 
 ```shell
-curl -X GET http://api.highline.co/users/6516515-651.../payout_histories \
+curl -X GET https://api.highline.co/users/6516515-651.../payout_histories \
   -H "Authorization Bearer: AccessToken" \
   -H "Content-Type: application/json"
 ```
@@ -55,7 +55,7 @@ curl -X GET http://api.highline.co/users/6516515-651.../payout_histories \
 
 This API endpoint returns the user's Pay histories, based on the provided user id.
 
-`GET http://api.highline.co/users/{id}/payout_histories`
+`GET https://api.highline.co/users/{id}/payout_histories`
 
 ### Parameters
 
