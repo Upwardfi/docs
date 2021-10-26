@@ -40,7 +40,7 @@ curl -X POST https://api.highline.co/users/c8e1f36e-c4.../bank_accounts \
 }
 ```
 
-This API adds a bank account to an enrollment via Highline. By passing basic bank account information Highline will return the bank account structure to the user based on the user id.
+This API adds a bank account to an user.
 
 ### HTTP Request
 
@@ -109,7 +109,7 @@ curl -X GET https://api.highline.co/users/c8e1f36e-c4.../bank_accounts \
 }]
 ```
 
-This API returns a user's bank accounts based on the specified user id.
+This API returns a user's bank accounts.
 
 ### HTTP Request
 
@@ -228,7 +228,7 @@ curl -X PUT https://api.highline.co/users/c8e1f36e-c4.../bank_accounts/f6e1645-f
 }
 ```
 
-This API updates a user bank account. By passing the bank account information you like, Highline will return a sucess message or an error.
+This API updates a user bank account.
 
 ### HTTP Request
 

@@ -20,7 +20,7 @@ includes:
   - bill_payments
   - direct_deposits
   - pay_histories
-  - bank_accounts
+#  - bank_accounts
   - settlements
   - reports
   - client_sdk
