@@ -33,7 +33,7 @@
   </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1629916884</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>This API adds a bank account to an enrollment via Highline. By passing basic bank account information Highline will return the bank account structure to the user based on the user id.</p>
+<p>This API adds a bank account to an user.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>POST https://api.highline.co/users/{id}/bank_accounts</code></p>
 <h3 id='parameters'>Parameters</h3>
@@ -164,7 +164,7 @@
   </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1629916884</span><span class="w">
 </span><span class="p">}]</span><span class="w">
 </span></code></pre></div>
-<p>This API returns a user&#39;s bank accounts based on the specified user id.</p>
+<p>This API returns a user&#39;s bank accounts.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
 <p><code>GET https://api.highline.co/users/{id}/bank_accounts</code></p>
 <h3 id='parameters-2'>Parameters</h3>
@@ -372,7 +372,7 @@
   </span><span class="nl">"sucess"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>This API updates a user bank account. By passing the bank account information you like, Highline will return a sucess message or an error.</p>
+<p>This API updates a user bank account.</p>
 <h3 id='http-request-4'>HTTP Request</h3>
 <p><code>PUT https://api.highline.co/users/{id}/bank_accounts/{bank_account_id}</code></p>
 <h3 id='parameters-4'>Parameters</h3>
