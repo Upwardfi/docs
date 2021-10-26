@@ -2,7 +2,7 @@
 <blockquote>
 <p>Example Request:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST http://api.highline.co/auth/token <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://api.highline.co/auth/token <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">$'{
     "api_key": "YOUR_API_KEY",
@@ -23,7 +23,7 @@
 
 <p>You can request tokens with <code>/auth/token</code> endpoint. The <code>API Key</code> and <code>API secret</code> are available in the account settings page. Your API keys carry many privileges, so be sure to keep them secure! Do not share your secret API keys in publicly accessible areas such as GitHub, client-side code, and so forth.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>POST http://api.highline.co/auth/token</code></p>
+<p><code>POST https://api.highline.co/auth/token</code></p>
 <h3 id='response'>Response</h3>
 <table><thead>
 <tr>
@@ -61,7 +61,7 @@
 <blockquote>
 <p>Example Request:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST http://api.highline.co/auth/token <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://api.highline.co/auth/token <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">$'{
     "refresh_token" : "eyJhbGciOiJIUz...",
@@ -83,7 +83,7 @@
 
 <p>Once the <code>access_token</code> has expired, you’ll be required to generate a new access token using the <code>refresh_token</code></p>
 <h3 id='http-request-2'>HTTP request</h3>
-<p><code>POST http://api.highline.co/auth/token</code></p>
+<p><code>POST https://api.highline.co/auth/token</code></p>
 
 <p>To ask for a new access token, the following fields are required</p>
 

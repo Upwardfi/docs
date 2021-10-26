@@ -1,4 +1,4 @@
-<h1 id='bill-payments'>Bill Payments</h1><h2 id='get-user-39-s-bill-payments'>Get User&#39;s Bill Payments</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET http://api.highline.co/users/ae16efec-d1.../bill_payments <span class="se">\</span>
+<h1 id='bill-payments'>Bill Payments</h1><h2 id='get-user-39-s-bill-payments'>Get User&#39;s Bill Payments</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET https://api.highline.co/users/ae16efec-d1.../bill_payments <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
 </code></pre></div>
@@ -56,7 +56,7 @@
 </span></code></pre></div>
 <p>As explained previously, Highline pulls a small allocation from each paycheck automatically to dedicated bill payments at the top of the earning funnel. The following API’s will help you get information on a user’s active bill payments &amp; history.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET http://api.highline.co/users/{id}/bill_payments</code></p>
+<p><code>GET https://api.highline.co/users/{id}/bill_payments</code></p>
 <h3 id='parameters'>Parameters</h3>
 <table><thead>
 <tr>
@@ -186,7 +186,7 @@
 <td>Date of update</td>
 </tr>
 </tbody></table>
-<h2 id='get-enrollment-39-s-bill-payments'>Get Enrollment&#39;s Bill Payments</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET http://api.highline.co/enrollments/ae16efec-d1.../bill_payments <span class="se">\</span>
+<h2 id='get-enrollment-39-s-bill-payments'>Get Enrollment&#39;s Bill Payments</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET https://api.highline.co/enrollments/ae16efec-d1.../bill_payments <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
 </code></pre></div>
@@ -265,7 +265,7 @@
 </span></code></pre></div>
 <p>This API endpoint returns the enrollment&#39;s bill payments details based on the provided enrollment id.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET http://api.highline.co/enrollments/{id}/bill_payments</code></p>
+<p><code>GET https://api.highline.co/enrollments/{id}/bill_payments</code></p>
 <h3 id='parameters-2'>Parameters</h3>
 <table><thead>
 <tr>
@@ -401,7 +401,7 @@
 <td>Date of update</td>
 </tr>
 </tbody></table>
-<h2 id='get-bill-payment-39-s-transactions'>Get Bill Payment&#39;s transactions</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET http://api.highline.co/bill_payments/ae16efec-d1.../transactions <span class="se">\</span>
+<h2 id='get-bill-payment-39-s-transactions'>Get Bill Payment&#39;s transactions</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET https://api.highline.co/bill_payments/ae16efec-d1.../transactions <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
 </code></pre></div>
@@ -423,7 +423,7 @@
 </span></code></pre></div>
 <p>This API endpoint returns the bill payments&#39;s transactions details based on the provided bill payment id.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
-<p><code>GET http://api.highline.co/bill_payments/{id}/transactions</code></p>
+<p><code>GET https://api.highline.co/bill_payments/{id}/transactions</code></p>
 <h3 id='parameters-3'>Parameters</h3>
 <table><thead>
 <tr>

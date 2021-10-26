@@ -6,7 +6,7 @@
 <p>The deposit switch functionality is packaged as a simple, streamlined experience for developers and users. For your users, it’s practically as simple. With just a few clicks and without leaving your platform, they can authorize a direct deposit switch to your bank account.</p>
 
 <p>Direct deposit switch implementation steps to get you up and running.</p>
-<h3 id='step-1-get-an-access-token'>Step 1 - Get an access token</h3><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST http://api.highline.co/auth/token <span class="se">\</span>
+<h3 id='step-1-get-an-access-token'>Step 1 - Get an access token</h3><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://api.highline.co/auth/token <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">$'{
     "api_key": "YOUR_API_KEY",
@@ -25,8 +25,8 @@
 </span></code></pre></div>
 <p>To initiate a payroll connection session, you will need your API Key and Secret from the Highline Dashboard to request an <code>access_token.</code> An AccessToken for the end user is required to initialize Highline link <code>Connect</code>. To retrieve the AccessToken, make the following HTTP request on your server.</p>
 
-<p><code>POST http://api.highline.co/auth/token</code></p>
-<h3 id='step-2-encrypt-the-bank-details'>Step 2 - Encrypt the bank details</h3><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST http://api.highline.co/link/encrypt <span class="se">\</span>
+<p><code>POST https://api.highline.co/auth/token</code></p>
+<h3 id='step-2-encrypt-the-bank-details'>Step 2 - Encrypt the bank details</h3><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://api.highline.co/link/encrypt <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">$'{
@@ -47,7 +47,7 @@
 </span></code></pre></div>
 <p>The encryption is necessary to ensure your bank account details are never exposed on the front-end. To encrypt your bank account details, make the following HTTP request from your server.</p>
 
-<p><code>POST http://api.highline.co/link/encrypt</code></p>
+<p><code>POST https://api.highline.co/link/encrypt</code></p>
 <h3 id='step-3-connect-and-open-highline-link'>Step 3 - Connect and open Highline-link</h3>
 <blockquote>
 <p>Highlink Link Snippet</p>
@@ -88,7 +88,7 @@
 <p>Highline’s Payment via Payroll functionality automates and simplifies your customers&#39; bill payments by allowing them to make payments directly from payroll. Once the bill payment is setup, the recurring monthly payment amount will be automatically debited from their paychecks.</p>
 
 <p>This section will help you understand how to implement Highline bill payments in a few simple steps.</p>
-<h3 id='step-1-get-an-access-token-2'>Step 1 - Get an access token</h3><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST http://api.highline.co/auth/token <span class="se">\</span>
+<h3 id='step-1-get-an-access-token-2'>Step 1 - Get an access token</h3><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://api.highline.co/auth/token <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">$'{
     "api_key": "YOUR_API_KEY",
@@ -107,10 +107,10 @@
 </span></code></pre></div>
 <p>To initiate a payroll payment session, you will need your API Key and Secret from the Highline Dashboard to request an <code>access_token.</code> An AccessToken for the end user is required to initialize Highline link <code>Connect</code>. To retrieve the AccessToken, make the following HTTP request on your server.</p>
 
-<p><code>POST http://api.highline.co/auth/token</code></p>
+<p><code>POST https://api.highline.co/auth/token</code></p>
 <h3 id='step-2-create-an-enrollment'>Step 2 - Create an enrollment</h3>
 <p>To enroll a user for bill payments via payroll, you need to create an enrollment. An enrollment contains the metadata for a given recurring bill processed by Highline payments.</p>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST http://api.highline.co/enrollments <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://api.highline.co/enrollments <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">$'{
@@ -215,7 +215,7 @@
 <p>Highline can also be used to verify the employment data of individual users. Our integrations within the payroll ecosystem helps us provide access to a user’s employment data from a single payroll sign-on.</p>
 
 <p>Using this service allows users to login and confirm data sharing with a single click. These users also never leave your website. This means that as opposed to traditional methods like uploading paystubs or a copy of photo identification, your users will have a simple single login and be able to complete their journey with less friction and confusion.</p>
-<h3 id='step-1-get-an-access-token-3'>Step 1 - Get an access token</h3><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST http://api.highline.co/auth/token <span class="se">\</span>
+<h3 id='step-1-get-an-access-token-3'>Step 1 - Get an access token</h3><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://api.highline.co/auth/token <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">$'{
     "api_key": "YOUR_API_KEY",
@@ -234,7 +234,7 @@
 </span></code></pre></div>
 <p>To initiate a employment data session, you will need your API Key and Secret from the Highline Dashboard to request an <code>access_token.</code> An AccessToken for the end user is required to initialize Highline link <code>Connect</code>. To retrieve the AccessToken, make the following HTTP request on your server.</p>
 
-<p><code>POST http://api.highline.co/auth/token</code></p>
+<p><code>POST https://api.highline.co/auth/token</code></p>
 <h3 id='step-2-connect-and-open-highline-link'>Step 2 - Connect and open Highline-Link</h3>
 <blockquote>
 <p>Highlink Link Snippet</p>

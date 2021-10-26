@@ -1,6 +1,6 @@
 <h1 id='settlements'>Settlements</h1>
 <p>A settlement refers to the settlmeent of funds between Highline and clients (that’s you!). This happens whenever a bill payment is due, and will be reflected in this API and our daily data report.</p>
-<h2 id='check-product-39-s-settlements'>Check product&#39;s settlements</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET http://api.highline.co/products/d5165d5168-61s3.../settlements <span class="se">\</span>
+<h2 id='check-product-39-s-settlements'>Check product&#39;s settlements</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET https://api.highline.co/products/d5165d5168-61s3.../settlements <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
 </code></pre></div>
@@ -23,7 +23,7 @@
 </span></code></pre></div>
 <p>This API return the settlements, based on the provided product id.</p>
 
-<p><code>GET http://api.highline.co/products/{id}/settlements</code></p>
+<p><code>GET https://api.highline.co/products/{id}/settlements</code></p>
 <h3 id='parameters'>Parameters</h3>
 <table><thead>
 <tr>

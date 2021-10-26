@@ -1,4 +1,4 @@
-<h1 id='direct-deposits'>Direct Deposits</h1><h2 id='get-user-39-s-direct-deposits'>Get User&#39;s direct deposits</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET http://api.highline.co/users/6516515-651.../payout_allocations <span class="se">\</span>
+<h1 id='direct-deposits'>Direct Deposits</h1><h2 id='get-user-39-s-direct-deposits'>Get User&#39;s direct deposits</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET https://api.highline.co/users/6516515-651.../payout_allocations <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
 </code></pre></div>
@@ -17,7 +17,7 @@
 </span></code></pre></div>
 <p>This API endpoint returns the user&#39;s paycheck allocations, that represents direct deposits, based on the provided user id.</p>
 
-<p><code>GET http://api.highline.co/users/{id}/payout_allocations</code></p>
+<p><code>GET https://api.highline.co/users/{id}/payout_allocations</code></p>
 <h3 id='parameters'>Parameters</h3>
 <table><thead>
 <tr>

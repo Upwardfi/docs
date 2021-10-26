@@ -2,7 +2,7 @@
 <p>Every client of Highline is obligated to participate in a daily exchange of data between themselves and Highline. This is a report that allows Highline to monitor the status of all active bill payments, and keep our respective ledgers in sync. If there’s a change or inconsistency from one day to the next, the daily client report will help Highline see this change in real-time and act accordingly.</p>
 
 <p>We offer two ways to exchange this data. Our recommended solution is setting up an automatic exchange using the API’s below. Alternatively, we offer a manual report upload from the client portal.</p>
-<h2 id='add-product-39-s-daily-data-report'>Add product&#39;s daily data report</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST http://api.highline.co/products/d5165d5168-61s3.../reports <span class="se">\</span>
+<h2 id='add-product-39-s-daily-data-report'>Add product&#39;s daily data report</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://api.highline.co/products/d5165d5168-61s3.../reports <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: multipart/form-data"</span>
   <span class="nt">-d</span> <span class="s1">$'dailyReport:file'</span>
@@ -16,7 +16,7 @@
 </span></code></pre></div>
 <p>This API add a daily data report for the provided product id.</p>
 
-<p><code>POST http://api.highline.co/products/{id}/reports</code></p>
+<p><code>POST https://api.highline.co/products/{id}/reports</code></p>
 <h3 id='parameters'>Parameters</h3>
 <table><thead>
 <tr>
@@ -39,7 +39,7 @@
 <td>File containing the report</td>
 </tr>
 </tbody></table>
-<h2 id='check-product-39-s-reports'>Check product&#39;s reports</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET http://api.highline.co/products/d5165d5168-61s3.../reports <span class="se">\</span>
+<h2 id='check-product-39-s-reports'>Check product&#39;s reports</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET https://api.highline.co/products/d5165d5168-61s3.../reports <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
 </code></pre></div>
@@ -64,7 +64,7 @@
 </span></code></pre></div>
 <p>This API checks the product&#39;s daily data reports.</p>
 
-<p><code>GET http://api.highline.co/products/{id}/reports</code></p>
+<p><code>GET https://api.highline.co/products/{id}/reports</code></p>
 <h3 id='parameters-2'>Parameters</h3>
 <table><thead>
 <tr>

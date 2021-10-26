@@ -2,7 +2,7 @@
 <p>An Enrollment is created to initiate the set up of a recurring bill payment on Highline&#39;s payments network.</p>
 
 <p>You first create an enrollment with the recurring amount, bill payment date, payment frequency, along with other optional fields.</p>
-<h2 id='create-user-enrollment'>Create user enrollment</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST http://api.highline.co/enrollments <span class="se">\</span>
+<h2 id='create-user-enrollment'>Create user enrollment</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://api.highline.co/enrollments <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">$'{
@@ -46,7 +46,7 @@
 </span></code></pre></div>
 <p>This API initiates user enrollment via Highline. By passing basic enrollment information Highline will return an object to the enrollment.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>POST http://api.highline.co/enrollments</code></p>
+<p><code>POST https://api.highline.co/enrollments</code></p>
 <h3 id='parameters'>Parameters</h3>
 <table><thead>
 <tr>
@@ -168,7 +168,7 @@
 <td>Date of update</td>
 </tr>
 </tbody></table>
-<h2 id='get-enrollment'>Get enrollment</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET http://api.highline.co/enrollments/YtMXJzGzJcht38SCJuMhzC <span class="se">\</span>
+<h2 id='get-enrollment'>Get enrollment</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET https://api.highline.co/enrollments/YtMXJzGzJcht38SCJuMhzC <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
 </code></pre></div>
@@ -205,7 +205,7 @@
 </span></code></pre></div>
 <p>This API endpoint returns an enrollment based on the provided enrollment ID.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET http://api.highline.co/enrollments/{id}</code></p>
+<p><code>GET https://api.highline.co/enrollments/{id}</code></p>
 <h3 id='parameters-2'>Parameters</h3>
 <table><thead>
 <tr>
@@ -296,7 +296,7 @@
 <td>Date of update</td>
 </tr>
 </tbody></table>
-<h2 id='get-enrolled-users'>Get enrolled users</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET http://api.highline.co/enrollments/YtMXJzGzJcht38SCJuMhzC/users <span class="se">\</span>
+<h2 id='get-enrolled-users'>Get enrolled users</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET https://api.highline.co/enrollments/YtMXJzGzJcht38SCJuMhzC/users <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
 </code></pre></div>
@@ -327,7 +327,7 @@
 </span></code></pre></div>
 <p>This API endpoint returns users that are enrolled based on the provided enrollment id.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
-<p><code>GET http://api.highline.co/enrollments/{id}/users</code></p>
+<p><code>GET https://api.highline.co/enrollments/{id}/users</code></p>
 <h3 id='parameters-3'>Parameters</h3>
 <table><thead>
 <tr>

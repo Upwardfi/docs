@@ -1,4 +1,4 @@
-<h1 id='employments'>Employments</h1><h2 id='get-user-39-s-employments'>Get user&#39;s employments</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET http://api.highline.co/users/ae16efec-d1.../employments <span class="se">\</span>
+<h1 id='employments'>Employments</h1><h2 id='get-user-39-s-employments'>Get user&#39;s employments</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET https://api.highline.co/users/ae16efec-d1.../employments <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
 </code></pre></div>
@@ -35,7 +35,7 @@
 </span></code></pre></div>
 <p>The user employment API provides key details on your users&#39; employment information. This data is provided from our payroll provider and employer partners, and gives a full view into the individual’s employment status, tenure, and other key details.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET http://api.highline.co/users/{id}/employments</code></p>
+<p><code>GET https://api.highline.co/users/{id}/employments</code></p>
 <h3 id='parameters'>Parameters</h3>
 <table><thead>
 <tr>
@@ -136,7 +136,7 @@
 <td>Date of update</td>
 </tr>
 </tbody></table>
-<h2 id='get-employment'>Get employment</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET http://api.highline.co/employments/d6b10b60-55... <span class="se">\</span>
+<h2 id='get-employment'>Get employment</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET https://api.highline.co/employments/d6b10b60-55... <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
 </code></pre></div>
@@ -173,7 +173,7 @@
 </span></code></pre></div>
 <p>This API endpoint returns the employment details based on the provided employment id.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET http://api.highline.co/employments/{id}</code></p>
+<p><code>GET https://api.highline.co/employments/{id}</code></p>
 <h3 id='parameters-2'>Parameters</h3>
 <table><thead>
 <tr>

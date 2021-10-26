@@ -508,7 +508,7 @@
 <blockquote>
 <p>Example Request:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST http://api.highline.co/auth/token <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://api.highline.co/auth/token <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">$'{
     "api_key": "YOUR_API_KEY",
@@ -529,7 +529,7 @@
 
 <p>You can request tokens with <code>/auth/token</code> endpoint. The <code>API Key</code> and <code>API secret</code> are available in the account settings page. Your API keys carry many privileges, so be sure to keep them secure! Do not share your secret API keys in publicly accessible areas such as GitHub, client-side code, and so forth.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>POST http://api.highline.co/auth/token</code></p>
+<p><code>POST https://api.highline.co/auth/token</code></p>
 <h3 id='response'>Response</h3>
 <table><thead>
 <tr>
@@ -567,7 +567,7 @@
 <blockquote>
 <p>Example Request:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST http://api.highline.co/auth/token <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://api.highline.co/auth/token <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">$'{
     "refresh_token" : "eyJhbGciOiJIUz...",
@@ -589,7 +589,7 @@
 
 <p>Once the <code>access_token</code> has expired, you’ll be required to generate a new access token using the <code>refresh_token</code></p>
 <h3 id='http-request-2'>HTTP request</h3>
-<p><code>POST http://api.highline.co/auth/token</code></p>
+<p><code>POST https://api.highline.co/auth/token</code></p>
 
 <p>To ask for a new access token, the following fields are required</p>
 
@@ -618,7 +618,7 @@
 </tbody></table>
 <h1 id='rate-limiting'>Rate limiting</h1>
 <p>Highline&#39;s API are rate limited to prevent abuse that would degrade our ability to maintain consistent API performance for all users. By default, each API key or app is rate limited at 10,000 requests per hour. If your requests are being rate limited, HTTP response code 429 will be returned with an rate_limit_exceeded error.</p>
-<h1 id='employers'>Employers</h1><h2 id='check-if-employer-is-supported'>Check if employer is supported</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET http://api.highline.co/employers?q<span class="o">=</span>Kroger <span class="se">\</span>
+<h1 id='employers'>Employers</h1><h2 id='check-if-employer-is-supported'>Check if employer is supported</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET https://api.highline.co/employers?q<span class="o">=</span>Kroger <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
 </code></pre></div>
@@ -647,7 +647,7 @@
 
 <p>This API checks if user&#39;s employer is supported through Highline and will return success or failure based on eligibility.</p>
 
-<p><code>GET http://api.highline.co/employers</code></p>
+<p><code>GET https://api.highline.co/employers</code></p>
 <h3 id='parameters'>Parameters</h3>
 <table><thead>
 <tr>
@@ -670,7 +670,7 @@
 <p>An Enrollment is created to initiate the set up of a recurring bill payment on Highline&#39;s payments network.</p>
 
 <p>You first create an enrollment with the recurring amount, bill payment date, payment frequency, along with other optional fields.</p>
-<h2 id='create-user-enrollment'>Create user enrollment</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST http://api.highline.co/enrollments <span class="se">\</span>
+<h2 id='create-user-enrollment'>Create user enrollment</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://api.highline.co/enrollments <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">$'{
@@ -714,7 +714,7 @@
 </span></code></pre></div>
 <p>This API initiates user enrollment via Highline. By passing basic enrollment information Highline will return an object to the enrollment.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>POST http://api.highline.co/enrollments</code></p>
+<p><code>POST https://api.highline.co/enrollments</code></p>
 <h3 id='parameters'>Parameters</h3>
 <table><thead>
 <tr>
@@ -836,7 +836,7 @@
 <td>Date of update</td>
 </tr>
 </tbody></table>
-<h2 id='get-enrollment'>Get enrollment</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET http://api.highline.co/enrollments/YtMXJzGzJcht38SCJuMhzC <span class="se">\</span>
+<h2 id='get-enrollment'>Get enrollment</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET https://api.highline.co/enrollments/YtMXJzGzJcht38SCJuMhzC <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
 </code></pre></div>
@@ -873,7 +873,7 @@
 </span></code></pre></div>
 <p>This API endpoint returns an enrollment based on the provided enrollment ID.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET http://api.highline.co/enrollments/{id}</code></p>
+<p><code>GET https://api.highline.co/enrollments/{id}</code></p>
 <h3 id='parameters-2'>Parameters</h3>
 <table><thead>
 <tr>
@@ -964,7 +964,7 @@
 <td>Date of update</td>
 </tr>
 </tbody></table>
-<h2 id='get-enrolled-users'>Get enrolled users</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET http://api.highline.co/enrollments/YtMXJzGzJcht38SCJuMhzC/users <span class="se">\</span>
+<h2 id='get-enrolled-users'>Get enrolled users</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET https://api.highline.co/enrollments/YtMXJzGzJcht38SCJuMhzC/users <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
 </code></pre></div>
@@ -995,7 +995,7 @@
 </span></code></pre></div>
 <p>This API endpoint returns users that are enrolled based on the provided enrollment id.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
-<p><code>GET http://api.highline.co/enrollments/{id}/users</code></p>
+<p><code>GET https://api.highline.co/enrollments/{id}/users</code></p>
 <h3 id='parameters-3'>Parameters</h3>
 <table><thead>
 <tr>
@@ -1066,7 +1066,7 @@
 <td>Date of update</td>
 </tr>
 </tbody></table>
-<h1 id='profiles'>Profiles</h1><h2 id='get-user-39-s-profile'>Get User&#39;s profile</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET http://api.highline.co/users/BGMXJzGzJcht38SCJuMhzF <span class="se">\</span>
+<h1 id='profiles'>Profiles</h1><h2 id='get-user-39-s-profile'>Get User&#39;s profile</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET https://api.highline.co/users/BGMXJzGzJcht38SCJuMhzF <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
 </code></pre></div>
@@ -1097,7 +1097,7 @@
 </span></code></pre></div>
 <p>This API endpoint returns the user&#39;s profile based on the provided user id.</p>
 
-<p><code>GET http://api.highline.co/users/{id}</code></p>
+<p><code>GET https://api.highline.co/users/{id}</code></p>
 <h3 id='parameters'>Parameters</h3>
 <table><thead>
 <tr>
@@ -1224,7 +1224,7 @@
 <td>Country</td>
 </tr>
 </tbody></table>
-<h1 id='employments'>Employments</h1><h2 id='get-user-39-s-employments'>Get user&#39;s employments</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET http://api.highline.co/users/ae16efec-d1.../employments <span class="se">\</span>
+<h1 id='employments'>Employments</h1><h2 id='get-user-39-s-employments'>Get user&#39;s employments</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET https://api.highline.co/users/ae16efec-d1.../employments <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
 </code></pre></div>
@@ -1261,7 +1261,7 @@
 </span></code></pre></div>
 <p>The user employment API provides key details on your users&#39; employment information. This data is provided from our payroll provider and employer partners, and gives a full view into the individual’s employment status, tenure, and other key details.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET http://api.highline.co/users/{id}/employments</code></p>
+<p><code>GET https://api.highline.co/users/{id}/employments</code></p>
 <h3 id='parameters'>Parameters</h3>
 <table><thead>
 <tr>
@@ -1362,7 +1362,7 @@
 <td>Date of update</td>
 </tr>
 </tbody></table>
-<h2 id='get-employment'>Get employment</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET http://api.highline.co/employments/d6b10b60-55... <span class="se">\</span>
+<h2 id='get-employment'>Get employment</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET https://api.highline.co/employments/d6b10b60-55... <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
 </code></pre></div>
@@ -1399,7 +1399,7 @@
 </span></code></pre></div>
 <p>This API endpoint returns the employment details based on the provided employment id.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET http://api.highline.co/employments/{id}</code></p>
+<p><code>GET https://api.highline.co/employments/{id}</code></p>
 <h3 id='parameters-2'>Parameters</h3>
 <table><thead>
 <tr>
@@ -1500,7 +1500,7 @@
 <td>Date of update</td>
 </tr>
 </tbody></table>
-<h1 id='bill-payments'>Bill Payments</h1><h2 id='get-user-39-s-bill-payments'>Get User&#39;s Bill Payments</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET http://api.highline.co/users/ae16efec-d1.../bill_payments <span class="se">\</span>
+<h1 id='bill-payments'>Bill Payments</h1><h2 id='get-user-39-s-bill-payments'>Get User&#39;s Bill Payments</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET https://api.highline.co/users/ae16efec-d1.../bill_payments <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
 </code></pre></div>
@@ -1558,7 +1558,7 @@
 </span></code></pre></div>
 <p>As explained previously, Highline pulls a small allocation from each paycheck automatically to dedicated bill payments at the top of the earning funnel. The following API’s will help you get information on a user’s active bill payments &amp; history.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET http://api.highline.co/users/{id}/bill_payments</code></p>
+<p><code>GET https://api.highline.co/users/{id}/bill_payments</code></p>
 <h3 id='parameters'>Parameters</h3>
 <table><thead>
 <tr>
@@ -1688,7 +1688,7 @@
 <td>Date of update</td>
 </tr>
 </tbody></table>
-<h2 id='get-enrollment-39-s-bill-payments'>Get Enrollment&#39;s Bill Payments</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET http://api.highline.co/enrollments/ae16efec-d1.../bill_payments <span class="se">\</span>
+<h2 id='get-enrollment-39-s-bill-payments'>Get Enrollment&#39;s Bill Payments</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET https://api.highline.co/enrollments/ae16efec-d1.../bill_payments <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
 </code></pre></div>
@@ -1767,7 +1767,7 @@
 </span></code></pre></div>
 <p>This API endpoint returns the enrollment&#39;s bill payments details based on the provided enrollment id.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET http://api.highline.co/enrollments/{id}/bill_payments</code></p>
+<p><code>GET https://api.highline.co/enrollments/{id}/bill_payments</code></p>
 <h3 id='parameters-2'>Parameters</h3>
 <table><thead>
 <tr>
@@ -1903,7 +1903,7 @@
 <td>Date of update</td>
 </tr>
 </tbody></table>
-<h2 id='get-bill-payment-39-s-transactions'>Get Bill Payment&#39;s transactions</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET http://api.highline.co/bill_payments/ae16efec-d1.../transactions <span class="se">\</span>
+<h2 id='get-bill-payment-39-s-transactions'>Get Bill Payment&#39;s transactions</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET https://api.highline.co/bill_payments/ae16efec-d1.../transactions <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
 </code></pre></div>
@@ -1925,7 +1925,7 @@
 </span></code></pre></div>
 <p>This API endpoint returns the bill payments&#39;s transactions details based on the provided bill payment id.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
-<p><code>GET http://api.highline.co/bill_payments/{id}/transactions</code></p>
+<p><code>GET https://api.highline.co/bill_payments/{id}/transactions</code></p>
 <h3 id='parameters-3'>Parameters</h3>
 <table><thead>
 <tr>
@@ -2001,7 +2001,7 @@
 <td>Date of update</td>
 </tr>
 </tbody></table>
-<h1 id='direct-deposits'>Direct Deposits</h1><h2 id='get-user-39-s-direct-deposits'>Get User&#39;s direct deposits</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET http://api.highline.co/users/6516515-651.../payout_allocations <span class="se">\</span>
+<h1 id='direct-deposits'>Direct Deposits</h1><h2 id='get-user-39-s-direct-deposits'>Get User&#39;s direct deposits</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET https://api.highline.co/users/6516515-651.../payout_allocations <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
 </code></pre></div>
@@ -2020,7 +2020,7 @@
 </span></code></pre></div>
 <p>This API endpoint returns the user&#39;s paycheck allocations, that represents direct deposits, based on the provided user id.</p>
 
-<p><code>GET http://api.highline.co/users/{id}/payout_allocations</code></p>
+<p><code>GET https://api.highline.co/users/{id}/payout_allocations</code></p>
 <h3 id='parameters'>Parameters</h3>
 <table><thead>
 <tr>
@@ -2086,7 +2086,7 @@
 <td>Date of update</td>
 </tr>
 </tbody></table>
-<h1 id='pay-histories'>Pay histories</h1><h2 id='get-user-39-s-pay-histories'>Get User&#39;s Pay histories</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET http://api.highline.co/users/6516515-651.../payout_histories <span class="se">\</span>
+<h1 id='pay-histories'>Pay histories</h1><h2 id='get-user-39-s-pay-histories'>Get User&#39;s Pay histories</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET https://api.highline.co/users/6516515-651.../payout_histories <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
 </code></pre></div>
@@ -2136,7 +2136,7 @@
 </span></code></pre></div>
 <p>This API endpoint returns the user&#39;s Pay histories, based on the provided user id.</p>
 
-<p><code>GET http://api.highline.co/users/{id}/payout_histories</code></p>
+<p><code>GET https://api.highline.co/users/{id}/payout_histories</code></p>
 <h3 id='parameters'>Parameters</h3>
 <table><thead>
 <tr>
@@ -2240,7 +2240,7 @@
 <td>Date of update</td>
 </tr>
 </tbody></table>
-<h1 id='bank-accounts'>Bank Accounts</h1><h2 id='add-bank-account'>Add bank account</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST http://api.highline.co/users/c8e1f36e-c4.../bank_accounts <span class="se">\</span>
+<h1 id='bank-accounts'>Bank Accounts</h1><h2 id='add-bank-account'>Add bank account</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://api.highline.co/users/c8e1f36e-c4.../bank_accounts <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">$'{
@@ -2277,7 +2277,7 @@
 </span></code></pre></div>
 <p>This API adds a bank account to an enrollment via Highline. By passing basic bank account information Highline will return the bank account structure to the user based on the user id.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>POST http://api.highline.co/users/{id}/bank_accounts</code></p>
+<p><code>POST https://api.highline.co/users/{id}/bank_accounts</code></p>
 <h3 id='parameters'>Parameters</h3>
 <table><thead>
 <tr>
@@ -2377,7 +2377,7 @@
 <td>Date of update</td>
 </tr>
 </tbody></table>
-<h2 id='get-user-39-s-bank-accounts'>Get user&#39;s bank accounts</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET http://api.highline.co/users/c8e1f36e-c4.../bank_accounts <span class="se">\</span>
+<h2 id='get-user-39-s-bank-accounts'>Get user&#39;s bank accounts</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET https://api.highline.co/users/c8e1f36e-c4.../bank_accounts <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
 </code></pre></div>
@@ -2408,7 +2408,7 @@
 </span></code></pre></div>
 <p>This API returns a user&#39;s bank accounts based on the specified user id.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET http://api.highline.co/users/{id}/bank_accounts</code></p>
+<p><code>GET https://api.highline.co/users/{id}/bank_accounts</code></p>
 <h3 id='parameters-2'>Parameters</h3>
 <table><thead>
 <tr>
@@ -2484,7 +2484,7 @@
 <td>Date of update</td>
 </tr>
 </tbody></table>
-<h2 id='get-user-39-s-bank-account'>Get user&#39;s bank account</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET http://api.highline.co/users/c8e1f36e-c4.../bank_accounts/d938f36e-c4... <span class="se">\</span>
+<h2 id='get-user-39-s-bank-account'>Get user&#39;s bank account</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET https://api.highline.co/users/c8e1f36e-c4.../bank_accounts/d938f36e-c4... <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
 </code></pre></div>
@@ -2515,7 +2515,7 @@
 </span></code></pre></div>
 <p>This API returns a user&#39;s specified bank account based on the user id and bank account id.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
-<p><code>GET http://api.highline.co/users/{id}/bank_accounts/{bank_account_id}</code></p>
+<p><code>GET https://api.highline.co/users/{id}/bank_accounts/{bank_account_id}</code></p>
 <h3 id='parameters-3'>Parameters</h3>
 <table><thead>
 <tr>
@@ -2597,7 +2597,7 @@
 <td>Date of update</td>
 </tr>
 </tbody></table>
-<h2 id='update-bank-account'>Update Bank account</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PUT http://api.highline.co/users/c8e1f36e-c4.../bank_accounts/f6e1645-fc56... <span class="se">\</span>
+<h2 id='update-bank-account'>Update Bank account</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PUT https://api.highline.co/users/c8e1f36e-c4.../bank_accounts/f6e1645-fc56... <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">$'{
@@ -2616,7 +2616,7 @@
 </span></code></pre></div>
 <p>This API updates a user bank account. By passing the bank account information you like, Highline will return a sucess message or an error.</p>
 <h3 id='http-request-4'>HTTP Request</h3>
-<p><code>PUT http://api.highline.co/users/{id}/bank_accounts/{bank_account_id}</code></p>
+<p><code>PUT https://api.highline.co/users/{id}/bank_accounts/{bank_account_id}</code></p>
 <h3 id='parameters-4'>Parameters</h3>
 <table><thead>
 <tr>
@@ -2663,7 +2663,7 @@
 <td>Name of bank</td>
 </tr>
 </tbody></table>
-<h2 id='get-account-number'>Get Account number</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET http://api.highline.co/users/c8e1f36e-c4.../bank_accounts/f6e1645-fc56.../account_number <span class="se">\</span>
+<h2 id='get-account-number'>Get Account number</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET https://api.highline.co/users/c8e1f36e-c4.../bank_accounts/f6e1645-fc56.../account_number <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
 </code></pre></div>
@@ -2676,7 +2676,7 @@
 </span></code></pre></div>
 <p>This API displays an account number of a user&#39;s bank account.</p>
 <h3 id='http-request-5'>HTTP Request</h3>
-<p><code>GET http://api.highline.co/users/{id}/bank_accounts/{bank_account_id}/account_number</code></p>
+<p><code>GET https://api.highline.co/users/{id}/bank_accounts/{bank_account_id}/account_number</code></p>
 <h3 id='parameters-5'>Parameters</h3>
 <table><thead>
 <tr>
@@ -2699,7 +2699,7 @@
 <td>Bank account id</td>
 </tr>
 </tbody></table>
-<h2 id='get-account-balance'>Get Account balance</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET http://api.highline.co/users/c8e1f36e-c4.../bank_accounts/f6e1645-fc56.../balance <span class="se">\</span>
+<h2 id='get-account-balance'>Get Account balance</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET https://api.highline.co/users/c8e1f36e-c4.../bank_accounts/f6e1645-fc56.../balance <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
 </code></pre></div>
@@ -2714,7 +2714,7 @@
 </span></code></pre></div>
 <p>This API displays the balance of a user’s bank account. Highline will return the balance available within the associated account</p>
 <h3 id='http-request-6'>HTTP Request</h3>
-<p><code>GET http://api.highline.co/users/{id}/bank_accounts/{bank_account_id}/balance</code></p>
+<p><code>GET https://api.highline.co/users/{id}/bank_accounts/{bank_account_id}/balance</code></p>
 <h3 id='parameters-6'>Parameters</h3>
 <table><thead>
 <tr>
@@ -2761,7 +2761,7 @@
 <td>Data time when this query was made</td>
 </tr>
 </tbody></table>
-<h2 id='delete-account-number'>DELETE Account number</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> DELETE http://api.highline.co/users/c8e1f36e-c4.../bank_accounts/f6e1645-fc56... <span class="se">\</span>
+<h2 id='delete-account-number'>DELETE Account number</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> DELETE https://api.highline.co/users/c8e1f36e-c4.../bank_accounts/f6e1645-fc56... <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
 </code></pre></div>
@@ -2774,7 +2774,7 @@
 </span></code></pre></div>
 <p>This API will delete a user&#39;s bank account.</p>
 <h3 id='http-request-7'>HTTP Request</h3>
-<p><code>DELETE http://api.highline.co/users/{id}/bank_accounts/{bank_account_id}/account_number</code></p>
+<p><code>DELETE https://api.highline.co/users/{id}/bank_accounts/{bank_account_id}/account_number</code></p>
 <h3 id='parameters-7'>Parameters</h3>
 <table><thead>
 <tr>
@@ -2799,7 +2799,7 @@
 </tbody></table>
 <h1 id='settlements'>Settlements</h1>
 <p>A settlement refers to the settlmeent of funds between Highline and clients (that’s you!). This happens whenever a bill payment is due, and will be reflected in this API and our daily data report.</p>
-<h2 id='check-product-39-s-settlements'>Check product&#39;s settlements</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET http://api.highline.co/products/d5165d5168-61s3.../settlements <span class="se">\</span>
+<h2 id='check-product-39-s-settlements'>Check product&#39;s settlements</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET https://api.highline.co/products/d5165d5168-61s3.../settlements <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
 </code></pre></div>
@@ -2822,7 +2822,7 @@
 </span></code></pre></div>
 <p>This API return the settlements, based on the provided product id.</p>
 
-<p><code>GET http://api.highline.co/products/{id}/settlements</code></p>
+<p><code>GET https://api.highline.co/products/{id}/settlements</code></p>
 <h3 id='parameters'>Parameters</h3>
 <table><thead>
 <tr>
@@ -2915,7 +2915,7 @@
 <p>Every client of Highline is obligated to participate in a daily exchange of data between themselves and Highline. This is a report that allows Highline to monitor the status of all active bill payments, and keep our respective ledgers in sync. If there’s a change or inconsistency from one day to the next, the daily client report will help Highline see this change in real-time and act accordingly.</p>
 
 <p>We offer two ways to exchange this data. Our recommended solution is setting up an automatic exchange using the API’s below. Alternatively, we offer a manual report upload from the client portal.</p>
-<h2 id='add-product-39-s-daily-data-report'>Add product&#39;s daily data report</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST http://api.highline.co/products/d5165d5168-61s3.../reports <span class="se">\</span>
+<h2 id='add-product-39-s-daily-data-report'>Add product&#39;s daily data report</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://api.highline.co/products/d5165d5168-61s3.../reports <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: multipart/form-data"</span>
   <span class="nt">-d</span> <span class="s1">$'dailyReport:file'</span>
@@ -2929,7 +2929,7 @@
 </span></code></pre></div>
 <p>This API add a daily data report for the provided product id.</p>
 
-<p><code>POST http://api.highline.co/products/{id}/reports</code></p>
+<p><code>POST https://api.highline.co/products/{id}/reports</code></p>
 <h3 id='parameters'>Parameters</h3>
 <table><thead>
 <tr>
@@ -2952,7 +2952,7 @@
 <td>File containing the report</td>
 </tr>
 </tbody></table>
-<h2 id='check-product-39-s-reports'>Check product&#39;s reports</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET http://api.highline.co/products/d5165d5168-61s3.../reports <span class="se">\</span>
+<h2 id='check-product-39-s-reports'>Check product&#39;s reports</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET https://api.highline.co/products/d5165d5168-61s3.../reports <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
 </code></pre></div>
@@ -2977,7 +2977,7 @@
 </span></code></pre></div>
 <p>This API checks the product&#39;s daily data reports.</p>
 
-<p><code>GET http://api.highline.co/products/{id}/reports</code></p>
+<p><code>GET https://api.highline.co/products/{id}/reports</code></p>
 <h3 id='parameters-2'>Parameters</h3>
 <table><thead>
 <tr>
@@ -3126,7 +3126,7 @@
 <p>The deposit switch functionality is packaged as a simple, streamlined experience for developers and users. For your users, it’s practically as simple. With just a few clicks and without leaving your platform, they can authorize a direct deposit switch to your bank account.</p>
 
 <p>Direct deposit switch implementation steps to get you up and running.</p>
-<h3 id='step-1-get-an-access-token'>Step 1 - Get an access token</h3><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST http://api.highline.co/auth/token <span class="se">\</span>
+<h3 id='step-1-get-an-access-token'>Step 1 - Get an access token</h3><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://api.highline.co/auth/token <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">$'{
     "api_key": "YOUR_API_KEY",
@@ -3145,8 +3145,8 @@
 </span></code></pre></div>
 <p>To initiate a payroll connection session, you will need your API Key and Secret from the Highline Dashboard to request an <code>access_token.</code> An AccessToken for the end user is required to initialize Highline link <code>Connect</code>. To retrieve the AccessToken, make the following HTTP request on your server.</p>
 
-<p><code>POST http://api.highline.co/auth/token</code></p>
-<h3 id='step-2-encrypt-the-bank-details'>Step 2 - Encrypt the bank details</h3><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST http://api.highline.co/link/encrypt <span class="se">\</span>
+<p><code>POST https://api.highline.co/auth/token</code></p>
+<h3 id='step-2-encrypt-the-bank-details'>Step 2 - Encrypt the bank details</h3><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://api.highline.co/link/encrypt <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">$'{
@@ -3167,7 +3167,7 @@
 </span></code></pre></div>
 <p>The encryption is necessary to ensure your bank account details are never exposed on the front-end. To encrypt your bank account details, make the following HTTP request from your server.</p>
 
-<p><code>POST http://api.highline.co/link/encrypt</code></p>
+<p><code>POST https://api.highline.co/link/encrypt</code></p>
 <h3 id='step-3-connect-and-open-highline-link'>Step 3 - Connect and open Highline-link</h3>
 <blockquote>
 <p>Highlink Link Snippet</p>
@@ -3208,7 +3208,7 @@
 <p>Highline’s Payment via Payroll functionality automates and simplifies your customers&#39; bill payments by allowing them to make payments directly from payroll. Once the bill payment is setup, the recurring monthly payment amount will be automatically debited from their paychecks.</p>
 
 <p>This section will help you understand how to implement Highline bill payments in a few simple steps.</p>
-<h3 id='step-1-get-an-access-token-2'>Step 1 - Get an access token</h3><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST http://api.highline.co/auth/token <span class="se">\</span>
+<h3 id='step-1-get-an-access-token-2'>Step 1 - Get an access token</h3><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://api.highline.co/auth/token <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">$'{
     "api_key": "YOUR_API_KEY",
@@ -3227,10 +3227,10 @@
 </span></code></pre></div>
 <p>To initiate a payroll payment session, you will need your API Key and Secret from the Highline Dashboard to request an <code>access_token.</code> An AccessToken for the end user is required to initialize Highline link <code>Connect</code>. To retrieve the AccessToken, make the following HTTP request on your server.</p>
 
-<p><code>POST http://api.highline.co/auth/token</code></p>
+<p><code>POST https://api.highline.co/auth/token</code></p>
 <h3 id='step-2-create-an-enrollment'>Step 2 - Create an enrollment</h3>
 <p>To enroll a user for bill payments via payroll, you need to create an enrollment. An enrollment contains the metadata for a given recurring bill processed by Highline payments.</p>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST http://api.highline.co/enrollments <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://api.highline.co/enrollments <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">$'{
@@ -3335,7 +3335,7 @@
 <p>Highline can also be used to verify the employment data of individual users. Our integrations within the payroll ecosystem helps us provide access to a user’s employment data from a single payroll sign-on.</p>
 
 <p>Using this service allows users to login and confirm data sharing with a single click. These users also never leave your website. This means that as opposed to traditional methods like uploading paystubs or a copy of photo identification, your users will have a simple single login and be able to complete their journey with less friction and confusion.</p>
-<h3 id='step-1-get-an-access-token-3'>Step 1 - Get an access token</h3><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST http://api.highline.co/auth/token <span class="se">\</span>
+<h3 id='step-1-get-an-access-token-3'>Step 1 - Get an access token</h3><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://api.highline.co/auth/token <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">$'{
     "api_key": "YOUR_API_KEY",
@@ -3354,7 +3354,7 @@
 </span></code></pre></div>
 <p>To initiate a employment data session, you will need your API Key and Secret from the Highline Dashboard to request an <code>access_token.</code> An AccessToken for the end user is required to initialize Highline link <code>Connect</code>. To retrieve the AccessToken, make the following HTTP request on your server.</p>
 
-<p><code>POST http://api.highline.co/auth/token</code></p>
+<p><code>POST https://api.highline.co/auth/token</code></p>
 <h3 id='step-2-connect-and-open-highline-link'>Step 2 - Connect and open Highline-Link</h3>
 <blockquote>
 <p>Highlink Link Snippet</p>

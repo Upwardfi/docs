@@ -1,4 +1,4 @@
-<h1 id='bank-accounts'>Bank Accounts</h1><h2 id='add-bank-account'>Add bank account</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST http://api.highline.co/users/c8e1f36e-c4.../bank_accounts <span class="se">\</span>
+<h1 id='bank-accounts'>Bank Accounts</h1><h2 id='add-bank-account'>Add bank account</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://api.highline.co/users/c8e1f36e-c4.../bank_accounts <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">$'{
@@ -35,7 +35,7 @@
 </span></code></pre></div>
 <p>This API adds a bank account to an enrollment via Highline. By passing basic bank account information Highline will return the bank account structure to the user based on the user id.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>POST http://api.highline.co/users/{id}/bank_accounts</code></p>
+<p><code>POST https://api.highline.co/users/{id}/bank_accounts</code></p>
 <h3 id='parameters'>Parameters</h3>
 <table><thead>
 <tr>
@@ -135,7 +135,7 @@
 <td>Date of update</td>
 </tr>
 </tbody></table>
-<h2 id='get-user-39-s-bank-accounts'>Get user&#39;s bank accounts</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET http://api.highline.co/users/c8e1f36e-c4.../bank_accounts <span class="se">\</span>
+<h2 id='get-user-39-s-bank-accounts'>Get user&#39;s bank accounts</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET https://api.highline.co/users/c8e1f36e-c4.../bank_accounts <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
 </code></pre></div>
@@ -166,7 +166,7 @@
 </span></code></pre></div>
 <p>This API returns a user&#39;s bank accounts based on the specified user id.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET http://api.highline.co/users/{id}/bank_accounts</code></p>
+<p><code>GET https://api.highline.co/users/{id}/bank_accounts</code></p>
 <h3 id='parameters-2'>Parameters</h3>
 <table><thead>
 <tr>
@@ -242,7 +242,7 @@
 <td>Date of update</td>
 </tr>
 </tbody></table>
-<h2 id='get-user-39-s-bank-account'>Get user&#39;s bank account</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET http://api.highline.co/users/c8e1f36e-c4.../bank_accounts/d938f36e-c4... <span class="se">\</span>
+<h2 id='get-user-39-s-bank-account'>Get user&#39;s bank account</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET https://api.highline.co/users/c8e1f36e-c4.../bank_accounts/d938f36e-c4... <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
 </code></pre></div>
@@ -273,7 +273,7 @@
 </span></code></pre></div>
 <p>This API returns a user&#39;s specified bank account based on the user id and bank account id.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
-<p><code>GET http://api.highline.co/users/{id}/bank_accounts/{bank_account_id}</code></p>
+<p><code>GET https://api.highline.co/users/{id}/bank_accounts/{bank_account_id}</code></p>
 <h3 id='parameters-3'>Parameters</h3>
 <table><thead>
 <tr>
@@ -355,7 +355,7 @@
 <td>Date of update</td>
 </tr>
 </tbody></table>
-<h2 id='update-bank-account'>Update Bank account</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PUT http://api.highline.co/users/c8e1f36e-c4.../bank_accounts/f6e1645-fc56... <span class="se">\</span>
+<h2 id='update-bank-account'>Update Bank account</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PUT https://api.highline.co/users/c8e1f36e-c4.../bank_accounts/f6e1645-fc56... <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">$'{
@@ -374,7 +374,7 @@
 </span></code></pre></div>
 <p>This API updates a user bank account. By passing the bank account information you like, Highline will return a sucess message or an error.</p>
 <h3 id='http-request-4'>HTTP Request</h3>
-<p><code>PUT http://api.highline.co/users/{id}/bank_accounts/{bank_account_id}</code></p>
+<p><code>PUT https://api.highline.co/users/{id}/bank_accounts/{bank_account_id}</code></p>
 <h3 id='parameters-4'>Parameters</h3>
 <table><thead>
 <tr>
@@ -421,7 +421,7 @@
 <td>Name of bank</td>
 </tr>
 </tbody></table>
-<h2 id='get-account-number'>Get Account number</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET http://api.highline.co/users/c8e1f36e-c4.../bank_accounts/f6e1645-fc56.../account_number <span class="se">\</span>
+<h2 id='get-account-number'>Get Account number</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET https://api.highline.co/users/c8e1f36e-c4.../bank_accounts/f6e1645-fc56.../account_number <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
 </code></pre></div>
@@ -434,7 +434,7 @@
 </span></code></pre></div>
 <p>This API displays an account number of a user&#39;s bank account.</p>
 <h3 id='http-request-5'>HTTP Request</h3>
-<p><code>GET http://api.highline.co/users/{id}/bank_accounts/{bank_account_id}/account_number</code></p>
+<p><code>GET https://api.highline.co/users/{id}/bank_accounts/{bank_account_id}/account_number</code></p>
 <h3 id='parameters-5'>Parameters</h3>
 <table><thead>
 <tr>
@@ -457,7 +457,7 @@
 <td>Bank account id</td>
 </tr>
 </tbody></table>
-<h2 id='get-account-balance'>Get Account balance</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET http://api.highline.co/users/c8e1f36e-c4.../bank_accounts/f6e1645-fc56.../balance <span class="se">\</span>
+<h2 id='get-account-balance'>Get Account balance</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET https://api.highline.co/users/c8e1f36e-c4.../bank_accounts/f6e1645-fc56.../balance <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
 </code></pre></div>
@@ -472,7 +472,7 @@
 </span></code></pre></div>
 <p>This API displays the balance of a user’s bank account. Highline will return the balance available within the associated account</p>
 <h3 id='http-request-6'>HTTP Request</h3>
-<p><code>GET http://api.highline.co/users/{id}/bank_accounts/{bank_account_id}/balance</code></p>
+<p><code>GET https://api.highline.co/users/{id}/bank_accounts/{bank_account_id}/balance</code></p>
 <h3 id='parameters-6'>Parameters</h3>
 <table><thead>
 <tr>
@@ -519,7 +519,7 @@
 <td>Data time when this query was made</td>
 </tr>
 </tbody></table>
-<h2 id='delete-account-number'>DELETE Account number</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> DELETE http://api.highline.co/users/c8e1f36e-c4.../bank_accounts/f6e1645-fc56... <span class="se">\</span>
+<h2 id='delete-account-number'>DELETE Account number</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> DELETE https://api.highline.co/users/c8e1f36e-c4.../bank_accounts/f6e1645-fc56... <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
 </code></pre></div>
@@ -532,7 +532,7 @@
 </span></code></pre></div>
 <p>This API will delete a user&#39;s bank account.</p>
 <h3 id='http-request-7'>HTTP Request</h3>
-<p><code>DELETE http://api.highline.co/users/{id}/bank_accounts/{bank_account_id}/account_number</code></p>
+<p><code>DELETE https://api.highline.co/users/{id}/bank_accounts/{bank_account_id}/account_number</code></p>
 <h3 id='parameters-7'>Parameters</h3>
 <table><thead>
 <tr>
