@@ -26,7 +26,7 @@ curl -X POST https://api.highline.co/auth/token \
 
 The endpoints uses OAuth 2.0 Bearer Token to authenticate requests.
 
-You can request tokens with `/auth/token` endpoint. The `API Key` and `API secret` are available in the account settings page. Your API keys carry many privileges, so be sure to keep them secure! Do not share your secret API keys in publicly accessible areas such as GitHub, client-side code, and so forth.
+You can request tokens with `/auth/token` endpoint. The `API Key` and `API secret` are available in the product settings page at `https://app.highline.co/manage-product`. Your API keys carry many privileges, so be sure to keep them secure! Do not share your secret API keys in publicly accessible areas such as GitHub, client-side code, and so forth.
 
 ### HTTP Request
 

@@ -13,6 +13,7 @@ includes:
   - api_keys
   - auth
   - rate_limiting
+  - guides
   - employers
   - enrollments
   - profiles
@@ -24,7 +25,6 @@ includes:
   - settlements
   - reports
   - client_sdk
-  - guides
   - errors
 
 search: true

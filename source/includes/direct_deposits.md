@@ -17,11 +17,10 @@ curl -X GET https://api.highline.co/users/6516515-651.../payout_allocations \
   "employment_id": "d6b10b60-55...",
   "bank_account": {
     "id": "4fb1c5dd-5d...",
-    "account_number": "***2345",
-    "routing_number": "***4321",
+    "account_number": "23142345",
+    "routing_number": "11124321",
     "account_type": "Checking",
     "bank_name": "Wells Fargo",
-    "kind": "external"
   },
   "status": "active",
   "created_at": 1633633510,
@@ -46,8 +45,7 @@ Parameter | Type | Description
 `id` | string | Payout Allocation ID
 `user_id` | string | User ID
 `employment_id` | string | Employment ID
-`employment` | json | Employment structure
 `bank_account` | object | Bank account object
-`status` | string | Status of payout allocation ("active" "pending")
+`status` | string | Status of direct deposits ("active" "pending")
 `created_at` | timestamp | Date of creation
 `updated_at` | timestamp | Date of update

@@ -14,24 +14,20 @@ curl -X GET https://api.highline.co/employers?q=Kroger \
 [
   {
     "id": "25de3...",
-    "name_hash": "bd545...",
     "name": "Kroger",
     "type": "retail",
     "has_two_fa": false,
-    "api_supported": true,
-    "can_edit_allocations": false,
-    "max_number_of_allocations": 5,
-    "exclude_employer_enabled": false,
+    "payroll_data_supported": true,
+    "payments_supported": false,
     "created_at": 1633824000,
     "updated_at": 1634428800
   }
 ]
+
 ```
-To be eligible, customers must be gainfully employed with a trusted employer.
+Highline supports over half of the US working population, but not everyone. You may optionally query using `https://api.highline.co/employers?q={employer_name}` to ensure if an employer is supported.
 
-We also require these employers, and their subsequent payroll providers, to be integrated with Highline. This allow us to properly allocate a portion of the paycheck towards bill payments.
-
-This API checks if user's employer is supported through Highline and will return success or failure based on eligibility.
+Support is often unknown for small businesses, which the customer may still be able to log in by identifying their payroll platform (ADP, Paychex, etc.).
 
 `GET https://api.highline.co/employers`
 

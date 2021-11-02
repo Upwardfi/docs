@@ -3,7 +3,7 @@
 ## Get User's Pay histories
 
 ```shell
-curl -X GET https://api.highline.co/users/6516515-651.../payout_histories \
+curl -X GET https://api.highline.co/users/6516515-651.../pay_histories \
   -H "Authorization Bearer: AccessToken" \
   -H "Content-Type: application/json"
 ```
@@ -21,14 +21,7 @@ curl -X GET https://api.highline.co/users/6516515-651.../payout_histories \
     "employer_id": "d5b6c756-f9...",
     "employer": {
       "id": "d5b6c756-f9...",
-      "name_hash": "bd545a0280d...",
-      "name": "Kroger",
-      "type": "retail",
-      "api_supported": true,
-      "can_edit_allocations": true,
-      "max_number_of_allocations": 5,
-      "created_at": 1633123768,
-      "updated_at": 1633219200
+      "name": "Kroger"
     },
     "job_title": "1635 - Helpline Agent",
     "start_date": 1393924766,
@@ -55,7 +48,7 @@ curl -X GET https://api.highline.co/users/6516515-651.../payout_histories \
 
 This API endpoint returns the user's Pay histories, based on the provided user id.
 
-`GET https://api.highline.co/users/{id}/payout_histories`
+`GET https://api.highline.co/users/{id}/pay_histories`
 
 ### Parameters
 
@@ -78,7 +71,7 @@ Parameter | Type | Description
 `net_amount` | int | Net Amount (in cents)
 `currency` | string | Currency
 `paid_date` | timestamp | Paid date (when paid)
-`start_date` | timestamp | Start date
-`end_date` | timestamp | End date
+`start_date` | timestamp | Pay period start date
+`end_date` | timestamp | Pay period end date
 `created_at` | timestamp | Date of creation
 `updated_at` | timestamp | Date of update

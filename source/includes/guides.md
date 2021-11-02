@@ -88,7 +88,7 @@ Parameter | Type | Description
 
 ## Payment via Payroll
 
-Highline’s Payment via Payroll functionality automates and simplifies your customers' bill payments by allowing them to make payments directly from payroll. Once the bill payment is setup, the recurring monthly payment amount will be automatically debited from their paychecks.
+Highline’s Payment via Payroll functionality automates and simplifies your customers' bill payments by allowing them to make payments directly from payroll. Once the bill payment is set up, the recurring payment amount will be automatically routed from their paychecks to Highline by direct deposit, and then from Highline to you.
 
 This section will help you understand how to implement Highline bill payments in a few simple steps.
 
@@ -132,7 +132,7 @@ curl -X POST https://api.highline.co/enrollments \
     "payment_frequency": "monthly",
     "first_payment_date": 1634740754,
     "application_reference_number": "16576",
-    "days_until_expires": 30
+    "end_date": 1634840754
   }'
 ```
 
@@ -145,7 +145,7 @@ curl -X POST https://api.highline.co/enrollments \
   "payment_amount": 20000,
   "payment_frequency": "monthly",
   "first_payment_date": 1634740754,
-  "application_reference_number": "16576AB",
+  "client_reference_id": "16576AB",
   "status": "new",
   "created_at": 1634741667,
   "updated_at": 1634741667
@@ -158,8 +158,9 @@ Parameter | Type | Description
 `product_id` *required* | string | available in Highline dashboard
 `payment_amount` *required* | string | monthly recurring payment amount
 `payment_frequency` *required* | string | payment frequency, we only support 'monthly' bill payment frequency
-`first_payment_date` *required* | unix timestamp | the bill payment due date
-`application_reference_number` *optional* | string | the resource identifier in your application
+`first_payment_date` *required* | unix timestamp | the first bill payment due date
+`end_date` *optional* | int | Date when we stop accepting payments for this enrollment
+`client_reference_id` *optional* | string | The application ID or account ID on your system
 
 
 ### Step 3 - Connect and open Highline-Link

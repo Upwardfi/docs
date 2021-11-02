@@ -1,6 +1,6 @@
 # Settlements
 
-A settlement refers to the settlmeent of funds between Highline and clients (that’s you!). This happens whenever a bill payment is due, and will be reflected in this API and our daily data report.
+A settlement refers to the transfer of funds between Highline and clients. This happens whenever a bill payment is due, and will be reflected in this API and our daily settlement file.
 
 ## Check product's settlements
 
@@ -18,7 +18,6 @@ curl -X GET https://api.highline.co/products/d5165d5168-61s3.../settlements \
     "id": "25de3...",
     "client_id": "bd545...",
     "product_id": "bd545...",
-    "payment_order_id": "5465sd1fsd516...",
     "status": "completed",
     "total_amount": 50000,
     "completed_at": 1633824000,
@@ -48,7 +47,6 @@ Parameter | Type | Description
 `id` | string | Settlement ID
 `client_id` | string | Company ID
 `product_id` | string | Product ID
-`payment_order_id` | string | Order ID
 `status` | string | Settlement status ("pending" "sent" "completed" "cancelled")
 `total_amount` | int | Total amount (in cents)
 `completed_at` | timestamp | Date of completion (if completed)

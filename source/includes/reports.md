@@ -1,7 +1,7 @@
 # Reports
-Every client of Highline is obligated to participate in a daily exchange of data between themselves and Highline. This is a report that allows Highline to monitor the status of all active bill payments, and keep our respective ledgers in sync. If there’s a change or inconsistency from one day to the next, the daily client report will help Highline see this change in real-time and act accordingly.
+Every client of Highline is obligated to participate in a daily exchange of data between themselves and Highline. This is a report that allows Highline to ensure we are only pushing payments when needed, we flag cases a bill will not be able to be paid and we ensure payments have been posted accurately. If there’s a change or inconsistency from one day to the next, the daily client report will help Highline see this change in real-time and act accordingly.
 
-We offer two ways to exchange this data. Our recommended solution is setting up an automatic exchange using the API’s below. Alternatively, we offer a manual report upload from the client portal.
+We offer two ways to exchange this data. Our recommended solution is setting up an automatic exchange using the API’s below. Alternatively, we offer a manual report upload and download from the client portal.
 
 ## Add product's daily data report
 

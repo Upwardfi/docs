@@ -49,7 +49,6 @@ Name | Type | In | Description
 Parameter | Type | Description
 --------- | ------- | -----------
 `id` | string | Returns user id.
-`provider_user_id` | string | ID of employer
 `first_name` | string | First Name
 `last_name` | string | Last Name
 `ssn` | string | Social security number
