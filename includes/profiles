@@ -60,11 +60,6 @@
 <td>Returns user id.</td>
 </tr>
 <tr>
-<td><code>provider_user_id</code></td>
-<td>string</td>
-<td>ID of employer</td>
-</tr>
-<tr>
 <td><code>first_name</code></td>
 <td>string</td>
 <td>First Name</td>

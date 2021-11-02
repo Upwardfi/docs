@@ -8,24 +8,20 @@
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"25de3..."</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"name_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bd545..."</span><span class="p">,</span><span class="w">
     </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kroger"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"retail"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"has_two_fa"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"api_supported"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"can_edit_allocations"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"max_number_of_allocations"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"exclude_employer_enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"payroll_data_supported"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"payments_supported"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1633824000</span><span class="p">,</span><span class="w">
     </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1634428800</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
+
 </span></code></pre></div>
-<p>To be eligible, customers must be gainfully employed with a trusted employer.</p>
+<p>Highline supports over half of the US working population, but not everyone. You may optionally query using <code>https://api.highline.co/employers?q={employer_name}</code> to ensure if an employer is supported.</p>
 
-<p>We also require these employers, and their subsequent payroll providers, to be integrated with Highline. This allow us to properly allocate a portion of the paycheck towards bill payments.</p>
-
-<p>This API checks if user&#39;s employer is supported through Highline and will return success or failure based on eligibility.</p>
+<p>Support is often unknown for small businesses, which the customer may still be able to log in by identifying their payroll platform (ADP, Paychex, etc.).</p>
 
 <p><code>GET https://api.highline.co/employers</code></p>
 <h3 id='parameters'>Parameters</h3>

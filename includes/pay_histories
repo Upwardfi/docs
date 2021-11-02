@@ -1,4 +1,4 @@
-<h1 id='pay-histories'>Pay histories</h1><h2 id='get-user-39-s-pay-histories'>Get User&#39;s Pay histories</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET https://api.highline.co/users/6516515-651.../payout_histories <span class="se">\</span>
+<h1 id='pay-histories'>Pay histories</h1><h2 id='get-user-39-s-pay-histories'>Get User&#39;s Pay histories</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET https://api.highline.co/users/6516515-651.../pay_histories <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
 </code></pre></div>
@@ -15,14 +15,7 @@
     </span><span class="nl">"employer_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d5b6c756-f9..."</span><span class="p">,</span><span class="w">
     </span><span class="nl">"employer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d5b6c756-f9..."</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"name_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bd545a0280d..."</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kroger"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"retail"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"api_supported"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"can_edit_allocations"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"max_number_of_allocations"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1633123768</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1633219200</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kroger"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"job_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1635 - Helpline Agent"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1393924766</span><span class="p">,</span><span class="w">
@@ -48,7 +41,7 @@
 </span></code></pre></div>
 <p>This API endpoint returns the user&#39;s Pay histories, based on the provided user id.</p>
 
-<p><code>GET https://api.highline.co/users/{id}/payout_histories</code></p>
+<p><code>GET https://api.highline.co/users/{id}/pay_histories</code></p>
 <h3 id='parameters'>Parameters</h3>
 <table><thead>
 <tr>
@@ -134,12 +127,12 @@
 <tr>
 <td><code>start_date</code></td>
 <td>timestamp</td>
-<td>Start date</td>
+<td>Pay period start date</td>
 </tr>
 <tr>
 <td><code>end_date</code></td>
 <td>timestamp</td>
-<td>End date</td>
+<td>Pay period end date</td>
 </tr>
 <tr>
 <td><code>created_at</code></td>

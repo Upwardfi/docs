@@ -21,7 +21,7 @@
 </span></code></pre></div>
 <p>The endpoints uses OAuth 2.0 Bearer Token to authenticate requests.</p>
 
-<p>You can request tokens with <code>/auth/token</code> endpoint. The <code>API Key</code> and <code>API secret</code> are available in the account settings page. Your API keys carry many privileges, so be sure to keep them secure! Do not share your secret API keys in publicly accessible areas such as GitHub, client-side code, and so forth.</p>
+<p>You can request tokens with <code>/auth/token</code> endpoint. The <code>API Key</code> and <code>API secret</code> are available in the product settings page at <code>https://app.highline.co/manage-product</code>. Your API keys carry many privileges, so be sure to keep them secure! Do not share your secret API keys in publicly accessible areas such as GitHub, client-side code, and so forth.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>POST https://api.highline.co/auth/token</code></p>
 <h3 id='response'>Response</h3>

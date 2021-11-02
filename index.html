@@ -309,7 +309,12 @@
         <ul class="search-results"></ul>
       <ul id="toc" class="toc-list-h1">
           <li>
-            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+            <a href="#welcome" class="toc-h1 toc-link" data-title="Welcome">Welcome</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#sandbox" class="toc-h2 toc-link" data-title="Sandbox">Sandbox</a>
+                  </li>
+              </ul>
           </li>
           <li>
             <a href="#api-keys" class="toc-h1 toc-link" data-title="API Keys">API Keys</a>
@@ -327,6 +332,20 @@
           </li>
           <li>
             <a href="#rate-limiting" class="toc-h1 toc-link" data-title="Rate limiting">Rate limiting</a>
+          </li>
+          <li>
+            <a href="#guides" class="toc-h1 toc-link" data-title="Guides">Guides</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#direct-deposit-switch" class="toc-h2 toc-link" data-title="Direct Deposit Switch">Direct Deposit Switch</a>
+                  </li>
+                  <li>
+                    <a href="#payment-via-payroll" class="toc-h2 toc-link" data-title="Payment via Payroll">Payment via Payroll</a>
+                  </li>
+                  <li>
+                    <a href="#employment-data" class="toc-h2 toc-link" data-title="Employment Data">Employment Data</a>
+                  </li>
+              </ul>
           </li>
           <li>
             <a href="#employers" class="toc-h1 toc-link" data-title="Employers">Employers</a>
@@ -427,20 +446,6 @@
               </ul>
           </li>
           <li>
-            <a href="#guides" class="toc-h1 toc-link" data-title="Guides">Guides</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#direct-deposit-switch" class="toc-h2 toc-link" data-title="Direct Deposit Switch">Direct Deposit Switch</a>
-                  </li>
-                  <li>
-                    <a href="#payment-via-payroll" class="toc-h2 toc-link" data-title="Payment via Payroll">Payment via Payroll</a>
-                  </li>
-                  <li>
-                    <a href="#employment-data" class="toc-h2 toc-link" data-title="Employment Data">Employment Data</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
             <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
               <ul class="toc-list-h2">
                   <li>
@@ -460,13 +465,15 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='introduction'>Introduction</h1><div class="highlight"><pre class="highlight shell tab-shell"><code>https://api.highline.co
+        <h1 id='welcome'>Welcome</h1><div class="highlight"><pre class="highlight shell tab-shell"><code>https://api.highline.co
 </code></pre></div>
-<p>Welcome to Highline - a seamless integration to setting up automated payments directly from your platform user&#39;s income. You can initiate enrollment by calling Highline&#39;s API endpoints and displaying the widget.</p>
+<p>Welcome to Highline - a seamless integration to setting up automated payments directly from your user&#39;s income. You can initiate enrollment by calling Highline&#39;s API endpoints and displaying the widget.</p>
 
 <p>This API reference provides information on available endpoints and how to interact with it.</p>
 
 <p>Highline&#39;s API is organized around REST. Our API has predictable, resource-oriented URLs, and uses HTTP response codes to indicate API errors. All requests should be over SSL. All request and response bodies, including errors are encoded in JSON.</p>
+<h2 id='sandbox'>Sandbox</h2>
+<p>Our sandbox environment at <code>https://sandbox.highline.co</code> provides all the functionality of <code>https://api.highline.co</code> with test account credentials. The sandbox API credentials is also available in the product settings page at <code>https://app.highline.co/manage-product</code>.</p>
 <h1 id='api-keys'>API Keys</h1>
 <p>Highlines&#39;s API uses OAuth 2.0 Bearer Token to authenticate requests.</p>
 
@@ -501,7 +508,7 @@
 </span></code></pre></div>
 <p>The endpoints uses OAuth 2.0 Bearer Token to authenticate requests.</p>
 
-<p>You can request tokens with <code>/auth/token</code> endpoint. The <code>API Key</code> and <code>API secret</code> are available in the account settings page. Your API keys carry many privileges, so be sure to keep them secure! Do not share your secret API keys in publicly accessible areas such as GitHub, client-side code, and so forth.</p>
+<p>You can request tokens with <code>/auth/token</code> endpoint. The <code>API Key</code> and <code>API secret</code> are available in the product settings page at <code>https://app.highline.co/manage-product</code>. Your API keys carry many privileges, so be sure to keep them secure! Do not share your secret API keys in publicly accessible areas such as GitHub, client-side code, and so forth.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>POST https://api.highline.co/auth/token</code></p>
 <h3 id='response'>Response</h3>
@@ -592,6 +599,278 @@
 </tbody></table>
 <h1 id='rate-limiting'>Rate limiting</h1>
 <p>Highline&#39;s API are rate limited to prevent abuse that would degrade our ability to maintain consistent API performance for all users. By default, each API key or app is rate limited at 10,000 requests per hour. If your requests are being rate limited, HTTP response code 429 will be returned with an rate_limit_exceeded error.</p>
+<h1 id='guides'>Guides</h1><h2 id='direct-deposit-switch'>Direct Deposit Switch</h2>
+<p>Direct Deposit Switch functionality allows individual users to change the primary destination of their paycheck distribution to a bank account specified by your application. After a successful direct deposit switch, all future paychecks on behalf of the employer will push directly into the new listed bank account.</p>
+
+<p>Our significant footprint of API connections provides immediate access to this functionality for a majority of the workforce through Highline.</p>
+
+<p>The deposit switch functionality is packaged as a simple, streamlined experience for developers and users. For your users, it’s practically as simple. With just a few clicks and without leaving your platform, they can authorize a direct deposit switch to your bank account.</p>
+
+<p>Direct deposit switch implementation steps to get you up and running.</p>
+<h3 id='step-1-get-an-access-token'>Step 1 - Get an access token</h3><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://api.highline.co/auth/token <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">$'{
+    "api_key": "YOUR_API_KEY",
+    "secret" : "YOUR_SECRET"
+  }'</span>
+</code></pre></div>
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"access_token"</span><span class="p">:</span><span class="s2">"eyJhbGciOiJIUzI..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"refresh_token"</span><span class="p">:</span><span class="s2">"eyJhbGciOiJIUz..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"subject"</span><span class="p">:</span><span class="s2">"123e4567-e89b-12d3-a456-426614174000"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"expires_in"</span><span class="p">:</span><span class="mi">1634244444</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>To initiate a payroll connection session, you will need your API Key and Secret from the Highline Dashboard to request an <code>access_token.</code> An AccessToken for the end user is required to initialize Highline link <code>Connect</code>. To retrieve the AccessToken, make the following HTTP request on your server.</p>
+
+<p><code>POST https://api.highline.co/auth/token</code></p>
+<h3 id='step-2-encrypt-the-bank-details'>Step 2 - Encrypt the bank details</h3><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://api.highline.co/link/encrypt <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">$'{
+    "bank_account": {
+      "bank_name": "New Bank",
+      "account_type": "checking",
+      "routing_number": "XXXXXXXXX",
+      "account_number": "XXXXXXXXXX"
+    }
+  }'</span>
+</code></pre></div>
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+ </span><span class="nl">"payload"</span><span class="p">:</span><span class="w"> </span><span class="s2">"encrypted_value"</span><span class="p">,</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>The encryption is necessary to ensure your bank account details are never exposed on the front-end. To encrypt your bank account details, make the following HTTP request from your server.</p>
+
+<p><code>POST https://api.highline.co/link/encrypt</code></p>
+<h3 id='step-3-connect-and-open-highline-link'>Step 3 - Connect and open Highline-link</h3>
+<blockquote>
+<p>Highlink Link Snippet</p>
+</blockquote>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code>    <span class="nx">highlineLink</span><span class="p">.</span><span class="nx">connect</span><span class="p">({</span>
+        <span class="na">access_token</span><span class="p">:</span> <span class="dl">'</span><span class="s1">value_from_auth_token_api</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">feature</span><span class="p">:</span> <span class="dl">'</span><span class="s1">direct_deposit_switch</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">payload</span><span class="p">:</span> <span class="dl">'</span><span class="s1">encrypted_value</span><span class="dl">'</span>
+    <span class="p">});</span>
+    <span class="nx">highlineLink</span><span class="p">.</span><span class="nx">open</span><span class="p">();</span>
+</code></pre></div>
+<p>Highline&#39;s link is a front-end UI element that allows users to grant your application access to their work accounts and set up direct deposit switch</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>access_token</code> <em>required</em></td>
+<td>string</td>
+<td>Value from the &#39;/auth/token&#39; endpoint</td>
+</tr>
+<tr>
+<td><code>feature</code> <em>required</em></td>
+<td>string</td>
+<td>&#39;direct_deposit_switch&#39;</td>
+</tr>
+<tr>
+<td><code>payload</code> <em>optional</em></td>
+<td>string</td>
+<td>Encrypted value from the &#39;/link/encrypt&#39; endpoint - <em>required</em> for &#39;direct_deposit_switch&#39; feature</td>
+</tr>
+</tbody></table>
+<h2 id='payment-via-payroll'>Payment via Payroll</h2>
+<p>Highline’s Payment via Payroll functionality automates and simplifies your customers&#39; bill payments by allowing them to make payments directly from payroll. Once the bill payment is set up, the recurring payment amount will be automatically routed from their paychecks to Highline by direct deposit, and then from Highline to you.</p>
+
+<p>This section will help you understand how to implement Highline bill payments in a few simple steps.</p>
+<h3 id='step-1-get-an-access-token-2'>Step 1 - Get an access token</h3><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://api.highline.co/auth/token <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">$'{
+    "api_key": "YOUR_API_KEY",
+    "secret" : "YOUR_SECRET"
+  }'</span>
+</code></pre></div>
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"access_token"</span><span class="p">:</span><span class="s2">"eyJhbGciOiJIUzI..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"refresh_token"</span><span class="p">:</span><span class="s2">"eyJhbGciOiJIUz..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"subject"</span><span class="p">:</span><span class="s2">"123e4567-e89b-12d3-a456-426614174000"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"expires_in"</span><span class="p">:</span><span class="mi">1634244444</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>To initiate a payroll payment session, you will need your API Key and Secret from the Highline Dashboard to request an <code>access_token.</code> An AccessToken for the end user is required to initialize Highline link <code>Connect</code>. To retrieve the AccessToken, make the following HTTP request on your server.</p>
+
+<p><code>POST https://api.highline.co/auth/token</code></p>
+<h3 id='step-2-create-an-enrollment'>Step 2 - Create an enrollment</h3>
+<p>To enroll a user for bill payments via payroll, you need to create an enrollment. An enrollment contains the metadata for a given recurring bill processed by Highline payments.</p>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://api.highline.co/enrollments <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">$'{
+    "product_id": "6351fsd6fs-sdfs...",
+    "payment_amount": 20000,
+    "payment_frequency": "monthly",
+    "first_payment_date": 1634740754,
+    "application_reference_number": "16576",
+    "end_date": 1634840754
+  }'</span>
+</code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DVNA4..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"070b8618-7c..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"payment_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">20000</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"payment_frequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"monthly"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"first_payment_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1634740754</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"client_reference_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"16576AB"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"new"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1634741667</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1634741667</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>access_token</code> <em>required</em></td>
+<td>string</td>
+<td>Value from the &#39;/auth/token&#39; endpoint</td>
+</tr>
+<tr>
+<td><code>product_id</code> <em>required</em></td>
+<td>string</td>
+<td>available in Highline dashboard</td>
+</tr>
+<tr>
+<td><code>payment_amount</code> <em>required</em></td>
+<td>string</td>
+<td>monthly recurring payment amount</td>
+</tr>
+<tr>
+<td><code>payment_frequency</code> <em>required</em></td>
+<td>string</td>
+<td>payment frequency, we only support &#39;monthly&#39; bill payment frequency</td>
+</tr>
+<tr>
+<td><code>first_payment_date</code> <em>required</em></td>
+<td>unix timestamp</td>
+<td>the first bill payment due date</td>
+</tr>
+<tr>
+<td><code>end_date</code> <em>optional</em></td>
+<td>int</td>
+<td>Date when we stop accepting payments for this enrollment</td>
+</tr>
+<tr>
+<td><code>client_reference_id</code> <em>optional</em></td>
+<td>string</td>
+<td>The application ID or account ID on your system</td>
+</tr>
+</tbody></table>
+<h3 id='step-3-connect-and-open-highline-link-2'>Step 3 - Connect and open Highline-Link</h3>
+<blockquote>
+<p>Highlink Link Snippet</p>
+</blockquote>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code>    <span class="nx">highlineLink</span><span class="p">.</span><span class="nx">connect</span><span class="p">({</span>
+        <span class="na">access_token</span><span class="p">:</span> <span class="dl">'</span><span class="s1">value_from_auth_token_api</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">feature</span><span class="p">:</span> <span class="dl">'</span><span class="s1">direct_deposit_payment</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">enrollment_id</span><span class="p">:</span> <span class="dl">'</span><span class="s1">id_from_enrollments_api</span><span class="dl">'</span>
+    <span class="p">});</span>
+    <span class="nx">highlineLink</span><span class="p">.</span><span class="nx">open</span><span class="p">();</span>
+</code></pre></div>
+<p>Highline&#39;s link is a front-end UI element that allows users to grant your application access to their work accounts and set up payment via payroll</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>access_token</code> <em>required</em></td>
+<td>string</td>
+<td>Value from the &#39;/auth/token&#39; endpoint</td>
+</tr>
+<tr>
+<td><code>feature</code> <em>required</em></td>
+<td>string</td>
+<td>&#39;direct_deposit_payment&#39;</td>
+</tr>
+<tr>
+<td><code>enrollment_id</code> <em>required</em></td>
+<td>string</td>
+<td>The enrollment_id from the previous step</td>
+</tr>
+</tbody></table>
+<h2 id='employment-data'>Employment Data</h2>
+<p>Highline can also be used to verify the employment data of individual users. Our integrations within the payroll ecosystem helps us provide access to a user’s employment data from a single payroll sign-on.</p>
+
+<p>Using this service allows users to login and confirm data sharing with a single click. These users also never leave your website. This means that as opposed to traditional methods like uploading paystubs or a copy of photo identification, your users will have a simple single login and be able to complete their journey with less friction and confusion.</p>
+<h3 id='step-1-get-an-access-token-3'>Step 1 - Get an access token</h3><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://api.highline.co/auth/token <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">$'{
+    "api_key": "YOUR_API_KEY",
+    "secret" : "YOUR_SECRET"
+  }'</span>
+</code></pre></div>
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"access_token"</span><span class="p">:</span><span class="s2">"eyJhbGciOiJIUzI..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"refresh_token"</span><span class="p">:</span><span class="s2">"eyJhbGciOiJIUz..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"subject"</span><span class="p">:</span><span class="s2">"123e4567-e89b-12d3-a456-426614174000"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"expires_in"</span><span class="p">:</span><span class="mi">1634244444</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>To initiate a employment data session, you will need your API Key and Secret from the Highline Dashboard to request an <code>access_token.</code> An AccessToken for the end user is required to initialize Highline link <code>Connect</code>. To retrieve the AccessToken, make the following HTTP request on your server.</p>
+
+<p><code>POST https://api.highline.co/auth/token</code></p>
+<h3 id='step-2-connect-and-open-highline-link'>Step 2 - Connect and open Highline-Link</h3>
+<blockquote>
+<p>Highlink Link Snippet</p>
+</blockquote>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code>    <span class="nx">highlineLink</span><span class="p">.</span><span class="nx">connect</span><span class="p">({</span>
+        <span class="na">access_token</span><span class="p">:</span> <span class="dl">'</span><span class="s1">value_from_auth_token_api</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">feature</span><span class="p">:</span> <span class="dl">'</span><span class="s1">employment_data</span><span class="dl">'</span>
+    <span class="p">});</span>
+    <span class="nx">highlineLink</span><span class="p">.</span><span class="nx">open</span><span class="p">();</span>
+</code></pre></div>
+<p>Highline&#39;s link is a front-end UI element that allows users to grant your application access to their work accounts and share employment data</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>access_token</code> <em>required</em></td>
+<td>string</td>
+<td>Value from the &#39;/auth/token&#39; endpoint</td>
+</tr>
+<tr>
+<td><code>feature</code> <em>required</em></td>
+<td>string</td>
+<td>&#39;employment_data&#39;</td>
+</tr>
+</tbody></table>
 <h1 id='employers'>Employers</h1><h2 id='check-if-employer-is-supported'>Check if employer is supported</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET https://api.highline.co/employers?q<span class="o">=</span>Kroger <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
@@ -602,24 +881,20 @@
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"25de3..."</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"name_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bd545..."</span><span class="p">,</span><span class="w">
     </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kroger"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"retail"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"has_two_fa"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"api_supported"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"can_edit_allocations"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"max_number_of_allocations"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"exclude_employer_enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"payroll_data_supported"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"payments_supported"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1633824000</span><span class="p">,</span><span class="w">
     </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1634428800</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
+
 </span></code></pre></div>
-<p>To be eligible, customers must be gainfully employed with a trusted employer.</p>
+<p>Highline supports over half of the US working population, but not everyone. You may optionally query using <code>https://api.highline.co/employers?q={employer_name}</code> to ensure if an employer is supported.</p>
 
-<p>We also require these employers, and their subsequent payroll providers, to be integrated with Highline. This allow us to properly allocate a portion of the paycheck towards bill payments.</p>
-
-<p>This API checks if user&#39;s employer is supported through Highline and will return success or failure based on eligibility.</p>
+<p>Support is often unknown for small businesses, which the customer may still be able to log in by identifying their payroll platform (ADP, Paychex, etc.).</p>
 
 <p><code>GET https://api.highline.co/employers</code></p>
 <h3 id='parameters'>Parameters</h3>
@@ -641,7 +916,7 @@
 <h3 id='response'>Response</h3>
 <p>Array of Employers Data that match query</p>
 <h1 id='enrollments'>Enrollments</h1>
-<p>An Enrollment is created to initiate the set up of a recurring bill payment on Highline&#39;s payments network.</p>
+<p>An Enrollment is created to initiate the set up of a recurring bill payment on Highline&#39;s payments network. Enrollment is only required for bill payments use cases and is optional for payroll data access related use cases.</p>
 
 <p>You first create an enrollment with the recurring amount, bill payment date, payment frequency, along with other optional fields.</p>
 <h2 id='create-user-enrollment'>Create user enrollment</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://api.highline.co/enrollments <span class="se">\</span>
@@ -655,8 +930,8 @@
     "payment_amount": 20000,
     "payment_frequency": "monthly",
     "first_payment_date": 1634740754,
-    "application_reference_number": "16576",
-    "days_until_expires": 30
+    "client_reference_id": "XUZ456ERT",
+    "end_date": 1634840654
   }'</span>
 </code></pre></div>
 <blockquote>
@@ -669,7 +944,6 @@
       </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d134c....."</span><span class="p">,</span><span class="w">
       </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"ssn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234..."</span><span class="p">,</span><span class="w">
       </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john.smith143@highline.co"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"member"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1634744601</span><span class="p">,</span><span class="w">
@@ -680,7 +954,7 @@
   </span><span class="nl">"payment_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">20000</span><span class="p">,</span><span class="w">
   </span><span class="nl">"payment_frequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"monthly"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"first_payment_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1634740754</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"application_reference_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"16576AB"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"client_reference_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XUZ456ERT"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"new"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1634741667</span><span class="p">,</span><span class="w">
   </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1634741667</span><span class="w">
@@ -702,7 +976,7 @@
 <td><code>users</code></td>
 <td>array</td>
 <td>body</td>
-<td>Array of user objects that contain the member user ID</td>
+<td>Array of user objects who are enrolled in this enrollment</td>
 </tr>
 <tr>
 <td><code>product_id</code></td>
@@ -720,7 +994,7 @@
 <td><code>payment_frequency</code></td>
 <td>string</td>
 <td>body</td>
-<td>Frequency interval that user will make payments (&quot;unknown&quot; &quot;bi-weekly even&quot; &quot;bi-weekly odd&quot; &quot;weekly&quot; &quot;monthly&quot; &quot;semi-monthly&quot;)</td>
+<td>Frequency interval that user will make payments (&quot;weekly&quot; &quot;bi-weekly&quot; &quot;semi-monthly&quot; &quot;bi-weekly&quot;)</td>
 </tr>
 <tr>
 <td><code>first_payment_date</code></td>
@@ -729,16 +1003,16 @@
 <td>Date of first payment as Unix timestamp</td>
 </tr>
 <tr>
-<td><code>application_reference_number</code> <em>optional</em></td>
+<td><code>client_reference_id</code> <em>optional</em></td>
 <td>string</td>
 <td>body</td>
-<td>Loan application number</td>
+<td>The application ID or account ID on your system.</td>
 </tr>
 <tr>
-<td><code>days_until_expires</code></td>
+<td><code>end_date</code> <em>optional</em></td>
 <td>int</td>
-<td>body</td>
-<td>Number of days before this enrollment request expires</td>
+<td>Date when we stop accepting payments for this enrollment</td>
+<td></td>
 </tr>
 </tbody></table>
 <h3 id='response'>Response</h3>
@@ -780,19 +1054,14 @@
 <td>Date of first payment as Unix timestamp</td>
 </tr>
 <tr>
-<td><code>application_reference_number</code></td>
+<td><code>client_reference_id</code></td>
 <td>string</td>
-<td>Loan application number</td>
+<td>The application ID or account ID on your system.</td>
 </tr>
 <tr>
-<td><code>days_until_expires</code></td>
+<td><code>end_date</code> <em>optional</em></td>
 <td>int</td>
-<td>Number of days before this enrollment request expires</td>
-</tr>
-<tr>
-<td><code>fully_synced</code></td>
-<td>bool</td>
-<td></td>
+<td>Date when we stop accepting payments for this enrollment</td>
 </tr>
 <tr>
 <td><code>status</code></td>
@@ -822,7 +1091,6 @@
   </span><span class="nl">"users"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d134c608-5a..."</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"provider_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
       </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"ssn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456516"</span><span class="p">,</span><span class="w">
@@ -836,9 +1104,8 @@
   </span><span class="nl">"payment_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">20000</span><span class="p">,</span><span class="w">
   </span><span class="nl">"payment_frequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"monthly"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"first_payment_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1634740754</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"application_reference_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"16576"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"days_until_expires"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"fully_synced"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"client_reference_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XUZ456ERT"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1634840654</span><span class="p">,</span><span class="w">
   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"new"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"status_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1634741667</span><span class="p">,</span><span class="w">
@@ -903,19 +1170,14 @@
 <td>Date of first payment as Unix timestamp</td>
 </tr>
 <tr>
-<td><code>application_reference_number</code></td>
+<td><code>client_reference_id</code></td>
 <td>string</td>
-<td>Loan application number</td>
+<td>The application ID or account ID on your system.</td>
 </tr>
 <tr>
-<td><code>days_until_expires</code></td>
+<td><code>end_date</code> <em>optional</em></td>
 <td>int</td>
-<td>Number of days before this enrollment request expires</td>
-</tr>
-<tr>
-<td><code>fully_synced</code></td>
-<td>bool</td>
-<td></td>
+<td>Date when we stop accepting payments for this enrollment</td>
 </tr>
 <tr>
 <td><code>status</code></td>
@@ -998,11 +1260,6 @@
 <td><code>id</code></td>
 <td>string</td>
 <td>Returns user id.</td>
-</tr>
-<tr>
-<td><code>provider_user_id</code></td>
-<td>string</td>
-<td>ID of employer</td>
 </tr>
 <tr>
 <td><code>first_name</code></td>
@@ -1100,11 +1357,6 @@
 <td><code>id</code></td>
 <td>string</td>
 <td>Returns user id.</td>
-</tr>
-<tr>
-<td><code>provider_user_id</code></td>
-<td>string</td>
-<td>ID of employer</td>
 </tr>
 <tr>
 <td><code>first_name</code></td>
@@ -1211,14 +1463,7 @@
   </span><span class="nl">"employer_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d5b6c756-f9..."</span><span class="p">,</span><span class="w">
   </span><span class="nl">"employer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d5b6c756-f9..."</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"name_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bd545a0280d..."</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kroger"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"retail"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"api_supported"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"can_edit_allocations"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"max_number_of_allocations"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1633123768</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1633219200</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kroger"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"job_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1635 - Helpline Agent"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1393924766</span><span class="p">,</span><span class="w">
@@ -1283,17 +1528,17 @@
 <tr>
 <td><code>job_title</code></td>
 <td>string</td>
-<td>Job ocupation</td>
+<td>Current job title</td>
 </tr>
 <tr>
 <td><code>start_date</code></td>
 <td>timestamp</td>
-<td>Day that this job employment started</td>
+<td>Date that this employment started</td>
 </tr>
 <tr>
 <td><code>end_date</code></td>
 <td>timestamp</td>
-<td>Day of job ended (if ended)</td>
+<td>Date employment ended (if ended)</td>
 </tr>
 <tr>
 <td><code>base_pay</code></td>
@@ -1303,12 +1548,12 @@
 <tr>
 <td><code>base_annual_income</code></td>
 <td>int</td>
-<td>Value payed annualy (in cents)</td>
+<td>Value paid annually (in cents)</td>
 </tr>
 <tr>
-<td><code>provider_pay_cycle</code></td>
+<td><code>pay_cycle</code></td>
 <td>string</td>
-<td>Frequency interval that user recive payments</td>
+<td>Frequency interval that user receives payments</td>
 </tr>
 <tr>
 <td><code>pay_currency</code></td>
@@ -1325,16 +1570,6 @@
 <td>string</td>
 <td>Status of employment (&quot;active&quot; &quot;inactive&quot; &quot;terminated&quot;)</td>
 </tr>
-<tr>
-<td><code>created_at</code></td>
-<td>timestamp</td>
-<td>Date of creation</td>
-</tr>
-<tr>
-<td><code>updated_at</code></td>
-<td>timestamp</td>
-<td>Date of update</td>
-</tr>
 </tbody></table>
 <h2 id='get-employment'>Get employment</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET https://api.highline.co/employments/d6b10b60-55... <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
@@ -1349,14 +1584,7 @@
   </span><span class="nl">"employer_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d5b6c756-f9..."</span><span class="p">,</span><span class="w">
   </span><span class="nl">"employer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d5b6c756-f9..."</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"name_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bd545a0280d..."</span><span class="p">,</span><span class="w">
     </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kroger"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"retail"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"api_supported"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"can_edit_allocations"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"max_number_of_allocations"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1633123768</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1633219200</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"job_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1635 - Helpline Agent"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1393924766</span><span class="p">,</span><span class="w">
@@ -1421,17 +1649,17 @@
 <tr>
 <td><code>job_title</code></td>
 <td>string</td>
-<td>Job ocupation</td>
+<td>Current job title</td>
 </tr>
 <tr>
 <td><code>start_date</code></td>
 <td>timestamp</td>
-<td>Day that this job employment started</td>
+<td>Date that this employment started</td>
 </tr>
 <tr>
 <td><code>end_date</code></td>
 <td>timestamp</td>
-<td>Day of job ended (if ended)</td>
+<td>Date employment ended (if ended)</td>
 </tr>
 <tr>
 <td><code>base_pay</code></td>
@@ -1441,12 +1669,12 @@
 <tr>
 <td><code>base_annual_income</code></td>
 <td>int</td>
-<td>Value payed annualy (in cents)</td>
+<td>Value paid annually (in cents)</td>
 </tr>
 <tr>
-<td><code>provider_pay_cycle</code></td>
+<td><code>pay_cycle</code></td>
 <td>string</td>
-<td>Frequency interval that user recive payments</td>
+<td>Frequency interval that user receives payments</td>
 </tr>
 <tr>
 <td><code>pay_currency</code></td>
@@ -1462,16 +1690,6 @@
 <td><code>status</code></td>
 <td>string</td>
 <td>Status of employment (&quot;active&quot; &quot;inactive&quot; &quot;terminated&quot;)</td>
-</tr>
-<tr>
-<td><code>created_at</code></td>
-<td>timestamp</td>
-<td>Date of creation</td>
-</tr>
-<tr>
-<td><code>updated_at</code></td>
-<td>timestamp</td>
-<td>Date of update</td>
 </tr>
 </tbody></table>
 <h1 id='bill-payments'>Bill Payments</h1><h2 id='get-user-39-s-bill-payments'>Get User&#39;s Bill Payments</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET https://api.highline.co/users/ae16efec-d1.../bill_payments <span class="se">\</span>
@@ -1530,7 +1748,7 @@
   </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1631304125</span><span class="w">
 </span><span class="p">}]</span><span class="w">
 </span></code></pre></div>
-<p>As explained previously, Highline pulls a small allocation from each paycheck automatically to dedicated bill payments at the top of the earning funnel. The following API’s will help you get information on a user’s active bill payments &amp; history.</p>
+<p>As explained previously, Highline pulls a small allocation from each paycheck automatically to dedicated bill payments at the top of the earning funnel. The following API’s will help you get information on your users active bill payments &amp; history with Highline.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>GET https://api.highline.co/users/{id}/bill_payments</code></p>
 <h3 id='parameters'>Parameters</h3>
@@ -1597,11 +1815,6 @@
 <td>Enrollment structure</td>
 </tr>
 <tr>
-<td><code>transactions</code></td>
-<td>array</td>
-<td>Collection of transactions structure</td>
-</tr>
-<tr>
 <td><code>employer_name</code></td>
 <td>string</td>
 <td>Name of employer</td>
@@ -1612,11 +1825,6 @@
 <td>Path of logo URL</td>
 </tr>
 <tr>
-<td><code>loan_description</code></td>
-<td>string</td>
-<td>Description of the Loan</td>
-</tr>
-<tr>
 <td><code>amount_paid</code></td>
 <td>int</td>
 <td>Value paid (in cents)</td>
@@ -1625,16 +1833,6 @@
 <td><code>amount_due</code></td>
 <td>int</td>
 <td>Value to be paid (in cents)</td>
-</tr>
-<tr>
-<td><code>ForecastedDueAmount</code></td>
-<td>int</td>
-<td>Forecasted Value to be paid (in cents)</td>
-</tr>
-<tr>
-<td><code>ForecastedDueDate</code></td>
-<td>timestamp</td>
-<td>Forecasted date to be paid (in cents)</td>
 </tr>
 <tr>
 <td><code>status</code></td>
@@ -1680,60 +1878,19 @@
       </span><span class="nl">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6335861a-f23..."</span><span class="p">,</span><span class="w">
       </span><span class="nl">"company"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6335861a-f23..."</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mrs. Maryam Swaniawski"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"legal_entity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ms. Susie Lubowitz"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"tax_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8a6465c0-f32..."</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"104-769-1538"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XabJCOW@ocpDoBb.info"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"logo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://logo.clearbit.com/highline.co"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1631304119</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1631304119</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"personal_loan"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Product 1"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Consequatur voluptatem au..."</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"validate_direct_deposits"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"validate_payout_allocation"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"validate_employment_active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"max_payment_to_income_ratio"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1631304120</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1631304120</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"payment_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"loan_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">200000</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"loan_term"</span><span class="p">:</span><span class="w"> </span><span class="mi">24</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"payment_frequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"monthly"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"first_payment_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1638310741</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"application_reference_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12234"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"account_reference_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"33333"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"days_until_expires"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"required_employment_start_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1460845141</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"required_gross_income"</span><span class="p">:</span><span class="w"> </span><span class="mi">35000</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"required_net_income"</span><span class="p">:</span><span class="w"> </span><span class="mi">25000</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"fully_synced"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1631304121</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1631304121</span><span class="w">
+    </span><span class="nl">"loan_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">200000</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"employer_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Christian"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"logo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn-icon....png"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"loan_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Consequatur accusantium ..."</span><span class="p">,</span><span class="w">
   </span><span class="nl">"amount_paid"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
   </span><span class="nl">"amount_due"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"paid"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"settlement_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"25de3..."</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"settlement"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"25de3..."</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"client_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bd545..."</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"client"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
-    </span><span class="nl">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bd545..."</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"payment_order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5465sd1fsd516..."</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"completed"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"total_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">50000</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"completed_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1633824000</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1633824000</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1634428800</span><span class="w">
-  </span><span class="p">},</span><span class="w">
   </span><span class="nl">"paid_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1631282525</span><span class="p">,</span><span class="w">
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1631304125</span><span class="p">,</span><span class="w">
   </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1631304125</span><span class="w">
@@ -1817,16 +1974,6 @@
 <td>Name of employer</td>
 </tr>
 <tr>
-<td><code>logo_url</code></td>
-<td>string</td>
-<td>Path of logo URL</td>
-</tr>
-<tr>
-<td><code>loan_description</code></td>
-<td>string</td>
-<td>Description of the Loan</td>
-</tr>
-<tr>
 <td><code>amount_paid</code></td>
 <td>int</td>
 <td>Value paid (in cents)</td>
@@ -1837,29 +1984,14 @@
 <td>Value to be paid (in cents)</td>
 </tr>
 <tr>
-<td><code>ForecastedDueAmount</code></td>
-<td>int</td>
-<td>Forecasted Value to be paid (in cents)</td>
-</tr>
-<tr>
-<td><code>ForecastedDueDate</code></td>
-<td>timestamp</td>
-<td>Forecasted date to be paid (in cents)</td>
-</tr>
-<tr>
 <td><code>status</code></td>
 <td>string</td>
-<td>Status of the bill payment (&quot;paid&quot; &quot;pending&quot; &quot;cancelled&quot; &quot;new&quot; &quot;on_track&quot; &quot;risk_of_error&quot; &quot;ready_to_pay&quot; &quot;initiated&quot; &quot;needs_attention&quot;)</td>
+<td>Status of the bill payment (&quot;paid&quot; &quot;pending&quot; &quot;cancelled&quot; &quot;new&quot; &quot;on_track&quot; &quot;ready_to_pay&quot; &quot;initiated&quot;)</td>
 </tr>
 <tr>
 <td><code>settlement_id</code></td>
 <td>string</td>
 <td>Stettlement ID</td>
-</tr>
-<tr>
-<td><code>settlement</code></td>
-<td>json</td>
-<td>Stettlement Structure</td>
 </tr>
 <tr>
 <td><code>paid_at</code></td>
@@ -1935,11 +2067,6 @@
 <td>Bill payment ID</td>
 </tr>
 <tr>
-<td><code>amount_expected</code></td>
-<td>int</td>
-<td>Amount expected (in cents)</td>
-</tr>
-<tr>
 <td><code>amount_paid</code></td>
 <td>int</td>
 <td>Amount expected (in cents)</td>
@@ -1958,11 +2085,6 @@
 <td><code>type</code></td>
 <td>string</td>
 <td>Transaction type (&quot;ach&quot; &quot;credit_card&quot; &quot;debit_card&quot;)</td>
-</tr>
-<tr>
-<td><code>payment_order_id</code></td>
-<td>string</td>
-<td>Orde ID</td>
 </tr>
 <tr>
 <td><code>created_at</code></td>
@@ -1988,11 +2110,10 @@
   </span><span class="nl">"employment_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d6b10b60-55..."</span><span class="p">,</span><span class="w">
   </span><span class="nl">"bank_account"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4fb1c5dd-5d..."</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"***2345"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"routing_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"***4321"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23142345"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"routing_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11124321"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"account_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Checking"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"bank_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wells Fargo"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"external"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1633633510</span><span class="p">,</span><span class="w">
@@ -2042,11 +2163,6 @@
 <td>Employment ID</td>
 </tr>
 <tr>
-<td><code>employment</code></td>
-<td>json</td>
-<td>Employment structure</td>
-</tr>
-<tr>
 <td><code>bank_account</code></td>
 <td>object</td>
 <td>Bank account object</td>
@@ -2054,7 +2170,7 @@
 <tr>
 <td><code>status</code></td>
 <td>string</td>
-<td>Status of payout allocation (&quot;active&quot; &quot;pending&quot;)</td>
+<td>Status of direct deposits (&quot;active&quot; &quot;pending&quot;)</td>
 </tr>
 <tr>
 <td><code>created_at</code></td>
@@ -2067,7 +2183,7 @@
 <td>Date of update</td>
 </tr>
 </tbody></table>
-<h1 id='pay-histories'>Pay histories</h1><h2 id='get-user-39-s-pay-histories'>Get User&#39;s Pay histories</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET https://api.highline.co/users/6516515-651.../payout_histories <span class="se">\</span>
+<h1 id='pay-histories'>Pay histories</h1><h2 id='get-user-39-s-pay-histories'>Get User&#39;s Pay histories</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET https://api.highline.co/users/6516515-651.../pay_histories <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
 </code></pre></div>
@@ -2084,14 +2200,7 @@
     </span><span class="nl">"employer_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d5b6c756-f9..."</span><span class="p">,</span><span class="w">
     </span><span class="nl">"employer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d5b6c756-f9..."</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"name_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bd545a0280d..."</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kroger"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"retail"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"api_supported"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"can_edit_allocations"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"max_number_of_allocations"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1633123768</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1633219200</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kroger"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"job_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1635 - Helpline Agent"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1393924766</span><span class="p">,</span><span class="w">
@@ -2117,7 +2226,7 @@
 </span></code></pre></div>
 <p>This API endpoint returns the user&#39;s Pay histories, based on the provided user id.</p>
 
-<p><code>GET https://api.highline.co/users/{id}/payout_histories</code></p>
+<p><code>GET https://api.highline.co/users/{id}/pay_histories</code></p>
 <h3 id='parameters'>Parameters</h3>
 <table><thead>
 <tr>
@@ -2203,12 +2312,12 @@
 <tr>
 <td><code>start_date</code></td>
 <td>timestamp</td>
-<td>Start date</td>
+<td>Pay period start date</td>
 </tr>
 <tr>
 <td><code>end_date</code></td>
 <td>timestamp</td>
-<td>End date</td>
+<td>Pay period end date</td>
 </tr>
 <tr>
 <td><code>created_at</code></td>
@@ -2222,7 +2331,7 @@
 </tr>
 </tbody></table>
 <h1 id='settlements'>Settlements</h1>
-<p>A settlement refers to the settlmeent of funds between Highline and clients (that’s you!). This happens whenever a bill payment is due, and will be reflected in this API and our daily data report.</p>
+<p>A settlement refers to the transfer of funds between Highline and clients. This happens whenever a bill payment is due, and will be reflected in this API and our daily settlement file.</p>
 <h2 id='check-product-39-s-settlements'>Check product&#39;s settlements</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET https://api.highline.co/products/d5165d5168-61s3.../settlements <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
@@ -2235,7 +2344,6 @@
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"25de3..."</span><span class="p">,</span><span class="w">
     </span><span class="nl">"client_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bd545..."</span><span class="p">,</span><span class="w">
     </span><span class="nl">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bd545..."</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"payment_order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5465sd1fsd516..."</span><span class="p">,</span><span class="w">
     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"completed"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"total_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">50000</span><span class="p">,</span><span class="w">
     </span><span class="nl">"completed_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1633824000</span><span class="p">,</span><span class="w">
@@ -2305,11 +2413,6 @@
 <td>Product ID</td>
 </tr>
 <tr>
-<td><code>payment_order_id</code></td>
-<td>string</td>
-<td>Order ID</td>
-</tr>
-<tr>
 <td><code>status</code></td>
 <td>string</td>
 <td>Settlement status (&quot;pending&quot; &quot;sent&quot; &quot;completed&quot; &quot;cancelled&quot;)</td>
@@ -2336,9 +2439,9 @@
 </tr>
 </tbody></table>
 <h1 id='reports'>Reports</h1>
-<p>Every client of Highline is obligated to participate in a daily exchange of data between themselves and Highline. This is a report that allows Highline to monitor the status of all active bill payments, and keep our respective ledgers in sync. If there’s a change or inconsistency from one day to the next, the daily client report will help Highline see this change in real-time and act accordingly.</p>
+<p>Every client of Highline is obligated to participate in a daily exchange of data between themselves and Highline. This is a report that allows Highline to ensure we are only pushing payments when needed, we flag cases a bill will not be able to be paid and we ensure payments have been posted accurately. If there’s a change or inconsistency from one day to the next, the daily client report will help Highline see this change in real-time and act accordingly.</p>
 
-<p>We offer two ways to exchange this data. Our recommended solution is setting up an automatic exchange using the API’s below. Alternatively, we offer a manual report upload from the client portal.</p>
+<p>We offer two ways to exchange this data. Our recommended solution is setting up an automatic exchange using the API’s below. Alternatively, we offer a manual report upload and download from the client portal.</p>
 <h2 id='add-product-39-s-daily-data-report'>Add product&#39;s daily data report</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://api.highline.co/products/d5165d5168-61s3.../reports <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: multipart/form-data"</span>
@@ -2542,273 +2645,6 @@
 </tbody></table>
 
 <p>And then open with highlineLink.open()</p>
-<h1 id='guides'>Guides</h1><h2 id='direct-deposit-switch'>Direct Deposit Switch</h2>
-<p>Direct Deposit Switch functionality allows individual users to change the primary destination of their paycheck distribution to a bank account specified by your application. After a successful direct deposit switch, all future paychecks on behalf of the employer will push directly into the new listed bank account.</p>
-
-<p>Our significant footprint of API connections provides immediate access to this functionality for a majority of the workforce through Highline.</p>
-
-<p>The deposit switch functionality is packaged as a simple, streamlined experience for developers and users. For your users, it’s practically as simple. With just a few clicks and without leaving your platform, they can authorize a direct deposit switch to your bank account.</p>
-
-<p>Direct deposit switch implementation steps to get you up and running.</p>
-<h3 id='step-1-get-an-access-token'>Step 1 - Get an access token</h3><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://api.highline.co/auth/token <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  <span class="nt">-d</span> <span class="s1">$'{
-    "api_key": "YOUR_API_KEY",
-    "secret" : "YOUR_SECRET"
-  }'</span>
-</code></pre></div>
-<blockquote>
-<p>Response:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"access_token"</span><span class="p">:</span><span class="s2">"eyJhbGciOiJIUzI..."</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"refresh_token"</span><span class="p">:</span><span class="s2">"eyJhbGciOiJIUz..."</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"subject"</span><span class="p">:</span><span class="s2">"123e4567-e89b-12d3-a456-426614174000"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"expires_in"</span><span class="p">:</span><span class="mi">1634244444</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>To initiate a payroll connection session, you will need your API Key and Secret from the Highline Dashboard to request an <code>access_token.</code> An AccessToken for the end user is required to initialize Highline link <code>Connect</code>. To retrieve the AccessToken, make the following HTTP request on your server.</p>
-
-<p><code>POST https://api.highline.co/auth/token</code></p>
-<h3 id='step-2-encrypt-the-bank-details'>Step 2 - Encrypt the bank details</h3><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://api.highline.co/link/encrypt <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  <span class="nt">-d</span> <span class="s1">$'{
-    "bank_account": {
-      "bank_name": "New Bank",
-      "account_type": "checking",
-      "routing_number": "XXXXXXXXX",
-      "account_number": "XXXXXXXXXX"
-    }
-  }'</span>
-</code></pre></div>
-<blockquote>
-<p>Response:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
- </span><span class="nl">"payload"</span><span class="p">:</span><span class="w"> </span><span class="s2">"encrypted_value"</span><span class="p">,</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>The encryption is necessary to ensure your bank account details are never exposed on the front-end. To encrypt your bank account details, make the following HTTP request from your server.</p>
-
-<p><code>POST https://api.highline.co/link/encrypt</code></p>
-<h3 id='step-3-connect-and-open-highline-link'>Step 3 - Connect and open Highline-link</h3>
-<blockquote>
-<p>Highlink Link Snippet</p>
-</blockquote>
-<div class="highlight"><pre class="highlight javascript tab-javascript"><code>    <span class="nx">highlineLink</span><span class="p">.</span><span class="nx">connect</span><span class="p">({</span>
-        <span class="na">access_token</span><span class="p">:</span> <span class="dl">'</span><span class="s1">value_from_auth_token_api</span><span class="dl">'</span><span class="p">,</span>
-        <span class="na">feature</span><span class="p">:</span> <span class="dl">'</span><span class="s1">direct_deposit_switch</span><span class="dl">'</span><span class="p">,</span>
-        <span class="na">payload</span><span class="p">:</span> <span class="dl">'</span><span class="s1">encrypted_value</span><span class="dl">'</span>
-    <span class="p">});</span>
-    <span class="nx">highlineLink</span><span class="p">.</span><span class="nx">open</span><span class="p">();</span>
-</code></pre></div>
-<p>Highline&#39;s link is a front-end UI element that allows users to grant your application access to their work accounts and set up direct deposit switch</p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>access_token</code> <em>required</em></td>
-<td>string</td>
-<td>Value from the &#39;/auth/token&#39; endpoint</td>
-</tr>
-<tr>
-<td><code>feature</code> <em>required</em></td>
-<td>string</td>
-<td>&#39;direct_deposit_switch&#39;</td>
-</tr>
-<tr>
-<td><code>payload</code> <em>optional</em></td>
-<td>string</td>
-<td>Encrypted value from the &#39;/link/encrypt&#39; endpoint - <em>required</em> for &#39;direct_deposit_switch&#39; feature</td>
-</tr>
-</tbody></table>
-<h2 id='payment-via-payroll'>Payment via Payroll</h2>
-<p>Highline’s Payment via Payroll functionality automates and simplifies your customers&#39; bill payments by allowing them to make payments directly from payroll. Once the bill payment is setup, the recurring monthly payment amount will be automatically debited from their paychecks.</p>
-
-<p>This section will help you understand how to implement Highline bill payments in a few simple steps.</p>
-<h3 id='step-1-get-an-access-token-2'>Step 1 - Get an access token</h3><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://api.highline.co/auth/token <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  <span class="nt">-d</span> <span class="s1">$'{
-    "api_key": "YOUR_API_KEY",
-    "secret" : "YOUR_SECRET"
-  }'</span>
-</code></pre></div>
-<blockquote>
-<p>Response:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"access_token"</span><span class="p">:</span><span class="s2">"eyJhbGciOiJIUzI..."</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"refresh_token"</span><span class="p">:</span><span class="s2">"eyJhbGciOiJIUz..."</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"subject"</span><span class="p">:</span><span class="s2">"123e4567-e89b-12d3-a456-426614174000"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"expires_in"</span><span class="p">:</span><span class="mi">1634244444</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>To initiate a payroll payment session, you will need your API Key and Secret from the Highline Dashboard to request an <code>access_token.</code> An AccessToken for the end user is required to initialize Highline link <code>Connect</code>. To retrieve the AccessToken, make the following HTTP request on your server.</p>
-
-<p><code>POST https://api.highline.co/auth/token</code></p>
-<h3 id='step-2-create-an-enrollment'>Step 2 - Create an enrollment</h3>
-<p>To enroll a user for bill payments via payroll, you need to create an enrollment. An enrollment contains the metadata for a given recurring bill processed by Highline payments.</p>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://api.highline.co/enrollments <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  <span class="nt">-d</span> <span class="s1">$'{
-    "product_id": "6351fsd6fs-sdfs...",
-    "payment_amount": 20000,
-    "payment_frequency": "monthly",
-    "first_payment_date": 1634740754,
-    "application_reference_number": "16576",
-    "days_until_expires": 30
-  }'</span>
-</code></pre></div>
-<blockquote>
-<p>Response</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DVNA4..."</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"070b8618-7c..."</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"payment_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">20000</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"payment_frequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"monthly"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"first_payment_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1634740754</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"application_reference_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"16576AB"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"new"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1634741667</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1634741667</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>access_token</code> <em>required</em></td>
-<td>string</td>
-<td>Value from the &#39;/auth/token&#39; endpoint</td>
-</tr>
-<tr>
-<td><code>product_id</code> <em>required</em></td>
-<td>string</td>
-<td>available in Highline dashboard</td>
-</tr>
-<tr>
-<td><code>payment_amount</code> <em>required</em></td>
-<td>string</td>
-<td>monthly recurring payment amount</td>
-</tr>
-<tr>
-<td><code>payment_frequency</code> <em>required</em></td>
-<td>string</td>
-<td>payment frequency, we only support &#39;monthly&#39; bill payment frequency</td>
-</tr>
-<tr>
-<td><code>first_payment_date</code> <em>required</em></td>
-<td>unix timestamp</td>
-<td>the bill payment due date</td>
-</tr>
-<tr>
-<td><code>application_reference_number</code> <em>optional</em></td>
-<td>string</td>
-<td>the resource identifier in your application</td>
-</tr>
-</tbody></table>
-<h3 id='step-3-connect-and-open-highline-link-2'>Step 3 - Connect and open Highline-Link</h3>
-<blockquote>
-<p>Highlink Link Snippet</p>
-</blockquote>
-<div class="highlight"><pre class="highlight javascript tab-javascript"><code>    <span class="nx">highlineLink</span><span class="p">.</span><span class="nx">connect</span><span class="p">({</span>
-        <span class="na">access_token</span><span class="p">:</span> <span class="dl">'</span><span class="s1">value_from_auth_token_api</span><span class="dl">'</span><span class="p">,</span>
-        <span class="na">feature</span><span class="p">:</span> <span class="dl">'</span><span class="s1">direct_deposit_payment</span><span class="dl">'</span><span class="p">,</span>
-        <span class="na">enrollment_id</span><span class="p">:</span> <span class="dl">'</span><span class="s1">id_from_enrollments_api</span><span class="dl">'</span>
-    <span class="p">});</span>
-    <span class="nx">highlineLink</span><span class="p">.</span><span class="nx">open</span><span class="p">();</span>
-</code></pre></div>
-<p>Highline&#39;s link is a front-end UI element that allows users to grant your application access to their work accounts and set up payment via payroll</p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>access_token</code> <em>required</em></td>
-<td>string</td>
-<td>Value from the &#39;/auth/token&#39; endpoint</td>
-</tr>
-<tr>
-<td><code>feature</code> <em>required</em></td>
-<td>string</td>
-<td>&#39;direct_deposit_payment&#39;</td>
-</tr>
-<tr>
-<td><code>enrollment_id</code> <em>required</em></td>
-<td>string</td>
-<td>The enrollment_id from the previous step</td>
-</tr>
-</tbody></table>
-<h2 id='employment-data'>Employment Data</h2>
-<p>Highline can also be used to verify the employment data of individual users. Our integrations within the payroll ecosystem helps us provide access to a user’s employment data from a single payroll sign-on.</p>
-
-<p>Using this service allows users to login and confirm data sharing with a single click. These users also never leave your website. This means that as opposed to traditional methods like uploading paystubs or a copy of photo identification, your users will have a simple single login and be able to complete their journey with less friction and confusion.</p>
-<h3 id='step-1-get-an-access-token-3'>Step 1 - Get an access token</h3><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://api.highline.co/auth/token <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  <span class="nt">-d</span> <span class="s1">$'{
-    "api_key": "YOUR_API_KEY",
-    "secret" : "YOUR_SECRET"
-  }'</span>
-</code></pre></div>
-<blockquote>
-<p>Response:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"access_token"</span><span class="p">:</span><span class="s2">"eyJhbGciOiJIUzI..."</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"refresh_token"</span><span class="p">:</span><span class="s2">"eyJhbGciOiJIUz..."</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"subject"</span><span class="p">:</span><span class="s2">"123e4567-e89b-12d3-a456-426614174000"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"expires_in"</span><span class="p">:</span><span class="mi">1634244444</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>To initiate a employment data session, you will need your API Key and Secret from the Highline Dashboard to request an <code>access_token.</code> An AccessToken for the end user is required to initialize Highline link <code>Connect</code>. To retrieve the AccessToken, make the following HTTP request on your server.</p>
-
-<p><code>POST https://api.highline.co/auth/token</code></p>
-<h3 id='step-2-connect-and-open-highline-link'>Step 2 - Connect and open Highline-Link</h3>
-<blockquote>
-<p>Highlink Link Snippet</p>
-</blockquote>
-<div class="highlight"><pre class="highlight javascript tab-javascript"><code>    <span class="nx">highlineLink</span><span class="p">.</span><span class="nx">connect</span><span class="p">({</span>
-        <span class="na">access_token</span><span class="p">:</span> <span class="dl">'</span><span class="s1">value_from_auth_token_api</span><span class="dl">'</span><span class="p">,</span>
-        <span class="na">feature</span><span class="p">:</span> <span class="dl">'</span><span class="s1">employment_data</span><span class="dl">'</span>
-    <span class="p">});</span>
-    <span class="nx">highlineLink</span><span class="p">.</span><span class="nx">open</span><span class="p">();</span>
-</code></pre></div>
-<p>Highline&#39;s link is a front-end UI element that allows users to grant your application access to their work accounts and share employment data</p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>access_token</code> <em>required</em></td>
-<td>string</td>
-<td>Value from the &#39;/auth/token&#39; endpoint</td>
-</tr>
-<tr>
-<td><code>feature</code> <em>required</em></td>
-<td>string</td>
-<td>&#39;employment_data&#39;</td>
-</tr>
-</tbody></table>
 <h1 id='errors'>Errors</h1>
 <p>Our API returns standard HTTP success or error status codes. For errors, we will also include extra information about what went wrong encoded in the response as JSON. The various HTTP status codes we might return are listed below.</p>
 

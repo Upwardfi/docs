@@ -11,14 +11,7 @@
   </span><span class="nl">"employer_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d5b6c756-f9..."</span><span class="p">,</span><span class="w">
   </span><span class="nl">"employer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d5b6c756-f9..."</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"name_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bd545a0280d..."</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kroger"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"retail"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"api_supported"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"can_edit_allocations"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"max_number_of_allocations"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1633123768</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1633219200</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kroger"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"job_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1635 - Helpline Agent"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1393924766</span><span class="p">,</span><span class="w">
@@ -83,17 +76,17 @@
 <tr>
 <td><code>job_title</code></td>
 <td>string</td>
-<td>Job ocupation</td>
+<td>Current job title</td>
 </tr>
 <tr>
 <td><code>start_date</code></td>
 <td>timestamp</td>
-<td>Day that this job employment started</td>
+<td>Date that this employment started</td>
 </tr>
 <tr>
 <td><code>end_date</code></td>
 <td>timestamp</td>
-<td>Day of job ended (if ended)</td>
+<td>Date employment ended (if ended)</td>
 </tr>
 <tr>
 <td><code>base_pay</code></td>
@@ -103,12 +96,12 @@
 <tr>
 <td><code>base_annual_income</code></td>
 <td>int</td>
-<td>Value payed annualy (in cents)</td>
+<td>Value paid annually (in cents)</td>
 </tr>
 <tr>
-<td><code>provider_pay_cycle</code></td>
+<td><code>pay_cycle</code></td>
 <td>string</td>
-<td>Frequency interval that user recive payments</td>
+<td>Frequency interval that user receives payments</td>
 </tr>
 <tr>
 <td><code>pay_currency</code></td>
@@ -125,16 +118,6 @@
 <td>string</td>
 <td>Status of employment (&quot;active&quot; &quot;inactive&quot; &quot;terminated&quot;)</td>
 </tr>
-<tr>
-<td><code>created_at</code></td>
-<td>timestamp</td>
-<td>Date of creation</td>
-</tr>
-<tr>
-<td><code>updated_at</code></td>
-<td>timestamp</td>
-<td>Date of update</td>
-</tr>
 </tbody></table>
 <h2 id='get-employment'>Get employment</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET https://api.highline.co/employments/d6b10b60-55... <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
@@ -149,14 +132,7 @@
   </span><span class="nl">"employer_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d5b6c756-f9..."</span><span class="p">,</span><span class="w">
   </span><span class="nl">"employer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d5b6c756-f9..."</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"name_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bd545a0280d..."</span><span class="p">,</span><span class="w">
     </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kroger"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"retail"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"api_supported"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"can_edit_allocations"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"max_number_of_allocations"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1633123768</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1633219200</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"job_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1635 - Helpline Agent"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1393924766</span><span class="p">,</span><span class="w">
@@ -221,17 +197,17 @@
 <tr>
 <td><code>job_title</code></td>
 <td>string</td>
-<td>Job ocupation</td>
+<td>Current job title</td>
 </tr>
 <tr>
 <td><code>start_date</code></td>
 <td>timestamp</td>
-<td>Day that this job employment started</td>
+<td>Date that this employment started</td>
 </tr>
 <tr>
 <td><code>end_date</code></td>
 <td>timestamp</td>
-<td>Day of job ended (if ended)</td>
+<td>Date employment ended (if ended)</td>
 </tr>
 <tr>
 <td><code>base_pay</code></td>
@@ -241,12 +217,12 @@
 <tr>
 <td><code>base_annual_income</code></td>
 <td>int</td>
-<td>Value payed annualy (in cents)</td>
+<td>Value paid annually (in cents)</td>
 </tr>
 <tr>
-<td><code>provider_pay_cycle</code></td>
+<td><code>pay_cycle</code></td>
 <td>string</td>
-<td>Frequency interval that user recive payments</td>
+<td>Frequency interval that user receives payments</td>
 </tr>
 <tr>
 <td><code>pay_currency</code></td>
@@ -262,15 +238,5 @@
 <td><code>status</code></td>
 <td>string</td>
 <td>Status of employment (&quot;active&quot; &quot;inactive&quot; &quot;terminated&quot;)</td>
-</tr>
-<tr>
-<td><code>created_at</code></td>
-<td>timestamp</td>
-<td>Date of creation</td>
-</tr>
-<tr>
-<td><code>updated_at</code></td>
-<td>timestamp</td>
-<td>Date of update</td>
 </tr>
 </tbody></table>

@@ -1,5 +1,5 @@
 <h1 id='enrollments'>Enrollments</h1>
-<p>An Enrollment is created to initiate the set up of a recurring bill payment on Highline&#39;s payments network.</p>
+<p>An Enrollment is created to initiate the set up of a recurring bill payment on Highline&#39;s payments network. Enrollment is only required for bill payments use cases and is optional for payroll data access related use cases.</p>
 
 <p>You first create an enrollment with the recurring amount, bill payment date, payment frequency, along with other optional fields.</p>
 <h2 id='create-user-enrollment'>Create user enrollment</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://api.highline.co/enrollments <span class="se">\</span>
@@ -13,8 +13,8 @@
     "payment_amount": 20000,
     "payment_frequency": "monthly",
     "first_payment_date": 1634740754,
-    "application_reference_number": "16576",
-    "days_until_expires": 30
+    "client_reference_id": "XUZ456ERT",
+    "end_date": 1634840654
   }'</span>
 </code></pre></div>
 <blockquote>
@@ -27,7 +27,6 @@
       </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d134c....."</span><span class="p">,</span><span class="w">
       </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"ssn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234..."</span><span class="p">,</span><span class="w">
       </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john.smith143@highline.co"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"member"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1634744601</span><span class="p">,</span><span class="w">
@@ -38,7 +37,7 @@
   </span><span class="nl">"payment_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">20000</span><span class="p">,</span><span class="w">
   </span><span class="nl">"payment_frequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"monthly"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"first_payment_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1634740754</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"application_reference_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"16576AB"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"client_reference_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XUZ456ERT"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"new"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1634741667</span><span class="p">,</span><span class="w">
   </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1634741667</span><span class="w">
@@ -60,7 +59,7 @@
 <td><code>users</code></td>
 <td>array</td>
 <td>body</td>
-<td>Array of user objects that contain the member user ID</td>
+<td>Array of user objects who are enrolled in this enrollment</td>
 </tr>
 <tr>
 <td><code>product_id</code></td>
@@ -78,7 +77,7 @@
 <td><code>payment_frequency</code></td>
 <td>string</td>
 <td>body</td>
-<td>Frequency interval that user will make payments (&quot;unknown&quot; &quot;bi-weekly even&quot; &quot;bi-weekly odd&quot; &quot;weekly&quot; &quot;monthly&quot; &quot;semi-monthly&quot;)</td>
+<td>Frequency interval that user will make payments (&quot;weekly&quot; &quot;bi-weekly&quot; &quot;semi-monthly&quot; &quot;bi-weekly&quot;)</td>
 </tr>
 <tr>
 <td><code>first_payment_date</code></td>
@@ -87,16 +86,16 @@
 <td>Date of first payment as Unix timestamp</td>
 </tr>
 <tr>
-<td><code>application_reference_number</code> <em>optional</em></td>
+<td><code>client_reference_id</code> <em>optional</em></td>
 <td>string</td>
 <td>body</td>
-<td>Loan application number</td>
+<td>The application ID or account ID on your system.</td>
 </tr>
 <tr>
-<td><code>days_until_expires</code></td>
+<td><code>end_date</code> <em>optional</em></td>
 <td>int</td>
-<td>body</td>
-<td>Number of days before this enrollment request expires</td>
+<td>Date when we stop accepting payments for this enrollment</td>
+<td></td>
 </tr>
 </tbody></table>
 <h3 id='response'>Response</h3>
@@ -138,19 +137,14 @@
 <td>Date of first payment as Unix timestamp</td>
 </tr>
 <tr>
-<td><code>application_reference_number</code></td>
+<td><code>client_reference_id</code></td>
 <td>string</td>
-<td>Loan application number</td>
+<td>The application ID or account ID on your system.</td>
 </tr>
 <tr>
-<td><code>days_until_expires</code></td>
+<td><code>end_date</code> <em>optional</em></td>
 <td>int</td>
-<td>Number of days before this enrollment request expires</td>
-</tr>
-<tr>
-<td><code>fully_synced</code></td>
-<td>bool</td>
-<td></td>
+<td>Date when we stop accepting payments for this enrollment</td>
 </tr>
 <tr>
 <td><code>status</code></td>
@@ -180,7 +174,6 @@
   </span><span class="nl">"users"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d134c608-5a..."</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"provider_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
       </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"ssn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456516"</span><span class="p">,</span><span class="w">
@@ -194,9 +187,8 @@
   </span><span class="nl">"payment_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">20000</span><span class="p">,</span><span class="w">
   </span><span class="nl">"payment_frequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"monthly"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"first_payment_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1634740754</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"application_reference_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"16576"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"days_until_expires"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"fully_synced"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"client_reference_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XUZ456ERT"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1634840654</span><span class="p">,</span><span class="w">
   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"new"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"status_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1634741667</span><span class="p">,</span><span class="w">
@@ -261,19 +253,14 @@
 <td>Date of first payment as Unix timestamp</td>
 </tr>
 <tr>
-<td><code>application_reference_number</code></td>
+<td><code>client_reference_id</code></td>
 <td>string</td>
-<td>Loan application number</td>
+<td>The application ID or account ID on your system.</td>
 </tr>
 <tr>
-<td><code>days_until_expires</code></td>
+<td><code>end_date</code> <em>optional</em></td>
 <td>int</td>
-<td>Number of days before this enrollment request expires</td>
-</tr>
-<tr>
-<td><code>fully_synced</code></td>
-<td>bool</td>
-<td></td>
+<td>Date when we stop accepting payments for this enrollment</td>
 </tr>
 <tr>
 <td><code>status</code></td>
@@ -356,11 +343,6 @@
 <td><code>id</code></td>
 <td>string</td>
 <td>Returns user id.</td>
-</tr>
-<tr>
-<td><code>provider_user_id</code></td>
-<td>string</td>
-<td>ID of employer</td>
 </tr>
 <tr>
 <td><code>first_name</code></td>
