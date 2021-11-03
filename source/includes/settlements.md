@@ -45,7 +45,6 @@ Name | Type | In | Description
 Parameter | Type | Description
 --------- | ------- | -----------
 `id` | string | Settlement ID
-`client_id` | string | Company ID
 `product_id` | string | Product ID
 `status` | string | Settlement status ("pending" "sent" "completed" "cancelled")
 `total_amount` | int | Total amount (in cents)

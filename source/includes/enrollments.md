@@ -144,7 +144,7 @@ Parameter | Type | Description
 `payment_amount` | int | Recurring amount to be paid to you by the user (in cents)
 `payment_frequency` | string | Frequency interval that user will make payments
 `first_payment_date` | timestamp | Date of first payment as Unix timestamp
-`client_reference_id`| string | The application ID or account ID on your system.
+`client_reference_id`| string | The application ID or account ID on your system
 `end_date` *optional* | int | Date when we stop accepting payments for this enrollment
 `status` | string | Enrollment status
 `status_description` | string | Description of status
@@ -170,7 +170,6 @@ curl -X GET https://api.highline.co/enrollments/YtMXJzGzJcht38SCJuMhzC/users \
   "address": {
     "id": 27,
     "user_id": "d134c.....",
-    "company_id": null,
     "line_1": "4194 Autry Lane",
     "line_2": "",
     "city": "Dallas",

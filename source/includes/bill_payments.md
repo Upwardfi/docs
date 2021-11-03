@@ -19,18 +19,6 @@ curl -X GET https://api.highline.co/users/ae16efec-d1.../bill_payments \
     "product_id": "22621f3b-563...",
     "product": {
       "id": "22621f3b-563...",
-      "company_id": "6335861a-f23...",
-      "company": {
-        "id": "6335861a-f23...",
-        "name": "Mrs. Maryam Swaniawski",
-        "legal_entity": "Ms. Susie Lubowitz",
-        "tax_id": "8a6465c0-f32...",
-        "phone": "104-769-1538",
-        "email": "XabJCOW@ocpDoBb.info",
-        "logo_url": "https://logo.clearbit.com/highline.co",
-        "created_at": 1631304119,
-        "updated_at": 1631304119
-      },
       "type": "personal_loan",
       "name": "Product 1",
       "validate_direct_deposits": true,
@@ -116,11 +104,6 @@ curl -X GET https://api.highline.co/enrollments/ae16efec-d1.../bill_payments \
     "product_id": "22621f3b-563...",
     "product": {
       "id": "22621f3b-563...",
-      "company_id": "6335861a-f23...",
-      "company": {
-        "id": "6335861a-f23...",
-        "legal_entity": "Ms. Susie Lubowitz",
-      },
       "type": "personal_loan",
       "name": "Product 1",
     },

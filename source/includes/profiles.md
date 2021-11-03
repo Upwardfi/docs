@@ -19,7 +19,6 @@ curl -X GET https://api.highline.co/users/BGMXJzGzJcht38SCJuMhzF \
     "address": {
       "id": 27,
       "user_id": "d134c.....",
-      "company_id": null,
       "line_1": "4194 Autry Lane",
       "line_2": "",
       "city": "Dallas",
@@ -65,7 +64,6 @@ Parameter | Type | Description
 ----------|----------|---------
 `id` | uint | Address id
 `user_id` | string | User id associated with address
-`company_id` | string | Client company id
 `line_1` | string | Line 1 Street address
 `line_2` | string | Line 2 Street address
 `city` | string | City
