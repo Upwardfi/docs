@@ -13,18 +13,6 @@
     </span><span class="nl">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"22621f3b-563..."</span><span class="p">,</span><span class="w">
     </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"22621f3b-563..."</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6335861a-f23..."</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"company"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6335861a-f23..."</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mrs. Maryam Swaniawski"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"legal_entity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ms. Susie Lubowitz"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"tax_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8a6465c0-f32..."</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"104-769-1538"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XabJCOW@ocpDoBb.info"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"logo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://logo.clearbit.com/highline.co"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1631304119</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1631304119</span><span class="w">
-      </span><span class="p">},</span><span class="w">
       </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"personal_loan"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Product 1"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"validate_direct_deposits"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
@@ -181,11 +169,6 @@
     </span><span class="nl">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"22621f3b-563..."</span><span class="p">,</span><span class="w">
     </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"22621f3b-563..."</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6335861a-f23..."</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"company"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6335861a-f23..."</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"legal_entity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ms. Susie Lubowitz"</span><span class="p">,</span><span class="w">
-      </span><span class="p">},</span><span class="w">
       </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"personal_loan"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Product 1"</span><span class="p">,</span><span class="w">
     </span><span class="p">},</span><span class="w">
