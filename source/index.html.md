@@ -13,6 +13,7 @@ includes:
   - api_keys
   - auth
   - rate_limiting
+  - client_sdk
   - guides
   - employers
   - enrollments
@@ -24,7 +25,6 @@ includes:
 #  - bank_accounts
   - settlements
   - reports
-  - client_sdk
   - errors
 
 search: true

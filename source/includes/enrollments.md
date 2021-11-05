@@ -2,7 +2,7 @@
 
 An Enrollment is created to initiate the set up of a recurring bill payment on Highline's payments network. Enrollment is only required for bill payments use cases and is optional for payroll data access related use cases.
 
-You first create an enrollment with the recurring amount, bill payment date, payment frequency, along with other optional fields.
+You first create an enrollment with the recurring amount, bill payment date, payment frequency, along with other optional fields. Multiple users should be submitted if your account has multiple primary owners.
 
 ## Create user enrollment
 

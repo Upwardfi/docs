@@ -76,7 +76,7 @@ Parameter | Type | Description
 `logo_url` | string | Path of logo URL
 `amount_paid` | int | Value paid (in cents)
 `amount_due` | int | Value to be paid (in cents)
-`status` | string | Status of the bill payment ("paid" "pending" "cancelled" "new" "on_track" "risk_of_error" "ready_to_pay" "initiated" "needs_attention")
+`status` | string | Status of the bill payment ("paid" "pending" "canceled" "new" "on_track" "risk_of_error" "ready_to_pay" "initiated" "needs_attention")
 `settlement_id` | string | Stettlement ID
 `paid_at` | timestamp | Date of payment (if paid)
 `created_at` | timestamp | Date of creation
@@ -148,8 +148,8 @@ Parameter | Type | Description
 `employer_name` | string | Name of employer
 `amount_paid` | int | Value paid (in cents)
 `amount_due` | int | Value to be paid (in cents)
-`status` | string | Status of the bill payment ("paid" "pending" "cancelled" "new" "on_track" "ready_to_pay" "initiated")
-`settlement_id` | string | Stettlement ID
+`status` | string | Status of the bill payment ("paid" "pending" "canceled" "new" "on_track" "ready_to_pay" "initiated")
+`settlement_id` | string | Settlement ID
 `paid_at` | timestamp | Date of payment (if paid)
 `created_at` | timestamp | Date of creation
 `updated_at` | timestamp | Date of update
@@ -209,7 +209,7 @@ Parameter | Type | Description
 `bill_payment_id` | string | Bill payment ID
 `amount_paid` | int | Amount expected (in cents)
 `paid` | bool | Indication if this transaction is paid
-`status` | string | Transaction status ("completed" "pending" "cancelled")
+`status` | string | Transaction status ("completed" "pending" "canceled")
 `type` | string | Transaction type ("ach" "credit_card" "debit_card")
 `created_at` | timestamp | Date of creation
 `updated_at` | timestamp | Date of update

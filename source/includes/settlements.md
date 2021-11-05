@@ -46,7 +46,7 @@ Parameter | Type | Description
 --------- | ------- | -----------
 `id` | string | Settlement ID
 `product_id` | string | Product ID
-`status` | string | Settlement status ("pending" "sent" "completed" "cancelled")
+`status` | string | Settlement status ("pending" "sent" "completed" "canceled")
 `total_amount` | int | Total amount (in cents)
 `completed_at` | timestamp | Date of completion (if completed)
 `created_at` | timestamp | Date of creation

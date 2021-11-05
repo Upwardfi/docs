@@ -18,7 +18,7 @@ curl -X GET https://api.highline.co/employers?q=Kroger \
     "type": "retail",
     "has_two_fa": false,
     "payroll_data_supported": true,
-    "payments_supported": false,
+    "payroll_payments_supported": false,
     "created_at": 1633824000,
     "updated_at": 1634428800
   }
