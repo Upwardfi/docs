@@ -27,7 +27,6 @@ curl -X GET https://api.highline.co/users/BGMXJzGzJcht38SCJuMhzF \
       "country": "US"
     },
     "email": "john.smith143@highline.co",
-    "role": "member",
     "created_at": 1634744601,
     "updated_at": 1634744601,
   }
@@ -51,8 +50,7 @@ Parameter | Type | Description
 `first_name` | string | First Name
 `last_name` | string | Last Name
 `ssn` | string | Social security number
-`address` | json | Address structure  
-`role` | string | Member's role
+`address` | json | Address object  
 `created_at` | timestamp | Date of creation
 `updated_at` | timestamp | Date of update
 

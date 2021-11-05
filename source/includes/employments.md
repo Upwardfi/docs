@@ -52,7 +52,7 @@ Parameter | Type | Description
 `id` | string | Employment ID
 `user_id` | string | User ID
 `employer_id` | string | Employer ID
-`employer` | json | Employer structure
+`employer` | json | Employer object
 `job_title` | string | Current job title
 `start_date` | timestamp | Date that this employment started
 `end_date` | timestamp | Date employment ended (if ended)
@@ -116,7 +116,7 @@ Parameter | Type | Description
 `id` | string | Employment ID
 `user_id` | string | User ID
 `employer_id` | string | Employer ID
-`employer` | json | Employer structure
+`employer` | json | Employer object
 `job_title` | string | Current job title
 `start_date` | timestamp | Date that this employment started
 `end_date` | timestamp | Date employment ended (if ended)

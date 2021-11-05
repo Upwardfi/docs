@@ -71,12 +71,11 @@ Parameter | Type | Description
 --------- | ------- | -----------
 `id` | string | Bill Payment ID
 `enrollment_id` | string | Enrollment ID
-`enrollment` | json | Enrollment structure
-`employer_name` | string | Name of employer
+`enrollment` | json | Enrollment object
 `logo_url` | string | Path of logo URL
 `amount_paid` | int | Value paid (in cents)
 `amount_due` | int | Value to be paid (in cents)
-`status` | string | Status of the bill payment ("paid" "pending" "canceled" "new" "on_track" "risk_of_error" "ready_to_pay" "initiated" "needs_attention")
+`status` | string | Status of the bill payment ("paid" "pending" "canceled" "new" "on_track" "ready_to_pay" "initiated")
 `settlement_id` | string | Stettlement ID
 `paid_at` | timestamp | Date of payment (if paid)
 `created_at` | timestamp | Date of creation
@@ -110,7 +109,6 @@ curl -X GET https://api.highline.co/enrollments/ae16efec-d1.../bill_payments \
     "payment_amount": 500,
     "loan_amount": 200000
   },
-  "employer_name": "Christian",
   "amount_paid": 100,
   "amount_due": 100,
   "status": "paid",
@@ -144,13 +142,12 @@ Parameter | Type | Description
 --------- | ------- | -----------
 `id` | string | Bill Payment ID
 `enrollment_id` | string | Enrollment ID
-`enrollment` | json | Enrollment structure
-`employer_name` | string | Name of employer
+`enrollment` | json | Enrollment object
 `amount_paid` | int | Value paid (in cents)
 `amount_due` | int | Value to be paid (in cents)
-`status` | string | Status of the bill payment ("paid" "pending" "canceled" "new" "on_track" "ready_to_pay" "initiated")
+`status` | string | Status of the bill payment ("paid" "partially_paid" "pending" "canceled" "new" "on_track" "ready_to_pay" "initiated")
 `settlement_id` | string | Settlement ID
-`paid_at` | timestamp | Date of payment (if paid)
+`paid_at` | timestamp | Date on which the bill is fully paid
 `created_at` | timestamp | Date of creation
 `updated_at` | timestamp | Date of update
 
@@ -178,12 +175,10 @@ curl -X GET https://api.highline.co/bill_payments/ae16efec-d1.../transactions \
 [{
   "id": "ef8b53a0-bfd...",
   "bill_payment_id": "e87f74be-c46...",
-  "amount_expected": 50000,
   "amount_paid": 0,
   "paid": false,
   "status": "pending",
   "type": "",
-  "payment_order_id": "65s1f6s...",
   "created_at": 1631304126,
   "updated_at": 1631304126
 }]

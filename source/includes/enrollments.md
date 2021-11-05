@@ -1,6 +1,6 @@
 # Enrollments
 
-An Enrollment is created to initiate the set up of a recurring bill payment on Highline's payments network. Enrollment is only required for bill payments use cases and is optional for payroll data access related use cases.
+An Enrollment is created to initiate the set up of a recurring bill payment on Highline's payments network. Enrollment is only required for pay via payroll use cases and is not needed for deposit switch or payroll data access use cases.
 
 You first create an enrollment with the recurring amount, bill payment date, payment frequency, along with other optional fields. Multiple users should be submitted if your account has multiple primary owners.
 
@@ -34,7 +34,6 @@ curl -X POST https://api.highline.co/enrollments \
       "first_name": "John",
       "last_name": "Smith",
       "email": "john.smith143@highline.co",
-      "role": "member",
       "created_at": 1634744601,
       "updated_at": 1634744601,
     }
@@ -60,8 +59,7 @@ This API initiates user enrollment via Highline. By passing basic enrollment inf
 
 Name | Type | In | Description
 --------- | ------- | ------ | --------
-`users` | array | body | Array of user objects who are enrolled in this enrollment
-`product_id` | string | body | Product ID
+`product_id` | string | body | Product ID, available in the product settings page
 `payment_amount` | int | body | Recurring amount to be paid to you by the user (in cents)
 `payment_frequency` | string | body | Frequency interval that user will make payments ("weekly" "bi-weekly" "semi-monthly" "bi-weekly")
 `first_payment_date` | timestamp | body | Date of first payment as Unix timestamp
@@ -104,7 +102,6 @@ curl -X GET https://api.highline.co/enrollments/YtMXJzGzJcht38SCJuMhzC \
       "last_name": "Smith",
       "ssn": "123456516",
       "email": "john.smith143@highline.co",
-      "role": "member",
       "created_at": 1634744601,
       "updated_at": 1634744601,
     }
@@ -178,7 +175,6 @@ curl -X GET https://api.highline.co/enrollments/YtMXJzGzJcht38SCJuMhzC/users \
     "country": "US"
   },
   "email": "john.smith143@highline.co",
-  "role": "member",
   "created_at": 1634744601,
   "updated_at": 1634744601,
 }]
@@ -205,7 +201,6 @@ Parameter | Type | Description
 `first_name` | string | First Name
 `last_name` | string | Last Name
 `ssn` | string | Social security number
-`address` | json | Address structure  
-`role` | string | Member's role
+`address` | json | Address object  
 `created_at` | timestamp | Date of creation
 `updated_at` | timestamp | Date of update

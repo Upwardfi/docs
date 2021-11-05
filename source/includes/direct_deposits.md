@@ -46,6 +46,6 @@ Parameter | Type | Description
 `user_id` | string | User ID
 `employment_id` | string | Employment ID
 `bank_account` | object | Bank account object
-`status` | string | Status of direct deposits ("active" "pending")
+`status` | string | Status of direct deposits ("active" "pending"). A `pending` status means that the direct deposit change is not yet propagated within the company or payroll platform.
 `created_at` | timestamp | Date of creation
 `updated_at` | timestamp | Date of update

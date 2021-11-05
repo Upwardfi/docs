@@ -66,7 +66,7 @@ Parameter | Type | Description
 `id` | string | Payout Allocation ID
 `user_id` | string | User ID
 `employment_id` | string | Employment ID
-`employment` | json | Employment structure
+`employment` | json | Employment object
 `gross_amount` | int | Gross Amount (in cents)
 `net_amount` | int | Net Amount (in cents)
 `currency` | string | Currency

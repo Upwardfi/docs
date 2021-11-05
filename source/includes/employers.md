@@ -16,7 +16,6 @@ curl -X GET https://api.highline.co/employers?q=Kroger \
     "id": "25de3...",
     "name": "Kroger",
     "type": "retail",
-    "has_two_fa": false,
     "payroll_data_supported": true,
     "payroll_payments_supported": false,
     "created_at": 1633824000,
@@ -40,3 +39,11 @@ Name | Type | In | Description
 ### Response
 
 Array of Employers Data that match query
+
+Parameter | Type | Description
+--------- | ------- | -----------
+`id` | string | Employer ID
+`name` | string | Employer Name (e.g., Walmart, Uber)
+`type` | string | Type of employer (e.g., retail, services, technology)
+`payroll_data_supported` | boolean | Employer supports payroll data with Highline APIs
+`payroll_payments_supported` | boolean | Employer supports payroll payment method with Highline APIs

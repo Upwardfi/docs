@@ -26,7 +26,6 @@ curl -X POST https://api.highline.co/users/c8e1f36e-c4.../bank_accounts \
     "last_name": "Smith",
     "ssn": "1234...",
     "email": "john.smith143@highline.co",
-    "role": "member",
     "created_at": 1634744601,
     "updated_at": 1634744601,
   },
@@ -62,7 +61,7 @@ Parameter | Type | Description
 --------- | ------- | -----------
 `id` | string | Bank account ID
 `user_id` | string | User ID
-`user` | json | User structure
+`user` | json | User object
 `account_number` | string | Account number (masked)
 `routing_number` | string | Routing number
 `account_type` | string | Account Type ("checking" "savings" "other")
@@ -95,12 +94,11 @@ curl -X GET https://api.highline.co/users/c8e1f36e-c4.../bank_accounts \
     "last_name": "Smith",
     "ssn": "1234...",
     "email": "john.smith143@highline.co",
-    "role": "member",
     "created_at": 1634744601,
     "updated_at": 1634744601,
   },
   "account_number": "***2345",
-  "routing_number": "***4321",
+  "routing_number": "111000614",
   "account_type": "Checking",
   "bank_name": "CRB",
   "kind": "external",
@@ -127,7 +125,7 @@ Parameter | Type | Description
 --------- | ------- | -----------
 `id` | string | Bank account ID
 `user_id` | string | User ID
-`user` | json | User structure
+`user` | json | User object
 `account_number` | string | Account number (masked)
 `routing_number` | string | Routing number (masked)
 `account_type` | string | Account Type ("checking" "savings" "other")
@@ -160,12 +158,11 @@ curl -X GET https://api.highline.co/users/c8e1f36e-c4.../bank_accounts/d938f36e-
     "last_name": "Smith",
     "ssn": "1234...",
     "email": "john.smith143@highline.co",
-    "role": "member",
     "created_at": 1634744601,
     "updated_at": 1634744601,
   },
   "account_number": "***2345",
-  "routing_number": "***4321",
+  "routing_number": "111000614",
   "account_type": "Checking",
   "bank_name": "CRB",
   "kind": "external",
@@ -193,12 +190,11 @@ Parameter | Type | Description
 --------- | ------- | -----------
 `id` | string | Bank account ID
 `user_id` | string | User ID
-`user` | json | User structure
+`user` | json | User object
 `account_number` | string | Account number (masked)
 `routing_number` | string | Routing number (masked)
 `account_type` | string | Account Type ("checking" "savings" "other")
 `bank_name` | string | Bank name
-`kind` | string | Kind of account ("internal" "virtual" "external")
 `created_at` | timestamp | Date of creation
 `updated_at` | timestamp | Date of update
 
