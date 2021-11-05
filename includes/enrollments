@@ -1,7 +1,7 @@
 <h1 id='enrollments'>Enrollments</h1>
 <p>An Enrollment is created to initiate the set up of a recurring bill payment on Highline&#39;s payments network. Enrollment is only required for bill payments use cases and is optional for payroll data access related use cases.</p>
 
-<p>You first create an enrollment with the recurring amount, bill payment date, payment frequency, along with other optional fields.</p>
+<p>You first create an enrollment with the recurring amount, bill payment date, payment frequency, along with other optional fields. Multiple users should be submitted if your account has multiple primary owners.</p>
 <h2 id='create-user-enrollment'>Create user enrollment</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://api.highline.co/enrollments <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>

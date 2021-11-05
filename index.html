@@ -334,6 +334,14 @@
             <a href="#rate-limiting" class="toc-h1 toc-link" data-title="Rate limiting">Rate limiting</a>
           </li>
           <li>
+            <a href="#client-sdk" class="toc-h1 toc-link" data-title="Client SDK">Client SDK</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#widget-installation" class="toc-h2 toc-link" data-title="Widget Installation">Widget Installation</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#guides" class="toc-h1 toc-link" data-title="Guides">Guides</a>
               <ul class="toc-list-h2">
                   <li>
@@ -434,14 +442,6 @@
                   </li>
                   <li>
                     <a href="#check-product-39-s-reports" class="toc-h2 toc-link" data-title="Check product's reports">Check product's reports</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#client-sdk" class="toc-h1 toc-link" data-title="Client SDK">Client SDK</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#widget-installation" class="toc-h2 toc-link" data-title="Widget Installation">Widget Installation</a>
                   </li>
               </ul>
           </li>
@@ -599,6 +599,86 @@
 </tbody></table>
 <h1 id='rate-limiting'>Rate limiting</h1>
 <p>Highline&#39;s API are rate limited to prevent abuse that would degrade our ability to maintain consistent API performance for all users. By default, each API key or app is rate limited at 10,000 requests per hour. If your requests are being rate limited, HTTP response code 429 will be returned with an rate_limit_exceeded error.</p>
+<h1 id='client-sdk'>Client SDK</h1><h2 id='widget-installation'>Widget Installation</h2><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="o">&lt;!</span><span class="nx">DOCTYPE</span> <span class="nx">html</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nx">html</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nx">head</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="nx">meta</span> <span class="nx">charset</span><span class="o">=</span><span class="dl">"</span><span class="s2">utf-8</span><span class="dl">"</span> <span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="sr">/head</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="nx">body</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="nx">highline</span><span class="o">-</span><span class="nx">link</span><span class="o">&gt;&lt;</span><span class="sr">/highline-link</span><span class="err">&gt;
+</span>  <span class="o">&lt;</span><span class="nx">script</span> <span class="nx">src</span><span class="o">=</span><span class="dl">"</span><span class="s2">https://link.highline.co/v1/highline-link.js</span><span class="dl">"</span><span class="o">&gt;&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span>  <span class="o">&lt;</span><span class="nx">script</span> <span class="nx">type</span><span class="o">=</span><span class="dl">"</span><span class="s2">text/javascript</span><span class="dl">"</span><span class="o">&gt;</span>
+    <span class="nx">highlineLink</span><span class="p">.</span><span class="nx">connect</span><span class="p">({</span>
+        <span class="na">access_token</span><span class="p">:</span> <span class="dl">'</span><span class="s1">value_from_auth_token_api</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">feature</span><span class="p">:</span> <span class="dl">'</span><span class="s1">direct_deposit_switch</span><span class="dl">'</span>
+        <span class="na">payload</span><span class="p">:</span> <span class="dl">'</span><span class="s1">value_from_link_encrypt_api</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">on_close</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">on_close!</span><span class="dl">'</span><span class="p">);</span>
+        <span class="p">},</span>
+        <span class="na">on_error</span><span class="p">:</span> <span class="p">({</span> <span class="nx">message</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">on_error!</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">message</span><span class="p">);</span>
+        <span class="p">},</span>
+        <span class="na">on_success</span><span class="p">:</span> <span class="p">({</span> <span class="nx">user_id</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">on_success! </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">user_id</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">});</span>
+    <span class="nx">highlineLink</span><span class="p">.</span><span class="nx">open</span><span class="p">();</span>
+  <span class="o">&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="sr">/body</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="sr">/html</span><span class="err">&gt;
+</span></code></pre></div>
+<p>In order to ensure a simple and delightful experience for customers, we offer an integrated widget.</p>
+
+<p>Highline&#39;s widget is a front-end UI element that allows users to grant your application access to their work accounts, set up automated payments, and switch deposits directly from their paychecks.</p>
+
+<p>To use Highline-Link, pass in an object with the parameters described below to the<br>
+<code>highlineLink.connect()</code> function:</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>access_token</code> <em>required</em></td>
+<td>string</td>
+<td>Value from the &#39;/auth/token&#39; endpoint</td>
+</tr>
+<tr>
+<td><code>feature</code> <em>required</em></td>
+<td>string</td>
+<td>&#39;employment_data&#39;, &#39;direct_deposit_payment&#39;, or &#39;direct_deposit_switch&#39;</td>
+</tr>
+<tr>
+<td><code>enrollment_id</code> <em>optional</em></td>
+<td>string</td>
+<td>Value from the &#39;/enrollments&#39; endpoint - <em>required</em> for &#39;direct_deposit_payment&#39; feature</td>
+</tr>
+<tr>
+<td><code>payload</code> <em>optional</em></td>
+<td>string</td>
+<td>Encrypted value from the &#39;/link/encrypt&#39; endpoint - <em>required</em> for &#39;direct_deposit_switch&#39; feature</td>
+</tr>
+<tr>
+<td><code>on_success</code> <em>optional</em></td>
+<td>function</td>
+<td>Callback function for success events.  Returns &#39;user_id&#39; which can be used to fetch users&#39; payroll information.</td>
+</tr>
+<tr>
+<td><code>on_error</code> <em>optional</em></td>
+<td>function</td>
+<td>Callback function for error events.  Returns error &#39;message&#39; when applicable and can be used to handle errors.</td>
+</tr>
+<tr>
+<td><code>on_close</code> <em>optional</em></td>
+<td>function</td>
+<td>Callback function for close events.  Can be used to detect when a user closes the widget.</td>
+</tr>
+</tbody></table>
+
+<p>And then open with highlineLink.open()</p>
 <h1 id='guides'>Guides</h1><h2 id='direct-deposit-switch'>Direct Deposit Switch</h2>
 <p>Direct Deposit Switch functionality allows individual users to change the primary destination of their paycheck distribution to a bank account specified by your application. After a successful direct deposit switch, all future paychecks on behalf of the employer will push directly into the new listed bank account.</p>
 
@@ -885,7 +965,7 @@
     </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"retail"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"has_two_fa"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="nl">"payroll_data_supported"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"payments_supported"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"payroll_payments_supported"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1633824000</span><span class="p">,</span><span class="w">
     </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1634428800</span><span class="w">
   </span><span class="p">}</span><span class="w">
@@ -918,7 +998,7 @@
 <h1 id='enrollments'>Enrollments</h1>
 <p>An Enrollment is created to initiate the set up of a recurring bill payment on Highline&#39;s payments network. Enrollment is only required for bill payments use cases and is optional for payroll data access related use cases.</p>
 
-<p>You first create an enrollment with the recurring amount, bill payment date, payment frequency, along with other optional fields.</p>
+<p>You first create an enrollment with the recurring amount, bill payment date, payment frequency, along with other optional fields. Multiple users should be submitted if your account has multiple primary owners.</p>
 <h2 id='create-user-enrollment'>Create user enrollment</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://api.highline.co/enrollments <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
@@ -1818,7 +1898,7 @@
 <tr>
 <td><code>status</code></td>
 <td>string</td>
-<td>Status of the bill payment (&quot;paid&quot; &quot;pending&quot; &quot;cancelled&quot; &quot;new&quot; &quot;on_track&quot; &quot;risk_of_error&quot; &quot;ready_to_pay&quot; &quot;initiated&quot; &quot;needs_attention&quot;)</td>
+<td>Status of the bill payment (&quot;paid&quot; &quot;pending&quot; &quot;canceled&quot; &quot;new&quot; &quot;on_track&quot; &quot;risk_of_error&quot; &quot;ready_to_pay&quot; &quot;initiated&quot; &quot;needs_attention&quot;)</td>
 </tr>
 <tr>
 <td><code>settlement_id</code></td>
@@ -1962,12 +2042,12 @@
 <tr>
 <td><code>status</code></td>
 <td>string</td>
-<td>Status of the bill payment (&quot;paid&quot; &quot;pending&quot; &quot;cancelled&quot; &quot;new&quot; &quot;on_track&quot; &quot;ready_to_pay&quot; &quot;initiated&quot;)</td>
+<td>Status of the bill payment (&quot;paid&quot; &quot;pending&quot; &quot;canceled&quot; &quot;new&quot; &quot;on_track&quot; &quot;ready_to_pay&quot; &quot;initiated&quot;)</td>
 </tr>
 <tr>
 <td><code>settlement_id</code></td>
 <td>string</td>
-<td>Stettlement ID</td>
+<td>Settlement ID</td>
 </tr>
 <tr>
 <td><code>paid_at</code></td>
@@ -2055,7 +2135,7 @@
 <tr>
 <td><code>status</code></td>
 <td>string</td>
-<td>Transaction status (&quot;completed&quot; &quot;pending&quot; &quot;cancelled&quot;)</td>
+<td>Transaction status (&quot;completed&quot; &quot;pending&quot; &quot;canceled&quot;)</td>
 </tr>
 <tr>
 <td><code>type</code></td>
@@ -2073,7 +2153,7 @@
 <td>Date of update</td>
 </tr>
 </tbody></table>
-<h1 id='direct-deposits'>Direct Deposits</h1><h2 id='get-user-39-s-direct-deposits'>Get User&#39;s direct deposits</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET https://api.highline.co/users/6516515-651.../payout_allocations <span class="se">\</span>
+<h1 id='direct-deposits'>Direct Deposits</h1><h2 id='get-user-39-s-direct-deposits'>Get User&#39;s direct deposits</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET https://api.highline.co/users/6516515-651.../direct_deposits <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
 </code></pre></div>
@@ -2098,7 +2178,7 @@
 </span></code></pre></div>
 <p>This API endpoint returns the user&#39;s paycheck allocations, that represents direct deposits, based on the provided user id.</p>
 
-<p><code>GET https://api.highline.co/users/{id}/payout_allocations</code></p>
+<p><code>GET https://api.highline.co/users/{id}/direct_deposits</code></p>
 <h3 id='parameters'>Parameters</h3>
 <table><thead>
 <tr>
@@ -2386,7 +2466,7 @@
 <tr>
 <td><code>status</code></td>
 <td>string</td>
-<td>Settlement status (&quot;pending&quot; &quot;sent&quot; &quot;completed&quot; &quot;cancelled&quot;)</td>
+<td>Settlement status (&quot;pending&quot; &quot;sent&quot; &quot;completed&quot; &quot;canceled&quot;)</td>
 </tr>
 <tr>
 <td><code>total_amount</code></td>
@@ -2536,86 +2616,6 @@
 <td>Date of update</td>
 </tr>
 </tbody></table>
-<h1 id='client-sdk'>Client SDK</h1><h2 id='widget-installation'>Widget Installation</h2><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="o">&lt;!</span><span class="nx">DOCTYPE</span> <span class="nx">html</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="nx">html</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="nx">head</span><span class="o">&gt;</span>
-  <span class="o">&lt;</span><span class="nx">meta</span> <span class="nx">charset</span><span class="o">=</span><span class="dl">"</span><span class="s2">utf-8</span><span class="dl">"</span> <span class="o">/&gt;</span>
-<span class="o">&lt;</span><span class="sr">/head</span><span class="err">&gt;
-</span><span class="o">&lt;</span><span class="nx">body</span><span class="o">&gt;</span>
-  <span class="o">&lt;</span><span class="nx">highline</span><span class="o">-</span><span class="nx">link</span><span class="o">&gt;&lt;</span><span class="sr">/highline-link</span><span class="err">&gt;
-</span>  <span class="o">&lt;</span><span class="nx">script</span> <span class="nx">src</span><span class="o">=</span><span class="dl">"</span><span class="s2">https://link.highline.co/v1/highline-link.js</span><span class="dl">"</span><span class="o">&gt;&lt;</span><span class="sr">/script</span><span class="err">&gt;
-</span>  <span class="o">&lt;</span><span class="nx">script</span> <span class="nx">type</span><span class="o">=</span><span class="dl">"</span><span class="s2">text/javascript</span><span class="dl">"</span><span class="o">&gt;</span>
-    <span class="nx">highlineLink</span><span class="p">.</span><span class="nx">connect</span><span class="p">({</span>
-        <span class="na">access_token</span><span class="p">:</span> <span class="dl">'</span><span class="s1">value_from_auth_token_api</span><span class="dl">'</span><span class="p">,</span>
-        <span class="na">feature</span><span class="p">:</span> <span class="dl">'</span><span class="s1">direct_deposit_switch</span><span class="dl">'</span>
-        <span class="na">payload</span><span class="p">:</span> <span class="dl">'</span><span class="s1">value_from_link_encrypt_api</span><span class="dl">'</span><span class="p">,</span>
-        <span class="na">on_close</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">on_close!</span><span class="dl">'</span><span class="p">);</span>
-        <span class="p">},</span>
-        <span class="na">on_error</span><span class="p">:</span> <span class="p">({</span> <span class="nx">message</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
-          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">on_error!</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">message</span><span class="p">);</span>
-        <span class="p">},</span>
-        <span class="na">on_success</span><span class="p">:</span> <span class="p">({</span> <span class="nx">user_id</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
-          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">on_success! </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">user_id</span><span class="p">);</span>
-        <span class="p">}</span>
-    <span class="p">});</span>
-    <span class="nx">highlineLink</span><span class="p">.</span><span class="nx">open</span><span class="p">();</span>
-  <span class="o">&lt;</span><span class="sr">/script</span><span class="err">&gt;
-</span><span class="o">&lt;</span><span class="sr">/body</span><span class="err">&gt;
-</span><span class="o">&lt;</span><span class="sr">/html</span><span class="err">&gt;
-</span></code></pre></div>
-<p>In order to ensure a simple and delightful experience for customers, we offer an integrated widget.</p>
-
-<p>Highline&#39;s widget is a front-end UI element that allows users to grant your application access to their work accounts, set up automated payments, and switch deposits directly from their paychecks.</p>
-
-<p>To use Highline-Link, pass in an object with the parameters described below to the<br>
-<code>highlineLink.connect()</code> function:</p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>access_token</code> <em>required</em></td>
-<td>string</td>
-<td>Value from the &#39;/auth/token&#39; endpoint</td>
-</tr>
-<tr>
-<td><code>feature</code> <em>required</em></td>
-<td>string</td>
-<td>&#39;employment_data&#39;, &#39;direct_deposit_payment&#39;, or &#39;direct_deposit_switch&#39;</td>
-</tr>
-<tr>
-<td><code>enrollment_id</code> <em>optional</em></td>
-<td>string</td>
-<td>Value from the &#39;/enrollments&#39; endpoint - <em>required</em> for &#39;direct_deposit_payment&#39; feature</td>
-</tr>
-<tr>
-<td><code>payload</code> <em>optional</em></td>
-<td>string</td>
-<td>Encrypted value from the &#39;/link/encrypt&#39; endpoint - <em>required</em> for &#39;direct_deposit_switch&#39; feature</td>
-</tr>
-<tr>
-<td><code>on_success</code> <em>optional</em></td>
-<td>function</td>
-<td>Callback function for success events.  Returns &#39;user_id&#39; which can be used to fetch users&#39; payroll information.</td>
-</tr>
-<tr>
-<td><code>on_error</code> <em>optional</em></td>
-<td>function</td>
-<td>Callback function for error events.  Returns error &#39;message&#39; when applicable and can be used to handle errors.</td>
-</tr>
-<tr>
-<td><code>on_close</code> <em>optional</em></td>
-<td>function</td>
-<td>Callback function for close events.  Can be used to detect when a user closes the widget.</td>
-</tr>
-</tbody></table>
-
-<p>And then open with highlineLink.open()</p>
 <h1 id='errors'>Errors</h1>
 <p>Our API returns standard HTTP success or error status codes. For errors, we will also include extra information about what went wrong encoded in the response as JSON. The various HTTP status codes we might return are listed below.</p>
 

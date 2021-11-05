@@ -131,7 +131,7 @@
 <tr>
 <td><code>status</code></td>
 <td>string</td>
-<td>Status of the bill payment (&quot;paid&quot; &quot;pending&quot; &quot;cancelled&quot; &quot;new&quot; &quot;on_track&quot; &quot;risk_of_error&quot; &quot;ready_to_pay&quot; &quot;initiated&quot; &quot;needs_attention&quot;)</td>
+<td>Status of the bill payment (&quot;paid&quot; &quot;pending&quot; &quot;canceled&quot; &quot;new&quot; &quot;on_track&quot; &quot;risk_of_error&quot; &quot;ready_to_pay&quot; &quot;initiated&quot; &quot;needs_attention&quot;)</td>
 </tr>
 <tr>
 <td><code>settlement_id</code></td>
@@ -275,12 +275,12 @@
 <tr>
 <td><code>status</code></td>
 <td>string</td>
-<td>Status of the bill payment (&quot;paid&quot; &quot;pending&quot; &quot;cancelled&quot; &quot;new&quot; &quot;on_track&quot; &quot;ready_to_pay&quot; &quot;initiated&quot;)</td>
+<td>Status of the bill payment (&quot;paid&quot; &quot;pending&quot; &quot;canceled&quot; &quot;new&quot; &quot;on_track&quot; &quot;ready_to_pay&quot; &quot;initiated&quot;)</td>
 </tr>
 <tr>
 <td><code>settlement_id</code></td>
 <td>string</td>
-<td>Stettlement ID</td>
+<td>Settlement ID</td>
 </tr>
 <tr>
 <td><code>paid_at</code></td>
@@ -368,7 +368,7 @@
 <tr>
 <td><code>status</code></td>
 <td>string</td>
-<td>Transaction status (&quot;completed&quot; &quot;pending&quot; &quot;cancelled&quot;)</td>
+<td>Transaction status (&quot;completed&quot; &quot;pending&quot; &quot;canceled&quot;)</td>
 </tr>
 <tr>
 <td><code>type</code></td>

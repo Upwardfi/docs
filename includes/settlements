@@ -78,7 +78,7 @@
 <tr>
 <td><code>status</code></td>
 <td>string</td>
-<td>Settlement status (&quot;pending&quot; &quot;sent&quot; &quot;completed&quot; &quot;cancelled&quot;)</td>
+<td>Settlement status (&quot;pending&quot; &quot;sent&quot; &quot;completed&quot; &quot;canceled&quot;)</td>
 </tr>
 <tr>
 <td><code>total_amount</code></td>
