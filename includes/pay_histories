@@ -102,7 +102,7 @@
 <tr>
 <td><code>employment</code></td>
 <td>json</td>
-<td>Employment structure</td>
+<td>Employment object</td>
 </tr>
 <tr>
 <td><code>gross_amount</code></td>

@@ -106,12 +106,7 @@
 <tr>
 <td><code>enrollment</code></td>
 <td>json</td>
-<td>Enrollment structure</td>
-</tr>
-<tr>
-<td><code>employer_name</code></td>
-<td>string</td>
-<td>Name of employer</td>
+<td>Enrollment object</td>
 </tr>
 <tr>
 <td><code>logo_url</code></td>
@@ -131,7 +126,7 @@
 <tr>
 <td><code>status</code></td>
 <td>string</td>
-<td>Status of the bill payment (&quot;paid&quot; &quot;pending&quot; &quot;canceled&quot; &quot;new&quot; &quot;on_track&quot; &quot;risk_of_error&quot; &quot;ready_to_pay&quot; &quot;initiated&quot; &quot;needs_attention&quot;)</td>
+<td>Status of the bill payment (&quot;paid&quot; &quot;pending&quot; &quot;canceled&quot; &quot;new&quot; &quot;on_track&quot; &quot;ready_to_pay&quot; &quot;initiated&quot;)</td>
 </tr>
 <tr>
 <td><code>settlement_id</code></td>
@@ -175,7 +170,6 @@
     </span><span class="nl">"payment_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
     </span><span class="nl">"loan_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">200000</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"employer_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Christian"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"amount_paid"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
   </span><span class="nl">"amount_due"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"paid"</span><span class="p">,</span><span class="w">
@@ -255,12 +249,7 @@
 <tr>
 <td><code>enrollment</code></td>
 <td>json</td>
-<td>Enrollment structure</td>
-</tr>
-<tr>
-<td><code>employer_name</code></td>
-<td>string</td>
-<td>Name of employer</td>
+<td>Enrollment object</td>
 </tr>
 <tr>
 <td><code>amount_paid</code></td>
@@ -275,7 +264,7 @@
 <tr>
 <td><code>status</code></td>
 <td>string</td>
-<td>Status of the bill payment (&quot;paid&quot; &quot;pending&quot; &quot;canceled&quot; &quot;new&quot; &quot;on_track&quot; &quot;ready_to_pay&quot; &quot;initiated&quot;)</td>
+<td>Status of the bill payment (&quot;paid&quot; &quot;partially_paid&quot; &quot;pending&quot; &quot;canceled&quot; &quot;new&quot; &quot;on_track&quot; &quot;ready_to_pay&quot; &quot;initiated&quot;)</td>
 </tr>
 <tr>
 <td><code>settlement_id</code></td>
@@ -285,7 +274,7 @@
 <tr>
 <td><code>paid_at</code></td>
 <td>timestamp</td>
-<td>Date of payment (if paid)</td>
+<td>Date on which the bill is fully paid</td>
 </tr>
 <tr>
 <td><code>created_at</code></td>
@@ -308,12 +297,10 @@
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ef8b53a0-bfd..."</span><span class="p">,</span><span class="w">
   </span><span class="nl">"bill_payment_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e87f74be-c46..."</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"amount_expected"</span><span class="p">:</span><span class="w"> </span><span class="mi">50000</span><span class="p">,</span><span class="w">
   </span><span class="nl">"amount_paid"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="nl">"paid"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"payment_order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"65s1f6s..."</span><span class="p">,</span><span class="w">
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1631304126</span><span class="p">,</span><span class="w">
   </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1631304126</span><span class="w">
 </span><span class="p">}]</span><span class="w">

@@ -71,7 +71,7 @@
 <tr>
 <td><code>status</code></td>
 <td>string</td>
-<td>Status of direct deposits (&quot;active&quot; &quot;pending&quot;)</td>
+<td>Status of direct deposits (&quot;active&quot; &quot;pending&quot;). A <code>pending</code> status means that the direct deposit change is not yet propagated within the company or payroll platform.</td>
 </tr>
 <tr>
 <td><code>created_at</code></td>

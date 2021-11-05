@@ -71,7 +71,7 @@
 <tr>
 <td><code>employer</code></td>
 <td>json</td>
-<td>Employer structure</td>
+<td>Employer object</td>
 </tr>
 <tr>
 <td><code>job_title</code></td>
@@ -192,7 +192,7 @@
 <tr>
 <td><code>employer</code></td>
 <td>json</td>
-<td>Employer structure</td>
+<td>Employer object</td>
 </tr>
 <tr>
 <td><code>job_title</code></td>

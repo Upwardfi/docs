@@ -20,7 +20,6 @@
     </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ssn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234..."</span><span class="p">,</span><span class="w">
     </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john.smith143@highline.co"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"member"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1634744601</span><span class="p">,</span><span class="w">
     </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1634744601</span><span class="p">,</span><span class="w">
   </span><span class="p">},</span><span class="w">
@@ -97,7 +96,7 @@
 <tr>
 <td><code>user</code></td>
 <td>json</td>
-<td>User structure</td>
+<td>User object</td>
 </tr>
 <tr>
 <td><code>account_number</code></td>
@@ -151,12 +150,11 @@
     </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ssn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234..."</span><span class="p">,</span><span class="w">
     </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john.smith143@highline.co"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"member"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1634744601</span><span class="p">,</span><span class="w">
     </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1634744601</span><span class="p">,</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"***2345"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"routing_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"***4321"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"routing_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"111000614"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"account_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Checking"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"bank_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CRB"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"external"</span><span class="p">,</span><span class="w">
@@ -204,7 +202,7 @@
 <tr>
 <td><code>user</code></td>
 <td>json</td>
-<td>User structure</td>
+<td>User object</td>
 </tr>
 <tr>
 <td><code>account_number</code></td>
@@ -258,12 +256,11 @@
     </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ssn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234..."</span><span class="p">,</span><span class="w">
     </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john.smith143@highline.co"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"member"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1634744601</span><span class="p">,</span><span class="w">
     </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1634744601</span><span class="p">,</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"***2345"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"routing_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"***4321"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"routing_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"111000614"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"account_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Checking"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"bank_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CRB"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"external"</span><span class="p">,</span><span class="w">
@@ -317,7 +314,7 @@
 <tr>
 <td><code>user</code></td>
 <td>json</td>
-<td>User structure</td>
+<td>User object</td>
 </tr>
 <tr>
 <td><code>account_number</code></td>
@@ -338,11 +335,6 @@
 <td><code>bank_name</code></td>
 <td>string</td>
 <td>Bank name</td>
-</tr>
-<tr>
-<td><code>kind</code></td>
-<td>string</td>
-<td>Kind of account (&quot;internal&quot; &quot;virtual&quot; &quot;external&quot;)</td>
 </tr>
 <tr>
 <td><code>created_at</code></td>

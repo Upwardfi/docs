@@ -963,7 +963,6 @@
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"25de3..."</span><span class="p">,</span><span class="w">
     </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kroger"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"retail"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"has_two_fa"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="nl">"payroll_data_supported"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nl">"payroll_payments_supported"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1633824000</span><span class="p">,</span><span class="w">
@@ -995,8 +994,42 @@
 </tbody></table>
 <h3 id='response'>Response</h3>
 <p>Array of Employers Data that match query</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>string</td>
+<td>Employer ID</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>string</td>
+<td>Employer Name (e.g., Walmart, Uber)</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>string</td>
+<td>Type of employer (e.g., retail, services, technology)</td>
+</tr>
+<tr>
+<td><code>payroll_data_supported</code></td>
+<td>boolean</td>
+<td>Employer supports payroll data with Highline APIs</td>
+</tr>
+<tr>
+<td><code>payroll_payments_supported</code></td>
+<td>boolean</td>
+<td>Employer supports payroll payment method with Highline APIs</td>
+</tr>
+</tbody></table>
 <h1 id='enrollments'>Enrollments</h1>
-<p>An Enrollment is created to initiate the set up of a recurring bill payment on Highline&#39;s payments network. Enrollment is only required for bill payments use cases and is optional for payroll data access related use cases.</p>
+<p>An Enrollment is created to initiate the set up of a recurring bill payment on Highline&#39;s payments network. Enrollment is only required for pay via payroll use cases and is not needed for deposit switch or payroll data access use cases.</p>
 
 <p>You first create an enrollment with the recurring amount, bill payment date, payment frequency, along with other optional fields. Multiple users should be submitted if your account has multiple primary owners.</p>
 <h2 id='create-user-enrollment'>Create user enrollment</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://api.highline.co/enrollments <span class="se">\</span>
@@ -1025,7 +1058,6 @@
       </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john.smith143@highline.co"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"member"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1634744601</span><span class="p">,</span><span class="w">
       </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1634744601</span><span class="p">,</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -1053,16 +1085,10 @@
 </tr>
 </thead><tbody>
 <tr>
-<td><code>users</code></td>
-<td>array</td>
-<td>body</td>
-<td>Array of user objects who are enrolled in this enrollment</td>
-</tr>
-<tr>
 <td><code>product_id</code></td>
 <td>string</td>
 <td>body</td>
-<td>Product ID</td>
+<td>Product ID, available in the product settings page</td>
 </tr>
 <tr>
 <td><code>payment_amount</code></td>
@@ -1175,7 +1201,6 @@
       </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"ssn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456516"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john.smith143@highline.co"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"member"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1634744601</span><span class="p">,</span><span class="w">
       </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1634744601</span><span class="p">,</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -1303,7 +1328,6 @@
     </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john.smith143@highline.co"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"member"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1634744601</span><span class="p">,</span><span class="w">
   </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1634744601</span><span class="p">,</span><span class="w">
 </span><span class="p">}]</span><span class="w">
@@ -1358,12 +1382,7 @@
 <tr>
 <td><code>address</code></td>
 <td>json</td>
-<td>Address structure</td>
-</tr>
-<tr>
-<td><code>role</code></td>
-<td>string</td>
-<td>Member&#39;s role</td>
+<td>Address object</td>
 </tr>
 <tr>
 <td><code>created_at</code></td>
@@ -1399,7 +1418,6 @@
       </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john.smith143@highline.co"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"member"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1634744601</span><span class="p">,</span><span class="w">
     </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1634744601</span><span class="p">,</span><span class="w">
   </span><span class="p">}</span><span class="w">
@@ -1454,12 +1472,7 @@
 <tr>
 <td><code>address</code></td>
 <td>json</td>
-<td>Address structure</td>
-</tr>
-<tr>
-<td><code>role</code></td>
-<td>string</td>
-<td>Member&#39;s role</td>
+<td>Address object</td>
 </tr>
 <tr>
 <td><code>created_at</code></td>
@@ -1596,7 +1609,7 @@
 <tr>
 <td><code>employer</code></td>
 <td>json</td>
-<td>Employer structure</td>
+<td>Employer object</td>
 </tr>
 <tr>
 <td><code>job_title</code></td>
@@ -1717,7 +1730,7 @@
 <tr>
 <td><code>employer</code></td>
 <td>json</td>
-<td>Employer structure</td>
+<td>Employer object</td>
 </tr>
 <tr>
 <td><code>job_title</code></td>
@@ -1873,12 +1886,7 @@
 <tr>
 <td><code>enrollment</code></td>
 <td>json</td>
-<td>Enrollment structure</td>
-</tr>
-<tr>
-<td><code>employer_name</code></td>
-<td>string</td>
-<td>Name of employer</td>
+<td>Enrollment object</td>
 </tr>
 <tr>
 <td><code>logo_url</code></td>
@@ -1898,7 +1906,7 @@
 <tr>
 <td><code>status</code></td>
 <td>string</td>
-<td>Status of the bill payment (&quot;paid&quot; &quot;pending&quot; &quot;canceled&quot; &quot;new&quot; &quot;on_track&quot; &quot;risk_of_error&quot; &quot;ready_to_pay&quot; &quot;initiated&quot; &quot;needs_attention&quot;)</td>
+<td>Status of the bill payment (&quot;paid&quot; &quot;pending&quot; &quot;canceled&quot; &quot;new&quot; &quot;on_track&quot; &quot;ready_to_pay&quot; &quot;initiated&quot;)</td>
 </tr>
 <tr>
 <td><code>settlement_id</code></td>
@@ -1942,7 +1950,6 @@
     </span><span class="nl">"payment_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
     </span><span class="nl">"loan_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">200000</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"employer_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Christian"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"amount_paid"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
   </span><span class="nl">"amount_due"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"paid"</span><span class="p">,</span><span class="w">
@@ -2022,12 +2029,7 @@
 <tr>
 <td><code>enrollment</code></td>
 <td>json</td>
-<td>Enrollment structure</td>
-</tr>
-<tr>
-<td><code>employer_name</code></td>
-<td>string</td>
-<td>Name of employer</td>
+<td>Enrollment object</td>
 </tr>
 <tr>
 <td><code>amount_paid</code></td>
@@ -2042,7 +2044,7 @@
 <tr>
 <td><code>status</code></td>
 <td>string</td>
-<td>Status of the bill payment (&quot;paid&quot; &quot;pending&quot; &quot;canceled&quot; &quot;new&quot; &quot;on_track&quot; &quot;ready_to_pay&quot; &quot;initiated&quot;)</td>
+<td>Status of the bill payment (&quot;paid&quot; &quot;partially_paid&quot; &quot;pending&quot; &quot;canceled&quot; &quot;new&quot; &quot;on_track&quot; &quot;ready_to_pay&quot; &quot;initiated&quot;)</td>
 </tr>
 <tr>
 <td><code>settlement_id</code></td>
@@ -2052,7 +2054,7 @@
 <tr>
 <td><code>paid_at</code></td>
 <td>timestamp</td>
-<td>Date of payment (if paid)</td>
+<td>Date on which the bill is fully paid</td>
 </tr>
 <tr>
 <td><code>created_at</code></td>
@@ -2075,12 +2077,10 @@
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ef8b53a0-bfd..."</span><span class="p">,</span><span class="w">
   </span><span class="nl">"bill_payment_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e87f74be-c46..."</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"amount_expected"</span><span class="p">:</span><span class="w"> </span><span class="mi">50000</span><span class="p">,</span><span class="w">
   </span><span class="nl">"amount_paid"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="nl">"paid"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"payment_order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"65s1f6s..."</span><span class="p">,</span><span class="w">
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1631304126</span><span class="p">,</span><span class="w">
   </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1631304126</span><span class="w">
 </span><span class="p">}]</span><span class="w">
@@ -2226,7 +2226,7 @@
 <tr>
 <td><code>status</code></td>
 <td>string</td>
-<td>Status of direct deposits (&quot;active&quot; &quot;pending&quot;)</td>
+<td>Status of direct deposits (&quot;active&quot; &quot;pending&quot;). A <code>pending</code> status means that the direct deposit change is not yet propagated within the company or payroll platform.</td>
 </tr>
 <tr>
 <td><code>created_at</code></td>
@@ -2343,7 +2343,7 @@
 <tr>
 <td><code>employment</code></td>
 <td>json</td>
-<td>Employment structure</td>
+<td>Employment object</td>
 </tr>
 <tr>
 <td><code>gross_amount</code></td>
