@@ -2,7 +2,7 @@
 
 ## Widget Installation
 
-```javascript
+```html
 <!DOCTYPE html>
 <html>
 <head>

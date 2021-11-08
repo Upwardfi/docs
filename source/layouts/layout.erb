@@ -63,7 +63,7 @@ under the License.
       </span>
     </a>
     <div class="toc-wrapper">
-      <%= image_tag "logo.png", class: 'logo' %>
+      <%= image_tag "text-logo.png", class: 'logo' %>
       <% if language_tabs.any? %>
         <div class="lang-selector">
           <% language_tabs.each do |lang| %>
@@ -110,7 +110,7 @@ under the License.
       <div class="content">
         <%= page_content %>
       </div>
-      <div class="dark-box">
+      <div class="dark-box" style="display:none;">
         <% if language_tabs.any? %>
           <div class="lang-selector">
             <% language_tabs.each do |lang| %>
