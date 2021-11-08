@@ -22,7 +22,7 @@
     </span><span class="nl">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1636225502</span><span class="p">,</span><span class="w">
     </span><span class="nl">"base_pay"</span><span class="p">:</span><span class="w"> </span><span class="mi">25599</span><span class="p">,</span><span class="w">
     </span><span class="nl">"base_annual_income"</span><span class="p">:</span><span class="w"> </span><span class="mi">25599</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"provider_pay_cycle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"weekly"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"pay_cycle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"weekly"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"pay_currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"full-time"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">

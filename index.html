@@ -31,19 +31,19 @@
   color: #f6aa11;
 }
 .highlight .cm {
-  color: #75715e;
+  color: #7dbb85;
 }
 .highlight .cp {
-  color: #75715e;
+  color: #7dbb85;
 }
 .highlight .c1 {
-  color: #75715e;
+  color: #7dbb85;
 }
 .highlight .cs {
-  color: #75715e;
+  color: #7dbb85;
 }
 .highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
-  color: #75715e;
+  color: #7dbb85;
 }
 .highlight .err {
   color: #960050;
@@ -79,70 +79,70 @@
   color: #66d9ef;
 }
 .highlight .mf {
-  color: #ae81ff;
+  color: #f8cb23;
 }
 .highlight .mh {
-  color: #ae81ff;
+  color: #f8cb23;
 }
 .highlight .il {
-  color: #ae81ff;
+  color: #f8cb23;
 }
 .highlight .mi {
-  color: #ae81ff;
+  color: #f8cb23;
 }
 .highlight .mo {
-  color: #ae81ff;
+  color: #f8cb23;
 }
 .highlight .m, .highlight .mb, .highlight .mx {
-  color: #ae81ff;
+  color: #f8cb23;
 }
 .highlight .sc {
-  color: #ae81ff;
+  color: #f8cb23;
 }
 .highlight .se {
-  color: #ae81ff;
+  color: #f8cb23;
 }
 .highlight .ss {
-  color: #ae81ff;
+  color: #f8cb23;
 }
 .highlight .sd {
-  color: #e6db74;
+  color: #7dbb85;
 }
 .highlight .s2 {
-  color: #e6db74;
+  color: #7dbb85;
 }
 .highlight .sb {
-  color: #e6db74;
+  color: #7dbb85;
 }
 .highlight .sh {
-  color: #e6db74;
+  color: #7dbb85;
 }
 .highlight .si {
-  color: #e6db74;
+  color: #7dbb85;
 }
 .highlight .sx {
-  color: #e6db74;
+  color: #7dbb85;
 }
 .highlight .s1 {
-  color: #e6db74;
+  color: #7dbb85;
 }
 .highlight .s, .highlight .sa, .highlight .dl {
-  color: #e6db74;
+  color: #7dbb85;
 }
 .highlight .na {
-  color: #a6e22e;
+  color: #f8cb23;
 }
 .highlight .nc {
-  color: #a6e22e;
+  color: #f8cb23;
 }
 .highlight .nd {
-  color: #a6e22e;
+  color: #f8cb23;
 }
 .highlight .ne {
-  color: #a6e22e;
+  color: #f8cb23;
 }
 .highlight .nf, .highlight .fm {
-  color: #a6e22e;
+  color: #f8cb23;
 }
 .highlight .vc {
   color: #ffffff;
@@ -175,25 +175,25 @@
   color: #ffffff;
 }
 .highlight .nl {
-  color: #f92672;
+  color: #33b9bd;
 }
 .highlight .ow {
-  color: #f92672;
+  color: #33b9bd;
 }
 .highlight .nt {
-  color: #f92672;
+  color: #33b9bd;
 }
 .highlight .k, .highlight .kv {
-  color: #f92672;
+  color: #33b9bd;
 }
 .highlight .kn {
-  color: #f92672;
+  color: #33b9bd;
 }
 .highlight .kp {
-  color: #f92672;
+  color: #33b9bd;
 }
 .highlight .o {
-  color: #f92672;
+  color: #33b9bd;
 }
     </style>
     <style media="print">
@@ -282,8 +282,8 @@
   color: #859900;
 }
     </style>
-    <link href="stylesheets/screen-aac2c811.css" rel="stylesheet" media="screen" />
-    <link href="stylesheets/print-953e3353.css" rel="stylesheet" media="print" />
+    <link href="stylesheets/screen-98f5ace3.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print-fd58602f.css" rel="stylesheet" media="print" />
       <script src="javascripts/all-a9fde460.js"></script>
 
     <script>
@@ -299,7 +299,7 @@
       </span>
     </a>
     <div class="toc-wrapper">
-      <img src="images/logo-ca8b27d7.png" class="logo" alt="" />
+      <img src="images/text-logo-23ef6d44.png" class="logo" alt="" />
         <div class="lang-selector">
               <a href="#" data-language-name="shell">shell</a>
         </div>
@@ -599,15 +599,15 @@
 </tbody></table>
 <h1 id='rate-limiting'>Rate limiting</h1>
 <p>Highline&#39;s API are rate limited to prevent abuse that would degrade our ability to maintain consistent API performance for all users. By default, each API key or app is rate limited at 10,000 requests per hour. If your requests are being rate limited, HTTP response code 429 will be returned with an rate_limit_exceeded error.</p>
-<h1 id='client-sdk'>Client SDK</h1><h2 id='widget-installation'>Widget Installation</h2><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="o">&lt;!</span><span class="nx">DOCTYPE</span> <span class="nx">html</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="nx">html</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="nx">head</span><span class="o">&gt;</span>
-  <span class="o">&lt;</span><span class="nx">meta</span> <span class="nx">charset</span><span class="o">=</span><span class="dl">"</span><span class="s2">utf-8</span><span class="dl">"</span> <span class="o">/&gt;</span>
-<span class="o">&lt;</span><span class="sr">/head</span><span class="err">&gt;
-</span><span class="o">&lt;</span><span class="nx">body</span><span class="o">&gt;</span>
-  <span class="o">&lt;</span><span class="nx">highline</span><span class="o">-</span><span class="nx">link</span><span class="o">&gt;&lt;</span><span class="sr">/highline-link</span><span class="err">&gt;
-</span>  <span class="o">&lt;</span><span class="nx">script</span> <span class="nx">src</span><span class="o">=</span><span class="dl">"</span><span class="s2">https://link.highline.co/v1/highline-link.js</span><span class="dl">"</span><span class="o">&gt;&lt;</span><span class="sr">/script</span><span class="err">&gt;
-</span>  <span class="o">&lt;</span><span class="nx">script</span> <span class="nx">type</span><span class="o">=</span><span class="dl">"</span><span class="s2">text/javascript</span><span class="dl">"</span><span class="o">&gt;</span>
+<h1 id='client-sdk'>Client SDK</h1><h2 id='widget-installation'>Widget Installation</h2><div class="highlight"><pre class="highlight html tab-html"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+  <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+  <span class="nt">&lt;highline-link&gt;&lt;/highline-link&gt;</span>
+  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://link.highline.co/v1/highline-link.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
     <span class="nx">highlineLink</span><span class="p">.</span><span class="nx">connect</span><span class="p">({</span>
         <span class="na">access_token</span><span class="p">:</span> <span class="dl">'</span><span class="s1">value_from_auth_token_api</span><span class="dl">'</span><span class="p">,</span>
         <span class="na">feature</span><span class="p">:</span> <span class="dl">'</span><span class="s1">direct_deposit_switch</span><span class="dl">'</span>
@@ -623,10 +623,10 @@
         <span class="p">}</span>
     <span class="p">});</span>
     <span class="nx">highlineLink</span><span class="p">.</span><span class="nx">open</span><span class="p">();</span>
-  <span class="o">&lt;</span><span class="sr">/script</span><span class="err">&gt;
-</span><span class="o">&lt;</span><span class="sr">/body</span><span class="err">&gt;
-</span><span class="o">&lt;</span><span class="sr">/html</span><span class="err">&gt;
-</span></code></pre></div>
+  <span class="nt">&lt;/script&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div>
 <p>In order to ensure a simple and delightful experience for customers, we offer an integrated widget.</p>
 
 <p>Highline&#39;s widget is a front-end UI element that allows users to grant your application access to their work accounts, set up automated payments, and switch deposits directly from their paychecks.</p>
@@ -1556,7 +1556,7 @@
   </span><span class="nl">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1636225502</span><span class="p">,</span><span class="w">
   </span><span class="nl">"base_pay"</span><span class="p">:</span><span class="w"> </span><span class="mi">25599</span><span class="p">,</span><span class="w">
   </span><span class="nl">"base_annual_income"</span><span class="p">:</span><span class="w"> </span><span class="mi">25599</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"provider_pay_cycle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"weekly"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"pay_cycle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"weekly"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"pay_currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"full-time"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
@@ -1677,7 +1677,7 @@
   </span><span class="nl">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1636225502</span><span class="p">,</span><span class="w">
   </span><span class="nl">"base_pay"</span><span class="p">:</span><span class="w"> </span><span class="mi">25599</span><span class="p">,</span><span class="w">
   </span><span class="nl">"base_annual_income"</span><span class="p">:</span><span class="w"> </span><span class="mi">25599</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"provider_pay_cycle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"weekly"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"pay_cycle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"weekly"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"pay_currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"full-time"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
@@ -2263,7 +2263,7 @@
     </span><span class="nl">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1636225502</span><span class="p">,</span><span class="w">
     </span><span class="nl">"base_pay"</span><span class="p">:</span><span class="w"> </span><span class="mi">25599</span><span class="p">,</span><span class="w">
     </span><span class="nl">"base_annual_income"</span><span class="p">:</span><span class="w"> </span><span class="mi">25599</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"provider_pay_cycle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"weekly"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"pay_cycle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"weekly"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"pay_currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"full-time"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
@@ -2402,6 +2402,7 @@
     </span><span class="nl">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bd545..."</span><span class="p">,</span><span class="w">
     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"completed"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"total_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">50000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"bill_payments"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="s2">"bill_payment_object"</span><span class="p">}],</span><span class="w">
     </span><span class="nl">"completed_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1633824000</span><span class="p">,</span><span class="w">
     </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1633824000</span><span class="p">,</span><span class="w">
     </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1634428800</span><span class="w">
@@ -2479,6 +2480,11 @@
 <td>Date of completion (if completed)</td>
 </tr>
 <tr>
+<td><code>bill_payments</code></td>
+<td>Array</td>
+<td>List of bill payment objects are the paid in this settlement file</td>
+</tr>
+<tr>
 <td><code>created_at</code></td>
 <td>timestamp</td>
 <td>Date of creation</td>
@@ -2530,6 +2536,8 @@
 <td>File containing the report</td>
 </tr>
 </tbody></table>
+
+<p>The dailyReport must be in CSV or JSON format.</p>
 <h2 id='check-product-39-s-reports'>Check product&#39;s reports</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET https://api.highline.co/products/d5165d5168-61s3.../reports <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization Bearer: AccessToken"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
@@ -2542,11 +2550,12 @@
   </span><span class="nl">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bd545..."</span><span class="p">,</span><span class="w">
   </span><span class="nl">"file_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"updated_file"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"clienet_report_entries"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-    </span><span class="nl">"client_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bd545..."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"client_reference_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bd545..."</span><span class="p">,</span><span class="w">
     </span><span class="nl">"enrollment_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bd545..."</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"enrollment_current_balance"</span><span class="p">:</span><span class="w"> </span><span class="mi">12000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"current_balance"</span><span class="p">:</span><span class="w"> </span><span class="mi">12000</span><span class="p">,</span><span class="w">
     </span><span class="nl">"next_payment_due_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">2000</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"bill_payment_recurring_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">2000</span><span class="w">
+    </span><span class="nl">"next_payment_due_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1633834000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"recurring_payment_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">2000</span><span class="w">
   </span><span class="p">}],</span><span class="w">
   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"new"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1633824000</span><span class="p">,</span><span class="w">
@@ -2598,7 +2607,7 @@
 <tr>
 <td><code>client_report_entries</code></td>
 <td>array</td>
-<td>Collection of report entries</td>
+<td>Collection of report entries. Each report entry corresponds to one active Highline payments account.</td>
 </tr>
 <tr>
 <td><code>status</code></td>
@@ -2614,6 +2623,70 @@
 <td><code>updated_at</code></td>
 <td>timestamp</td>
 <td>Date of update</td>
+</tr>
+</tbody></table>
+<h3 id='client-report-entry-object'>Client report entry object</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>client_reference_id</code></td>
+<td>string</td>
+<td>The application ID or account ID on your system</td>
+</tr>
+<tr>
+<td><code>client_user_account_status</code></td>
+<td>string</td>
+<td>The account status on your system</td>
+</tr>
+<tr>
+<td><code>enrollment_id</code></td>
+<td>string</td>
+<td>Enrollment ID</td>
+</tr>
+<tr>
+<td><code>current_balance</code></td>
+<td>string</td>
+<td>Current balance due on the payments account</td>
+</tr>
+<tr>
+<td><code>next_payment_due_amount</code></td>
+<td>int</td>
+<td>Next payment amount due</td>
+</tr>
+<tr>
+<td><code>next_payment_due_date</code></td>
+<td>int64</td>
+<td>Date the next payment is due</td>
+</tr>
+<tr>
+<td><code>recurring_payment_amount</code></td>
+<td>int</td>
+<td>Recurring payment amount</td>
+</tr>
+<tr>
+<td><code>additional_payment_due_amount</code> <em>optional</em></td>
+<td>int</td>
+<td>If there are one time additional payment</td>
+</tr>
+<tr>
+<td><code>last_payment_received_at</code></td>
+<td>int64</td>
+<td>Date the last Highline payment was received</td>
+</tr>
+<tr>
+<td><code>last_payment_amount</code></td>
+<td>int</td>
+<td>Amount received from the last Highline payment</td>
+</tr>
+<tr>
+<td><code>current_maturity_date</code></td>
+<td>int64</td>
+<td>The final payment date</td>
 </tr>
 </tbody></table>
 <h1 id='errors'>Errors</h1>
@@ -2707,7 +2780,7 @@
 </tbody></table>
 
       </div>
-      <div class="dark-box">
+      <div class="dark-box" style="display:none;">
           <div class="lang-selector">
                 <a href="#" data-language-name="shell">shell</a>
           </div>
