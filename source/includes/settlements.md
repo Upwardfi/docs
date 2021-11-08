@@ -20,6 +20,7 @@ curl -X GET https://api.highline.co/products/d5165d5168-61s3.../settlements \
     "product_id": "bd545...",
     "status": "completed",
     "total_amount": 50000,
+    "bill_payments": [{"bill_payment_object"}],
     "completed_at": 1633824000,
     "created_at": 1633824000,
     "updated_at": 1634428800
@@ -49,5 +50,6 @@ Parameter | Type | Description
 `status` | string | Settlement status ("pending" "sent" "completed" "canceled")
 `total_amount` | int | Total amount (in cents)
 `completed_at` | timestamp | Date of completion (if completed)
+`bill_payments` | Array | List of bill payment objects are the paid in this settlement file
 `created_at` | timestamp | Date of creation
 `updated_at` | timestamp | Date of update

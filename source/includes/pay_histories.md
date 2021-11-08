@@ -28,7 +28,7 @@ curl -X GET https://api.highline.co/users/6516515-651.../pay_histories \
     "end_date": 1636225502,
     "base_pay": 25599,
     "base_annual_income": 25599,
-    "provider_pay_cycle": "weekly",
+    "pay_cycle": "weekly",
     "pay_currency": "USD",
     "type": "full-time",
     "status": "active",

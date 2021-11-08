@@ -31,8 +31,7 @@ Name | Type | In | Description
 `id` *required* | string | param | Product ID
 `dailyReport` *required* | string | file | File containing the report
 
-
-
+The dailyReport must be in CSV or JSON format.
 
 
 
@@ -52,11 +51,12 @@ curl -X GET https://api.highline.co/products/d5165d5168-61s3.../reports \
   "product_id": "bd545...",
   "file_name": "updated_file",
   "clienet_report_entries": [{
-    "client_user_id": "bd545...",
+    "client_reference_id": "bd545...",
     "enrollment_id": "bd545...",
-    "enrollment_current_balance": 12000,
+    "current_balance": 12000,
     "next_payment_due_amount": 2000,
-    "bill_payment_recurring_amount": 2000
+    "next_payment_due_date": 1633834000,
+    "recurring_payment_amount": 2000
   }],
   "status": "new",
   "created_at": 1633824000,
@@ -81,7 +81,23 @@ Parameter | Type | Description
 `id` | string | Report ID
 `product_id` | string | Product ID
 `file_name` | string | File name
-`client_report_entries` | array | Collection of report entries
+`client_report_entries` | array | Collection of report entries. Each report entry corresponds to one active Highline payments account.
 `status` | string | Report status ("new" "error" "processed")
 `created_at` | timestamp | Date of creation
 `updated_at` | timestamp | Date of update
+
+### Client report entry object
+
+Parameter | Type | Description
+--------- | ------- | -----------
+`client_reference_id` | string | The application ID or account ID on your system
+`client_user_account_status` | string | The account status on your system
+`enrollment_id` | string | Enrollment ID
+`current_balance` | string | Current balance due on the payments account
+`next_payment_due_amount` | int | Next payment amount due
+`next_payment_due_date` | int64 | Date the next payment is due
+`recurring_payment_amount` | int | Recurring payment amount
+`additional_payment_due_amount` *optional* | int | If there are one time additional payment
+`last_payment_received_at` | int64 | Date the last Highline payment was received
+`last_payment_amount` | int | Amount received from the last Highline payment
+`current_maturity_date` | int64 | The final payment date
