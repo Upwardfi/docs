@@ -60,7 +60,6 @@ html, body {
   width: $nav-width;
   background-color: $nav-bg;
   font-size: 15px;
-  // font-weight: 500;
 
   // language selector for mobile devices
   .lang-selector {
@@ -168,7 +167,6 @@ html, body {
   .toc-list-h2 {
     display: none;
     background-color: $nav-subitem-bg;
-    // font-weight: 500;
     margin: $nav-item-margin;
   }
 
@@ -364,7 +362,6 @@ html, body {
     padding-bottom: 0.5em;
     margin-bottom: $h1-margin-bottom;
     margin-top: 2em;
-    // border-bottom: 1px solid #ccc;
     border-top: 1px solid #F1F6F4;;
     background-color: #fdfdfd;
     font-weight: 450;
