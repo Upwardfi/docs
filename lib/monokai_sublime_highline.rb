@@ -59,7 +59,7 @@ module Rouge
               Literal::Number,
               Literal::String::Char,
               Literal::String::Escape,
-              Literal::String::Symbol,          :fg => :light_yellow#f8cb23
+              Literal::String::Symbol,          :fg => :light_yellow
         style Literal::String::Doc,
               Literal::String::Double,
               Literal::String::Backtick,
