@@ -171,9 +171,9 @@ html, body {
   }
 
   .toc-h2 {
-    padding-left: $nav-padding + $nav-indent;
-    padding-left: 0;
+    padding-left: $nav-padding;
     font-size: 13px;
+    font-weight: 400;
   }
 
   .toc-footer {
@@ -199,10 +199,10 @@ html, body {
 }
 
 .toc-link, .toc-footer li {
-  padding: 7px $nav-padding 7px $nav-padding;
+  padding: 0 $nav-padding;
   margin: $nav-item-margin;
   display: block;
-  font-weight: 450;
+  font-weight: 500;
   overflow-x: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -325,6 +325,7 @@ html, body {
   position: relative;
   z-index: 30;
   top: 1.5em;
+  font-size: 15px;
 
   &:after {
     content: '';
@@ -414,9 +415,10 @@ html, body {
     overflow: auto;
     table-layout: center;
     padding: 10px;
-    background: $nav-bg;    
+    background: $nav-bg;
     border-radius: 10px;
     margin: 20px;
+    width: fit-content;
     max-width: 47%;
     
     th,td {
@@ -429,7 +431,7 @@ html, body {
     }
 
     th {
-      padding: 5px 10px;
+      padding: 10px 10px 15px;
       border-bottom: 1px solid #D4E5CD;
       vertical-align: bottom;
     }
@@ -657,4 +659,20 @@ html, body {
 
 .copy-clipboard:hover {
   opacity: 0.8;
+}
+
+.content aside.notice-container-aside {
+  padding: 10px;
+}
+
+.notice-container {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  line-height: 18px;
+}
+
+.notice-icon {
+  display: flex;
+  margin-right: 10px;
 }
