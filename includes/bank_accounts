@@ -9,7 +9,7 @@
   }'</span>
 </code></pre></div>
 <blockquote>
-<p>Response</p>
+<div class="code-block-title">Response</div>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c8e1f36e-c4..."</span><span class="p">,</span><span class="w">
@@ -139,7 +139,7 @@
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
 </code></pre></div>
 <blockquote>
-<p>Response</p>
+<div class="code-block-title">Response</div>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c8e1f36e-c4..."</span><span class="p">,</span><span class="w">
@@ -245,7 +245,7 @@
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
 </code></pre></div>
 <blockquote>
-<p>Response</p>
+<div class="code-block-title">Response</div>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d938f36e-c4..."</span><span class="p">,</span><span class="w">
@@ -358,7 +358,7 @@
   }'</span>
 </code></pre></div>
 <blockquote>
-<p>Response</p>
+<div class="code-block-title">Response</div>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"sucess"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
@@ -418,7 +418,7 @@
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
 </code></pre></div>
 <blockquote>
-<p>Response</p>
+<div class="code-block-title">Response</div>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"54615646"</span><span class="w">
@@ -454,7 +454,7 @@
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
 </code></pre></div>
 <blockquote>
-<p>Response</p>
+<div class="code-block-title">Response</div>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"bank_account_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f1566dss56-516s..."</span><span class="p">,</span><span class="w">
@@ -516,7 +516,7 @@
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
 </code></pre></div>
 <blockquote>
-<p>Response</p>
+<div class="code-block-title">Response</div>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">

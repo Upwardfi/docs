@@ -8,7 +8,7 @@
   <span class="nt">-d</span> <span class="s1">$'dailyReport:file'</span>
 </code></pre></div>
 <blockquote>
-<p>Response</p>
+<div class="code-block-title">Response</div>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
@@ -46,7 +46,7 @@
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
 </code></pre></div>
 <blockquote>
-<p>Response</p>
+<div class="code-block-title">Response</div>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"25de3..."</span><span class="p">,</span><span class="w">

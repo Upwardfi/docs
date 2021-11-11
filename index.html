@@ -282,9 +282,9 @@
   color: #859900;
 }
     </style>
-    <link href="stylesheets/screen-414f038f.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/screen-e62cc96c.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print-f6e3d748.css" rel="stylesheet" media="print" />
-      <script src="javascripts/all-a9fde460.js"></script>
+      <script src="javascripts/all-e7e6e894.js"></script>
 
     <script>
       $(function() { setupCodeCopy(); });
@@ -509,7 +509,7 @@
 </ul>
 <h1 id='authentication'>Authentication</h1><h2 id='access-token'>Access Token</h2>
 <blockquote>
-<p>Example Request:</p>
+<div class="code-block-title">Example Request:</div>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://api.highline.co/auth/token <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
@@ -519,7 +519,7 @@
   }'</span>
 </code></pre></div>
 <blockquote>
-<p>Response</p>
+<div class="code-block-title">Response</div>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"access_token"</span><span class="p">:</span><span class="s2">"eyJhbGciOiJIUzI..."</span><span class="p">,</span><span class="w">
@@ -568,7 +568,7 @@
 <p>All API requests must be made over HTTPS. Calls made over plain HTTP will fail.</p>
 <h2 id='refresh-token'>Refresh Token</h2>
 <blockquote>
-<p>Example Request:</p>
+<div class="code-block-title">Example Request:</div>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://api.highline.co/auth/token <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
@@ -579,7 +579,7 @@
   }'</span>
 </code></pre></div>
 <blockquote>
-<p>Response</p>
+<div class="code-block-title">Response</div>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"access_token"</span><span class="p">:</span><span class="s2">"eyJhbGciOiJIUzI..."</span><span class="p">,</span><span class="w">
@@ -717,7 +717,7 @@
   }'</span>
 </code></pre></div>
 <blockquote>
-<p>Response:</p>
+<div class="code-block-title">Response</div>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"access_token"</span><span class="p">:</span><span class="s2">"eyJhbGciOiJIUzI..."</span><span class="p">,</span><span class="w">
@@ -742,7 +742,7 @@
   }'</span>
 </code></pre></div>
 <blockquote>
-<p>Response:</p>
+<div class="code-block-title">Response</div>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
  </span><span class="nl">"payload"</span><span class="p">:</span><span class="w"> </span><span class="s2">"encrypted_value"</span><span class="p">,</span><span class="w">
@@ -753,14 +753,14 @@
 <p><code>POST https://api.highline.co/link/encrypt</code></p>
 <h3 id='step-3-connect-and-open-highline-link'>Step 3 - Connect and open Highline-link</h3>
 <blockquote>
-<p>Highlink Link Snippet</p>
+<div class="code-block-title">Highlink Link Snippet</div>
 </blockquote>
-<div class="highlight"><pre class="highlight javascript tab-javascript"><code>    <span class="nx">highlineLink</span><span class="p">.</span><span class="nx">connect</span><span class="p">({</span>
-        <span class="na">access_token</span><span class="p">:</span> <span class="dl">'</span><span class="s1">value_from_auth_token_api</span><span class="dl">'</span><span class="p">,</span>
-        <span class="na">feature</span><span class="p">:</span> <span class="dl">'</span><span class="s1">direct_deposit_switch</span><span class="dl">'</span><span class="p">,</span>
-        <span class="na">payload</span><span class="p">:</span> <span class="dl">'</span><span class="s1">encrypted_value</span><span class="dl">'</span>
-    <span class="p">});</span>
-    <span class="nx">highlineLink</span><span class="p">.</span><span class="nx">open</span><span class="p">();</span>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">highlineLink</span><span class="p">.</span><span class="nx">connect</span><span class="p">({</span>
+  <span class="na">access_token</span><span class="p">:</span> <span class="dl">'</span><span class="s1">value_from_auth_token_api</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">feature</span><span class="p">:</span> <span class="dl">'</span><span class="s1">direct_deposit_switch</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">payload</span><span class="p">:</span> <span class="dl">'</span><span class="s1">encrypted_value</span><span class="dl">'</span>
+<span class="p">});</span>
+<span class="nx">highlineLink</span><span class="p">.</span><span class="nx">open</span><span class="p">();</span>
 </code></pre></div>
 <p>Highline&#39;s link is a front-end UI element that allows users to grant your application access to their work accounts and set up direct deposit switch</p>
 
@@ -799,7 +799,7 @@
   }'</span>
 </code></pre></div>
 <blockquote>
-<p>Response:</p>
+<div class="code-block-title">Response</div>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"access_token"</span><span class="p">:</span><span class="s2">"eyJhbGciOiJIUzI..."</span><span class="p">,</span><span class="w">
@@ -826,7 +826,7 @@
   }'</span>
 </code></pre></div>
 <blockquote>
-<p>Response</p>
+<div class="code-block-title">Response</div>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DVNA4..."</span><span class="p">,</span><span class="w">
@@ -885,14 +885,14 @@
 </tbody></table>
 <h3 id='step-3-connect-and-open-highline-link-2'>Step 3 - Connect and open Highline-Link</h3>
 <blockquote>
-<p>Highlink Link Snippet</p>
+<div class="code-block-title">Highlink Link Snippet</div>
 </blockquote>
-<div class="highlight"><pre class="highlight javascript tab-javascript"><code>    <span class="nx">highlineLink</span><span class="p">.</span><span class="nx">connect</span><span class="p">({</span>
-        <span class="na">access_token</span><span class="p">:</span> <span class="dl">'</span><span class="s1">value_from_auth_token_api</span><span class="dl">'</span><span class="p">,</span>
-        <span class="na">feature</span><span class="p">:</span> <span class="dl">'</span><span class="s1">direct_deposit_payment</span><span class="dl">'</span><span class="p">,</span>
-        <span class="na">enrollment_id</span><span class="p">:</span> <span class="dl">'</span><span class="s1">id_from_enrollments_api</span><span class="dl">'</span>
-    <span class="p">});</span>
-    <span class="nx">highlineLink</span><span class="p">.</span><span class="nx">open</span><span class="p">();</span>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">highlineLink</span><span class="p">.</span><span class="nx">connect</span><span class="p">({</span>
+  <span class="na">access_token</span><span class="p">:</span> <span class="dl">'</span><span class="s1">value_from_auth_token_api</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">feature</span><span class="p">:</span> <span class="dl">'</span><span class="s1">direct_deposit_payment</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">enrollment_id</span><span class="p">:</span> <span class="dl">'</span><span class="s1">id_from_enrollments_api</span><span class="dl">'</span>
+<span class="p">});</span>
+<span class="nx">highlineLink</span><span class="p">.</span><span class="nx">open</span><span class="p">();</span>
 </code></pre></div>
 <p>Highline&#39;s link is a front-end UI element that allows users to grant your application access to their work accounts and set up payment via payroll</p>
 
@@ -931,7 +931,7 @@
   }'</span>
 </code></pre></div>
 <blockquote>
-<p>Response:</p>
+<div class="code-block-title">Response</div>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"access_token"</span><span class="p">:</span><span class="s2">"eyJhbGciOiJIUzI..."</span><span class="p">,</span><span class="w">
@@ -945,13 +945,13 @@
 <p><code>POST https://api.highline.co/auth/token</code></p>
 <h3 id='step-2-connect-and-open-highline-link'>Step 2 - Connect and open Highline-Link</h3>
 <blockquote>
-<p>Highlink Link Snippet</p>
+<div class="code-block-title">Highlink Link Snippet</div>
 </blockquote>
-<div class="highlight"><pre class="highlight javascript tab-javascript"><code>    <span class="nx">highlineLink</span><span class="p">.</span><span class="nx">connect</span><span class="p">({</span>
-        <span class="na">access_token</span><span class="p">:</span> <span class="dl">'</span><span class="s1">value_from_auth_token_api</span><span class="dl">'</span><span class="p">,</span>
-        <span class="na">feature</span><span class="p">:</span> <span class="dl">'</span><span class="s1">employment_data</span><span class="dl">'</span>
-    <span class="p">});</span>
-    <span class="nx">highlineLink</span><span class="p">.</span><span class="nx">open</span><span class="p">();</span>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">highlineLink</span><span class="p">.</span><span class="nx">connect</span><span class="p">({</span>
+  <span class="na">access_token</span><span class="p">:</span> <span class="dl">'</span><span class="s1">value_from_auth_token_api</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">feature</span><span class="p">:</span> <span class="dl">'</span><span class="s1">employment_data</span><span class="dl">'</span>
+<span class="p">});</span>
+<span class="nx">highlineLink</span><span class="p">.</span><span class="nx">open</span><span class="p">();</span>
 </code></pre></div>
 <p>Highline&#39;s link is a front-end UI element that allows users to grant your application access to their work accounts and share employment data</p>
 
@@ -978,7 +978,7 @@
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
 </code></pre></div>
 <blockquote>
-<p>Response</p>
+<div class="code-block-title">Response</div>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
@@ -1070,7 +1070,7 @@
   }'</span>
 </code></pre></div>
 <blockquote>
-<p>Response</p>
+<div class="code-block-title">Response</div>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DVNA4..."</span><span class="p">,</span><span class="w">
@@ -1212,7 +1212,7 @@
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
 </code></pre></div>
 <blockquote>
-<p>Response</p>
+<div class="code-block-title">Response</div>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DVNA..."</span><span class="p">,</span><span class="w">
@@ -1332,7 +1332,7 @@
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
 </code></pre></div>
 <blockquote>
-<p>Response</p>
+<div class="code-block-title">Response</div>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d134c....."</span><span class="p">,</span><span class="w">
@@ -1422,7 +1422,7 @@
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
 </code></pre></div>
 <blockquote>
-<p>Response</p>
+<div class="code-block-title">Response</div>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d134c....."</span><span class="p">,</span><span class="w">
@@ -1563,7 +1563,7 @@
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
 </code></pre></div>
 <blockquote>
-<p>Response</p>
+<div class="code-block-title">Response</div>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d6b10b60-55..."</span><span class="p">,</span><span class="w">
@@ -1684,7 +1684,7 @@
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
 </code></pre></div>
 <blockquote>
-<p>Response</p>
+<div class="code-block-title">Response</div>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d6b10b60-55..."</span><span class="p">,</span><span class="w">
@@ -1805,7 +1805,7 @@
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
 </code></pre></div>
 <blockquote>
-<p>Response</p>
+<div class="code-block-title">Response</div>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e87f74be-c46..."</span><span class="p">,</span><span class="w">
@@ -1956,7 +1956,7 @@
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
 </code></pre></div>
 <blockquote>
-<p>Response</p>
+<div class="code-block-title">Response</div>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e87f74be-c46..."</span><span class="p">,</span><span class="w">
@@ -2094,7 +2094,7 @@
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
 </code></pre></div>
 <blockquote>
-<p>Response</p>
+<div class="code-block-title">Response</div>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ef8b53a0-bfd..."</span><span class="p">,</span><span class="w">
@@ -2180,7 +2180,7 @@
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
 </code></pre></div>
 <blockquote>
-<p>Response</p>
+<div class="code-block-title">Response</div>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ca71927a-c5..."</span><span class="p">,</span><span class="w">
@@ -2266,7 +2266,7 @@
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
 </code></pre></div>
 <blockquote>
-<p>Response</p>
+<div class="code-block-title">Response</div>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ca71927a-c5..."</span><span class="p">,</span><span class="w">
@@ -2415,7 +2415,7 @@
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
 </code></pre></div>
 <blockquote>
-<p>Response</p>
+<div class="code-block-title">Response</div>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
@@ -2527,7 +2527,7 @@
   <span class="nt">-d</span> <span class="s1">$'dailyReport:file'</span>
 </code></pre></div>
 <blockquote>
-<p>Response</p>
+<div class="code-block-title">Response</div>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
@@ -2565,7 +2565,7 @@
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
 </code></pre></div>
 <blockquote>
-<p>Response</p>
+<div class="code-block-title">Response</div>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"25de3..."</span><span class="p">,</span><span class="w">

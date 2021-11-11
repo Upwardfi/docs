@@ -14,7 +14,7 @@
   }'</span>
 </code></pre></div>
 <blockquote>
-<p>Response:</p>
+<div class="code-block-title">Response</div>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"access_token"</span><span class="p">:</span><span class="s2">"eyJhbGciOiJIUzI..."</span><span class="p">,</span><span class="w">
@@ -39,7 +39,7 @@
   }'</span>
 </code></pre></div>
 <blockquote>
-<p>Response:</p>
+<div class="code-block-title">Response</div>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
  </span><span class="nl">"payload"</span><span class="p">:</span><span class="w"> </span><span class="s2">"encrypted_value"</span><span class="p">,</span><span class="w">
@@ -50,14 +50,14 @@
 <p><code>POST https://api.highline.co/link/encrypt</code></p>
 <h3 id='step-3-connect-and-open-highline-link'>Step 3 - Connect and open Highline-link</h3>
 <blockquote>
-<p>Highlink Link Snippet</p>
+<div class="code-block-title">Highlink Link Snippet</div>
 </blockquote>
-<div class="highlight"><pre class="highlight javascript tab-javascript"><code>    <span class="nx">highlineLink</span><span class="p">.</span><span class="nx">connect</span><span class="p">({</span>
-        <span class="na">access_token</span><span class="p">:</span> <span class="dl">'</span><span class="s1">value_from_auth_token_api</span><span class="dl">'</span><span class="p">,</span>
-        <span class="na">feature</span><span class="p">:</span> <span class="dl">'</span><span class="s1">direct_deposit_switch</span><span class="dl">'</span><span class="p">,</span>
-        <span class="na">payload</span><span class="p">:</span> <span class="dl">'</span><span class="s1">encrypted_value</span><span class="dl">'</span>
-    <span class="p">});</span>
-    <span class="nx">highlineLink</span><span class="p">.</span><span class="nx">open</span><span class="p">();</span>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">highlineLink</span><span class="p">.</span><span class="nx">connect</span><span class="p">({</span>
+  <span class="na">access_token</span><span class="p">:</span> <span class="dl">'</span><span class="s1">value_from_auth_token_api</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">feature</span><span class="p">:</span> <span class="dl">'</span><span class="s1">direct_deposit_switch</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">payload</span><span class="p">:</span> <span class="dl">'</span><span class="s1">encrypted_value</span><span class="dl">'</span>
+<span class="p">});</span>
+<span class="nx">highlineLink</span><span class="p">.</span><span class="nx">open</span><span class="p">();</span>
 </code></pre></div>
 <p>Highline&#39;s link is a front-end UI element that allows users to grant your application access to their work accounts and set up direct deposit switch</p>
 
@@ -96,7 +96,7 @@
   }'</span>
 </code></pre></div>
 <blockquote>
-<p>Response:</p>
+<div class="code-block-title">Response</div>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"access_token"</span><span class="p">:</span><span class="s2">"eyJhbGciOiJIUzI..."</span><span class="p">,</span><span class="w">
@@ -123,7 +123,7 @@
   }'</span>
 </code></pre></div>
 <blockquote>
-<p>Response</p>
+<div class="code-block-title">Response</div>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DVNA4..."</span><span class="p">,</span><span class="w">
@@ -182,14 +182,14 @@
 </tbody></table>
 <h3 id='step-3-connect-and-open-highline-link-2'>Step 3 - Connect and open Highline-Link</h3>
 <blockquote>
-<p>Highlink Link Snippet</p>
+<div class="code-block-title">Highlink Link Snippet</div>
 </blockquote>
-<div class="highlight"><pre class="highlight javascript tab-javascript"><code>    <span class="nx">highlineLink</span><span class="p">.</span><span class="nx">connect</span><span class="p">({</span>
-        <span class="na">access_token</span><span class="p">:</span> <span class="dl">'</span><span class="s1">value_from_auth_token_api</span><span class="dl">'</span><span class="p">,</span>
-        <span class="na">feature</span><span class="p">:</span> <span class="dl">'</span><span class="s1">direct_deposit_payment</span><span class="dl">'</span><span class="p">,</span>
-        <span class="na">enrollment_id</span><span class="p">:</span> <span class="dl">'</span><span class="s1">id_from_enrollments_api</span><span class="dl">'</span>
-    <span class="p">});</span>
-    <span class="nx">highlineLink</span><span class="p">.</span><span class="nx">open</span><span class="p">();</span>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">highlineLink</span><span class="p">.</span><span class="nx">connect</span><span class="p">({</span>
+  <span class="na">access_token</span><span class="p">:</span> <span class="dl">'</span><span class="s1">value_from_auth_token_api</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">feature</span><span class="p">:</span> <span class="dl">'</span><span class="s1">direct_deposit_payment</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">enrollment_id</span><span class="p">:</span> <span class="dl">'</span><span class="s1">id_from_enrollments_api</span><span class="dl">'</span>
+<span class="p">});</span>
+<span class="nx">highlineLink</span><span class="p">.</span><span class="nx">open</span><span class="p">();</span>
 </code></pre></div>
 <p>Highline&#39;s link is a front-end UI element that allows users to grant your application access to their work accounts and set up payment via payroll</p>
 
@@ -228,7 +228,7 @@
   }'</span>
 </code></pre></div>
 <blockquote>
-<p>Response:</p>
+<div class="code-block-title">Response</div>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"access_token"</span><span class="p">:</span><span class="s2">"eyJhbGciOiJIUzI..."</span><span class="p">,</span><span class="w">
@@ -242,13 +242,13 @@
 <p><code>POST https://api.highline.co/auth/token</code></p>
 <h3 id='step-2-connect-and-open-highline-link'>Step 2 - Connect and open Highline-Link</h3>
 <blockquote>
-<p>Highlink Link Snippet</p>
+<div class="code-block-title">Highlink Link Snippet</div>
 </blockquote>
-<div class="highlight"><pre class="highlight javascript tab-javascript"><code>    <span class="nx">highlineLink</span><span class="p">.</span><span class="nx">connect</span><span class="p">({</span>
-        <span class="na">access_token</span><span class="p">:</span> <span class="dl">'</span><span class="s1">value_from_auth_token_api</span><span class="dl">'</span><span class="p">,</span>
-        <span class="na">feature</span><span class="p">:</span> <span class="dl">'</span><span class="s1">employment_data</span><span class="dl">'</span>
-    <span class="p">});</span>
-    <span class="nx">highlineLink</span><span class="p">.</span><span class="nx">open</span><span class="p">();</span>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">highlineLink</span><span class="p">.</span><span class="nx">connect</span><span class="p">({</span>
+  <span class="na">access_token</span><span class="p">:</span> <span class="dl">'</span><span class="s1">value_from_auth_token_api</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">feature</span><span class="p">:</span> <span class="dl">'</span><span class="s1">employment_data</span><span class="dl">'</span>
+<span class="p">});</span>
+<span class="nx">highlineLink</span><span class="p">.</span><span class="nx">open</span><span class="p">();</span>
 </code></pre></div>
 <p>Highline&#39;s link is a front-end UI element that allows users to grant your application access to their work accounts and share employment data</p>
 

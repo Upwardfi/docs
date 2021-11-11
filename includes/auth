@@ -1,6 +1,6 @@
 <h1 id='authentication'>Authentication</h1><h2 id='access-token'>Access Token</h2>
 <blockquote>
-<p>Example Request:</p>
+<div class="code-block-title">Example Request:</div>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://api.highline.co/auth/token <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
@@ -10,7 +10,7 @@
   }'</span>
 </code></pre></div>
 <blockquote>
-<p>Response</p>
+<div class="code-block-title">Response</div>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"access_token"</span><span class="p">:</span><span class="s2">"eyJhbGciOiJIUzI..."</span><span class="p">,</span><span class="w">
@@ -59,7 +59,7 @@
 <p>All API requests must be made over HTTPS. Calls made over plain HTTP will fail.</p>
 <h2 id='refresh-token'>Refresh Token</h2>
 <blockquote>
-<p>Example Request:</p>
+<div class="code-block-title">Example Request:</div>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://api.highline.co/auth/token <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
@@ -70,7 +70,7 @@
   }'</span>
 </code></pre></div>
 <blockquote>
-<p>Response</p>
+<div class="code-block-title">Response</div>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"access_token"</span><span class="p">:</span><span class="s2">"eyJhbGciOiJIUzI..."</span><span class="p">,</span><span class="w">
