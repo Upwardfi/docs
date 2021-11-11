@@ -14,7 +14,7 @@ curl -X POST https://api.highline.co/users/c8e1f36e-c4.../bank_accounts \
   }'
 ```
 
-> Response
+> <div class="code-block-title">Response</div>
 
 ```json
 {
@@ -82,7 +82,7 @@ curl -X GET https://api.highline.co/users/c8e1f36e-c4.../bank_accounts \
   -H "Content-Type: application/json"
 ```
 
-> Response
+> <div class="code-block-title">Response</div>
 
 ```json
 [{
@@ -146,7 +146,7 @@ curl -X GET https://api.highline.co/users/c8e1f36e-c4.../bank_accounts/d938f36e-
   -H "Content-Type: application/json"
 ```
 
-> Response
+> <div class="code-block-title">Response</div>
 
 ```json
 {
@@ -216,7 +216,7 @@ curl -X PUT https://api.highline.co/users/c8e1f36e-c4.../bank_accounts/f6e1645-f
   }'
 ```
 
-> Response
+> <div class="code-block-title">Response</div>
 
 ```json
 {
@@ -254,7 +254,7 @@ curl -X GET https://api.highline.co/users/c8e1f36e-c4.../bank_accounts/f6e1645-f
   -H "Content-Type: application/json" \
 ```
 
-> Response
+> <div class="code-block-title">Response</div>
 
 ```json
 {
@@ -285,7 +285,7 @@ curl -X GET https://api.highline.co/users/c8e1f36e-c4.../bank_accounts/f6e1645-f
   -H "Content-Type: application/json" \
 ```
 
-> Response
+> <div class="code-block-title">Response</div>
 
 ```json
 {
@@ -329,7 +329,7 @@ curl -X DELETE https://api.highline.co/users/c8e1f36e-c4.../bank_accounts/f6e164
   -H "Content-Type: application/json" \
 ```
 
-> Response
+> <div class="code-block-title">Response</div>
 
 ```json
 {

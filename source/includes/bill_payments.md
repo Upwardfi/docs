@@ -8,7 +8,7 @@ curl -X GET https://api.highline.co/users/ae16efec-d1.../bill_payments \
   -H "Content-Type: application/json"
 ```
 
-> Response
+> <div class="code-block-title">Response</div>
 
 ```json
 [{
@@ -92,7 +92,7 @@ curl -X GET https://api.highline.co/enrollments/ae16efec-d1.../bill_payments \
   -H "Content-Type: application/json"
 ```
 
-> Response
+> <div class="code-block-title">Response</div>
 
 ```json
 [{
@@ -169,7 +169,7 @@ curl -X GET https://api.highline.co/bill_payments/ae16efec-d1.../transactions \
   -H "Content-Type: application/json"
 ```
 
-> Response
+> <div class="code-block-title">Response</div>
 
 ```json
 [{

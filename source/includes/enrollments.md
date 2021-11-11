@@ -23,7 +23,7 @@ curl -X POST https://api.highline.co/enrollments \
   }'
 ```
 
-> Response
+> <div class="code-block-title">Response</div>
 
 ```json
 {
@@ -90,7 +90,7 @@ curl -X GET https://api.highline.co/enrollments/YtMXJzGzJcht38SCJuMhzC \
   -H "Content-Type: application/json"
 ```
 
-> Response
+> <div class="code-block-title">Response</div>
 
 ```json
 {
@@ -156,7 +156,7 @@ curl -X GET https://api.highline.co/enrollments/YtMXJzGzJcht38SCJuMhzC/users \
   -H "Content-Type: application/json"
 ```
 
-> Response
+> <div class="code-block-title">Response</div>
 
 ```json
 [{

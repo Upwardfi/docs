@@ -8,7 +8,7 @@ curl -X GET https://api.highline.co/users/BGMXJzGzJcht38SCJuMhzF \
   -H "Content-Type: application/json"
 ```
 
-> Response
+> <div class="code-block-title">Response</div>
 
 ```json
   {

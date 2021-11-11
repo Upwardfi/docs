@@ -21,7 +21,7 @@ curl -X POST https://api.highline.co/auth/token \
   }'
 ```
 
-> Response:
+> <div class="code-block-title">Response</div>
 
 ```json
 {
@@ -53,7 +53,7 @@ curl -X POST https://api.highline.co/link/encrypt \
   }'
 ```
 
-> Response:
+> <div class="code-block-title">Response</div>
 
 ```json
 {
@@ -67,15 +67,15 @@ The encryption is necessary to ensure your bank account details are never expose
 
 ### Step 3 - Connect and open Highline-link
 
-> Highlink Link Snippet
+> <div class="code-block-title">Highlink Link Snippet</div>
 
 ```javascript
-    highlineLink.connect({
-        access_token: 'value_from_auth_token_api',
-        feature: 'direct_deposit_switch',
-        payload: 'encrypted_value'
-    });
-    highlineLink.open();
+highlineLink.connect({
+  access_token: 'value_from_auth_token_api',
+  feature: 'direct_deposit_switch',
+  payload: 'encrypted_value'
+});
+highlineLink.open();
 ```
 
 Highline's link is a front-end UI element that allows users to grant your application access to their work accounts and set up direct deposit switch
@@ -103,7 +103,7 @@ curl -X POST https://api.highline.co/auth/token \
   }'
 ```
 
-> Response:
+> <div class="code-block-title">Response</div>
 
 ```json
 {
@@ -136,7 +136,7 @@ curl -X POST https://api.highline.co/enrollments \
   }'
 ```
 
-> Response
+> <div class="code-block-title">Response</div>
 
 ```json
 {
@@ -165,15 +165,15 @@ Parameter | Type | Description
 
 ### Step 3 - Connect and open Highline-Link
 
-> Highlink Link Snippet
+> <div class="code-block-title">Highlink Link Snippet</div>
 
 ```javascript
-    highlineLink.connect({
-        access_token: 'value_from_auth_token_api',
-        feature: 'direct_deposit_payment',
-        enrollment_id: 'id_from_enrollments_api'
-    });
-    highlineLink.open();
+highlineLink.connect({
+  access_token: 'value_from_auth_token_api',
+  feature: 'direct_deposit_payment',
+  enrollment_id: 'id_from_enrollments_api'
+});
+highlineLink.open();
 ```
 
 Highline's link is a front-end UI element that allows users to grant your application access to their work accounts and set up payment via payroll
@@ -201,7 +201,7 @@ curl -X POST https://api.highline.co/auth/token \
   }'
 ```
 
-> Response:
+> <div class="code-block-title">Response</div>
 
 ```json
 {
@@ -218,14 +218,14 @@ To initiate a employment data session, you will need your API Key and Secret fro
 
 ### Step 2 - Connect and open Highline-Link
 
-> Highlink Link Snippet
+> <div class="code-block-title">Highlink Link Snippet</div>
 
 ```javascript
-    highlineLink.connect({
-        access_token: 'value_from_auth_token_api',
-        feature: 'employment_data'
-    });
-    highlineLink.open();
+highlineLink.connect({
+  access_token: 'value_from_auth_token_api',
+  feature: 'employment_data'
+});
+highlineLink.open();
 ```
 
 Highline's link is a front-end UI element that allows users to grant your application access to their work accounts and share employment data
