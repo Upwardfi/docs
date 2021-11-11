@@ -8,7 +8,7 @@ curl -X GET https://api.highline.co/employers?q=Kroger \
   -H "Content-Type: application/json"
 ```
 
-> Response
+> <div class="code-block-title">Response</div>
 
 ```json
 [

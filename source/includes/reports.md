@@ -12,7 +12,7 @@ curl -X POST https://api.highline.co/products/d5165d5168-61s3.../reports \
   -d $'dailyReport:file'
 ```
 
-> Response
+> <div class="code-block-title">Response</div>
 
 ```json
 {
@@ -44,7 +44,7 @@ curl -X GET https://api.highline.co/products/d5165d5168-61s3.../reports \
   -H "Content-Type: application/json"
 ```
 
-> Response
+> <div class="code-block-title">Response</div>
 
 ```json
 [{

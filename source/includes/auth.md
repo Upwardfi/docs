@@ -2,7 +2,8 @@
 
 ## Access Token
 
-> Example Request:
+> <div class="code-block-title">Example Request:</div>
+
 
 ```shell
 curl -X POST https://api.highline.co/auth/token \
@@ -13,7 +14,7 @@ curl -X POST https://api.highline.co/auth/token \
   }'
 ```
 
-> Response
+> <div class="code-block-title">Response</div>
 
 ```json
 {
@@ -48,7 +49,7 @@ All API requests must be made over HTTPS. Calls made over plain HTTP will fail.
 
 ## Refresh Token
 
-> Example Request:
+> <div class="code-block-title">Example Request:</div>
 
 ```shell
 curl -X POST https://api.highline.co/auth/token \
@@ -60,7 +61,7 @@ curl -X POST https://api.highline.co/auth/token \
   }'
 ```
 
-> Response
+> <div class="code-block-title">Response</div>
 
 ```json
 {

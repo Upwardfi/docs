@@ -8,7 +8,7 @@ curl -X GET https://api.highline.co/users/ae16efec-d1.../employments \
   -H "Content-Type: application/json"
 ```
 
-> Response
+> <div class="code-block-title">Response</div>
 
 ```json
 [{
@@ -72,7 +72,7 @@ curl -X GET https://api.highline.co/employments/d6b10b60-55... \
   -H "Content-Type: application/json"
 ```
 
-> Response
+> <div class="code-block-title">Response</div>
 
 ```json
 {
