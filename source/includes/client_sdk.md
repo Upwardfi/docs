@@ -44,7 +44,7 @@ Highline's widget is a <a class="content-link" href="https://developer.mozilla.o
 
 To use Highline-Link, include the <span style='white-space:no-wrap;'>`<highline-link></highline-link>`</span> tag in your HTML document, then include the script tag for the environment you wish to target. 
 
-After these two tags are included on your page, connect to Highline-Link by passing in an object with the parameters described below to the `highlineLink.connect()` JavaScript function.  Once connected open the widget with `highlineLink.open()`.
+After these two tags are included on your page, connect to Highline-Link by passing in an object with the parameters described below to the `highlineLink.connect()` JavaScript function.  Once connected open the widget with `highlineLink.open()` which would typically be user-initiated, such as a button click or tap.
 
 Parameter | Type | Description
 --------- | ------- | -----------

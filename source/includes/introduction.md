@@ -14,7 +14,7 @@ Highline's API is organized around REST. Our API has predictable, resource-orien
 
 Our sandbox environment at `https://sandbox.highline.co` provides all the functionality of `https://api.highline.co` with test account credentials. The sandbox API credentials is also available in the product settings page at `https://app.highline.co/manage-product`.
 
-Highline-Link's sandbox url is https://stg-highline-link.js and provides sandbox testing with these credentials:
+Highline-Link's sandbox url at https://stg-link.highline.co/highline-link.js provides all the functionality of https://link.highline.co/v1/highline-link.js with these credentials:
 
 <aside class="notice-container-aside">
     <div class="notice-container">
