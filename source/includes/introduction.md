@@ -31,7 +31,6 @@ Highline-Link's sandbox url is https://stg-highline-link.js and provides sandbox
 
 Sandbox User 1 | <span></span>
 --------- | -------
-Email | test1@argyle.io
 Username | test1
 Phone number | (800) 900-0001
 Password | passgood
@@ -40,7 +39,6 @@ Driver's licence | D1230001
 
 Sandbox User 2 | <span></span>
 --------- | -------
-Email | test2@argyle.io
 Username | test2
 Phone number | (800) 900-0002
 Password | passgood
@@ -49,7 +47,6 @@ Driver's licence | D1230002
 
 Sandbox User 3 | <span></span>
 --------- | -------
-Email | test3@argyle.io
 Username | test3
 Phone number | (800) 900-0003
 Password | passgood
