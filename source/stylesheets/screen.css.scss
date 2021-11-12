@@ -703,3 +703,15 @@ html, body {
   margin-right: 10px;
 }
 
+.content-link {
+  font-weight: 600;
+  text-decoration: none;
+  color:$main-text;
+}
+
+.content-link:hover {
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  color: #70a879;
+}
