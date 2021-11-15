@@ -7,7 +7,7 @@
   <span class="nt">&lt;highline-link&gt;&lt;/highline-link&gt;</span>
 
   <span class="c">&lt;!-- Sandbox --&gt;</span>
-  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://stg-link.highline.co/highline-link.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://sandbox-link.highline.co/highline-link.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
 
   <span class="c">&lt;!-- Production --&gt;</span>
   <span class="c">&lt;!-- &lt;script src="https://link.highline.co/v1/highline-link.js"&gt;&lt;/script&gt; --&gt;</span>
@@ -36,7 +36,7 @@
 
 <p>Highline&#39;s widget is a <a class="content-link" href="https://developer.mozilla.org/en-US/docs/Web/Web_Components" target="_blank">Web Component</a> that allows users to grant your application access to their work accounts, set up automated payments, and switch deposits directly from their paychecks.</p>
 
-<p>To use Highline-Link, include the <span style='white-space:no-wrap;'><code>&lt;highline-link&gt;&lt;/highline-link&gt;</code></span> tag in your HTML document, then include the script tag for the environment you wish to target. </p>
+<p>To use Highline-Link, include the <span style='white-space:no-wrap;'><code>&lt;highline-link&gt;&lt;/highline-link&gt;</code></span> tag in your HTML document, then include the script tag for the environment you wish to target.</p>
 
 <p>After these two tags are included on your page, connect to Highline-Link by passing in an object with the parameters described below to the <code>highlineLink.connect()</code> JavaScript function.  Once connected open the widget with <code>highlineLink.open()</code> which would typically be user-initiated, such as a button click or tap.</p>
 

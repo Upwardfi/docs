@@ -486,9 +486,9 @@
 
 <p>Highline&#39;s API is organized around REST. Our API has predictable, resource-oriented URLs, and uses HTTP response codes to indicate API errors. All requests should be over SSL. All request and response bodies, including errors are encoded in JSON.</p>
 <h2 id='sandbox'>Sandbox</h2>
-<p>Our sandbox environment at <code>https://sandbox.highline.co</code> provides all the functionality of <code>https://api.highline.co</code> with test account credentials. The sandbox API credentials is also available in the product settings page at <code>https://app.highline.co/manage-product</code>.</p>
+<p>Our sandbox environment at <code>https://sandbox-api.highline.co</code> provides all the functionality of <code>https://api.highline.co</code> with test account credentials. The sandbox API credentials is also available in the product settings page at <code>https://app.highline.co/manage-product</code>.</p>
 
-<p>Highline-Link&#39;s sandbox url at https://stg-link.highline.co/highline-link.js provides all the functionality of https://link.highline.co/v1/highline-link.js with these credentials:</p>
+<p>Highline-Link&#39;s sandbox url at https://sandbox-link.highline.co/highline-link.js provides all the functionality of https://link.highline.co/v1/highline-link.js with these credentials:</p>
 
 <aside class="notice-container-aside">
     <div class="notice-container">
@@ -729,7 +729,7 @@
   <span class="nt">&lt;highline-link&gt;&lt;/highline-link&gt;</span>
 
   <span class="c">&lt;!-- Sandbox --&gt;</span>
-  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://stg-link.highline.co/highline-link.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://sandbox-link.highline.co/highline-link.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
 
   <span class="c">&lt;!-- Production --&gt;</span>
   <span class="c">&lt;!-- &lt;script src="https://link.highline.co/v1/highline-link.js"&gt;&lt;/script&gt; --&gt;</span>
@@ -758,7 +758,7 @@
 
 <p>Highline&#39;s widget is a <a class="content-link" href="https://developer.mozilla.org/en-US/docs/Web/Web_Components" target="_blank">Web Component</a> that allows users to grant your application access to their work accounts, set up automated payments, and switch deposits directly from their paychecks.</p>
 
-<p>To use Highline-Link, include the <span style='white-space:no-wrap;'><code>&lt;highline-link&gt;&lt;/highline-link&gt;</code></span> tag in your HTML document, then include the script tag for the environment you wish to target. </p>
+<p>To use Highline-Link, include the <span style='white-space:no-wrap;'><code>&lt;highline-link&gt;&lt;/highline-link&gt;</code></span> tag in your HTML document, then include the script tag for the environment you wish to target.</p>
 
 <p>After these two tags are included on your page, connect to Highline-Link by passing in an object with the parameters described below to the <code>highlineLink.connect()</code> JavaScript function.  Once connected open the widget with <code>highlineLink.open()</code> which would typically be user-initiated, such as a button click or tap.</p>
 
