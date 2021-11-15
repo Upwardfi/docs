@@ -134,6 +134,10 @@ html, body {
     }
   }
 
+  a.toc-h1.toc-link.active{
+    border-bottom: solid 1px $nav-bg !important;
+  }
+
 
   // The Table of Contents is composed of multiple nested
   // unordered lists.  These styles remove the default
@@ -162,6 +166,7 @@ html, body {
   .toc-link.active-parent {
     background-color: $nav-active-parent-bg;
     color: $nav-active-parent-text;
+    border-bottom: solid 1px $nav-bg;
   }
 
   .toc-list-h2 {
@@ -171,7 +176,7 @@ html, body {
   }
 
   .toc-h2 {
-    padding-left: $nav-padding;
+    padding-left: $nav-indent;
     font-size: 13px;
     font-weight: 400;
   }
@@ -199,7 +204,7 @@ html, body {
 }
 
 .toc-link, .toc-footer li {
-  padding: 0 $nav-padding;
+  padding: 7px $nav-padding;
   margin: $nav-item-margin;
   display: block;
   font-weight: 500;
