@@ -33,7 +33,7 @@ curl -X GET https://api.highline.co/users/ae16efec-d1.../bill_payments \
     "loan_term": 24,
     "payment_frequency": "monthly",
     "first_payment_date": 1638310741,
-    "application_reference_number": "12234",
+    "client_reference_id": "12234",
     "days_until_expires": 30,
     "status": "pending",
     "created_at": 1631304121,

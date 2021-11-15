@@ -131,7 +131,7 @@ curl -X POST https://api.highline.co/enrollments \
     "payment_amount": 20000,
     "payment_frequency": "monthly",
     "first_payment_date": 1634740754,
-    "application_reference_number": "16576",
+    "client_reference_id": "16576",
     "end_date": 1634840754
   }'
 ```
