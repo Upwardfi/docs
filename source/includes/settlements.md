@@ -1,6 +1,6 @@
 # Settlements
 
-A settlement refers to the transfer of funds between Highline and clients. This happens whenever a bill payment is due, and will be reflected in this API and our daily settlement file.
+A settlement refers to the transfer of funds between Highline and clients. This happens whenever a bill payment is due, and will be reflected in this API and our daily settlement file. The daily settlement file is available by 4pm ET.
 
 ## Check product's settlements
 

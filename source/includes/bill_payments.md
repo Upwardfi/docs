@@ -17,24 +17,12 @@ curl -X GET https://api.highline.co/users/ae16efec-d1.../bill_payments \
   "enrollment": {
     "id": "3347c40d-2f9...",
     "product_id": "22621f3b-563...",
-    "product": {
-      "id": "22621f3b-563...",
-      "type": "personal_loan",
-      "name": "Product 1",
-      "validate_direct_deposits": true,
-      "validate_payout_allocation": true,
-      "validate_employment_active": true,
-      "max_payment_to_income_ratio": 0,
-      "created_at": 1631304120,
-      "updated_at": 1631304120
-    },
     "payment_amount": 500,
     "loan_amount": 200000,
     "loan_term": 24,
     "payment_frequency": "monthly",
     "first_payment_date": 1638310741,
-    "client_reference_id": "12234",
-    "days_until_expires": 30,
+    "client_reference_id": "XUZ456ERT",
     "status": "pending",
     "created_at": 1631304121,
     "updated_at": 1631304121
@@ -101,11 +89,7 @@ curl -X GET https://api.highline.co/enrollments/ae16efec-d1.../bill_payments \
   "enrollment": {
     "id": "3347c40d-2f9...",
     "product_id": "22621f3b-563...",
-    "product": {
-      "id": "22621f3b-563...",
-      "type": "personal_loan",
-      "name": "Product 1",
-    },
+    "client_reference_id": "XUZ456ERT",
     "payment_amount": 500,
     "loan_amount": 200000
   },
