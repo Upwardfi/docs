@@ -8,7 +8,7 @@
 <h2 id='sandbox'>Sandbox</h2>
 <p>Our sandbox environment at <code>https://sandbox-api.highline.co</code> provides all the functionality of <code>https://api.highline.co</code> with test account credentials. The sandbox API credentials is also available in the product settings page at <code>https://app.highline.co/manage-product</code>.</p>
 
-<p>Highline-Link&#39;s sandbox url at https://sandbox-link.highline.co/highline-link.js provides all the functionality of https://link.highline.co/v1/highline-link.js with these credentials:</p>
+<p>Highline-Link&#39;s sandbox url at <code>https://sandbox-link.highline.co/highline-link.js</code> provides all the functionality of <code>https://link.highline.co/v1/highline-link.js</code> with these credentials:</p>
 
 <aside class="notice-container-aside">
     <div class="notice-container">
