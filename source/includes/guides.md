@@ -65,13 +65,40 @@ The encryption is necessary to ensure your bank account details are never expose
 
 `POST https://api.highline.co/link/encrypt`
 
-### Step 3 - Connect and open Highline-link
+### Step 3 - Get a public access token
+
+```shell
+curl -X POST https://api.highline.co/auth/token \
+  -H "Content-Type: application/json" \
+  -d $'{
+    "api_key": "YOUR_API_KEY",
+    "secret" : "YOUR_SECRET",
+    "scopes" : ["public"]
+  }'
+```
+
+> <div class="code-block-title">Response</div>
+
+```json
+{
+  "access_token":"eyJhbGciOiJIUzI...",
+  "refresh_token":"eyJhbGciOiJIUz...",
+  "subject":"123e4567-e89b-12d3-a456-426614174000",
+  "expires_in":1634244444
+}
+```
+
+To connect and open Highline-Link, you will need to request a public `access_token.` A public AccessToken is required to initialize Highline link `Connect`. To retrieve the public AccessToken, make the following HTTP request on your server.
+
+`POST https://api.highline.co/auth/token`
+
+### Step 4 - Connect and open Highline-link
 
 > <div class="code-block-title">Highlink Link Snippet</div>
 
 ```javascript
 highlineLink.connect({
-  access_token: 'value_from_auth_token_api',
+  access_token: 'public_access_token',
   feature: 'direct_deposit_switch',
   payload: 'encrypted_value'
 });
@@ -162,14 +189,40 @@ Parameter | Type | Description
 `end_date` *optional* | int | Date when we stop accepting payments for this enrollment
 `client_reference_id` *optional* | string | The application ID or account ID on your system
 
+### Step 3 - Get a public access token
 
-### Step 3 - Connect and open Highline-Link
+```shell
+curl -X POST https://api.highline.co/auth/token \
+  -H "Content-Type: application/json" \
+  -d $'{
+    "api_key": "YOUR_API_KEY",
+    "secret" : "YOUR_SECRET",
+    "scopes" : ["public"]
+  }'
+```
+
+> <div class="code-block-title">Response</div>
+
+```json
+{
+  "access_token":"eyJhbGciOiJIUzI...",
+  "refresh_token":"eyJhbGciOiJIUz...",
+  "subject":"123e4567-e89b-12d3-a456-426614174000",
+  "expires_in":1634244444
+}
+```
+
+To connect and open Highline-Link, you will need to request a public `access_token.` A public AccessToken is required to initialize Highline link `Connect`. To retrieve the public AccessToken, make the following HTTP request on your server.
+
+`POST https://api.highline.co/auth/token`
+
+### Step 4 - Connect and open Highline-Link
 
 > <div class="code-block-title">Highlink Link Snippet</div>
 
 ```javascript
 highlineLink.connect({
-  access_token: 'value_from_auth_token_api',
+  access_token: 'public_access_token',
   feature: 'direct_deposit_payment',
   enrollment_id: 'id_from_enrollments_api'
 });
@@ -197,7 +250,8 @@ curl -X POST https://api.highline.co/auth/token \
   -H "Content-Type: application/json" \
   -d $'{
     "api_key": "YOUR_API_KEY",
-    "secret" : "YOUR_SECRET"
+    "secret" : "YOUR_SECRET",
+    "scopes" : ["public"]
   }'
 ```
 
@@ -212,7 +266,7 @@ curl -X POST https://api.highline.co/auth/token \
 }
 ```
 
-To initiate a employment data session, you will need your API Key and Secret from the Highline Dashboard to request an `access_token.` An AccessToken for the end user is required to initialize Highline link `Connect`. To retrieve the AccessToken, make the following HTTP request on your server.
+A public AccessToken is required to initialize Highline link `Connect`. To retrieve the public AccessToken, make the following HTTP request on your server.
 
 `POST https://api.highline.co/auth/token`
 
@@ -222,7 +276,7 @@ To initiate a employment data session, you will need your API Key and Secret fro
 
 ```javascript
 highlineLink.connect({
-  access_token: 'value_from_auth_token_api',
+  access_token: 'public_access_token',
   feature: 'employment_data'
 });
 highlineLink.open();
