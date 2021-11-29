@@ -855,12 +855,33 @@
 <p>The encryption is necessary to ensure your bank account details are never exposed on the front-end. To encrypt your bank account details, make the following HTTP request from your server.</p>
 
 <p><code>POST https://api.highline.co/link/encrypt</code></p>
-<h3 id='step-3-connect-and-open-highline-link'>Step 3 - Connect and open Highline-link</h3>
+<h3 id='step-3-get-a-public-access-token'>Step 3 - Get a public access token</h3><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://api.highline.co/auth/token <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">$'{
+    "api_key": "YOUR_API_KEY",
+    "secret" : "YOUR_SECRET",
+    "scopes" : ["public"]
+  }'</span>
+</code></pre></div>
+<blockquote>
+<div class="code-block-title">Response</div>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"access_token"</span><span class="p">:</span><span class="s2">"eyJhbGciOiJIUzI..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"refresh_token"</span><span class="p">:</span><span class="s2">"eyJhbGciOiJIUz..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"subject"</span><span class="p">:</span><span class="s2">"123e4567-e89b-12d3-a456-426614174000"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"expires_in"</span><span class="p">:</span><span class="mi">1634244444</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>To connect and open Highline-Link, you will need to request a public <code>access_token.</code> A public AccessToken is required to initialize Highline link <code>Connect</code>. To retrieve the public AccessToken, make the following HTTP request on your server.</p>
+
+<p><code>POST https://api.highline.co/auth/token</code></p>
+<h3 id='step-4-connect-and-open-highline-link'>Step 4 - Connect and open Highline-link</h3>
 <blockquote>
 <div class="code-block-title">Highlink Link Snippet</div>
 </blockquote>
 <div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">highlineLink</span><span class="p">.</span><span class="nx">connect</span><span class="p">({</span>
-  <span class="na">access_token</span><span class="p">:</span> <span class="dl">'</span><span class="s1">value_from_auth_token_api</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">access_token</span><span class="p">:</span> <span class="dl">'</span><span class="s1">public_access_token</span><span class="dl">'</span><span class="p">,</span>
   <span class="na">feature</span><span class="p">:</span> <span class="dl">'</span><span class="s1">direct_deposit_switch</span><span class="dl">'</span><span class="p">,</span>
   <span class="na">payload</span><span class="p">:</span> <span class="dl">'</span><span class="s1">encrypted_value</span><span class="dl">'</span>
 <span class="p">});</span>
@@ -987,12 +1008,33 @@
 <td>The application ID or account ID on your system</td>
 </tr>
 </tbody></table>
-<h3 id='step-3-connect-and-open-highline-link-2'>Step 3 - Connect and open Highline-Link</h3>
+<h3 id='step-3-get-a-public-access-token-2'>Step 3 - Get a public access token</h3><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://api.highline.co/auth/token <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">$'{
+    "api_key": "YOUR_API_KEY",
+    "secret" : "YOUR_SECRET",
+    "scopes" : ["public"]
+  }'</span>
+</code></pre></div>
+<blockquote>
+<div class="code-block-title">Response</div>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"access_token"</span><span class="p">:</span><span class="s2">"eyJhbGciOiJIUzI..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"refresh_token"</span><span class="p">:</span><span class="s2">"eyJhbGciOiJIUz..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"subject"</span><span class="p">:</span><span class="s2">"123e4567-e89b-12d3-a456-426614174000"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"expires_in"</span><span class="p">:</span><span class="mi">1634244444</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>To connect and open Highline-Link, you will need to request a public <code>access_token.</code> A public AccessToken is required to initialize Highline link <code>Connect</code>. To retrieve the public AccessToken, make the following HTTP request on your server.</p>
+
+<p><code>POST https://api.highline.co/auth/token</code></p>
+<h3 id='step-4-connect-and-open-highline-link-2'>Step 4 - Connect and open Highline-Link</h3>
 <blockquote>
 <div class="code-block-title">Highlink Link Snippet</div>
 </blockquote>
 <div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">highlineLink</span><span class="p">.</span><span class="nx">connect</span><span class="p">({</span>
-  <span class="na">access_token</span><span class="p">:</span> <span class="dl">'</span><span class="s1">value_from_auth_token_api</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">access_token</span><span class="p">:</span> <span class="dl">'</span><span class="s1">public_access_token</span><span class="dl">'</span><span class="p">,</span>
   <span class="na">feature</span><span class="p">:</span> <span class="dl">'</span><span class="s1">direct_deposit_payment</span><span class="dl">'</span><span class="p">,</span>
   <span class="na">enrollment_id</span><span class="p">:</span> <span class="dl">'</span><span class="s1">id_from_enrollments_api</span><span class="dl">'</span>
 <span class="p">});</span>
@@ -1031,7 +1073,8 @@
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">$'{
     "api_key": "YOUR_API_KEY",
-    "secret" : "YOUR_SECRET"
+    "secret" : "YOUR_SECRET",
+    "scopes" : ["public"]
   }'</span>
 </code></pre></div>
 <blockquote>
@@ -1044,7 +1087,7 @@
   </span><span class="nl">"expires_in"</span><span class="p">:</span><span class="mi">1634244444</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>To initiate a employment data session, you will need your API Key and Secret from the Highline Dashboard to request an <code>access_token.</code> An AccessToken for the end user is required to initialize Highline link <code>Connect</code>. To retrieve the AccessToken, make the following HTTP request on your server.</p>
+<p>A public AccessToken is required to initialize Highline link <code>Connect</code>. To retrieve the public AccessToken, make the following HTTP request on your server.</p>
 
 <p><code>POST https://api.highline.co/auth/token</code></p>
 <h3 id='step-2-connect-and-open-highline-link'>Step 2 - Connect and open Highline-Link</h3>
@@ -1052,7 +1095,7 @@
 <div class="code-block-title">Highlink Link Snippet</div>
 </blockquote>
 <div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">highlineLink</span><span class="p">.</span><span class="nx">connect</span><span class="p">({</span>
-  <span class="na">access_token</span><span class="p">:</span> <span class="dl">'</span><span class="s1">value_from_auth_token_api</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">access_token</span><span class="p">:</span> <span class="dl">'</span><span class="s1">public_access_token</span><span class="dl">'</span><span class="p">,</span>
   <span class="na">feature</span><span class="p">:</span> <span class="dl">'</span><span class="s1">employment_data</span><span class="dl">'</span>
 <span class="p">});</span>
 <span class="nx">highlineLink</span><span class="p">.</span><span class="nx">open</span><span class="p">();</span>
