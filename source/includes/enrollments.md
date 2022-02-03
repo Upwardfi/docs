@@ -66,6 +66,19 @@ Name | Type | In | Description
 `client_reference_id` *optional* | string | body | The application ID or account ID on your system.
 `end_date` *optional* | int | Date when we stop accepting payments for this enrollment
 
+<aside class="notice-container-aside">
+    <div class="notice-container">
+        <div class="notice-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M12 22.5625C6.16649 22.5625 1.4375 17.8335 1.4375 12C1.4375 6.16649 6.16649 1.4375 12 1.4375C17.8335 1.4375 22.5625 6.16649 22.5625 12C22.5625 15.6622 20.6988 18.889 17.8681 20.7838M12 18.8047V9.86719M12 8.03906V6.82031" stroke="#22382E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+        <div>
+            If the first_payment_date is not known during the enrollment creation, first_payment_date should be set to 0. This ensures that no payments are processed until the first_payment_date field is updated on the enrollment.
+        </div>
+    </div>
+</aside>
+
 ### Response
 
 Parameter | Type | Description
