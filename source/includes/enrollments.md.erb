@@ -1,52 +1,22 @@
 # Enrollments
-
 An Enrollment is created to initiate the set up of a recurring bill payment on Highline's payments network. Enrollment is only required for pay via payroll use cases and is not needed for deposit switch or payroll data access use cases.
 
 You first create an enrollment with the recurring amount, bill payment date, payment frequency, along with other optional fields. Multiple users should be submitted if your account has multiple primary owners.
 
-## Create user enrollment
+## <%= config[:create_enrollment]["title"] %>
 
 ```shell
-curl -X POST https://api.highline.co/enrollments \
+curl -X <%= config[:create_enrollment]["url"] %> \
   -H "Authorization Bearer: AccessToken" \
   -H "Content-Type: application/json" \
-  -d $'{
-    "users": [{
-      "id": "1324defc-a8e..."
-    }],
-    "product_id": "6351fsd6fs-sdfs...",
-    "payment_amount": 20000,
-    "payment_frequency": "monthly",
-    "first_payment_date": 1634740754,
-    "client_reference_id": "XUZ456ERT",
-    "end_date": 1634840654
-  }'
-```
+  -d $'
+    <%= parse_payload(config[:create_enrollment]) %>'
+  ```
 
 > <div class="code-block-title">Response</div>
 
 ```json
-{
-  "id": "DVNA4...",
-  "users": [
-    {
-      "id": "d134c.....",
-      "first_name": "John",
-      "last_name": "Smith",
-      "email": "john.smith143@highline.co",
-      "created_at": 1634744601,
-      "updated_at": 1634744601,
-    }
-  ],
-  "product_id": "070b8618-7c...",
-  "payment_amount": 20000,
-  "payment_frequency": "monthly",
-  "first_payment_date": 1634740754,
-  "client_reference_id": "XUZ456ERT",
-  "status": "new",
-  "created_at": 1634741667,
-  "updated_at": 1634741667
-}
+<%= parse_response(config[:create_enrollment]) %>
 ```
 
 This API initiates user enrollment via Highline. By passing basic enrollment information Highline will return an object to the enrollment.
@@ -56,15 +26,7 @@ This API initiates user enrollment via Highline. By passing basic enrollment inf
 `POST https://api.highline.co/enrollments`
 
 ### Parameters
-
-Name | Type | In | Description
---------- | ------- | ------ | --------
-`product_id` | string | body | Product ID, available in the product settings page
-`payment_amount` | int | body | Recurring amount to be paid to you by the user (in cents)
-`payment_frequency` | string | body | Frequency interval that user will make payments ("weekly" "bi-weekly" "semi-monthly" "bi-weekly")
-`first_payment_date` | timestamp | body | Date of first payment as Unix timestamp
-`client_reference_id` *optional* | string | body | The application ID or account ID on your system.
-`end_date` *optional* | int | Date when we stop accepting payments for this enrollment
+<%= parse_parameters(config[:create_enrollment]) %>
 
 <aside class="notice-container-aside">
     <div class="notice-container">

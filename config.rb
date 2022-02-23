@@ -60,4 +60,24 @@ set :port, 4567
 
 helpers do
   require './lib/toc_data.rb'
+  require './lib/parse_io.rb'
 end
+
+require 'uri'
+require 'net/http'
+
+uri = URI('http://localhost:8080/enrollments/docs')
+res = Net::HTTP.get_response(uri)
+body = JSON.parse(res.body)
+
+create_enrollment = JSON
+
+body.each do |index, value|
+  if index == "create" then
+    create_enrollment = value
+  end
+end
+
+
+set :create_enrollment, create_enrollment
+config[:create_enrollment]
