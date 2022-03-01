@@ -2,6 +2,8 @@
 
 ## Get User's Bill Payments
 
+> <div class="code-block-title">Get User's Bill Payments Request</div>
+
 ```shell
 curl -X GET https://api.highline.co/users/ae16efec-d1.../bill_payments \
   -H "Authorization Bearer: AccessToken" \
@@ -73,6 +75,8 @@ Parameter | Type | Description
 
 
 ## Get Enrollment's Bill Payments
+
+> <div class="code-block-title">Get Enrollment's Bill Payments</div>
 
 ```shell
 curl -X GET https://api.highline.co/enrollments/ae16efec-d1.../bill_payments \
@@ -146,6 +150,8 @@ Parameter | Type | Description
 
 
 ## Get Bill Payment's transactions
+
+> <div class="code-block-title">Get Bill Payment's Transactions Request</div>
 
 ```shell
 curl -X GET https://api.highline.co/bill_payments/ae16efec-d1.../transactions \

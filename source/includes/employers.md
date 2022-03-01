@@ -2,6 +2,8 @@
 
 ## Check if employer is supported
 
+> <div class="code-block-title">Employers Request</div>
+
 ```shell
 curl -X GET https://api.highline.co/employers?q=Kroger \
   -H "Authorization Bearer: AccessToken" \

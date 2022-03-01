@@ -2,6 +2,8 @@
 
 ## Get user's employments
 
+> <div class="code-block-title">Get User's Employments Request</div>
+
 ```shell
 curl -X GET https://api.highline.co/users/ae16efec-d1.../employments \
   -H "Authorization Bearer: AccessToken" \
@@ -65,6 +67,8 @@ Parameter | Type | Description
 
 
 ## Get employment
+
+> <div class="code-block-title">Get Employment Request</div>
 
 ```shell
 curl -X GET https://api.highline.co/employments/d6b10b60-55... \

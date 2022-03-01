@@ -2,6 +2,8 @@
 
 ## Get User's profile
 
+> <div class="code-block-title">Get User's Profile Request</div>
+
 ```shell
 curl -X GET https://api.highline.co/users/BGMXJzGzJcht38SCJuMhzF \
   -H "Authorization Bearer: AccessToken" \

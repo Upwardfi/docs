@@ -2,7 +2,7 @@
 
 ## Access Token
 
-> <div class="code-block-title">Example Request:</div>
+> <div class="code-block-title">Access Token Request</div>
 
 
 ```shell
@@ -49,7 +49,7 @@ All API requests must be made over HTTPS. Calls made over plain HTTP will fail.
 
 ## Refresh Token
 
-> <div class="code-block-title">Example Request:</div>
+> <div class="code-block-title">Refresh Token Request</div>
 
 ```shell
 curl -X POST https://api.highline.co/auth/token \

@@ -2,6 +2,8 @@
 
 ## Get User's Pay histories
 
+> <div class="code-block-title">Get User's Pay Histories Request</div>
+
 ```shell
 curl -X GET https://api.highline.co/users/6516515-651.../pay_histories \
   -H "Authorization Bearer: AccessToken" \
