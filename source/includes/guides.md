@@ -12,6 +12,8 @@ Direct deposit switch implementation steps to get you up and running.
 
 ### Step 1 - Get an access token
 
+> <div class="code-block-title">Access Token Request</div>
+
 ```shell
 curl -X POST https://api.highline.co/auth/token \
   -H "Content-Type: application/json" \
@@ -38,6 +40,7 @@ To initiate a payroll connection session, you will need your API Key and Secret 
 
 ### Step 2 - Encrypt the bank details
 
+> <div class="code-block-title margin-top-25">Encrypt Bank Details Request</div>
 
 ```shell
 curl -X POST https://api.highline.co/link/encrypt \
@@ -67,6 +70,8 @@ The encryption is necessary to ensure your bank account details are never expose
 
 ### Step 3 - Get a public access token
 
+> <div class="code-block-title margin-top-25">Access Token Request</div>
+
 ```shell
 curl -X POST https://api.highline.co/auth/token \
   -H "Content-Type: application/json" \
@@ -94,7 +99,7 @@ To connect and open Highline-Link, you will need to request a public `access_tok
 
 ### Step 4 - Connect and open Highline-link
 
-> <div class="code-block-title">Highlink Link Snippet</div>
+> <div class="code-block-title margin-top-25">Highline-Link Snippet</div>
 
 ```javascript
 highlineLink.connect({
@@ -121,6 +126,8 @@ This section will help you understand how to implement Highline bill payments in
 
 ### Step 1 - Get an access token
 
+> <div class="code-block-title margin-top-25">Access Token Request</div>
+
 ```shell
 curl -X POST https://api.highline.co/auth/token \
   -H "Content-Type: application/json" \
@@ -146,6 +153,8 @@ To initiate a payroll payment session, you will need your API Key and Secret fro
 `POST https://api.highline.co/auth/token`
 
 ### Step 2 - Create an enrollment
+
+> <div class="code-block-title margin-top-25">Create Enrollment Request</div>
 
 To enroll a user for bill payments via payroll, you need to create an enrollment. An enrollment contains the metadata for a given recurring bill processed by Highline payments.
 
@@ -191,6 +200,8 @@ Parameter | Type | Description
 
 ### Step 3 - Get a public access token
 
+> <div class="code-block-title margin-top-25">Access Token Request</div>
+
 ```shell
 curl -X POST https://api.highline.co/auth/token \
   -H "Content-Type: application/json" \
@@ -218,7 +229,7 @@ To connect and open Highline-Link, you will need to request a public `access_tok
 
 ### Step 4 - Connect and open Highline-Link
 
-> <div class="code-block-title">Highlink Link Snippet</div>
+> <div class="code-block-title margin-top-25">Highline-Link Snippet</div>
 
 ```javascript
 highlineLink.connect({
@@ -244,6 +255,8 @@ Highline can also be used to verify the employment data of individual users. Our
 Using this service allows users to login and confirm data sharing with a single click. These users also never leave your website. This means that as opposed to traditional methods like uploading paystubs or a copy of photo identification, your users will have a simple single login and be able to complete their journey with less friction and confusion.
 
 ### Step 1 - Get an access token
+
+> <div class="code-block-title margin-top-25">Access Token Request</div>
 
 ```shell
 curl -X POST https://api.highline.co/auth/token \
@@ -272,7 +285,7 @@ A public AccessToken is required to initialize Highline link `Connect`. To retri
 
 ### Step 2 - Connect and open Highline-Link
 
-> <div class="code-block-title">Highlink Link Snippet</div>
+> <div class="code-block-title margin-top-25">Highline-Link Snippet</div>
 
 ```javascript
 highlineLink.connect({

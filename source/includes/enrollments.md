@@ -6,6 +6,8 @@ You first create an enrollment with the recurring amount, bill payment date, pay
 
 ## Create user enrollment
 
+> <div class="code-block-title margin-top-25">Create Enrollment Request</div>
+
 ```shell
 curl -X POST https://api.highline.co/enrollments \
   -H "Authorization Bearer: AccessToken" \
@@ -97,6 +99,8 @@ Parameter | Type | Description
 
 ## Get enrollment
 
+> <div class="code-block-title margin-top-25">Get Enrollment Request</div>
+
 ```shell
 curl -X GET https://api.highline.co/enrollments/YtMXJzGzJcht38SCJuMhzC \
   -H "Authorization Bearer: AccessToken" \
@@ -162,6 +166,8 @@ Parameter | Type | Description
 `updated_at` | timestamp | Date of update
 
 ## Get enrolled users
+
+> <div class="code-block-title">Get Enrolled Users Request</div>
 
 ```shell
 curl -X GET https://api.highline.co/enrollments/YtMXJzGzJcht38SCJuMhzC/users \

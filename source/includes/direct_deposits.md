@@ -2,6 +2,8 @@
 
 ## Get User's direct deposits
 
+> <div class="code-block-title">Get User's Direct Deposits Request</div>
+
 ```shell
 curl -X GET https://api.highline.co/users/6516515-651.../direct_deposits \
   -H "Authorization Bearer: AccessToken" \

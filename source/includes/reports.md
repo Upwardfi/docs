@@ -5,6 +5,8 @@ We offer two ways to exchange this data. Our recommended solution is setting up 
 
 ## Add product's daily data report
 
+> <div class="code-block-title">Add Product's Daily Data Report Request</div>
+
 ```shell
 curl -X POST https://api.highline.co/products/d5165d5168-61s3.../reports \
   -H "Authorization Bearer: AccessToken" \
@@ -36,6 +38,8 @@ The dailyReport must be in CSV or JSON format.
 
 
 ## Check product's reports
+
+> <div class="code-block-title">Check Product's Reports Request</div>
 
 ```shell
 curl -X GET https://api.highline.co/products/d5165d5168-61s3.../reports \

@@ -1,6 +1,7 @@
 # Client SDK
 
 ## Widget Installation
+> <div class="code-block-title">Highline-Link Example</div>
 
 ```html
 <!DOCTYPE html>

@@ -4,6 +4,8 @@ A settlement refers to the transfer of funds between Highline and clients. This 
 
 ## Check product's settlements
 
+> <div class="code-block-title">Check Product's Settlements Request</div>
+
 ```shell
 curl -X GET https://api.highline.co/products/d5165d5168-61s3.../settlements \
   -H "Authorization Bearer: AccessToken" \
