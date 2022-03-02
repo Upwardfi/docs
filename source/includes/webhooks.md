@@ -1,8 +1,6 @@
 # Webhooks
 
-Highline’s daily operations involve a number of asynchronous events regarding payments, data, and other subsets of our product. These can range from updating the status of a customer’s employment to settling funds with clients. 
-
-In order to maintain clarity and consistency with our partners, Highline uses webhooks to communicate key events regarding the bill payment process. This allows clients to receive notifications anytime a relevant event is impacted by our operations.
+This allows clients to receive notifications anytime a relevant event occurs.
 
 ## Setup
 Custom webhook endpoints can be created from the [company settings page](https://app.highline.co/profile). Navigate to the client portal and create a new webhook and start receiving following webhook events
@@ -66,10 +64,10 @@ Event | Description
 
 Event | Description
 ------ | ----------
-"created" | The day’s settlement is created and ready to be sent
-"sent" | The day’s settlement has been sent by Highline
-"completed" | The day’s settlement has been delivered successfully 
-"canceled" | The day’s settlement has been canceled
+"created" | The day when a settlement process is initiated.
+"sent" | The day when a settlement is sent by Highline.
+"completed" | The day when a settlement has been delivered successfully.
+"canceled" | The day when a settlement has been canceled
 
 ### Pay Allocations
 
@@ -95,3 +93,29 @@ Event | Description
 ------ | ----------
 "active" | Payment allocation is active
 "pending" | Payment allocation is pending 
+
+
+### Enrollments
+
+> <div class="code-block-title">Example Payload</div>
+
+```json
+  {
+    "topic": "enrollments",
+    "event": "active",
+    "metadata": {
+      "product_id": "24de3..."
+    },
+    "data": {
+      "pay_allocation_id": "da345..."
+    }
+  }
+```
+
+
+### Enrollments Events
+
+Event | Description
+------ | ----------
+"active" | Enrollment is active
+"completed" | Enrollment is completed and no longer being processed by highline
