@@ -1,6 +1,10 @@
 # Webhooks
 
-This allows clients to receive notifications anytime a relevant event occurs.
+Highline’s daily operations involve a number of asynchronous events regarding payments, data, and other subsets of our product. These can range from updating the status of a customer’s employment to settling funds with clients.
+
+In order to maintain clarity and consistency with our partners, Highline uses webhooks to communicate key events regarding the bill payment process. This allows clients to receive notifications anytime a relevant event occurs.
+
+
 
 ## Setup
 Custom webhook endpoints can be created from the [company settings page](https://app.highline.co/profile). Navigate to the client portal and create a new webhook and start receiving following webhook events
@@ -19,11 +23,11 @@ The following events relate to the entirety of Highline’s bill payment lifecyc
   {
     "topic": "bill_payments",
     "event": "paid",
-    "metadata": {
-      "product_id": "24de3..."
-    },
     "data": {
-      "bill_payment_id": "da345..."
+      "bill_payment_id": "da345...",
+      "metadata": {
+        "product_id": "24de3..."
+      },
     }
   }
 ```
@@ -49,11 +53,11 @@ Event | Description
   {
     "topic": "settlements",
     "event": "pending",
-    "metadata": {
-      "product_id": "24de3..."
-    },
     "data": {
-      "settlement_id": "da345..."
+      "settlement_id": "da345...",
+      "metadata": {
+        "product_id": "24de3..."
+      },
     }
   }
 ```
@@ -77,11 +81,11 @@ Event | Description
   {
     "topic": "pay_allocations",
     "event": "sent",
-    "metadata": {
-      "product_id": "24de3..."
-    },
     "data": {
-      "pay_allocation_id": "da345..."
+      "pay_allocation_id": "da345...",
+      "metadata": {
+        "product_id": "24de3..."
+      },
     }
   }
 ```
@@ -103,11 +107,11 @@ Event | Description
   {
     "topic": "enrollments",
     "event": "active",
-    "metadata": {
-      "product_id": "24de3..."
-    },
     "data": {
-      "pay_allocation_id": "da345..."
+      "pay_allocation_id": "da345...",
+      "metadata": {
+        "product_id": "24de3..."
+      },
     }
   }
 ```
