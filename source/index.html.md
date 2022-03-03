@@ -25,6 +25,7 @@ includes:
 #  - bank_accounts
   - settlements
   - reports
+  - webhooks
   - errors
 
 search: true
